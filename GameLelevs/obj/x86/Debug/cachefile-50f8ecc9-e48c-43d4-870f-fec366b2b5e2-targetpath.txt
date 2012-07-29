@@ -1,0 +1,3 @@
+Content\Textures\wall_goriz.xnb
+Content\Textures\wall_vert.xnb
+Content\lvls\lvl1.txt

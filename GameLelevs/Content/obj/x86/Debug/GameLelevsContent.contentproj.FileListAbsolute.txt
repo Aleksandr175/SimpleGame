@@ -1,0 +1,2 @@
+C:\Documents and Settings\Administrator\Desktop\GameLelevs\GameLelevs\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Aleksandr\Рабочий стол\GameLelevs\GameLelevs\Content\obj\x86\Debug\ResolveAssemblyReference.cache
