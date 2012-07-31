@@ -19,6 +19,8 @@ namespace GameLevels
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        Player player;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -113,8 +115,9 @@ namespace GameLevels
             doorVertic = Content.Load<Texture2D>("Textures/lvl/doors/door_vertic");
             doorHorizOpen = Content.Load<Texture2D>("Textures/lvl/doors/door_horiz_open");
             doorVerticOpen = Content.Load<Texture2D>("Textures/lvl/doors/door_vertic_open");
-            
 
+            // инициализируем нового игрока
+            player = new Player(spriteBatch, Content.Load<Texture2D>("players/player"), 20, 20);
 
             CreateLevel(1);
 
@@ -196,7 +199,7 @@ namespace GameLevels
                 Scroll(0, speedCamera);
             }
 
-
+            player.Update(gameTime);
 
 
             base.Update(gameTime);
@@ -218,6 +221,8 @@ namespace GameLevels
                 block.Draw(spriteBatch);
             }
             spriteBatch.End();
+
+            player.Draw(new Rectangle(0, 0, 20, 20));
 
             base.Draw(gameTime);
         }
