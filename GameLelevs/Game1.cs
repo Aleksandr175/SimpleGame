@@ -47,9 +47,13 @@ namespace GameLevels
         int lenghtY;
         
         int size = 30;
+        int speedCamera = 1;
+
+        int width;
+        int height;
 
         int currentLvl;
-        int maxLvl = 3;
+        int maxLvl = 4;
         KeyboardState oldState;
         
         List<Block> blocks;
@@ -59,12 +63,13 @@ namespace GameLevels
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            this.graphics.PreferredBackBufferWidth = 500;
-            this.graphics.PreferredBackBufferHeight = 500;
+            width = this.graphics.PreferredBackBufferWidth = 500; //ширина и высота экрана
+            height = this.graphics.PreferredBackBufferHeight = 500;
 
-            this.Components.Add(new FPSCounter(this));
+            this.Components.Add(new FPSCounter(this));  // добавили игровой компонент - fps счетчик
 
-            IsFixedTimeStep = false;
+            // отключили ограничение fps счетчика
+            IsFixedTimeStep = false; 
             graphics.SynchronizeWithVerticalRetrace = false;
         }
 
@@ -127,19 +132,24 @@ namespace GameLevels
 
 
 
-        /*public Rectangle GetScreenRect(Rectangle rect)
+        public Rectangle GetScreenRect(Rectangle rect)
         {
             Rectangle r = rect;
-            r.Offset(-scrollX, 0);
+            r.Offset(-scrollX, -scrollY);
             return r;
         }
 
         //смещает камеру относительно начала уровня
-        public void Scroll() {
-            if (scrollX + dx > 0 && scrollX - dx < lenghtX - 200) {
+        public void Scroll(int dx, int dy) {
+            if (scrollX + dx > 0 && scrollX + dx < lenghtX - width) 
+            {
                 scrollX += dx;
             }
-        }*/
+            if (scrollY + dy > 0 && scrollY + dy < lenghtY - height) 
+            {
+                scrollY += dy;
+            }
+        }
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,
@@ -169,6 +179,25 @@ namespace GameLevels
             oldState = state;
 
             
+            if (state.IsKeyDown(Keys.Left))
+            {
+                Scroll(-speedCamera, 0);
+            }
+            if (state.IsKeyDown(Keys.Right))
+            {
+                Scroll(speedCamera, 0);
+            }
+            if (state.IsKeyDown(Keys.Up))
+            {
+                Scroll(0, -speedCamera);
+            }
+            if (state.IsKeyDown(Keys.Down))
+            {
+                Scroll(0, speedCamera);
+            }
+
+
+
 
             base.Update(gameTime);
         }
@@ -305,7 +334,7 @@ namespace GameLevels
             }
 
             lenghtX = size * lines[0].Length; // длина уровня в пикселях
-            lenghtY = y / size;
+            lenghtY = y;
 
         }
 

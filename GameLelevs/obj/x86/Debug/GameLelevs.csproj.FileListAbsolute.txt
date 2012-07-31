@@ -81,3 +81,41 @@ C:\Documents and Settings\Aleksandr\Рабочий стол\GameLelevs\GameLelev
 C:\Documents and Settings\Aleksandr\Рабочий стол\GameLelevs\GameLelevs\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Documents and Settings\Aleksandr\Рабочий стол\GameLelevs\GameLelevs\obj\x86\Debug\GameLelevs.exe
 C:\Documents and Settings\Aleksandr\Рабочий стол\GameLelevs\GameLelevs\obj\x86\Debug\GameLelevs.pdb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_goriz.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_vert.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_4sides.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_down_right.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_down.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_up.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_up_right.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\empty.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_dlu.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_lur.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_urd.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_rdl.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz_open.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic_open.xnb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_goriz.JPG
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_vert.JPG
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_4sides.JPG
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_down_right.JPG
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_down.JPG
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_up.JPG
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_up_right.JPG
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\empty.JPG
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_dlu.JPG
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_lur.JPG
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_urd.JPG
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_rdl.JPG
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl1.txt
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl2.txt
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl3.txt
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\GameLelevs.exe
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\GameLelevs.pdb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.exe
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.pdb
+C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl4.txt

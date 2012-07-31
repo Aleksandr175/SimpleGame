@@ -28,6 +28,7 @@ namespace GameLevels
 
         public void Draw(SpriteBatch spriteBatch) 
         {
+            Rectangle screenRect = game.GetScreenRect(Rect);  // рисуем только то, что помещается на экране
             spriteBatch.Draw(texture, Rect, Color.White);
         }
     }
