@@ -43,22 +43,31 @@ namespace GameLevels
         Texture2D doorHorizOpen;  // двери открытые
         Texture2D doorVerticOpen;
 
+        //экранные координаты - смещение камеры относительно начала мировых координат 
         int scrollX;
         int scrollY;
+
+        //длина уровня в пикселях
         int lenghtX;
         int lenghtY;
         
+        //размер 1 ячейки уровня
         int size = 30;
+        // скорость перемещения камеры
         int speedCamera = 1;
 
+        //размер экрана
         int width;
         int height;
 
+        //информация об уровнях
         int currentLvl;
         int maxLvl = 4;
         KeyboardState oldState;
-        
-        List<Block> blocks;
+
+        List<Block> blocks; // объекты стен и дверей
+
+
 
         public Game1()
         {
@@ -98,6 +107,7 @@ namespace GameLevels
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            // загружаем текстуры стен
             wallGoriz = Content.Load<Texture2D>("Textures/lvl/wall_goriz");
             wallVert = Content.Load<Texture2D>("Textures/lvl/wall_vert");
             wallDownRight = Content.Load<Texture2D>("Textures/lvl/wall_down_right");
@@ -111,6 +121,7 @@ namespace GameLevels
             wallDLU = Content.Load<Texture2D>("Textures/lvl/wall_dlu");
             wallLUR = Content.Load<Texture2D>("Textures/lvl/wall_lur");
 
+            // загружаем текстуры дверей
             doorHoriz = Content.Load<Texture2D>("Textures/lvl/doors/door_horiz");
             doorVertic = Content.Load<Texture2D>("Textures/lvl/doors/door_vertic");
             doorHorizOpen = Content.Load<Texture2D>("Textures/lvl/doors/door_horiz_open");
@@ -119,6 +130,7 @@ namespace GameLevels
             // инициализируем нового игрока
             player = new Player(spriteBatch, Content.Load<Texture2D>("players/player"), 20, 20);
 
+            //сразу создаем первый уровень
             CreateLevel(1);
 
             // TODO: use this.Content to load your game content here
@@ -134,7 +146,9 @@ namespace GameLevels
         }
 
 
-
+        /*
+         * Ф-ция для получения прямоугольника текущего положения экрана
+         */
         public Rectangle GetScreenRect(Rectangle rect)
         {
             Rectangle r = rect;
@@ -168,6 +182,7 @@ namespace GameLevels
             // TODO: Add your update logic here
             KeyboardState state = Keyboard.GetState();
             
+            //смена уровня по нажатию на пробел
             if (state.IsKeyDown(Keys.Space) && oldState.IsKeyUp(Keys.Space)) {
                 if (oldState != state)
                 {
@@ -182,6 +197,7 @@ namespace GameLevels
             oldState = state;
 
             
+            // перемещение камеры
             if (state.IsKeyDown(Keys.Left))
             {
                 Scroll(-speedCamera, 0);
@@ -216,32 +232,42 @@ namespace GameLevels
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
+            // отрисовываем стены
             foreach (Block block in blocks)
             {
                 block.Draw(spriteBatch);
             }
             spriteBatch.End();
 
+            // отрисовываем положение игрока
             player.Draw(new Rectangle(0, 0, 20, 20));
 
             base.Draw(gameTime);
         }
 
-
+        /*
+         * Ф-ция создания уровня.
+         * Считывает данные из файла.
+         * Файл д.б. с названием "lvlX.txt";
+         * 
+         * @param {int} lvl - номер уровня
+         * 
+         */
         void CreateLevel(int lvl)
         {
             blocks = new List<Block>();
             
             string lvl_name = "content/lvls/lvl" + Convert.ToString(lvl) + ".txt";
-            string[] lines = File.ReadAllLines(lvl_name);
+            string[] lines = File.ReadAllLines(lvl_name); //получили массив строк
 
             
             int x = 0;
             int y = 0;
-            foreach (string line in lines)
+            foreach (string line in lines) //считали каждый символ в каждой строке
             {
                 foreach (char c in line)
                 {
+                    //добавили стену, соответвующую данному символу в файле
                     Rectangle Rect = new Rectangle(x, y, size, size);
                     if (c == '0')
                     {
