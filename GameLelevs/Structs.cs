@@ -2,6 +2,7 @@
 // Объявление структур для кпрощения работы
 // </summary>
 
+using Microsoft.Xna.Framework;
 namespace Structs
 {
 
@@ -25,5 +26,6 @@ namespace Structs
     {
         public bool isRunning;
         public short speed;
+        public Rectangle position;
     }
 }

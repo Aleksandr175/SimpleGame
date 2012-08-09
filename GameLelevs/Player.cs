@@ -22,10 +22,11 @@ namespace GameLevels
     /// </summary>
     class Player
     {
-        private SpriteBatch spriteBatch;
+        // текстура для вывода игрока в состоянии спокойствия
+        private Texture2D idlTexture;
 
-        // текстура для вывода игрока
-        private Texture2D playerTexture;
+        // текстура для вывода игрока в состоянии бега
+        private Texture2D runTexture;
 
         // для анимации
         private FrameInfo frameInfo;
@@ -39,7 +40,6 @@ namespace GameLevels
         public Player()
         {
             playerInfo.speed = 0;
-            playerInfo.isRunning = false;
 
             frameInfo.height = 0;
             frameInfo.width = 0;
@@ -49,22 +49,21 @@ namespace GameLevels
         /// <summary>
         /// Конструктор класса
         /// </summary>
-        /// <param name="sb">SB</param>
         /// <param name="playerTexture">Текстура игрока</param>
         /// <param name="width">Ширина кадра</param>
         /// <param name="height">Высота кадра</param>
-        public Player(SpriteBatch sb, Texture2D playerTexture, int width, int height)
+        public Player(Texture2D idlTexture, Texture2D runTexture, Rectangle position)
             : base()
         {
+            this.idlTexture = idlTexture;
+            this.runTexture = runTexture;
 
-            this.spriteBatch = sb;
-            this.playerTexture = playerTexture;
-
-            frameInfo.width = width;
-            frameInfo.height = height;
+            frameInfo.height = frameInfo.width = runTexture.Height;
 
             // вычислим сколько кадров в анимации
-            frameInfo.count = playerTexture.Width / frameInfo.width;
+            frameInfo.count = this.runTexture.Width / frameInfo.width;
+
+            playerInfo.position = position;
         }
 
         /// <summary>
@@ -73,32 +72,50 @@ namespace GameLevels
         /// <param name="sb">SB</param>
         /// <param name="playerTexture">Текстура игрока</param>
         /// <param name="frameSettings">Информация о фрейме</param>
-        public Player(SpriteBatch sb, Texture2D playerTexture, FrameInfo frameInfo)
+        public Player(Texture2D idlTexture, Texture2D runTexture, FrameInfo frameInfo)
             : base()
         {
-
-            this.spriteBatch = sb;
-            this.playerTexture = playerTexture;
+            this.idlTexture = idlTexture;
+            this.runTexture = runTexture;
 
             this.frameInfo = frameInfo;
         }
 
         /// <summary>
+        /// Функция устанавливает флаг в состояние бега
+        /// </summary>>
+        public void Run() 
+        {
+            playerInfo.isRunning = true;
+        }
+
+        /// <summary>
+        /// Функция устанавливает флаг в состояние спокойствия
+        /// </summary>>
+        public void Stop()
+        {
+            playerInfo.isRunning = false;
+            frameInfo.current = 0;
+            frameInfo.timeElapsed = 0;
+        }
+
+        /// <summary>
         /// Функция отрисовывает игрока
         /// </summary>
-        public void Draw(Rectangle rect)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
 
             if (playerInfo.isRunning)
             {
                 Rectangle source = new Rectangle(frameInfo.width * frameInfo.current, 0, frameInfo.width, frameInfo.height);
-                spriteBatch.Draw(playerTexture, rect, source, Color.White);
+                spriteBatch.Draw(runTexture, playerInfo.position, source, Color.White);
             }
             else 
             {
-                spriteBatch.Draw(playerTexture, rect, Color.White);
+                spriteBatch.Draw(idlTexture, playerInfo.position, Color.White);
             }
+
             spriteBatch.End();
         }
 

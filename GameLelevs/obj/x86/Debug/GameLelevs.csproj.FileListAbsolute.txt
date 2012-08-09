@@ -197,3 +197,4 @@ C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.exe
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.pdb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run.xnb

@@ -128,7 +128,8 @@ namespace GameLevels
             doorVerticOpen = Content.Load<Texture2D>("Textures/lvl/doors/door_vertic_open");
 
             // инициализируем нового игрока
-            player = new Player(spriteBatch, Content.Load<Texture2D>("players/player"), 20, 20);
+            Rectangle plaerPosition = new Rectangle(50,50,20,20);
+            player = new Player(Content.Load<Texture2D>("players/player"), Content.Load<Texture2D>("players/player_run"), plaerPosition);
 
             //сразу создаем первый уровень
             CreateLevel(1);
@@ -200,20 +201,26 @@ namespace GameLevels
             // перемещение камеры
             if (state.IsKeyDown(Keys.Left))
             {
+                player.Run();
                 Scroll(-speedCamera, 0);
             }
-            if (state.IsKeyDown(Keys.Right))
+            else if (state.IsKeyDown(Keys.Right))
             {
+                player.Run();
                 Scroll(speedCamera, 0);
             }
-            if (state.IsKeyDown(Keys.Up))
+            else if (state.IsKeyDown(Keys.Up))
             {
+                player.Run();
                 Scroll(0, -speedCamera);
             }
-            if (state.IsKeyDown(Keys.Down))
+            else if (state.IsKeyDown(Keys.Down))
             {
+                player.Run();
                 Scroll(0, speedCamera);
             }
+            else 
+                player.Stop();
 
             player.Update(gameTime);
 
@@ -240,7 +247,7 @@ namespace GameLevels
             spriteBatch.End();
 
             // отрисовываем положение игрока
-            player.Draw(new Rectangle(0, 0, 20, 20));
+            player.Draw(spriteBatch);
 
             base.Draw(gameTime);
         }
