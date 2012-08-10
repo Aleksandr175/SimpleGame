@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 using System.IO;
+using Enumeration;
 
 namespace GameLevels
 {
@@ -67,7 +68,15 @@ namespace GameLevels
 
         List<Block> blocks; // объекты стен и дверей
 
+        public int Width 
+        {
+            get { return width;}
+        }
 
+        public int Height
+        {
+            get { return height; }
+        }
 
         public Game1()
         {
@@ -129,7 +138,7 @@ namespace GameLevels
 
             // инициализируем нового игрока
             Rectangle plaerPosition = new Rectangle(50,50,20,20);
-            player = new Player(Content.Load<Texture2D>("players/player"), Content.Load<Texture2D>("players/player_run"), plaerPosition);
+            player = new Player(Content.Load<Texture2D>("players/player"), Content.Load<Texture2D>("players/player_run"), plaerPosition, this);
 
             //сразу создаем первый уровень
             CreateLevel(1);
@@ -201,22 +210,22 @@ namespace GameLevels
             // перемещение камеры
             if (state.IsKeyDown(Keys.Left))
             {
-                player.Run();
+                player.Run(PlayerMove.Left);
                 Scroll(-speedCamera, 0);
             }
             else if (state.IsKeyDown(Keys.Right))
             {
-                player.Run();
+                player.Run(PlayerMove.Right);
                 Scroll(speedCamera, 0);
             }
             else if (state.IsKeyDown(Keys.Up))
             {
-                player.Run();
+                player.Run(PlayerMove.Up);
                 Scroll(0, -speedCamera);
             }
             else if (state.IsKeyDown(Keys.Down))
             {
-                player.Run();
+                player.Run(PlayerMove.Down);
                 Scroll(0, speedCamera);
             }
             else 

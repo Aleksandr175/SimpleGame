@@ -1,8 +1,9 @@
 ﻿// <summary>
-// Объявление структур для кпрощения работы
+// Объявление структур для упрощения работы
 // </summary>
 
 using Microsoft.Xna.Framework;
+using Enumeration;
 namespace Structs
 {
 
@@ -24,8 +25,13 @@ namespace Structs
     /// </summary>
     struct PlayerInfo
     {
+        // двигается ли игрок
         public bool isRunning;
+        // скорость игрока
         public short speed;
+        // текущее положение
         public Rectangle position;
+        // направление движение
+        public PlayerMove direction;
     }
 }
