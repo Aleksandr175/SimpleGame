@@ -171,7 +171,7 @@ namespace GameLevels
                     default: break;
                 }
 
-                if (newPosition.Left > 0 && newPosition.Right < game.Width)
+                if (newPosition.Left > 0 && newPosition.Right < game.Width && !game.CollidesWithLevel(newPosition))
                     playerInfo.position = newPosition;
             }
         }

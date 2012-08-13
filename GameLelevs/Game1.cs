@@ -67,6 +67,12 @@ namespace GameLevels
         KeyboardState oldState;
 
         List<Block> blocks; // объекты стен и дверей
+        
+        // карта уровня
+        byte[,] levelMap;
+
+        // сложность уровня
+        Complexity complexity;
 
         public int Width 
         {
@@ -166,6 +172,71 @@ namespace GameLevels
             return r;
         }
 
+        /// <summary>
+        /// Функция смотрит, нет ли пересечения игрока с объектами на уровне
+        /// </summary>
+        /// <param name="rect">Текщее полодение игрока</param>
+        /// <returns>Bool - пересечение</returns>
+        public bool CollidesWithLevel(Rectangle rect) 
+        {
+            bool collides = false;
+
+            switch (complexity) 
+            {
+                case Complexity.Low :
+                    collides = CollidesLow(rect);
+                    break;
+                case Complexity.Medium:
+                    collides = CollidesHigh(rect);
+                    break;
+                case Complexity.High:
+                    collides = CollidesHigh(rect);
+                    break;
+                default: break;
+            }
+
+            return collides;
+        }
+
+        /// <summary>
+        /// Выборка простого взаимодействия с уровнем
+        /// </summary>
+        /// <param name="rect">Текщее полодение игрока</param>
+        /// <returns>Bool - пересечение</returns>
+        private bool CollidesLow(Rectangle rect)
+        {
+            // для каждого блока на уровне
+            foreach (Block block in blocks)
+            {
+                // смотрим, есть ли пересечение
+                if (block.Rect.Intersects(rect))
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Выборка сложного взаимодействия с уровнем
+        /// </summary>
+        /// <param name="rect">Текщее полодение игрока</param>
+        /// <returns>Bool - пересечение</returns>
+        private bool CollidesHigh(Rectangle rect)
+        {
+            int minx = rect.Left / 20;
+            int miny = rect.Top / 20;
+            int maxx = rect.Right / 20;
+            int maxy = rect.Bottom / 20;
+
+            for (int i = minx; i <= maxx; i++)
+            {
+                for (int j = miny; j <= maxy; j++)
+                    if (levelMap[i, j] == 1)
+                        return true;
+            }
+
+            return false;
+        }
         //смещает камеру относительно начала уровня
         public void Scroll(int dx, int dy) {
             if (scrollX + dx > 0 && scrollX + dx < lenghtX - width) 
@@ -276,6 +347,18 @@ namespace GameLevels
             string lvl_name = "content/lvls/lvl" + Convert.ToString(lvl) + ".txt";
             string[] lines = File.ReadAllLines(lvl_name); //получили массив строк
 
+            // проверим уровень сложности
+            if (lvl == 4)
+                complexity = Complexity.High;
+            else
+                complexity = Complexity.Low;
+
+            // выделим память для карты уровня
+            levelMap = new byte[lines[0].Length, lines.Length];
+
+            // индексы для заполнения карты
+            int indexI = 0;
+            int indexJ = 0;
             
             int x = 0;
             int y = 0;
@@ -294,56 +377,89 @@ namespace GameLevels
                     {
                         Block block = new Block(Rect, wallGoriz, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
                     if (c == '2')
                     {
                         Block block = new Block(Rect, wallVert, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
                     if (c == '3')
                     {
                         Block block = new Block(Rect, wallDownRight, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
                     if (c == '4')
                     {
                         Block block = new Block(Rect, wallUpRight, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
                     if (c == '5')
                     {
                         Block block = new Block(Rect, wallLeftDown, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
                     if (c == '6')
                     {
                         Block block = new Block(Rect, wallLeftUp, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
                     if (c == '7')
                     {
                         Block block = new Block(Rect, wall4sides, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
                     if (c == 'h')
                     {
                         Block block = new Block(Rect, wallURD, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
                     if (c == 'i')
                     {
                         Block block = new Block(Rect, wallRDL, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
                     if (c == 'j')
                     {
                         Block block = new Block(Rect, wallDLU, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
                     if (c == 'k')
                     {
                         Block block = new Block(Rect, wallLUR, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
 
 
@@ -352,11 +468,17 @@ namespace GameLevels
                     {
                         Block block = new Block(Rect, doorHoriz, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
                     if (c == 's')
                     {
                         Block block = new Block(Rect, doorVertic, this);
                         blocks.Add(block);
+
+                        // добавим стену в карту
+                        levelMap[indexI, indexJ] = 1;
                     }
                     if (c == 't')
                     {
@@ -369,14 +491,16 @@ namespace GameLevels
                         blocks.Add(block);
                     }
 
-
-
-
                     x += size;
+
+                    indexI++;
                 }
 
                 x = 0;
                 y += size;
+
+                indexI = 0;
+                indexJ++;
             
             }
 
