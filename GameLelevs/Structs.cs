@@ -34,4 +34,17 @@ namespace Structs
         // направление движение
         public PlayerMove direction;
     }
+
+    struct GuardInfo
+    {
+        // двигается ли охранник
+        public bool isRunning;
+        // скорость охранника
+        public short speed;
+        // текущее положение охранника
+        public Rectangle position;
+        // направление движения охранника
+        public PlayerMove direction;
+    }
+
 }

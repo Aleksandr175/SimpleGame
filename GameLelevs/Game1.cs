@@ -21,7 +21,7 @@ namespace GameLevels
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         Player player;
-
+        
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -44,6 +44,12 @@ namespace GameLevels
         Texture2D doorHorizOpen;  // двери открытые
         Texture2D doorVerticOpen;
 
+        //объявляем текустуры охранников
+        Texture2D guardIdleTexture;
+        Texture2D guardRunTexture;
+
+
+
         //экранные координаты - смещение камеры относительно начала мировых координат 
         int scrollX;
         int scrollY;
@@ -61,12 +67,15 @@ namespace GameLevels
         int width;
         int height;
 
+        int sizePeople = 20; //размер изображения игрока и охранников
+
         //информация об уровнях
         int currentLvl;
         int maxLvl = 4;
         KeyboardState oldState;
 
         List<Block> blocks; // объекты стен и дверей
+        List<Guards> guards; // список охранников
         
         // карта уровня
         byte[,] levelMap;
@@ -142,10 +151,15 @@ namespace GameLevels
             doorHorizOpen = Content.Load<Texture2D>("Textures/lvl/doors/door_horiz_open");
             doorVerticOpen = Content.Load<Texture2D>("Textures/lvl/doors/door_vertic_open");
 
+            //загружаем текстуры для охранников
+            guardIdleTexture = Content.Load<Texture2D>("players/player");
+            guardRunTexture = Content.Load<Texture2D>("players/player_run");
+
             // инициализируем нового игрока
-            Rectangle plaerPosition = new Rectangle(50,50,20,20);
+            Rectangle plaerPosition = new Rectangle(50, 50, sizePeople, sizePeople);
             player = new Player(Content.Load<Texture2D>("players/player"), Content.Load<Texture2D>("players/player_run"), plaerPosition, this);
 
+            
             //сразу создаем первый уровень
             CreateLevel(1);
 
@@ -324,11 +338,18 @@ namespace GameLevels
             {
                 block.Draw(spriteBatch);
             }
+
+            // отрисовываем охранников
+            foreach (Guards guard in guards)
+            {
+                guard.Draw(spriteBatch);
+            }
+
             spriteBatch.End();
 
             // отрисовываем положение игрока
             player.Draw(spriteBatch);
-
+            
             base.Draw(gameTime);
         }
 
@@ -343,6 +364,7 @@ namespace GameLevels
         void CreateLevel(int lvl)
         {
             blocks = new List<Block>();
+            guards = new List<Guards>();
             
             string lvl_name = "content/lvls/lvl" + Convert.ToString(lvl) + ".txt";
             string[] lines = File.ReadAllLines(lvl_name); //получили массив строк
@@ -489,6 +511,18 @@ namespace GameLevels
                     {
                         Block block = new Block(Rect, doorVerticOpen, this);
                         blocks.Add(block);
+                    }
+
+                    if (c == 'o') { //буква "о"
+                        //пол
+                        Block block = new Block(Rect, wallEmpty, this);
+                        blocks.Add(block);
+
+                        // инициализируем нового охранника
+                        Rectangle RectGuard = new Rectangle(x + sizePeople / 4, y + sizePeople / 4, sizePeople, sizePeople);
+                        Guards guard = new Guards(guardIdleTexture, guardRunTexture, RectGuard, this);
+                        guards.Add(guard);
+
                     }
 
                     x += size;
