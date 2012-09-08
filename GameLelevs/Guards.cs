@@ -31,9 +31,6 @@ namespace GameLevels
         // для анимации
         private FrameInfo frameInfo;
 
-        // информация об охраннике
-        private GuardInfo guardInfo;
-
         // ссылка на экран
         private Game1 game;
 
@@ -41,8 +38,9 @@ namespace GameLevels
         private static byte[,] levelMap;
 
         //запоминаем карту уровня
-        public void SetLevelMap(byte[,] tempLevelMap, int n, int m) 
+        public static void SetLevelMap(byte[,] tempLevelMap, int n, int m) 
         {
+            levelMap = new byte[n, m];
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < m; j++)
@@ -187,12 +185,50 @@ namespace GameLevels
 
                 // передвижение охранника
                 int offset = this.speed * gameTime.ElapsedGameTime.Milliseconds / 10;
-
+                
                 // новое положение охранника
                 Rectangle newPosition = this.position;
 
+
+                int posGuardX = newPosition.X / game.Size;
+                int posGuardY = newPosition.Y / game.Size;
+
+
+                //если охранник смотрит в стену - то меняем направление его движения
+                if (this.direction == 'd')
+                {
+                    if (levelMap[posGuardX, posGuardY + 1] == 1)
+                    {
+                        this.direction = ChangeDirection(this.direction);
+                    }
+                }
+                else if (this.direction == 't')
+                {
+                    if (levelMap[posGuardX, posGuardY - 1] == 1)
+                    {
+                        this.direction = ChangeDirection(this.direction);
+                    }
+                }
+                else if (this.direction == 'l')
+                {
+                    if (levelMap[posGuardX - 1, posGuardY] == 1)
+                    {
+                        this.direction = ChangeDirection(this.direction);
+                    }
+                }
+                else if (this.direction == 'r')
+                {
+                    if (levelMap[posGuardX + 1, posGuardY] == 1)
+                    {
+                        this.direction = ChangeDirection(this.direction);
+                    }
+                }
+
+
+
+
                 // смотрим, в каком направлении движемся 
-                /*switch (this.direction)
+                switch (this.direction)
                 {
                     case 't':
                         newPosition.Offset(0, -offset);
@@ -211,16 +247,79 @@ namespace GameLevels
                         break;
                     
                     default: break;
-                }*/
-                newPosition.Offset(0, offset);
+                }
+                //newPosition.Offset(0, offset);
+
+
+
+                //сделать проверку на стены, чтобы не выходила за границы массива.
+                //сделать проверку на стены, чтобы не выходила за границы массива.
+                //сделать проверку на стены, чтобы не выходила за границы массива.
+                //сделать проверку на стены, чтобы не выходила за границы массива.
+
+
+
                 //if (newPosition.Left > 0 && newPosition.Right < game.Width && !game.CollidesWithLevel(newPosition))
                     this.position = newPosition;
             }
         }
 
 
+        /** изменяем направление движения охранника (рандомно)
+         * <param name="direction">Направление движения охранника</param>
+         * 
+         * Возвращает новое направление char newDirection
+         */
+        public char ChangeDirection(char direction)
+        {
+            int left = 1;
+            int top = 2;
+            int right = 3;
+            int down = 4;
+            int oldDirection = 0;
+
+            if (direction == 'l') {
+                oldDirection = left;
+            }
+            if (direction == 't') {
+                oldDirection = top;
+            }
+            if (direction == 'r') {
+                oldDirection = right;
+            }
+            if (direction == 'd') {
+                oldDirection = down;
+            }
 
 
+            Random r = new Random();
+            int newDirection;
+
+            do {
+                newDirection = r.Next(1,4);
+            }
+            while (oldDirection == newDirection);
+
+
+            if (newDirection == left)
+            {
+                return 'l';
+            }
+            if (newDirection == top)
+            {
+                return 't';
+            }
+            if (newDirection == right)
+            {
+                return 'r';
+            }
+            if (newDirection == down)
+            {
+                return 'd';
+            }
+
+            return '0';
+        }
 
 
 

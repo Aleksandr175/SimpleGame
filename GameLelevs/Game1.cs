@@ -60,6 +60,10 @@ namespace GameLevels
         
         //размер 1 ячейки уровня
         int size = 30;
+        public int Size
+        {
+            get { return size; }
+        }
         // скорость перемещения камеры
         int speedCamera = 1;
 
@@ -534,8 +538,7 @@ namespace GameLevels
                         Rectangle RectGuard = new Rectangle(x + sizePeople / 4, y + sizePeople / 4, sizePeople, sizePeople);
                         Guards guard = new Guards(guardIdleTexture, guardRunTexture, RectGuard, this);
                         guards.Add(guard);
-                        
-                        guard.Run('l');
+                        guard.Run('d');
                     }
 
                     x += size;
@@ -554,6 +557,7 @@ namespace GameLevels
             lenghtX = size * lines[0].Length; // длина уровня в пикселях
             lenghtY = y;
 
+            Guards.SetLevelMap(levelMap, lenghtX / size, lenghtY / size);
         }
 
     }
