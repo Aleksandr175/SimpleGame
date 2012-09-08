@@ -77,7 +77,9 @@ namespace GameLevels
         List<Block> blocks; // объекты стен и дверей
         List<Guards> guards; // список охранников
         
+
         // карта уровня
+        // так же используется для алгоритма поиска пути к игроку
         byte[,] levelMap;
 
         // сложность уровня
@@ -104,7 +106,7 @@ namespace GameLevels
             this.Components.Add(new FPSCounter(this));  // добавили игровой компонент - fps счетчик
 
             // отключили ограничение fps счетчика
-            IsFixedTimeStep = false; 
+            IsFixedTimeStep = false;
             graphics.SynchronizeWithVerticalRetrace = false;
         }
 
@@ -318,6 +320,11 @@ namespace GameLevels
 
             player.Update(gameTime);
 
+            // обновляем охранников
+            foreach (Guards guard in guards)
+            {
+                guard.Update(gameTime);
+            }
 
             base.Update(gameTime);
         }
@@ -339,19 +346,23 @@ namespace GameLevels
                 block.Draw(spriteBatch);
             }
 
+            spriteBatch.End();
+
             // отрисовываем охранников
             foreach (Guards guard in guards)
             {
                 guard.Draw(spriteBatch);
             }
 
-            spriteBatch.End();
-
             // отрисовываем положение игрока
             player.Draw(spriteBatch);
             
             base.Draw(gameTime);
         }
+
+
+
+
 
         /*
          * Ф-ция создания уровня.
@@ -368,6 +379,7 @@ namespace GameLevels
             
             string lvl_name = "content/lvls/lvl" + Convert.ToString(lvl) + ".txt";
             string[] lines = File.ReadAllLines(lvl_name); //получили массив строк
+
 
             // проверим уровень сложности
             if (lvl == 4)
@@ -522,7 +534,8 @@ namespace GameLevels
                         Rectangle RectGuard = new Rectangle(x + sizePeople / 4, y + sizePeople / 4, sizePeople, sizePeople);
                         Guards guard = new Guards(guardIdleTexture, guardRunTexture, RectGuard, this);
                         guards.Add(guard);
-
+                        
+                        guard.Run('l');
                     }
 
                     x += size;
