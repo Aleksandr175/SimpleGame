@@ -200,3 +200,4 @@ C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run.xnb
 C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player.xnb
 C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run.xnb
