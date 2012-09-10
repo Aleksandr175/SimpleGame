@@ -19,7 +19,7 @@ namespace GameLevels
         
         Rectangle position;
         int speed;
-        char direction; //направление охранника
+        PlayerMove direction; //направление охранника
         bool isRunning; //бежит или нет?
 
         // текстура для вывода охранника в состоянии спокойствия
@@ -36,10 +36,16 @@ namespace GameLevels
 
         //карта уроня для алгоритма поиска пути (получаем из кл. Game1.cs)
         private static byte[,] levelMap;
+        private static int levelWidth; //длина уровня (клеток)
+        private static int levelHeight; // высота уровня (клеток)
+
 
         //запоминаем карту уровня
         public static void SetLevelMap(byte[,] tempLevelMap, int n, int m) 
         {
+            levelWidth = n;
+            levelHeight = m;
+
             levelMap = new byte[n, m];
             for (int i = 0; i < n; i++)
             {
@@ -114,7 +120,7 @@ namespace GameLevels
         /// </summary>
         public void Init()
         {
-            this.speed = 15;
+            this.speed = 3;
 
             frameInfo.height = 0;
             frameInfo.width = 0;
@@ -124,10 +130,10 @@ namespace GameLevels
         /// <summary>
         /// Функция устанавливает флаг в состояние бега
         /// </summary>>
-        public void Run(char direction) 
+        public void Run(PlayerMove move)
         {
             this.isRunning = true;
-            this.direction = direction;
+            this.direction = move;
         }
 
         /// <summary>
@@ -194,73 +200,78 @@ namespace GameLevels
                 int posGuardY = newPosition.Y / game.Size;
 
 
+
+
+                
                 //если охранник смотрит в стену - то меняем направление его движения
-                if (this.direction == 'd')
+                try
                 {
-                    if (levelMap[posGuardX, posGuardY + 1] == 1)
+                    if (this.direction == PlayerMove.Down)
                     {
-                        this.direction = ChangeDirection(this.direction);
+                        if (levelMap[posGuardX, posGuardY + 1] == 1)
+                        {
+                            this.direction = ChangeDirection(this.direction);
+                        }
+                    }
+                    else if (this.direction == PlayerMove.Up)
+                    {
+                        if (levelMap[posGuardX, posGuardY - 1] == 1)
+                        {
+                            this.direction = ChangeDirection(this.direction);
+                        }
+                    }
+                    else if (this.direction == PlayerMove.Left)
+                    {
+                        if (levelMap[posGuardX - 1, posGuardY] == 1)
+                        {
+                            this.direction = ChangeDirection(this.direction);
+                        }
+                    }
+                    else if (this.direction == PlayerMove.Right)
+                    {
+                        if (levelMap[posGuardX + 1, posGuardY] == 1)
+                        {
+                            this.direction = ChangeDirection(this.direction);
+                        }
                     }
                 }
-                else if (this.direction == 't')
-                {
-                    if (levelMap[posGuardX, posGuardY - 1] == 1)
-                    {
-                        this.direction = ChangeDirection(this.direction);
-                    }
-                }
-                else if (this.direction == 'l')
-                {
-                    if (levelMap[posGuardX - 1, posGuardY] == 1)
-                    {
-                        this.direction = ChangeDirection(this.direction);
-                    }
-                }
-                else if (this.direction == 'r')
-                {
-                    if (levelMap[posGuardX + 1, posGuardY] == 1)
-                    {
-                        this.direction = ChangeDirection(this.direction);
-                    }
+                catch (Exception e) {
+                    this.direction = ChangeDirection(this.direction);
                 }
 
 
-
-
+                
                 // смотрим, в каком направлении движемся 
                 switch (this.direction)
                 {
-                    case 't':
+                    case PlayerMove.Up:
                         newPosition.Offset(0, -offset);
                         break;
 
-                    case 'l':
+                    case PlayerMove.Left:
                         newPosition.Offset(-offset, 0);
                         break;
 
-                    case 'r':
+                    case PlayerMove.Right:
                         newPosition.Offset(offset, 0);
                         break;
 
-                    case 'd':
+                    case PlayerMove.Down:
                         newPosition.Offset(0, offset);
                         break;
-                    
+
                     default: break;
                 }
-                //newPosition.Offset(0, offset);
+            
 
-
-
-                //сделать проверку на стены, чтобы не выходила за границы массива.
-                //сделать проверку на стены, чтобы не выходила за границы массива.
-                //сделать проверку на стены, чтобы не выходила за границы массива.
-                //сделать проверку на стены, чтобы не выходила за границы массива.
-
-
-
-                //if (newPosition.Left > 0 && newPosition.Right < game.Width && !game.CollidesWithLevel(newPosition))
+                if (newPosition.Left > 0 && newPosition.Right < game.Width)
+                {
                     this.position = newPosition;
+                }
+                else
+                {
+                    this.direction = ChangeDirection(this.direction);
+                }
             }
         }
 
@@ -270,7 +281,7 @@ namespace GameLevels
          * 
          * Возвращает новое направление char newDirection
          */
-        public char ChangeDirection(char direction)
+        public PlayerMove ChangeDirection(PlayerMove direction)
         {
             int left = 1;
             int top = 2;
@@ -278,16 +289,16 @@ namespace GameLevels
             int down = 4;
             int oldDirection = 0;
 
-            if (direction == 'l') {
+            if (direction == PlayerMove.Left) {
                 oldDirection = left;
             }
-            if (direction == 't') {
+            if (direction == PlayerMove.Up) {
                 oldDirection = top;
             }
-            if (direction == 'r') {
+            if (direction == PlayerMove.Right) {
                 oldDirection = right;
             }
-            if (direction == 'd') {
+            if (direction == PlayerMove.Down) {
                 oldDirection = down;
             }
 
@@ -296,29 +307,29 @@ namespace GameLevels
             int newDirection;
 
             do {
-                newDirection = r.Next(1,4);
+                newDirection = r.Next(1,5);
             }
             while (oldDirection == newDirection);
 
 
             if (newDirection == left)
             {
-                return 'l';
+                return PlayerMove.Left;
             }
             if (newDirection == top)
             {
-                return 't';
+                return PlayerMove.Up;
             }
             if (newDirection == right)
             {
-                return 'r';
+                return PlayerMove.Right;
             }
             if (newDirection == down)
             {
-                return 'd';
+                return PlayerMove.Down;
             }
 
-            return '0';
+            return PlayerMove.Left;
         }
 
 

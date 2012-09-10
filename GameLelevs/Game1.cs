@@ -110,8 +110,8 @@ namespace GameLevels
             this.Components.Add(new FPSCounter(this));  // добавили игровой компонент - fps счетчик
 
             // отключили ограничение fps счетчика
-            IsFixedTimeStep = false;
-            graphics.SynchronizeWithVerticalRetrace = false;
+            IsFixedTimeStep = true;
+            graphics.SynchronizeWithVerticalRetrace = true;
         }
 
         /// <summary>
@@ -538,7 +538,7 @@ namespace GameLevels
                         Rectangle RectGuard = new Rectangle(x + sizePeople / 4, y + sizePeople / 4, sizePeople, sizePeople);
                         Guards guard = new Guards(guardIdleTexture, guardRunTexture, RectGuard, this);
                         guards.Add(guard);
-                        guard.Run('d');
+                        guard.Run(PlayerMove.Down);
                     }
 
                     x += size;
