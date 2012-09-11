@@ -538,7 +538,7 @@ namespace GameLevels
                         Rectangle RectGuard = new Rectangle(x + sizePeople / 4, y + sizePeople / 4, sizePeople, sizePeople);
                         Guards guard = new Guards(guardIdleTexture, guardRunTexture, RectGuard, this);
                         guards.Add(guard);
-                        guard.Run(PlayerMove.Down);
+                        guard.Run(PlayerMove.Left);
                     }
 
                     x += size;

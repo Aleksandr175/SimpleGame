@@ -120,7 +120,7 @@ namespace GameLevels
         /// </summary>
         public void Init()
         {
-            this.speed = 3;
+            this.speed = 1;
 
             frameInfo.height = 0;
             frameInfo.width = 0;
@@ -196,42 +196,94 @@ namespace GameLevels
                 Rectangle newPosition = this.position;
 
 
-                int posGuardX = newPosition.X / game.Size;
-                int posGuardY = newPosition.Y / game.Size;
+                // смотрим, сместился ли на клетку охранник, если да - то меняем случ. образом его направление движения.
+                x = newPosition.X / game.Size;
+                y = newPosition.Y / game.Size;
+
+                int oldPosGuardX = newPosition.X / game.Size;
+                int oldPosGuardY = newPosition.Y / game.Size;
+                
+                int posGuardX = oldPosGuardX;
+                int posGuardY = oldPosGuardY;
+
+                if (Math.Abs((oldPosGuardX) * game.Size - (newPosition.Left)) < 5)
+                {
+                    posGuardX = (newPosition.Left) / game.Size;
+                    if (posGuardX != oldPosGuardX)
+                    {
+                        this.direction = ChangeDirection(this.direction);
+                    }
+                }
+                if (Math.Abs((oldPosGuardY) * game.Size - (newPosition.Top)) < 5)
+                {
+                    posGuardY = (newPosition.Top) / game.Size;
+                    if (posGuardY != oldPosGuardY)
+                    {
+                        this.direction = ChangeDirection(this.direction);
+                    }
+                }
 
 
+                /*
+                if (this.direction == PlayerMove.Down)
+                {
+                    posGuardX = newPosition.X / game.Size;
+                    posGuardY = (newPosition.Y + 15) / game.Size;
+                }
+                if (this.direction == PlayerMove.Up)
+                {
+                    posGuardX = newPosition.X / game.Size;
+                    posGuardY = (newPosition.Y + 5) / game.Size;
+                }
+                if (this.direction == PlayerMove.Left)
+                {
+                    posGuardX = (newPosition.X + 5) / game.Size;
+                    posGuardY = newPosition.Y / game.Size;
+                }
+                if (this.direction == PlayerMove.Right)
+                {
+                    posGuardX = (newPosition.X + 15) / game.Size;
+                    posGuardY = newPosition.Y / game.Size;
+                }
 
+                if (oldPosGuardX != posGuardX || oldPosGuardY != posGuardY)
+                {
+                    this.direction = ChangeDirection(this.direction);
+                }
 
+                oldPosGuardX = posGuardX;
+                oldPosGuardY = posGuardY;
+                */
                 
                 //если охранник смотрит в стену - то меняем направление его движения
                 try
                 {
                     if (this.direction == PlayerMove.Down)
                     {
-                        if (levelMap[posGuardX, posGuardY + 1] == 1)
+                        if (levelMap[posGuardX, posGuardY] == 1)
                         {
-                            this.direction = ChangeDirection(this.direction);
+                            this.direction = PlayerMove.Up;
                         }
                     }
                     else if (this.direction == PlayerMove.Up)
                     {
-                        if (levelMap[posGuardX, posGuardY - 1] == 1)
+                        if (levelMap[posGuardX, posGuardY] == 1)
                         {
-                            this.direction = ChangeDirection(this.direction);
+                            this.direction = PlayerMove.Down;
                         }
                     }
                     else if (this.direction == PlayerMove.Left)
                     {
-                        if (levelMap[posGuardX - 1, posGuardY] == 1)
+                        if (levelMap[posGuardX, posGuardY] == 1)
                         {
-                            this.direction = ChangeDirection(this.direction);
+                            this.direction = PlayerMove.Right;
                         }
                     }
                     else if (this.direction == PlayerMove.Right)
                     {
-                        if (levelMap[posGuardX + 1, posGuardY] == 1)
+                        if (levelMap[posGuardX, posGuardY] == 1)
                         {
-                            this.direction = ChangeDirection(this.direction);
+                            this.direction = PlayerMove.Left;
                         }
                     }
                 }
@@ -239,7 +291,7 @@ namespace GameLevels
                     this.direction = ChangeDirection(this.direction);
                 }
 
-
+                
                 
                 // смотрим, в каком направлении движемся 
                 switch (this.direction)
