@@ -21,7 +21,10 @@ namespace GameLevels
 
         int oldPosGuardX;
         int oldPosGuardY;
-                
+
+        bool waySet = false;
+        int step;
+
         int speed;
         PlayerMove direction; //направление охранника
         bool isRunning; //бежит или нет?
@@ -37,6 +40,8 @@ namespace GameLevels
 
         // ссылка на экран
         private Game1 game;
+
+        List<List<int>> wayToTarget = new List<List<int>>();
 
         //карта уроня для алгоритма поиска пути (получаем из кл. Game1.cs)
         private static byte[,] levelMap;
@@ -58,13 +63,13 @@ namespace GameLevels
                     levelMap[i, j] = tempLevelMap[i, j];
                 }
             }
- 
+
         }
 
 
         private int x; // координаты охранников
         private int y;
-	    private enum Propety  {Finish, Start = 24, FreeWay, Wall};
+	    private enum Propety  {Finish, Start = 253, FreeWay, Wall};
 
         public int X
 	    {
@@ -87,10 +92,13 @@ namespace GameLevels
             this.idlTexture = idlTexture;
             this.runTexture = runTexture;
 
+            this.game = game;
+
+            this.step = 1;
+            
             //присваиваем положение охранника
-            x = position.X;
-            y = position.Y;
-            this.game = game; 
+            x = position.X / game.Size;
+            y = position.Y / game.Size;
             
             
             this.oldPosGuardX = x / game.Size;
@@ -102,8 +110,7 @@ namespace GameLevels
             frameInfo.count = this.runTexture.Width / frameInfo.width;
 
             this.position = position;
-            
-            
+
         }
 
         /// <summary>
@@ -212,92 +219,70 @@ namespace GameLevels
                 //текущая клетка охранника
                 int nowPosGuardX = newPosition.X / game.Size;
                 int nowPosGuardY = newPosition.Y / game.Size;
+                int nextX = 0;
+                int nextY = 0;
 
-                if (Math.Abs(this.oldPosGuardX * game.Size + game.Size / 2 - (newPosition.X + 10)) >= 30)
+                if (!this.waySet)
+                {
+                    this.waySet = true;
+                    wayToTarget = this.Way(levelMap, levelWidth, levelHeight, 11, 4);
+                }
+                
+                if (wayToTarget != null)
+                {
+                    try
+                    {
+                        nextX = this.wayToTarget[1][0];
+                        nextY = this.wayToTarget[1][1];
+                    }
+                    catch (Exception e) { step = 1;}
+
+                    if (nextY < nowPosGuardY)
+                    {
+                        this.direction = PlayerMove.Up;
+                    }
+                    else if (nextY > nowPosGuardY)
+                    {
+                        this.direction = PlayerMove.Down;
+                    }
+                    if (nextX > nowPosGuardX)
+                    {
+                        this.direction = PlayerMove.Right;
+                    }
+                    else if (nextX < nowPosGuardX)
+                    {
+                        this.direction = PlayerMove.Left;
+                    }
+
+                    /*if (nextX == nowPosGuardX && nextY == nowPosGuardY) {
+                        this.Stop();
+                    }*/
+                }
+                
+
+                if (Math.Abs(this.oldPosGuardX * game.Size + game.Size / 2 - (newPosition.X + 10)) >= game.Size)
                 {
                     if (nowPosGuardX != this.oldPosGuardX)
                     {
-                        this.direction = ChangeDirection(this.direction);
+                        //this.direction = ChangeDirection(this.direction);
                         this.oldPosGuardX = nowPosGuardX;
+                        step++;
+                        this.waySet = false;
                     }
                 }
-                if (Math.Abs(this.oldPosGuardY * game.Size + game.Size / 2 - (newPosition.Y + 10)) >= 30)
+                if (Math.Abs(this.oldPosGuardY * game.Size + game.Size / 2 - (newPosition.Y + 10)) >= game.Size)
                 {
                     if (nowPosGuardY != this.oldPosGuardY)
                     {
-                        this.direction = ChangeDirection(this.direction);
+                        //this.direction = ChangeDirection(this.direction);
                         this.oldPosGuardY = nowPosGuardY;
+                        step++;
+                        this.waySet = false;
                     }
                 }
-
-
-                /*
-                if (this.direction == PlayerMove.Down)
-                {
-                    posGuardX = newPosition.X / game.Size;
-                    posGuardY = (newPosition.Y + 15) / game.Size;
-                }
-                if (this.direction == PlayerMove.Up)
-                {
-                    posGuardX = newPosition.X / game.Size;
-                    posGuardY = (newPosition.Y + 5) / game.Size;
-                }
-                if (this.direction == PlayerMove.Left)
-                {
-                    posGuardX = (newPosition.X + 5) / game.Size;
-                    posGuardY = newPosition.Y / game.Size;
-                }
-                if (this.direction == PlayerMove.Right)
-                {
-                    posGuardX = (newPosition.X + 15) / game.Size;
-                    posGuardY = newPosition.Y / game.Size;
-                }
-
-                if (oldPosGuardX != posGuardX || oldPosGuardY != posGuardY)
-                {
-                    this.direction = ChangeDirection(this.direction);
-                }
-
-                oldPosGuardX = posGuardX;
-                oldPosGuardY = posGuardY;
-                */
                 
-                //если охранник смотрит в стену - то меняем направление его движения
-                /*try
-                {
-                    if (this.direction == PlayerMove.Down)
-                    {
-                        if (levelMap[nowPosGuardX + 1, nowPosGuardY + 2] == 1)
-                        {
-                            this.direction = ChangeDirection(this.direction);
-                        }
-                    }
-                    else if (this.direction == PlayerMove.Up)
-                    {
-                        if (levelMap[nowPosGuardX + 1, nowPosGuardY] == 1)
-                        {
-                            this.direction = ChangeDirection(this.direction);
-                        }
-                    }
-                    else if (this.direction == PlayerMove.Left)
-                    {
-                        if (levelMap[nowPosGuardX, nowPosGuardY + 1] == 1)
-                        {
-                            this.direction = ChangeDirection(this.direction);
-                        }
-                    }
-                    else if (this.direction == PlayerMove.Right)
-                    {
-                        if (levelMap[nowPosGuardX + 2, nowPosGuardY + 1] == 1)
-                        {
-                            this.direction = ChangeDirection(this.direction);
-                        }
-                    }
-                }
-                catch (Exception e) {
-                    //this.direction = ChangeDirection(this.direction);
-                }
-                */
+
+
                 
                 
                 // смотрим, в каком направлении движемся 
@@ -396,11 +381,11 @@ namespace GameLevels
         /************************************************************************/
         /* Алгоритм поиска минимального пути                                    */
         /************************************************************************/
-        public List<List<int>> PaveWay(char[,] arr, int N, int M, int x_f, int y_f)
+        public List<List<int>> Way(byte[,] arr, int N, int M, int x_f, int y_f)
         {
             int[,] workarr = new int[N, M];
             int k;
-            int max_k = N * M - (N > M ? N : M); // максимальное число итераций
+            int max_k = N * M; // максимальное число итераций
             int i, j;
             int twice;
             // заполняем рабочий массив
@@ -408,7 +393,7 @@ namespace GameLevels
             {
                 for (j = 0; j < M; j++)
                 {
-                    if (arr[i, j] == '0' || arr[i, j] == 'r' || arr[i, j] == 's' || arr[i, j] == 't' || arr[i, j] == 'u')
+                    if (arr[i, j] == 0 )
                         workarr[i, j] = (int)Propety.FreeWay; // проходимо
                     else
                         workarr[i, j] = (int)Propety.Wall; // не проходимо
@@ -450,6 +435,7 @@ namespace GameLevels
                 k++;
             }
         ex:
+            /*
             for (i = 0; i < N; i++)
             {
                 for (j = 0; j < M; j++)
@@ -458,6 +444,9 @@ namespace GameLevels
                 }
                 Console.WriteLine();
             }
+             * */
+            if (k >= max_k)
+                return null; // Нет пути
             // заполняем массив коордианатами
             List<List<int>> ArrWay = new List<List<int>>();
             ArrWay.Add(new List<int>());

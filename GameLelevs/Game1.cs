@@ -167,7 +167,7 @@ namespace GameLevels
 
             
             //сразу создаем первый уровень
-            CreateLevel(1);
+            CreateLevel(3);
 
             // TODO: use this.Content to load your game content here
         }
@@ -400,6 +400,8 @@ namespace GameLevels
             
             int x = 0;
             int y = 0;
+
+            
             foreach (string line in lines) //считали каждый символ в каждой строке
             {
                 foreach (char c in line)
