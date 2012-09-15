@@ -48,7 +48,7 @@ namespace GameLevels
         Texture2D guardIdleTexture;
         Texture2D guardRunTexture;
 
-
+        SpriteFont font;
 
         //экранные координаты - смещение камеры относительно начала мировых координат 
         int scrollX;
@@ -72,6 +72,10 @@ namespace GameLevels
         int height;
 
         int sizePeople = 20; //размер изображения игрока и охранников
+        public int SizePeople
+        {
+            get { return sizePeople; }
+        }
 
         //информация об уровнях
         int currentLvl;
@@ -165,7 +169,8 @@ namespace GameLevels
             Rectangle plaerPosition = new Rectangle(50, 50, sizePeople, sizePeople);
             player = new Player(Content.Load<Texture2D>("players/player"), Content.Load<Texture2D>("players/player_run"), plaerPosition, this);
 
-            
+            font = Content.Load<SpriteFont>("myFont1");
+
             //сразу создаем первый уровень
             CreateLevel(3);
 
@@ -350,6 +355,13 @@ namespace GameLevels
                 block.Draw(spriteBatch);
             }
 
+            try
+            {
+                spriteBatch.DrawString(font, guards[0].X.ToString(), new Vector2(10, 0), Color.Red);
+                spriteBatch.DrawString(font, guards[0].Y.ToString(), new Vector2(10, 20), Color.Red);
+            }
+            catch (Exception e) { }
+
             spriteBatch.End();
 
             // отрисовываем охранников
@@ -360,6 +372,7 @@ namespace GameLevels
 
             // отрисовываем положение игрока
             player.Draw(spriteBatch);
+            
             
             base.Draw(gameTime);
         }

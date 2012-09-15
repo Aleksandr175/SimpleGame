@@ -241,3 +241,4 @@ C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelev
 C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.exe
 C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.pdb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\myFont1.xnb

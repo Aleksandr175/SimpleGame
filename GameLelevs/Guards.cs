@@ -19,11 +19,14 @@ namespace GameLevels
         Random r;
         Rectangle position;
 
-        int oldPosGuardX;
+        int oldPosGuardX; // старая позиция охранника. Для сравнения - "перешел ли охранник на новую клетку?"
         int oldPosGuardY;
 
-        bool waySet = false;
-        int step;
+        bool waySet = false; // задан ли охраннику путь к цели ?
+        int step; // номер шага клетки, куда нужно идти
+
+        int targetX = 11; //координаты цели, к кот. идет охранник
+        int targetY = 4;
 
         int speed;
         PlayerMove direction; //направление охранника
@@ -67,6 +70,7 @@ namespace GameLevels
         }
 
 
+        // для алгоритма мин. пути
         private int x; // координаты охранников
         private int y;
 	    private enum Propety  {Finish, Start = 253, FreeWay, Wall};
@@ -150,6 +154,10 @@ namespace GameLevels
             this.isRunning = true;
             this.direction = move;
         }
+        public void Run()
+        {
+            this.isRunning = true;
+        }
 
         /// <summary>
         /// Функция устанавливает флаг в состояние спокойствия
@@ -219,24 +227,28 @@ namespace GameLevels
                 //текущая клетка охранника
                 int nowPosGuardX = newPosition.X / game.Size;
                 int nowPosGuardY = newPosition.Y / game.Size;
+
+                // следующая клетка, в кот. должен бежать охранник
                 int nextX = 0;
                 int nextY = 0;
+
 
                 if (!this.waySet)
                 {
                     this.waySet = true;
-                    wayToTarget = this.Way(levelMap, levelWidth, levelHeight, 11, 4);
+                    wayToTarget = this.Way(levelMap, levelWidth, levelHeight, this.targetX, this.targetY); // прокладываем путь к цели
                 }
                 
                 if (wayToTarget != null)
                 {
                     try
                     {
-                        nextX = this.wayToTarget[1][0];
+                        nextX = this.wayToTarget[1][0]; // координаты след. клетки
                         nextY = this.wayToTarget[1][1];
                     }
-                    catch (Exception e) { step = 1;}
+                    catch (Exception e) { step = 1; }
 
+                    // в зависимости от положения клетки, в кот. должен бегать охранник изменяем направление движения
                     if (nextY < nowPosGuardY)
                     {
                         this.direction = PlayerMove.Up;
@@ -260,24 +272,31 @@ namespace GameLevels
                 }
                 
 
-                if (Math.Abs(this.oldPosGuardX * game.Size + game.Size / 2 - (newPosition.X + 10)) >= game.Size)
+                if (Math.Abs(this.oldPosGuardX * game.Size + game.Size / 2 - (newPosition.X + game.SizePeople / 2)) >= game.Size)
                 {
                     if (nowPosGuardX != this.oldPosGuardX)
                     {
-                        //this.direction = ChangeDirection(this.direction);
                         this.oldPosGuardX = nowPosGuardX;
                         step++;
                         this.waySet = false;
                     }
+
+                    if (this.oldPosGuardX == this.targetX && this.oldPosGuardY == this.targetY) 
+                    { 
+                        this.Stop();
+                    }
                 }
-                if (Math.Abs(this.oldPosGuardY * game.Size + game.Size / 2 - (newPosition.Y + 10)) >= game.Size)
+                if (Math.Abs(this.oldPosGuardY * game.Size + game.Size / 2 - (newPosition.Y + game.SizePeople / 2)) >= game.Size)
                 {
                     if (nowPosGuardY != this.oldPosGuardY)
                     {
-                        //this.direction = ChangeDirection(this.direction);
                         this.oldPosGuardY = nowPosGuardY;
                         step++;
                         this.waySet = false;
+                    }
+                    if (this.oldPosGuardX == this.targetX && this.oldPosGuardY == this.targetY) 
+                    { 
+                        this.Stop();
                     }
                 }
                 
@@ -307,7 +326,7 @@ namespace GameLevels
                     default: break;
                 }
             
-
+                // перемещение охранника
                 if (newPosition.Left > 0 && newPosition.Right < game.Width)
                 {
                     this.position = newPosition;
