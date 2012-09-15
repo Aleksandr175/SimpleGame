@@ -3,3 +3,4 @@ C:\Documents and Settings\Aleksandr\Рабочий стол\GameLelevs\GameLelev
 C:\Documents and Settings\Administrator\Desktop\SimpleGame\GameLelevs\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\C#\SimpleGame\GameLelevs\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\Content\obj\x86\Debug\ResolveAssemblyReference.cache
