@@ -172,7 +172,7 @@ namespace GameLevels
             font = Content.Load<SpriteFont>("myFont1");
 
             //сразу создаем первый уровень
-            CreateLevel(3);
+            CreateLevel(4);
 
             // TODO: use this.Content to load your game content here
         }

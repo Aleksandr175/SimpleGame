@@ -25,8 +25,8 @@ namespace GameLevels
         bool waySet = false; // задан ли охраннику путь к цели ?
         int step; // номер шага клетки, куда нужно идти
 
-        int targetX = 11; //координаты цели, к кот. идет охранник
-        int targetY = 4;
+        int targetX = 10; //координаты цели, к кот. идет охранник
+        int targetY = 8;
 
         int speed;
         PlayerMove direction; //направление охранника
