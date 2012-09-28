@@ -397,7 +397,6 @@ namespace GameLevels
             string lvl_name = "content/lvls/lvl" + Convert.ToString(lvl) + ".txt";
             string[] lines = File.ReadAllLines(lvl_name); //получили массив строк
 
-
             // проверим уровень сложности
             if (lvl == 4)
                 complexity = Complexity.High;
@@ -414,19 +413,25 @@ namespace GameLevels
             int x = 0;
             int y = 0;
 
-            
+            string[] str;
+
             foreach (string line in lines) //считали каждый символ в каждой строке
             {
-                foreach (char c in line)
+                str = line.Split(' ');
+
+                foreach (string s in str)
                 {
+                    
+                    //s.Equals("0", StringComparison.OrdinalIgnoreCase) - ф-ция сравнения строки s и "0"
+
                     //добавили стену, соответвующую данному символу в файле
                     Rectangle Rect = new Rectangle(x, y, size, size);
-                    if (c == '0')
+                    if (s.Equals("0", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, wallEmpty, this);
                         blocks.Add(block);
                     }
-                    if (c == '1')
+                    if (s.Equals("1", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, wallGoriz, this);
                         blocks.Add(block);
@@ -434,7 +439,7 @@ namespace GameLevels
                         // добавим стену в карту
                         levelMap[indexI, indexJ] = 1;
                     }
-                    if (c == '2')
+                    if (s.Equals("2", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, wallVert, this);
                         blocks.Add(block);
@@ -442,7 +447,7 @@ namespace GameLevels
                         // добавим стену в карту
                         levelMap[indexI, indexJ] = 1;
                     }
-                    if (c == '3')
+                    if (s.Equals("3", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, wallDownRight, this);
                         blocks.Add(block);
@@ -450,7 +455,7 @@ namespace GameLevels
                         // добавим стену в карту
                         levelMap[indexI, indexJ] = 1;
                     }
-                    if (c == '4')
+                    if (s.Equals("4", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, wallUpRight, this);
                         blocks.Add(block);
@@ -458,7 +463,7 @@ namespace GameLevels
                         // добавим стену в карту
                         levelMap[indexI, indexJ] = 1;
                     }
-                    if (c == '5')
+                    if (s.Equals("5", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, wallLeftDown, this);
                         blocks.Add(block);
@@ -466,7 +471,7 @@ namespace GameLevels
                         // добавим стену в карту
                         levelMap[indexI, indexJ] = 1;
                     }
-                    if (c == '6')
+                    if (s.Equals("6", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, wallLeftUp, this);
                         blocks.Add(block);
@@ -474,7 +479,7 @@ namespace GameLevels
                         // добавим стену в карту
                         levelMap[indexI, indexJ] = 1;
                     }
-                    if (c == '7')
+                    if (s.Equals("7", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, wall4sides, this);
                         blocks.Add(block);
@@ -482,7 +487,7 @@ namespace GameLevels
                         // добавим стену в карту
                         levelMap[indexI, indexJ] = 1;
                     }
-                    if (c == 'h')
+                    if (s.Equals("8", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, wallURD, this);
                         blocks.Add(block);
@@ -490,7 +495,7 @@ namespace GameLevels
                         // добавим стену в карту
                         levelMap[indexI, indexJ] = 1;
                     }
-                    if (c == 'i')
+                    if (s.Equals("9", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, wallRDL, this);
                         blocks.Add(block);
@@ -498,7 +503,7 @@ namespace GameLevels
                         // добавим стену в карту
                         levelMap[indexI, indexJ] = 1;
                     }
-                    if (c == 'j')
+                    if (s.Equals("10", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, wallDLU, this);
                         blocks.Add(block);
@@ -506,7 +511,7 @@ namespace GameLevels
                         // добавим стену в карту
                         levelMap[indexI, indexJ] = 1;
                     }
-                    if (c == 'k')
+                    if (s.Equals("11", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, wallLUR, this);
                         blocks.Add(block);
@@ -517,7 +522,7 @@ namespace GameLevels
 
 
                     //двери
-                    if (c == 'r')
+                    if (s.Equals("20", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, doorHoriz, this);
                         blocks.Add(block);
@@ -525,7 +530,7 @@ namespace GameLevels
                         // добавим стену в карту
                         levelMap[indexI, indexJ] = 1;
                     }
-                    if (c == 's')
+                    if (s.Equals("21", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, doorVertic, this);
                         blocks.Add(block);
@@ -533,18 +538,19 @@ namespace GameLevels
                         // добавим стену в карту
                         levelMap[indexI, indexJ] = 1;
                     }
-                    if (c == 't')
+                    if (s.Equals("22", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, doorHorizOpen, this);
                         blocks.Add(block);
                     }
-                    if (c == 'u')
+                    if (s.Equals("23", StringComparison.OrdinalIgnoreCase))
                     {
                         Block block = new Block(Rect, doorVerticOpen, this);
                         blocks.Add(block);
                     }
 
-                    if (c == 'o') { //буква "о"
+                    if (s.Equals("30", StringComparison.OrdinalIgnoreCase))
+                    { //буква "о"
                         //пол
                         Block block = new Block(Rect, wallEmpty, this);
                         blocks.Add(block);
