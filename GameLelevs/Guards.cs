@@ -183,14 +183,16 @@ namespace GameLevels
         {
             spriteBatch.Begin();
 
+            Rectangle sourceRect = new Rectangle(frameInfo.width * frameInfo.current, 0, frameInfo.width, frameInfo.height);
+            Rectangle screenRect = game.GetScreenRect(this.position);  // рисуем только то, что помещается на экране. При передвижении камеры - охраники правильно отображаются. Не едут за камерой.
+
             if (this.isRunning)
             {
-                Rectangle source = new Rectangle(frameInfo.width * frameInfo.current, 0, frameInfo.width, frameInfo.height);
-                spriteBatch.Draw(runTexture, this.position, source, Color.White);
+                spriteBatch.Draw(runTexture, screenRect, sourceRect, Color.White);
             }
-            else 
+            else
             {
-                spriteBatch.Draw(idlTexture, this.position, Color.White);
+                spriteBatch.Draw(idlTexture, screenRect, Color.White);
             }
 
             spriteBatch.End();

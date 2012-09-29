@@ -115,14 +115,17 @@ namespace GameLevels
         {
             spriteBatch.Begin();
 
+            Rectangle screenRect = game.GetScreenRect(playerInfo.position); // экранные координаты. При движении камеры, игрок отрисовывается на месте, а не едет вместе с камерой
+
+            Rectangle sourceRect = new Rectangle(frameInfo.width * frameInfo.current, 0, frameInfo.width, frameInfo.height);
+
             if (playerInfo.isRunning)
             {
-                Rectangle source = new Rectangle(frameInfo.width * frameInfo.current, 0, frameInfo.width, frameInfo.height);
-                spriteBatch.Draw(runTexture, playerInfo.position, source, Color.White);
+                spriteBatch.Draw(runTexture, screenRect, sourceRect, Color.White);
             }
-            else 
+            else
             {
-                spriteBatch.Draw(idlTexture, playerInfo.position, Color.White);
+                spriteBatch.Draw(idlTexture, screenRect, Color.White);
             }
 
             spriteBatch.End();
