@@ -65,7 +65,7 @@ namespace GameLevels
             get { return size; }
         }
         // скорость перемещения камеры
-        int speedCamera = 1;
+        int speedCamera = 2;
 
         //размер экрана
         int width;
@@ -108,7 +108,7 @@ namespace GameLevels
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            width = this.graphics.PreferredBackBufferWidth = 500; //ширина и высота экрана
+            width = this.graphics.PreferredBackBufferWidth = 700; //ширина и высота экрана
             height = this.graphics.PreferredBackBufferHeight = 500;
 
             this.Components.Add(new FPSCounter(this));  // добавили игровой компонент - fps счетчик
@@ -166,7 +166,7 @@ namespace GameLevels
             guardRunTexture = Content.Load<Texture2D>("players/player_run");
 
             // инициализируем нового игрока
-            Rectangle plaerPosition = new Rectangle(50, 50, sizePeople, sizePeople);
+            Rectangle plaerPosition = new Rectangle(130, 130, sizePeople, sizePeople);
             player = new Player(Content.Load<Texture2D>("players/player"), Content.Load<Texture2D>("players/player_run"), plaerPosition, this);
 
             font = Content.Load<SpriteFont>("myFont1");
@@ -248,10 +248,11 @@ namespace GameLevels
         /// <returns>Bool - пересечение</returns>
         private bool CollidesHigh(Rectangle rect)
         {
-            int minx = rect.Left / 20;
-            int miny = rect.Top / 20;
-            int maxx = rect.Right / 20;
-            int maxy = rect.Bottom / 20;
+            // координаты верхнего леового и нижнего правого угла игрока.
+            int minx = rect.Left / size; // size - размер клетки
+            int miny = rect.Top / size;
+            int maxx = rect.Right / size;
+            int maxy = rect.Bottom / size;
 
             for (int i = minx; i <= maxx; i++)
             {
@@ -358,7 +359,7 @@ namespace GameLevels
             try
             {
                 spriteBatch.DrawString(font, guards[0].X.ToString(), new Vector2(10, 0), Color.Red);
-                spriteBatch.DrawString(font, guards[0].Y.ToString(), new Vector2(10, 20), Color.Red);
+                spriteBatch.DrawString(font, guards[0].Y.ToString(), new Vector2(10, 20), Color.Red);   
             }
             catch (Exception e) { }
 

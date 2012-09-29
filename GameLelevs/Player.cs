@@ -82,7 +82,7 @@ namespace GameLevels
         /// </summary>
         public void Init()
         {
-            playerInfo.speed = 15;
+            playerInfo.speed = 2;
 
             frameInfo.height = 0;
             frameInfo.width = 0;
@@ -147,7 +147,7 @@ namespace GameLevels
                 }
 
                 // передвижение игрока
-                int offset = playerInfo.speed * gameTime.ElapsedGameTime.Milliseconds / 10;
+                int offset = playerInfo.speed;//playerInfo.speed * gameTime.ElapsedGameTime.Milliseconds / 10;
 
                 // новое положение игрока
                 Rectangle newPosition = playerInfo.position;
