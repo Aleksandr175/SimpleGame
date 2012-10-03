@@ -21,7 +21,7 @@ namespace GameLevels
     ///  - передвижение
     ///  - взаимодействие
     /// </summary>
-    class Player
+    class Player : IPlayer.IPlayer
     {
         // текстура для вывода игрока в состоянии спокойствия
         private Texture2D idlTexture;

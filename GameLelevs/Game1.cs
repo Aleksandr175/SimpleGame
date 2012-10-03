@@ -175,6 +175,13 @@ namespace GameLevels
             CreateLevel(4);
 
             // TODO: use this.Content to load your game content here
+            // TODO: возможно, стоит написать универсальный загрузчик ресурсов. Сейчас код кажется громоздким и неудобным / не гибким
+            //       interface ILoaderResources { 
+            //                                    Load(string wayToLoad, type SpriteFont / Texture2D by default, ref or out whereLoad);
+            //                                    GetResources(string name); 
+            //                                   }
+            //                                    **перегрузить метод Load для загрузки массива объектов
+            //                                    **перегрузить метод Load для загрузки целой папки с ресурсами
         }
 
         /// <summary>
@@ -265,6 +272,8 @@ namespace GameLevels
         }
         //смещает камеру относительно начала уровня
         public void Scroll(int dx, int dy) {
+            // TODO: сделать, чтобы просмотр камеры не уходил, если есть еще много места для просмотра 
+            //                                                    и при столкновении игрока со стенами
             if (scrollX + dx > 0 && scrollX + dx < lenghtX - width) 
             {
                 scrollX += dx;
@@ -361,7 +370,9 @@ namespace GameLevels
                 spriteBatch.DrawString(font, guards[0].X.ToString(), new Vector2(10, 0), Color.Red);
                 spriteBatch.DrawString(font, guards[0].Y.ToString(), new Vector2(10, 20), Color.Red);   
             }
-            catch (Exception e) { }
+            catch {
+                // TODO: необходимо как-то обрабатывать исключения!
+            }
 
             spriteBatch.End();
 

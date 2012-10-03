@@ -1,6 +1,6 @@
-﻿// <summary>
-// Объявление структур для упрощения работы
-// </summary>
+﻿/// <summary>
+/// Объявление структур для упрощения работы
+/// </summary>
 
 using Microsoft.Xna.Framework;
 using Enumeration;

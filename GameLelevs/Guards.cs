@@ -13,7 +13,7 @@ using Enumeration;
 
 namespace GameLevels
 {
-    class Guards
+    class Guards : IPlayer.IPlayer
     {
         public Rectangle Rect { get; set; }
         Random r;
@@ -248,7 +248,11 @@ namespace GameLevels
                         nextX = this.wayToTarget[1][0]; // координаты след. клетки
                         nextY = this.wayToTarget[1][1];
                     }
-                    catch (Exception e) { step = 1; }
+                    catch { 
+                        // Если обрабатываешь все исключения, то нет необходимости указывать его тип
+                        // Если нужен только тип, но объект исключения не нужен, то указывается в скобках просто: catch(Exception)
+                        step = 1;
+                    }
 
                     // в зависимости от положения клетки, в кот. должен бегать охранник изменяем направление движения
                     if (nextY < nowPosGuardY)
