@@ -197,8 +197,9 @@ namespace GameLevels
                     default: break;
                 }
 
-                if (newPosition.Left > 0 && newPosition.Right < game.Width && !game.CollidesWithLevel(newPosition))
+                if (newPosition.Left > 0 && newPosition.Right < game.GetLenghtX && !game.CollidesWithLevel(newPosition))
                 {
+                    // перемещаем игрока на новую позицию
                     playerInfo.position = newPosition;
                     newPosX = playerInfo.position.X / game.Size;
                     newPosY = playerInfo.position.Y / game.Size;
@@ -206,6 +207,19 @@ namespace GameLevels
                     if (newPosX != oldPosX || newPosY != oldPosY)
                     {
                         changedPos = true;
+                    }
+
+
+                    // движение камеры за игроком. Камера не выходит за пределы экрана
+                    // движение камеры по X (сравнение с границами уровня)
+                    if (playerInfo.position.X > game.GetScreenWidth / 2 - game.Size / 2 && playerInfo.position.X + game.GetScreenWidth / 2 + game.Size / 2 < game.GetLenghtX)
+                    {
+                        game.SetCameraPosition(playerInfo.position.X - game.GetScreenWidth / 2 + game.Size / 2, game.GetScrollY);
+                    }
+                    // движение камеры по Y (сравнение с границами уровня)
+                    if (playerInfo.position.Y > game.GetScreenHeight / 2 - game.Size / 2 && playerInfo.position.Y + game.GetScreenHeight / 2 + game.Size / 2 < game.GetLenghtY)
+                    {
+                        game.SetCameraPosition(game.GetScrollX, playerInfo.position.Y - game.GetScreenHeight / 2 + game.Size / 2);
                     }
 
                 }

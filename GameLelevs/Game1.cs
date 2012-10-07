@@ -54,9 +54,44 @@ namespace GameLevels
         int scrollX;
         int scrollY;
 
+        public int GetScrollX
+        {
+            get { return scrollX; }
+            set { scrollX = value; }
+        }
+        public int GetScrollY
+        {
+            get { return scrollY; }
+            set { scrollY = value; }
+        }
+
         //длина уровня в пикселях
         int lenghtX;
         int lenghtY;
+
+        //получаем двину уровня в пикселях
+        public int GetLenghtX
+        {
+            get { return lenghtX; }
+            set { lenghtX = value; }
+        }
+        public int GetLenghtY
+        {
+            get { return lenghtY; }
+            set { lenghtY = value; }
+        }
+
+        int screenWidth = 300; // длина и высота экрана
+        int screenHeight = 300;
+
+        public int GetScreenWidth
+        {
+            get { return screenWidth; }
+        }
+        public int GetScreenHeight
+        {
+            get { return screenHeight; }
+        }
         
         //размер 1 ячейки уровня
         int size = 30;
@@ -67,9 +102,10 @@ namespace GameLevels
         // скорость перемещения камеры
         int speedCamera = 2;
 
-        //размер экрана
-        int width;
-        int height;
+        public int GetSpeedCamera
+        {
+            get { return speedCamera; }
+        }
 
         int sizePeople = 20; //размер изображения игрока и охранников
         public int SizePeople
@@ -93,23 +129,13 @@ namespace GameLevels
         // сложность уровня
         Complexity complexity;
 
-        public int Width 
-        {
-            get { return width;}
-        }
-
-        public int Height
-        {
-            get { return height; }
-        }
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            width = this.graphics.PreferredBackBufferWidth = 700; //ширина и высота экрана
-            height = this.graphics.PreferredBackBufferHeight = 500;
+            this.graphics.PreferredBackBufferWidth = screenWidth; //ширина и высота экрана
+            this.graphics.PreferredBackBufferHeight = screenHeight;
 
             this.Components.Add(new FPSCounter(this));  // добавили игровой компонент - fps счетчик
 
@@ -274,14 +300,22 @@ namespace GameLevels
         public void Scroll(int dx, int dy) {
             // TODO: сделать, чтобы просмотр камеры не уходил, если есть еще много места для просмотра 
             //                                                    и при столкновении игрока со стенами
-            if (scrollX + dx > 0 && scrollX + dx < lenghtX - width) 
+            if (scrollX + dx > 0 && scrollX + dx < lenghtX - screenWidth) 
             {
                 scrollX += dx;
             }
-            if (scrollY + dy > 0 && scrollY + dy < lenghtY - height) 
+            if (scrollY + dy > 0 && scrollY + dy < lenghtY - screenHeight) 
             {
                 scrollY += dy;
             }
+        }
+
+
+        //ф-ция для позиционирования камеры в определенной точке
+        public void SetCameraPosition(int x, int y)
+        {
+            scrollX = x;
+            scrollY = y;
         }
 
         /// <summary>
@@ -317,22 +351,18 @@ namespace GameLevels
             if (state.IsKeyDown(Keys.Left))
             {
                 player.Run(PlayerMove.Left);
-                Scroll(-speedCamera, 0);
             }
             else if (state.IsKeyDown(Keys.Right))
             {
                 player.Run(PlayerMove.Right);
-                Scroll(speedCamera, 0);
             }
             else if (state.IsKeyDown(Keys.Up))
             {
                 player.Run(PlayerMove.Up);
-                Scroll(0, -speedCamera);
             }
             else if (state.IsKeyDown(Keys.Down))
             {
                 player.Run(PlayerMove.Down);
-                Scroll(0, speedCamera);
             }
             else 
                 player.Stop();
@@ -368,7 +398,9 @@ namespace GameLevels
             try
             {
                 spriteBatch.DrawString(font, guards[0].X.ToString(), new Vector2(10, 0), Color.Red);
-                spriteBatch.DrawString(font, guards[0].Y.ToString(), new Vector2(10, 20), Color.Red);   
+                spriteBatch.DrawString(font, guards[0].Y.ToString(), new Vector2(10, 20), Color.Red);
+                spriteBatch.DrawString(font, lenghtX.ToString(), new Vector2(10, 40), Color.Red); // распечатка длины уровня по X
+                spriteBatch.DrawString(font, lenghtY.ToString(), new Vector2(10, 60), Color.Red); // распечатка длины уровня по Y 
             }
             catch {
                 // TODO: необходимо как-то обрабатывать исключения!
@@ -425,7 +457,7 @@ namespace GameLevels
             int x = 0;
             int y = 0;
 
-            string[] str;
+            string[] str = {};
 
             foreach (string line in lines) //считали каждый символ в каждой строке
             {
@@ -587,7 +619,7 @@ namespace GameLevels
             
             }
 
-            lenghtX = size * lines[0].Length; // длина уровня в пикселях
+            lenghtX = size * str.Length; // длина уровня в пикселях
             lenghtY = y;
 
             Guards.SetLevelMap(levelMap, lenghtX / size, lenghtY / size);

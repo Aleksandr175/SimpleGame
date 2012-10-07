@@ -346,7 +346,7 @@ namespace GameLevels
                 }
             
                 // перемещение охранника
-                if (newPosition.Left > 0 && newPosition.Right < game.Width)
+                if (newPosition.Left > 0 && newPosition.Right < game.GetLenghtX)
                 {
                     this.position = newPosition;
                 }
