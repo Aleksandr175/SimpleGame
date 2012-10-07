@@ -96,3 +96,12 @@ Thumbs.db
 Desktop.ini
 
 
+
+
+
+### debug files - useless
+*.xml
+*.pdb
+*.exe
+*.cache
+*.pdb
