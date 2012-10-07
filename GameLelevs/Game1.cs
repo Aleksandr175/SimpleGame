@@ -569,7 +569,7 @@ namespace GameLevels
 
                         // инициализируем нового охранника
                         Rectangle RectGuard = new Rectangle(x + sizePeople / 4, y + sizePeople / 4, sizePeople, sizePeople);
-                        Guards guard = new Guards(guardIdleTexture, guardRunTexture, RectGuard, this);
+                        Guards guard = new Guards(guardIdleTexture, guardRunTexture, RectGuard, this, player);
                         guards.Add(guard);
                         guard.Run(PlayerMove.Left);
                     }

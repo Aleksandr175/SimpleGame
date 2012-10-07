@@ -32,6 +32,8 @@ namespace GameLevels
         PlayerMove direction; //направление охранника
         bool isRunning; //бежит или нет?
 
+        private bool alarm = true; // есть ли тревога ? True - включена
+
         // текстура для вывода охранника в состоянии спокойствия
         private Texture2D idlTexture;
 
@@ -43,6 +45,7 @@ namespace GameLevels
 
         // ссылка на экран
         private Game1 game;
+        private Player player;
 
         List<List<int>> wayToTarget = new List<List<int>>();
 
@@ -90,13 +93,14 @@ namespace GameLevels
         /// <param name="playerTexture">Текстура охранника</param>
         /// <param name="width">Ширина кадра</param>
         /// <param name="height">Высота кадра</param>
-        public Guards(Texture2D idlTexture, Texture2D runTexture, Rectangle position, Game1 game)
+        public Guards(Texture2D idlTexture, Texture2D runTexture, Rectangle position, Game1 game, Player player)
         {
             Init();
             this.idlTexture = idlTexture;
             this.runTexture = runTexture;
 
             this.game = game;
+            this.player = player;
 
             this.step = 1;
             
@@ -204,6 +208,15 @@ namespace GameLevels
         /// </summary>
         public void Update(GameTime gameTime)
         {
+            //изменяем точку, в кот. идет охранник, если игрок сместился на другую клетку и включена тревога
+            if (player.changedPos && alarm)
+            {
+                player.changedPos = false;
+                this.targetX = player.NewPosX;
+                this.targetY = player.NewPosY;
+                this.Run();
+            }
+            
             if (this.isRunning) 
             {
                 // изменим кадр анимации
@@ -288,8 +301,8 @@ namespace GameLevels
                     }
 
                     if (this.oldPosGuardX == this.targetX && this.oldPosGuardY == this.targetY) 
-                    { 
-                        this.Stop();
+                    {
+                        this.CheckStop();
                     }
                 }
                 if (Math.Abs(this.oldPosGuardY * game.Size + game.Size / 2 - (newPosition.Y + game.SizePeople / 2)) >= game.Size)
@@ -301,8 +314,8 @@ namespace GameLevels
                         this.waySet = false;
                     }
                     if (this.oldPosGuardX == this.targetX && this.oldPosGuardY == this.targetY) 
-                    { 
-                        this.Stop();
+                    {
+                        this.CheckStop();
                     }
                 }
                 
@@ -344,6 +357,15 @@ namespace GameLevels
             }
         }
 
+
+        /*
+         * Ф-ция проверяет, стоит ли останавливаться охраннику.
+         * Если тревога работает - то охранник продолжает преследовать игрока
+         */
+        private void CheckStop() 
+        {
+            this.Stop();
+        }
 
         /** изменяем направление движения охранника (рандомно)
          * <param name="direction">Направление движения охранника</param>

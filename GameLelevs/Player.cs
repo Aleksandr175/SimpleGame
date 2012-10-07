@@ -37,7 +37,27 @@ namespace GameLevels
 
         // ссылка на экран
         private Game1 game;
-        
+
+        // старое положение игрока
+        private int oldPosX;
+        private int oldPosY;
+
+        // новое положение игрока
+        private int newPosX;
+        private int newPosY;
+
+        public int NewPosX
+        {
+            get { return newPosX; }
+        }
+        public int NewPosY
+        {
+            get { return newPosY; }
+        }
+
+        // позиция игрока изменилась ? Заново направляем охранников на игрока
+        public bool changedPos = false;
+
         /// <summary>
         /// Конструктор класса
         /// </summary>
@@ -152,6 +172,9 @@ namespace GameLevels
                 // новое положение игрока
                 Rectangle newPosition = playerInfo.position;
 
+                oldPosX = playerInfo.position.X / game.Size;
+                oldPosY = playerInfo.position.Y / game.Size;
+
                 // смотрим, в каком направлении движемся 
                 switch (playerInfo.direction)
                 {
@@ -175,7 +198,17 @@ namespace GameLevels
                 }
 
                 if (newPosition.Left > 0 && newPosition.Right < game.Width && !game.CollidesWithLevel(newPosition))
+                {
                     playerInfo.position = newPosition;
+                    newPosX = playerInfo.position.X / game.Size;
+                    newPosY = playerInfo.position.Y / game.Size;
+                    //изменилась ли клетка, в кот. находился игрок?
+                    if (newPosX != oldPosX || newPosY != oldPosY)
+                    {
+                        changedPos = true;
+                    }
+
+                }
             }
         }
 
