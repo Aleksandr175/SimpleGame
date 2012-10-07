@@ -430,7 +430,7 @@ namespace GameLevels
         /************************************************************************/
         public List<List<int>> Way(byte[,] arr, int N, int M, int x_f, int y_f)
         {
-            int[,] workarr = new int[N, M];
+            int[,] workarr = new int[N + 1, M + 1];
             int k;
             int max_k = N * M; // максимальное число итераций
             int i, j;
@@ -451,11 +451,14 @@ namespace GameLevels
                 }
             }
 
+            bool f_way = false; // есть ли путь
+            bool f_way_iter = true; // путь на данной итерации
             // Распространение волны 
             k = 0;
             // начинаем поиск.. сначала ищем финиш
-            while (k < max_k)
+            while (!f_way && f_way_iter && k < max_k)
             {
+                f_way_iter = false; // считаем что на данной итерации нет пути
                 for (i = 1; i < N - 1; i++)
                 {
                     for (j = 1; j < M - 1; j++)
@@ -463,12 +466,19 @@ namespace GameLevels
                         if (workarr[i, j] == k)
                         {
                             twice = 0;
+                            f_way_iter = true; // на данной итерации есть путь
                             do
                             {
                                 for (int p = -1; p < 2; p = p + 2)
                                 {
                                     if (workarr[i + p * (-twice + 1), j + p * twice] == (int)Propety.Start) // дошли до старта => выходим из поиска
-                                        goto ex;
+                                    {
+                                        twice = 2;
+                                        i = N;
+                                        j = M;
+                                        f_way = true; // путь полностью найден
+                                        break;
+                                    }
                                     if (workarr[i + p * (-twice + 1), j + p * twice] == (int)Propety.FreeWay)
                                         workarr[i + p * (-twice + 1), j + p * twice] = k + 1;
                                 }
@@ -481,18 +491,8 @@ namespace GameLevels
                 }
                 k++;
             }
-        ex:
-            /*
-            for (i = 0; i < N; i++)
-            {
-                for (j = 0; j < M; j++)
-                {
-                    Console.Write("{0,-4:d2}", workarr[i, j] + " ");
-                }
-                Console.WriteLine();
-            }
-             * */
-            if (k >= max_k)
+
+            if (!f_way)
                 return null; // Нет пути
             // заполняем массив коордианатами
             List<List<int>> ArrWay = new List<List<int>>();
