@@ -106,7 +106,7 @@ namespace GameLevels
 
             frameInfo.height = 0;
             frameInfo.width = 0;
-            frameInfo.timeForFrame = 5;
+            frameInfo.timeForFrame = 70;
         }
 
         /// <summary>
@@ -141,7 +141,26 @@ namespace GameLevels
 
             if (playerInfo.isRunning)
             {
-                spriteBatch.Draw(runTexture, screenRect, sourceRect, Color.White);
+                SpriteEffects effect = new SpriteEffects();
+
+                // TODO: доделать, чтобы поворачивался вправо / влево
+                switch (playerInfo.direction) {
+                    case PlayerMove.Left:
+                        effect = SpriteEffects.FlipHorizontally;
+                        spriteBatch.Draw(runTexture, screenRect, sourceRect, Color.White, 0, Vector2.Zero, effect, 0);
+                        break;
+                    case PlayerMove.Right:
+                        effect = SpriteEffects.None;
+                        spriteBatch.Draw(runTexture, screenRect, sourceRect, Color.White, 0, Vector2.Zero, effect, 0);
+                        break;
+                    case PlayerMove.Up:
+                        effect = SpriteEffects.FlipVertically;
+                        spriteBatch.Draw(runTexture, screenRect, sourceRect, Color.White, 0, Vector2.Zero, effect, 0);
+                        break;
+                    default: 
+                        spriteBatch.Draw(runTexture, screenRect, sourceRect, Color.White);
+                        break;
+                }
             }
             else
             {
