@@ -115,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Block.cs" />
+    <Compile Include="Camera.cs" />
     <Compile Include="enumeration.cs" />
     <Compile Include="FPSCounter.cs" />
     <Compile Include="Guards.cs" />

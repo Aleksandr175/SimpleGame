@@ -21,7 +21,8 @@ namespace GameLevels
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         Player player;
-        
+        Camera camera;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -50,21 +51,7 @@ namespace GameLevels
 
         SpriteFont font;
 
-        //экранные координаты - смещение камеры относительно начала мировых координат 
-        int scrollX;
-        int scrollY;
-
-        public int GetScrollX
-        {
-            get { return scrollX; }
-            set { scrollX = value; }
-        }
-        public int GetScrollY
-        {
-            get { return scrollY; }
-            set { scrollY = value; }
-        }
-
+        
         //длина уровня в пикселях
         int lenghtX;
         int lenghtY;
@@ -99,13 +86,6 @@ namespace GameLevels
         {
             get { return size; }
         }
-        // скорость перемещения камеры
-        int speedCamera = 2;
-
-        public int GetSpeedCamera
-        {
-            get { return speedCamera; }
-        }
 
         int sizePeople = 20; //размер изображения игрока и охранников
         public int SizePeople
@@ -138,6 +118,8 @@ namespace GameLevels
             this.graphics.PreferredBackBufferHeight = screenHeight;
 
             this.Components.Add(new FPSCounter(this));  // добавили игровой компонент - fps счетчик
+
+            this.camera = new Camera();
 
             // отключили ограничение fps счетчика
             IsFixedTimeStep = true;
@@ -193,7 +175,7 @@ namespace GameLevels
 
             // инициализируем нового игрока
             Rectangle plaerPosition = new Rectangle(130, 130, sizePeople, sizePeople);
-            player = new Player(Content.Load<Texture2D>("players/player"), Content.Load<Texture2D>("players/player_run"), plaerPosition, this);
+            player = new Player(Content.Load<Texture2D>("players/player"), Content.Load<Texture2D>("players/player_run"), plaerPosition, this, camera);
 
             font = Content.Load<SpriteFont>("myFont1");
 
@@ -220,15 +202,7 @@ namespace GameLevels
         }
 
 
-        /*
-         * Ф-ция для получения прямоугольника текущего положения экрана
-         */
-        public Rectangle GetScreenRect(Rectangle rect)
-        {
-            Rectangle r = rect;
-            r.Offset(-scrollX, -scrollY);
-            return r;
-        }
+        
 
         /// <summary>
         /// Функция смотрит, нет ли пересечения игрока с объектами на уровне
@@ -296,27 +270,9 @@ namespace GameLevels
 
             return false;
         }
-        //смещает камеру относительно начала уровня
-        public void Scroll(int dx, int dy) {
-            // TODO: сделать, чтобы просмотр камеры не уходил, если есть еще много места для просмотра 
-            //                                                    и при столкновении игрока со стенами
-            if (scrollX + dx > 0 && scrollX + dx < lenghtX - screenWidth) 
-            {
-                scrollX += dx;
-            }
-            if (scrollY + dy > 0 && scrollY + dy < lenghtY - screenHeight) 
-            {
-                scrollY += dy;
-            }
-        }
+        
 
 
-        //ф-ция для позиционирования камеры в определенной точке
-        public void SetCameraPosition(int x, int y)
-        {
-            scrollX = x;
-            scrollY = y;
-        }
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,
@@ -472,12 +428,12 @@ namespace GameLevels
                     Rectangle Rect = new Rectangle(x, y, size, size);
                     if (s.Equals("0", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallEmpty, this);
+                        Block block = new Block(Rect, wallEmpty, this, this.camera);
                         blocks.Add(block);
                     }
                     if (s.Equals("1", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallGoriz, this);
+                        Block block = new Block(Rect, wallGoriz, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -485,7 +441,7 @@ namespace GameLevels
                     }
                     if (s.Equals("2", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallVert, this);
+                        Block block = new Block(Rect, wallVert, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -493,7 +449,7 @@ namespace GameLevels
                     }
                     if (s.Equals("3", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallDownRight, this);
+                        Block block = new Block(Rect, wallDownRight, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -501,7 +457,7 @@ namespace GameLevels
                     }
                     if (s.Equals("4", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallUpRight, this);
+                        Block block = new Block(Rect, wallUpRight, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -509,7 +465,7 @@ namespace GameLevels
                     }
                     if (s.Equals("5", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallLeftDown, this);
+                        Block block = new Block(Rect, wallLeftDown, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -517,7 +473,7 @@ namespace GameLevels
                     }
                     if (s.Equals("6", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallLeftUp, this);
+                        Block block = new Block(Rect, wallLeftUp, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -525,7 +481,7 @@ namespace GameLevels
                     }
                     if (s.Equals("7", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wall4sides, this);
+                        Block block = new Block(Rect, wall4sides, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -533,7 +489,7 @@ namespace GameLevels
                     }
                     if (s.Equals("8", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallURD, this);
+                        Block block = new Block(Rect, wallURD, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -541,7 +497,7 @@ namespace GameLevels
                     }
                     if (s.Equals("9", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallRDL, this);
+                        Block block = new Block(Rect, wallRDL, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -549,7 +505,7 @@ namespace GameLevels
                     }
                     if (s.Equals("10", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallDLU, this);
+                        Block block = new Block(Rect, wallDLU, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -557,7 +513,7 @@ namespace GameLevels
                     }
                     if (s.Equals("11", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallLUR, this);
+                        Block block = new Block(Rect, wallLUR, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -568,7 +524,7 @@ namespace GameLevels
                     //двери
                     if (s.Equals("20", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, doorHoriz, this);
+                        Block block = new Block(Rect, doorHoriz, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -576,7 +532,7 @@ namespace GameLevels
                     }
                     if (s.Equals("21", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, doorVertic, this);
+                        Block block = new Block(Rect, doorVertic, this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -584,24 +540,24 @@ namespace GameLevels
                     }
                     if (s.Equals("22", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, doorHorizOpen, this);
+                        Block block = new Block(Rect, doorHorizOpen, this, this.camera);
                         blocks.Add(block);
                     }
                     if (s.Equals("23", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, doorVerticOpen, this);
+                        Block block = new Block(Rect, doorVerticOpen, this, this.camera);
                         blocks.Add(block);
                     }
 
                     if (s.Equals("30", StringComparison.OrdinalIgnoreCase))
                     { //буква "о"
                         //пол
-                        Block block = new Block(Rect, wallEmpty, this);
+                        Block block = new Block(Rect, wallEmpty, this, this.camera);
                         blocks.Add(block);
 
                         // инициализируем нового охранника
                         Rectangle RectGuard = new Rectangle(x + sizePeople / 4, y + sizePeople / 4, sizePeople, sizePeople);
-                        Guards guard = new Guards(guardIdleTexture, guardRunTexture, RectGuard, this, player);
+                        Guards guard = new Guards(guardIdleTexture, guardRunTexture, RectGuard, this, player, this.camera);
                         guards.Add(guard);
                         guard.Run(PlayerMove.Left);
                     }

@@ -18,6 +18,7 @@ namespace GameLevels
         public Rectangle Rect { get; set; }
         Random r;
         Rectangle position;
+        Camera camera;
 
         int oldPosGuardX; // старая позиция охранника. Для сравнения - "перешел ли охранник на новую клетку?"
         int oldPosGuardY;
@@ -93,13 +94,14 @@ namespace GameLevels
         /// <param name="playerTexture">Текстура охранника</param>
         /// <param name="width">Ширина кадра</param>
         /// <param name="height">Высота кадра</param>
-        public Guards(Texture2D idlTexture, Texture2D runTexture, Rectangle position, Game1 game, Player player)
+        public Guards(Texture2D idlTexture, Texture2D runTexture, Rectangle position, Game1 game, Player player, Camera camera)
         {
             Init();
             this.idlTexture = idlTexture;
             this.runTexture = runTexture;
 
             this.game = game;
+            this.camera = camera;
             this.player = player;
 
             this.step = 1;
@@ -188,7 +190,7 @@ namespace GameLevels
             spriteBatch.Begin();
 
             Rectangle sourceRect = new Rectangle(frameInfo.width * frameInfo.current, 0, frameInfo.width, frameInfo.height);
-            Rectangle screenRect = game.GetScreenRect(this.position);  // рисуем только то, что помещается на экране. При передвижении камеры - охраники правильно отображаются. Не едут за камерой.
+            Rectangle screenRect = camera.GetScreenRect(this.position);  // рисуем только то, что помещается на экране. При передвижении камеры - охраники правильно отображаются. Не едут за камерой.
 
             if (this.isRunning)
             {

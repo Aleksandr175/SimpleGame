@@ -37,6 +37,8 @@ namespace GameLevels
 
         // ссылка на экран
         private Game1 game;
+        // ссылка на камеру
+        private Camera camera;
 
         // старое положение игрока
         private int oldPosX;
@@ -64,7 +66,7 @@ namespace GameLevels
         /// <param name="playerTexture">Текстура игрока</param>
         /// <param name="width">Ширина кадра</param>
         /// <param name="height">Высота кадра</param>
-        public Player(Texture2D idlTexture, Texture2D runTexture, Rectangle position, Game1 game)
+        public Player(Texture2D idlTexture, Texture2D runTexture, Rectangle position, Game1 game, Camera camera)
         {
             Init();
             this.idlTexture = idlTexture;
@@ -78,6 +80,7 @@ namespace GameLevels
             playerInfo.position = position;
 
             this.game = game;
+            this.camera = camera;
         }
 
         /// <summary>
@@ -135,7 +138,7 @@ namespace GameLevels
         {
             spriteBatch.Begin();
 
-            Rectangle screenRect = game.GetScreenRect(playerInfo.position); // экранные координаты. При движении камеры, игрок отрисовывается на месте, а не едет вместе с камерой
+            Rectangle screenRect = camera.GetScreenRect(playerInfo.position); // экранные координаты. При движении камеры, игрок отрисовывается на месте, а не едет вместе с камерой
 
             Rectangle sourceRect = new Rectangle(frameInfo.width * frameInfo.current, 0, frameInfo.width, frameInfo.height);
 
@@ -233,12 +236,12 @@ namespace GameLevels
                     // движение камеры по X (сравнение с границами уровня)
                     if (playerInfo.position.X > game.GetScreenWidth / 2 - game.Size / 2 && playerInfo.position.X + game.GetScreenWidth / 2 + game.Size / 2 < game.GetLenghtX)
                     {
-                        game.SetCameraPosition(playerInfo.position.X - game.GetScreenWidth / 2 + game.Size / 2, game.GetScrollY);
+                        camera.SetCameraPosition(playerInfo.position.X - game.GetScreenWidth / 2 + game.Size / 2, camera.GetScrollY);
                     }
                     // движение камеры по Y (сравнение с границами уровня)
                     if (playerInfo.position.Y > game.GetScreenHeight / 2 - game.Size / 2 && playerInfo.position.Y + game.GetScreenHeight / 2 + game.Size / 2 < game.GetLenghtY)
                     {
-                        game.SetCameraPosition(game.GetScrollX, playerInfo.position.Y - game.GetScreenHeight / 2 + game.Size / 2);
+                        camera.SetCameraPosition(camera.GetScrollX, playerInfo.position.Y - game.GetScreenHeight / 2 + game.Size / 2);
                     }
 
                 }
