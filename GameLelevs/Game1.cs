@@ -335,7 +335,7 @@ namespace GameLevels
             oldState = state;
 
             
-            // перемещение камеры
+            // перемещение игрока
             if (state.IsKeyDown(Keys.Left))
             {
                 player.Run(PlayerMove.Left);

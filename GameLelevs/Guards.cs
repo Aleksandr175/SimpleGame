@@ -16,7 +16,7 @@ namespace GameLevels
     class Guards : IPlayer.IPlayer
     {
         public Rectangle Rect { get; set; }
-        Random r;
+
         Rectangle position;
         Camera camera;
 
@@ -28,12 +28,13 @@ namespace GameLevels
 
         int targetX = 10; //координаты цели, к кот. идет охранник
         int targetY = 8;
+        int currentStepPatrol = 0; // текущий шаг для патрулирования
 
         int speed;
         PlayerMove direction; //направление охранника
         bool isRunning; //бежит или нет?
 
-        private bool alarm = true; // есть ли тревога ? True - включена
+        private bool alarm = false; // есть ли тревога ? True - включена
 
         // текстура для вывода охранника в состоянии спокойствия
         private Texture2D idlTexture;
@@ -48,7 +49,10 @@ namespace GameLevels
         private Game1 game;
         private Player player;
 
-        List<List<int>> wayToTarget = new List<List<int>>();
+        List<List<int>> wayToTarget = new List<List<int>>(); // путь к цели
+        List<List<int>> wayToPatrol = new List<List<int>>(); // траектория для патрулирования
+        
+
 
         //карта уроня для алгоритма поиска пути (получаем из кл. Game1.cs)
         private static byte[,] levelMap;
@@ -121,6 +125,27 @@ namespace GameLevels
 
             this.position = position;
 
+
+            //массив для патрулирования
+            // временный. Потом будет считываться из файла
+            wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
+            wayToPatrol[0].Add(3); // первым указывается координата X
+            wayToPatrol[0].Add(3); // второе - координата Y
+            wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
+            wayToPatrol[1].Add(3);
+            wayToPatrol[1].Add(5);
+            wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
+            wayToPatrol[2].Add(5);
+            wayToPatrol[2].Add(5);
+            wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
+            wayToPatrol[3].Add(7);
+            wayToPatrol[3].Add(3);
+            targetX = wayToPatrol[0][0];
+            targetY = wayToPatrol[0][1];
+
+            //targetX = wayToPatrol[1][0]; // 0 - x
+            //targetY = wayToPatrol[1][1]; // 1 - y
+
         }
 
         /// <summary>
@@ -149,7 +174,7 @@ namespace GameLevels
 
             frameInfo.height = 0;
             frameInfo.width = 0;
-            frameInfo.timeForFrame = 5;
+            frameInfo.timeForFrame = 70;
         }
 
         /// <summary>
@@ -218,6 +243,12 @@ namespace GameLevels
                 this.targetY = player.NewPosY;
                 this.Run();
             }
+
+
+            if (alarm == false)
+            {
+                //this.Patrol();
+            }
             
             if (this.isRunning) 
             {
@@ -236,7 +267,7 @@ namespace GameLevels
                 Rectangle newPosition = this.position;
 
 
-                // смотрим, сместился ли на клетку охранник, если да - то меняем случ. образом его направление движения.
+                // смотрим, сместился ли на клетку охранник
                 x = newPosition.X / game.Size;
                 y = newPosition.Y / game.Size;
 
@@ -287,9 +318,6 @@ namespace GameLevels
                         this.direction = PlayerMove.Left;
                     }
 
-                    /*if (nextX == nowPosGuardX && nextY == nowPosGuardY) {
-                        this.Stop();
-                    }*/
                 }
                 
 
@@ -352,84 +380,63 @@ namespace GameLevels
                 {
                     this.position = newPosition;
                 }
-                else
-                {
-                    this.direction = ChangeDirection(this.direction);
-                }
+                
             }
         }
 
 
-        /*
-         * Ф-ция проверяет, стоит ли останавливаться охраннику.
-         * Если тревога работает - то охранник продолжает преследовать игрока
-         */
+        
+        /// <summary>
+        /// Ф-ция проверяет, стоит ли останавливаться охраннику.
+        /// Если тревога работает - то охранник продолжает преследовать игрока
+        /// </summary>
         private void CheckStop() 
         {
-            this.Stop();
+            if (alarm == false)
+            {
+                currentStepPatrol++;
+                this.Patrol();
+            }
+            else
+            {
+                this.Stop();
+            }
+            
         }
 
-        /** изменяем направление движения охранника (рандомно)
-         * <param name="direction">Направление движения охранника</param>
-         * 
-         * Возвращает новое направление char newDirection
-         */
-        public PlayerMove ChangeDirection(PlayerMove direction)
+
+
+
+
+        /// <summary>
+        /// Ф-ция для патрулирования местности
+        /// </summary>
+        private void Patrol()
         {
-            int left = 1;
-            int top = 2;
-            int right = 3;
-            int down = 4;
-            int oldDirection = 0;
-
-            if (direction == PlayerMove.Left) {
-                oldDirection = left;
-            }
-            if (direction == PlayerMove.Up) {
-                oldDirection = top;
-            }
-            if (direction == PlayerMove.Right) {
-                oldDirection = right;
-            }
-            if (direction == PlayerMove.Down) {
-                oldDirection = down;
-            }
-
-
-            r = new Random();
-            int newDirection;
-
-            do {
-                newDirection = r.Next(1,5);
-            }
-            while (oldDirection == newDirection);
-
-
-            if (newDirection == left)
+            if (currentStepPatrol > 3)
             {
-                return PlayerMove.Left;
+                currentStepPatrol = 0;
             }
-            if (newDirection == top)
-            {
-                return PlayerMove.Up;
-            }
-            if (newDirection == right)
-            {
-                return PlayerMove.Right;
-            }
-            if (newDirection == down)
-            {
-                return PlayerMove.Down;
-            }
-
-            return PlayerMove.Left;
+            targetX = wayToPatrol[currentStepPatrol][0];
+            targetY = wayToPatrol[currentStepPatrol][1];
         }
 
 
 
-        /************************************************************************/
-        /* Алгоритм поиска минимального пути                                    */
-        /************************************************************************/
+
+
+
+ 
+
+        /// <summary>
+        /// Алгоритм поиска минимального пути
+        /// </summary>
+        /// <param name="arr">Массив с картой уровня</param>
+        /// <param name="N">Размер массива (ширина)</param>
+        /// <param name="M">Размер массива (высота)</param>
+        /// <param name="x_f">Координата конечной точки Х</param>
+        /// <param name="y_f">Координата конечной точки У</param>
+        /// <returns>Список точек пути до конечной точки</returns>
         public List<List<int>> Way(byte[,] arr, int N, int M, int x_f, int y_f)
         {
             int[,] workarr = new int[N + 1, M + 1];
