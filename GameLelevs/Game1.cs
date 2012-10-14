@@ -63,7 +63,8 @@ namespace GameLevels
 
         //объявляем текустуры охранников
         Texture2D guardIdleTexture;
-        Texture2D guardRunTexture;
+        Texture2D guardRunTextureGoriz;
+        Texture2D guardRunTextureVertic;
 
         SpriteFont font;
 
@@ -203,7 +204,8 @@ namespace GameLevels
 
             //загружаем текстуры для охранников
             guardIdleTexture = Content.Load<Texture2D>("players/player");
-            guardRunTexture = Content.Load<Texture2D>("players/player_run");
+            guardRunTextureGoriz = Content.Load<Texture2D>("players/player_run_goriz");
+            guardRunTextureVertic = Content.Load<Texture2D>("players/player_run");
 
             // инициализируем нового игрока
             Rectangle plaerPosition = new Rectangle(130, 130, sizePeople, sizePeople);
@@ -595,7 +597,7 @@ namespace GameLevels
 
                         // инициализируем нового охранника
                         Rectangle RectGuard = new Rectangle(x + sizePeople / 4, y + sizePeople / 4, sizePeople, sizePeople);
-                        Guards guard = new Guards(guardIdleTexture, guardRunTexture, RectGuard, this, player, this.camera);
+                        Guards guard = new Guards(guardIdleTexture, guardRunTextureVertic, guardRunTextureGoriz, RectGuard, this, player, this.camera);
                         guards.Add(guard);
                         guard.Run(PlayerMove.Left);
                     }

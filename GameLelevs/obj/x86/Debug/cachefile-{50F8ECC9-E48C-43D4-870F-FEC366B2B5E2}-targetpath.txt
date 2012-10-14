@@ -27,8 +27,8 @@ Content\Textures\Objects\tableU.xnb
 Content\Textures\Objects\card.xnb
 Content\Textures\Objects\key.xnb
 Content\Textures\Objects\money.xnb
-Content\myFont1.xnb
 Content\players\player_run_goriz.xnb
+Content\myFont1.xnb
 Content\Textures\lvl\wall_goriz.JPG
 Content\Textures\lvl\wall_vert.JPG
 Content\Textures\lvl\wall_4sides.JPG

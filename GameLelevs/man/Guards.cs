@@ -39,8 +39,11 @@ namespace GameLevels
         // текстура для вывода охранника в состоянии спокойствия
         private Texture2D idlTexture;
 
-        // текстура для вывода охранника в состоянии бега
-        private Texture2D runTexture;
+        // текстура для вывода охранника в состоянии бега по вертикали
+        private Texture2D runTextureVert;
+
+        // текстура вывода охранника в состоянии бега по горизонтали
+        private Texture2D runTextureGoriz;
 
         // для анимации
         private FrameInfo frameInfo;
@@ -98,11 +101,12 @@ namespace GameLevels
         /// <param name="playerTexture">Текстура охранника</param>
         /// <param name="width">Ширина кадра</param>
         /// <param name="height">Высота кадра</param>
-        public Guards(Texture2D idlTexture, Texture2D runTexture, Rectangle position, Game1 game, Player player, Camera camera)
+        public Guards(Texture2D idlTexture, Texture2D runTextureVert, Texture2D runTextureGoriz, Rectangle position, Game1 game, Player player, Camera camera)
         {
             Init();
             this.idlTexture = idlTexture;
-            this.runTexture = runTexture;
+            this.runTextureGoriz = runTextureGoriz;
+            this.runTextureVert = runTextureVert;
 
             this.game = game;
             this.camera = camera;
@@ -118,10 +122,10 @@ namespace GameLevels
             this.oldPosGuardX = x / game.Size;
             this.oldPosGuardY = y / game.Size;
 
-            frameInfo.height = frameInfo.width = runTexture.Height;
+            frameInfo.height = frameInfo.width = runTextureVert.Height;
 
             // вычислим сколько кадров в анимации
-            frameInfo.count = this.runTexture.Width / frameInfo.width;
+            frameInfo.count = this.runTextureVert.Width / frameInfo.width;
 
             this.position = position;
 
@@ -154,11 +158,12 @@ namespace GameLevels
         /// <param name="sb">SB</param>
         /// <param name="playerTexture">Текстура игрока</param>
         /// <param name="frameSettings">Информация о фрейме</param>
-        public Guards(Texture2D idlTexture, Texture2D runTexture, FrameInfo frameInfo, Game1 game)
+        public Guards(Texture2D idlTexture, Texture2D runTextureVert, Texture2D runTextureGoriz, FrameInfo frameInfo, Game1 game)
         {
             Init();
             this.idlTexture = idlTexture;
-            this.runTexture = runTexture;
+            this.runTextureGoriz = runTextureGoriz;
+            this.runTextureVert = runTextureVert;
 
             this.frameInfo = frameInfo;
 
@@ -219,7 +224,34 @@ namespace GameLevels
 
             if (this.isRunning)
             {
-                spriteBatch.Draw(runTexture, screenRect, sourceRect, Color.White);
+                //spriteBatch.Draw(runTexture, screenRect, sourceRect, Color.White);
+
+                SpriteEffects currentEffect = new SpriteEffects();
+                Texture2D currentTexture;
+
+                // TODO: оптимизировать код!
+                switch (this.direction)
+                {
+                    case PlayerMove.Left:
+                        currentEffect = SpriteEffects.FlipHorizontally;
+                        currentTexture = runTextureGoriz;
+                        break;
+                    case PlayerMove.Right:
+                        currentEffect = SpriteEffects.None;
+                        currentTexture = runTextureGoriz;
+                        break;
+                    case PlayerMove.Up:
+                        currentEffect = SpriteEffects.FlipVertically;
+                        currentTexture = runTextureVert;
+                        break;
+                    default:
+                        currentEffect = SpriteEffects.None;
+                        currentTexture = runTextureVert;
+                        break;
+                }
+
+                spriteBatch.Draw(currentTexture, screenRect, sourceRect, Color.White, 0, Vector2.Zero, currentEffect, 0);
+
             }
             else
             {
