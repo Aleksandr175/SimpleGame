@@ -16,10 +16,6 @@ Content\Textures\lvl\doors\door_vertic.xnb
 Content\Textures\lvl\doors\door_vertic_open.xnb
 Content\players\player.xnb
 Content\players\player_run.xnb
-Content\myFont1.xnb
-Content\Textures\Objects\card.xnb
-Content\Textures\Objects\key.xnb
-Content\Textures\Objects\money.xnb
 Content\Textures\Objects\spDL.xnb
 Content\Textures\Objects\spLU.xnb
 Content\Textures\Objects\spRD.xnb
@@ -28,6 +24,11 @@ Content\Textures\Objects\tableD.xnb
 Content\Textures\Objects\tableL.xnb
 Content\Textures\Objects\tableR.xnb
 Content\Textures\Objects\tableU.xnb
+Content\Textures\Objects\card.xnb
+Content\Textures\Objects\key.xnb
+Content\Textures\Objects\money.xnb
+Content\myFont1.xnb
+Content\players\player_run_goriz.xnb
 Content\Textures\lvl\wall_goriz.JPG
 Content\Textures\lvl\wall_vert.JPG
 Content\Textures\lvl\wall_4sides.JPG

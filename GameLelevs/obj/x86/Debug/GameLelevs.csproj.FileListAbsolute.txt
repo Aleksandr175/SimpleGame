@@ -255,3 +255,15 @@ C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableL.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableR.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableU.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spDL.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spLU.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spRD.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spUR.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableD.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableL.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableR.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableU.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\card.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\key.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\money.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run_goriz.xnb

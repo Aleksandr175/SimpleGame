@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 using System.IO;
-using Enumeration;
+using Enumerations;
 
 namespace GameLevels
 {
@@ -207,7 +207,7 @@ namespace GameLevels
 
             // инициализируем нового игрока
             Rectangle plaerPosition = new Rectangle(130, 130, sizePeople, sizePeople);
-            player = new Player(Content.Load<Texture2D>("players/player"), Content.Load<Texture2D>("players/player_run"), plaerPosition, this, camera);
+            player = new Player(Content.Load<Texture2D>("players/player"), Content.Load<Texture2D>("players/player_run"), Content.Load<Texture2D>("players/player_run_goriz"), plaerPosition, this, camera);
 
             font = Content.Load<SpriteFont>("myFont1");
 

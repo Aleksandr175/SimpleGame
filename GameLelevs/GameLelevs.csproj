@@ -114,18 +114,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Block.cs" />
-    <Compile Include="Camera.cs" />
-    <Compile Include="enumeration.cs" />
-    <Compile Include="FPSCounter.cs" />
-    <Compile Include="Guards.cs" />
-    <Compile Include="IPlayer.cs" />
-    <Compile Include="Object.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="levelObjects\Block.cs" />
+    <Compile Include="levelObjects\Camera.cs" />
+    <Compile Include="man\Enumeration.cs" />
+    <Compile Include="levelObjects\FPSCounter.cs" />
+    <Compile Include="man\Guards.cs" />
+    <Compile Include="man\IMan.cs" />
+    <Compile Include="levelObjects\Object.cs" />
+    <Compile Include="man\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="Structs.cs" />
+    <Compile Include="man\Structs.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
