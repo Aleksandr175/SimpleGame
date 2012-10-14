@@ -116,6 +116,7 @@
   <ItemGroup>
     <Compile Include="levelObjects\Block.cs" />
     <Compile Include="levelObjects\Camera.cs" />
+    <Compile Include="levelObjects\Storage.cs" />
     <Compile Include="man\Enumeration.cs" />
     <Compile Include="levelObjects\FPSCounter.cs" />
     <Compile Include="man\Guards.cs" />

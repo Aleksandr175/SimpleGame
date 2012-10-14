@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 using System.IO;
 using Enumerations;
+using GameLevels.levelObjects;
 
 namespace GameLevels
 {
@@ -25,6 +26,8 @@ namespace GameLevels
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        Storage storage;
 
         Texture2D wallGoriz;
         Texture2D wallVert;
@@ -138,6 +141,7 @@ namespace GameLevels
             this.Components.Add(new FPSCounter(this));  // добавили игровой компонент - fps счетчик
 
             this.camera = new Camera();
+            this.storage = new Storage();
 
             // отключили ограничение fps счетчика
             IsFixedTimeStep = true;
@@ -167,7 +171,11 @@ namespace GameLevels
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+
             // загружаем текстуры стен
+            storage.PushTexture2D("Horizont wall", Content.Load<Texture2D>("Textures/lvl/wall_goriz"));
+            storage.PushTexture2D("Vertical wall", Content.Load<Texture2D>("Textures/lvl/wall_vert"));
+
             wallGoriz = Content.Load<Texture2D>("Textures/lvl/wall_goriz");
             wallVert = Content.Load<Texture2D>("Textures/lvl/wall_vert");
             wallDownRight = Content.Load<Texture2D>("Textures/lvl/wall_down_right");
@@ -473,7 +481,7 @@ namespace GameLevels
                     }
                     if (s.Equals("1", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallGoriz, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("Horizont wall"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -481,7 +489,7 @@ namespace GameLevels
                     }
                     if (s.Equals("2", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallVert, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("Vertical wall"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
