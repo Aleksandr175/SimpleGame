@@ -45,6 +45,22 @@ namespace GameLevels
         Texture2D doorHorizOpen;  // двери открытые
         Texture2D doorVerticOpen;
 
+        Texture2D keyTexture; // ключ
+        Texture2D cardTexture; // пластиковая карта
+        Texture2D goldTexture; // куча золота
+        
+        Texture2D tableWithCompSystemLU;  // стол с управлением камерами. LU - стол слева и сверху. Стул внизу, справа
+        Texture2D tableWithCompSystemUR;
+        Texture2D tableWithCompSystemRD; // DL - стол Снизу и справа. Стул сверху и слева
+        Texture2D tableWithCompSystemDL;
+
+        Texture2D tableWithCompU; // стол с компьюетером. Стол вверху, стул внизу
+        Texture2D tableWithCompR;
+        Texture2D tableWithCompD;
+        Texture2D tableWithCompL;
+
+
+
         //объявляем текустуры охранников
         Texture2D guardIdleTexture;
         Texture2D guardRunTexture;
@@ -99,6 +115,7 @@ namespace GameLevels
         KeyboardState oldState;
 
         List<Block> blocks; // объекты стен и дверей
+        List<Object> objs; // объекты на уровне
         List<Guards> guards; // список охранников
         
 
@@ -168,6 +185,21 @@ namespace GameLevels
             doorVertic = Content.Load<Texture2D>("Textures/lvl/doors/door_vertic");
             doorHorizOpen = Content.Load<Texture2D>("Textures/lvl/doors/door_horiz_open");
             doorVerticOpen = Content.Load<Texture2D>("Textures/lvl/doors/door_vertic_open");
+
+            //загружаем текстуры объектов на уровне
+            keyTexture = Content.Load<Texture2D>("Textures/objects/key");
+            cardTexture = Content.Load<Texture2D>("Textures/objects/card");
+            goldTexture = Content.Load<Texture2D>("Textures/objects/money");
+
+            tableWithCompSystemLU = Content.Load<Texture2D>("Textures/objects/spLU");
+            tableWithCompSystemUR = Content.Load<Texture2D>("Textures/objects/spUR");
+            tableWithCompSystemRD = Content.Load<Texture2D>("Textures/objects/spRD");
+            tableWithCompSystemDL = Content.Load<Texture2D>("Textures/objects/spDL");
+
+            tableWithCompU = Content.Load<Texture2D>("Textures/objects/tableU");
+            tableWithCompR = Content.Load<Texture2D>("Textures/objects/tableR");
+            tableWithCompD = Content.Load<Texture2D>("Textures/objects/tableD");
+            tableWithCompL = Content.Load<Texture2D>("Textures/objects/tableL");
 
             //загружаем текстуры для охранников
             guardIdleTexture = Content.Load<Texture2D>("players/player");
@@ -350,6 +382,11 @@ namespace GameLevels
             {
                 block.Draw(spriteBatch);
             }
+            // отрисовываем объекты
+            foreach (Object obj in objs)
+            {
+                obj.Draw(spriteBatch);
+            }
 
             try
             {
@@ -392,6 +429,7 @@ namespace GameLevels
         void CreateLevel(int lvl)
         {
             blocks = new List<Block>();
+            objs = new List<Object>();
             guards = new List<Guards>();
             
             string lvl_name = "content/lvls/lvl" + Convert.ToString(lvl) + ".txt";
@@ -561,6 +599,71 @@ namespace GameLevels
                         guards.Add(guard);
                         guard.Run(PlayerMove.Left);
                     }
+
+                    // ключ и пластиковая карта
+                    if (s.Equals("40", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Object obj = new Object(Rect, keyTexture, this, this.camera);
+                        objs.Add(obj);
+                    }
+                    if (s.Equals("41", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Object obj = new Object(Rect, cardTexture, this, this.camera);
+                        objs.Add(obj);
+                    }
+
+                    // золото
+                    if (s.Equals("50", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Object obj = new Object(Rect, goldTexture, this, this.camera);
+                        objs.Add(obj);
+                    }
+
+                    // стол системы управления камерами
+                    if (s.Equals("60", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Object obj = new Object(Rect, tableWithCompSystemLU, this, this.camera);
+                        objs.Add(obj);
+                    }
+                    if (s.Equals("61", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Object obj = new Object(Rect, tableWithCompSystemUR, this, this.camera);
+                        objs.Add(obj);
+                    }
+                    if (s.Equals("62", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Object obj = new Object(Rect, tableWithCompSystemRD, this, this.camera);
+                        objs.Add(obj);
+                    }
+                    if (s.Equals("63", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Object obj = new Object(Rect, tableWithCompSystemDL, this, this.camera);
+                        objs.Add(obj);
+                    }
+
+                    // стол с компьютером
+                    if (s.Equals("70", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Object obj = new Object(Rect, tableWithCompU, this, this.camera);
+                        objs.Add(obj);
+                    }
+                    if (s.Equals("71", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Object obj = new Object(Rect, tableWithCompR, this, this.camera);
+                        objs.Add(obj);
+                    }
+                    if (s.Equals("72", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Object obj = new Object(Rect, tableWithCompD, this, this.camera);
+                        objs.Add(obj);
+                    }
+                    if (s.Equals("73", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Object obj = new Object(Rect, tableWithCompL, this, this.camera);
+                        objs.Add(obj);
+                    }
+
+                    
 
                     x += size;
 

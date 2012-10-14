@@ -105,3 +105,5 @@ Desktop.ini
 *.exe
 *.cache
 *.pdb
+*.db
+*.cachefile
