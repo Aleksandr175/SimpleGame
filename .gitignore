@@ -107,3 +107,7 @@ Desktop.ini
 *.pdb
 *.db
 *.cachefile
+
+# добавлено от Dmitriy1991
+ContentPipeline.xml
+GameLelevs.csproj.Debug.cachefile
