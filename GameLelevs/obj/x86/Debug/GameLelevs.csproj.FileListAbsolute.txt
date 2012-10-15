@@ -268,3 +268,11 @@ D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\key.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\money.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run_goriz.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run_goriz.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_horiz.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_vert.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_horiz.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_vert.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser4_horiz.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser4_vert.xnb

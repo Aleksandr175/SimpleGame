@@ -171,7 +171,14 @@ namespace GameLevels
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            // настройка хранилища
+            storage.TexturesLoader = Content.Load<Texture2D>;
+            storage.FontLoader = Content.Load<SpriteFont>;
 
+            // загрузка всех текстур из заданной папки
+            // !!! пока, обязательно указывать CONTENT/
+            storage.LoadTexture2DFolder("Content/Textures");
+           
             // загружаем текстуры стен
             storage.PushTexture2D("Horizont wall", Content.Load<Texture2D>("Textures/lvl/wall_goriz"));
             storage.PushTexture2D("Vertical wall", Content.Load<Texture2D>("Textures/lvl/wall_vert"));
