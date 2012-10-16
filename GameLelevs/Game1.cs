@@ -144,7 +144,7 @@ namespace GameLevels
             player = new Player(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), plaerPosition, this, camera);
 
             //сразу создаем первый уровень
-            CreateLevel(5);
+            CreateLevel(4);
 
             // TODO: use this.Content to load your game content here
             // TODO: возможно, стоит написать универсальный загрузчик ресурсов. Сейчас код кажется громоздким и неудобным / не гибким
@@ -520,16 +520,53 @@ namespace GameLevels
                 }
 
 
+
+
+                int[,] tempArray = new int[sizeFile[0] + 1, sizeFile[1] + 1]; //временный массив, используется для преобразований
+                int[,] map = new int[sizeFile[0] + 1, sizeFile[1] + 1]; // карта уровня после преобразования
+                
                 // преобразование значений объектов (стен) на уровне
                 for (int i = 0; i <= sizeFile[0]; i++)
                 {
                     for (int j = 0; j <= sizeFile[1]; j++)
                     {
 
+
+                        map[i, j] = 0;
+
+
+                        if (i > 0 && i < sizeFile[0] && j > 0 && j < sizeFile[1])
+                        {
+                            if (isWallAround(levelMap, i, j, sizeFile[0], sizeFile[1]))
+                            {
+                                map[i, j] = 7; // wall4sides
+                                break;
+                            }
+
+
+
+
+
+
+                        }
+
+
+                        if (isWallGoriz(levelMap, i, j, sizeFile[0], sizeFile[1]))
+                        {
+                            map[i, j] = 2; // почему-то надо наоборот с вертикальной стеной
+                        }
+                        if (isWallVertic(levelMap, i, j, sizeFile[0], sizeFile[1]))
+                        {
+                            map[i, j] = 1; // почему-то надо наоборот с горизонтальной стеной
+                        }
+
+                        //isWallTurn();
+                            
+
                     }
                 }
 
-
+                    
 
                 // создание объектов на уровне
                 for (int i = 0; i <= sizeFile[0]; i++)
@@ -537,19 +574,19 @@ namespace GameLevels
                     for (int j = 0; j <= sizeFile[1]; j++)
                     {
                         Rectangle Rect = new Rectangle(i * size, j * size, size, size);
-                        if (levelMap[i, j] == 0)
+                        if (map[i, j] == 0)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("empty"), this, this.camera);
                             blocks.Add(block);
-                        } 
-                        if (levelMap[i, j] == 1)
+                        }
+                        if (map[i, j] == 1)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_goriz"), this, this.camera);
                             blocks.Add(block);
                         }
-                        if (levelMap[i, j] == 2)
+                        if (map[i, j] == 2)
                         {
-                            Block block = new Block(Rect, storage.Pull2DTexture("wall_vertic"), this, this.camera);
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_vert"), this, this.camera);
                             blocks.Add(block);
                         }
                         if (levelMap[i, j] == 3)
@@ -572,7 +609,7 @@ namespace GameLevels
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_left_up"), this, this.camera);
                             blocks.Add(block);
                         }
-                        if (levelMap[i, j] == 7)
+                        if (map[i, j] == 7)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_4sides"), this, this.camera);
                             blocks.Add(block);
@@ -949,6 +986,111 @@ namespace GameLevels
 
 
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="array">Карта уровня</param>
+        /// <param name="i">Номер текущей строки</param>
+        /// <param name="j">Номер текущей колонки</param>
+        /// <param name="iEnd">Всего строк</param>
+        /// <param name="jEnd">Всего колонок</param>
+        /// <returns></returns>
+        bool isWallGoriz(byte[,] array, int i, int j, int iEnd, int jEnd)
+        {
+
+            if (i == 0)
+            {
+                if (array[i, j] == 1 && array[i + 1, j] == 0)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (i == iEnd)
+                {
+                    if (array[i, j] == 1 && array[i - 1, j] == 0)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (array[i, j] == 1 && array[i - 1, j] == 0 && array[i + 1, j] == 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+
+            return false;
+
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="i"></param>
+        /// <param name="j"></param>
+        /// <param name="iEnd"></param>
+        /// <param name="jEnd"></param>
+        /// <returns></returns>
+        bool isWallVertic(byte[,] array, int i, int j, int iEnd, int jEnd)
+        {
+
+            if (j == 0)
+            {
+                if (array[i, j] == 1 && array[i, j + 1] == 0)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (j == jEnd)
+                {
+                    if (array[i, j] == 1 && array[i, j - 1] == 0)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (array[i, j] == 1 && array[i, j - 1] == 0 && array[i, j + 1] == 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+
+            return false;
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="i"></param>
+        /// <param name="j"></param>
+        /// <param name="iEnd"></param>
+        /// <param name="jEnd"></param>
+        /// <returns></returns>
+        bool isWallAround(byte[,] array, int i, int j, int iEnd, int jEnd)
+        {
+            if (array[i, j] == 1 && array[i + 1, j] == 1 && array[i - 1, j] == 1 && array[i, j + 1] == 1 && array[i, j - 1] == 1)
+                return true;
+            else
+                return false;
+        }
+
+
+        
 
     }
 }
