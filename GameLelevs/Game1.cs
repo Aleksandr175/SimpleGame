@@ -27,50 +27,8 @@ namespace GameLevels
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        // хранилище данных
         Storage storage;
-
-        Texture2D wallGoriz;
-        Texture2D wallVert;
-        Texture2D wallDownRight; //угловые стены
-        Texture2D wallUpRight;
-        Texture2D wallLeftDown;
-        Texture2D wallLeftUp;
-        Texture2D wall4sides; // стены в 4 стороны
-        Texture2D wallURD;  // стены в 3 стороны U - top, R - right, L - left, D - down
-        Texture2D wallRDL;
-        Texture2D wallDLU;
-        Texture2D wallLUR;
-
-        Texture2D wallEmpty;
-
-        Texture2D doorHoriz;  // двери
-        Texture2D doorVertic;
-        Texture2D doorHorizOpen;  // двери открытые
-        Texture2D doorVerticOpen;
-
-        Texture2D keyTexture; // ключ
-        Texture2D cardTexture; // пластиковая карта
-        Texture2D goldTexture; // куча золота
-        
-        Texture2D tableWithCompSystemLU;  // стол с управлением камерами. LU - стол слева и сверху. Стул внизу, справа
-        Texture2D tableWithCompSystemUR;
-        Texture2D tableWithCompSystemRD; // DL - стол Снизу и справа. Стул сверху и слева
-        Texture2D tableWithCompSystemDL;
-
-        Texture2D tableWithCompU; // стол с компьюетером. Стол вверху, стул внизу
-        Texture2D tableWithCompR;
-        Texture2D tableWithCompD;
-        Texture2D tableWithCompL;
-
-
-
-        //объявляем текустуры охранников
-        Texture2D guardIdleTexture;
-        Texture2D guardRunTextureGoriz;
-        Texture2D guardRunTextureVertic;
-
-        SpriteFont font;
-
         
         //длина уровня в пикселях
         int lenghtX;
@@ -141,7 +99,7 @@ namespace GameLevels
             this.Components.Add(new FPSCounter(this));  // добавили игровой компонент - fps счетчик
 
             this.camera = new Camera();
-            this.storage = new Storage();
+            storage = new Storage();
 
             // отключили ограничение fps счетчика
             IsFixedTimeStep = true;
@@ -178,55 +136,12 @@ namespace GameLevels
             // загрузка всех текстур из заданной папки
             // !!! пока, обязательно указывать CONTENT/
             storage.LoadTexture2DFolder("Content/Textures");
-           
-            // загружаем текстуры стен
-            storage.PushTexture2D("Horizont wall", Content.Load<Texture2D>("Textures/lvl/wall_goriz"));
-            storage.PushTexture2D("Vertical wall", Content.Load<Texture2D>("Textures/lvl/wall_vert"));
-
-            wallGoriz = Content.Load<Texture2D>("Textures/lvl/wall_goriz");
-            wallVert = Content.Load<Texture2D>("Textures/lvl/wall_vert");
-            wallDownRight = Content.Load<Texture2D>("Textures/lvl/wall_down_right");
-            wallUpRight = Content.Load<Texture2D>("Textures/lvl/wall_up_right");
-            wallLeftDown = Content.Load<Texture2D>("Textures/lvl/wall_left_down");
-            wallLeftUp = Content.Load<Texture2D>("Textures/lvl/wall_left_up");
-            wall4sides = Content.Load<Texture2D>("Textures/lvl/wall_4sides");
-            wallEmpty = Content.Load<Texture2D>("Textures/lvl/empty");
-            wallURD = Content.Load<Texture2D>("Textures/lvl/wall_urd");
-            wallRDL = Content.Load<Texture2D>("Textures/lvl/wall_rdl");
-            wallDLU = Content.Load<Texture2D>("Textures/lvl/wall_dlu");
-            wallLUR = Content.Load<Texture2D>("Textures/lvl/wall_lur");
-
-            // загружаем текстуры дверей
-            doorHoriz = Content.Load<Texture2D>("Textures/lvl/doors/door_horiz");
-            doorVertic = Content.Load<Texture2D>("Textures/lvl/doors/door_vertic");
-            doorHorizOpen = Content.Load<Texture2D>("Textures/lvl/doors/door_horiz_open");
-            doorVerticOpen = Content.Load<Texture2D>("Textures/lvl/doors/door_vertic_open");
-
-            //загружаем текстуры объектов на уровне
-            keyTexture = Content.Load<Texture2D>("Textures/objects/key");
-            cardTexture = Content.Load<Texture2D>("Textures/objects/card");
-            goldTexture = Content.Load<Texture2D>("Textures/objects/money");
-
-            tableWithCompSystemLU = Content.Load<Texture2D>("Textures/objects/spLU");
-            tableWithCompSystemUR = Content.Load<Texture2D>("Textures/objects/spUR");
-            tableWithCompSystemRD = Content.Load<Texture2D>("Textures/objects/spRD");
-            tableWithCompSystemDL = Content.Load<Texture2D>("Textures/objects/spDL");
-
-            tableWithCompU = Content.Load<Texture2D>("Textures/objects/tableU");
-            tableWithCompR = Content.Load<Texture2D>("Textures/objects/tableR");
-            tableWithCompD = Content.Load<Texture2D>("Textures/objects/tableD");
-            tableWithCompL = Content.Load<Texture2D>("Textures/objects/tableL");
-
-            //загружаем текстуры для охранников
-            guardIdleTexture = Content.Load<Texture2D>("players/player");
-            guardRunTextureGoriz = Content.Load<Texture2D>("players/player_run_goriz");
-            guardRunTextureVertic = Content.Load<Texture2D>("players/player_run");
+            storage.LoadTexture2DFolder("Content/players");
+            storage.PushFont("font", Content.Load<SpriteFont>("myFont1"));
 
             // инициализируем нового игрока
             Rectangle plaerPosition = new Rectangle(130, 130, sizePeople, sizePeople);
-            player = new Player(Content.Load<Texture2D>("players/player"), Content.Load<Texture2D>("players/player_run"), Content.Load<Texture2D>("players/player_run_goriz"), plaerPosition, this, camera);
-
-            font = Content.Load<SpriteFont>("myFont1");
+            player = new Player(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), plaerPosition, this, camera);
 
             //сразу создаем первый уровень
             CreateLevel(4);
@@ -407,10 +322,10 @@ namespace GameLevels
 
             try
             {
-                spriteBatch.DrawString(font, guards[0].X.ToString(), new Vector2(10, 0), Color.Red);
-                spriteBatch.DrawString(font, guards[0].Y.ToString(), new Vector2(10, 20), Color.Red);
-                spriteBatch.DrawString(font, lenghtX.ToString(), new Vector2(10, 40), Color.Red); // распечатка длины уровня по X
-                spriteBatch.DrawString(font, lenghtY.ToString(), new Vector2(10, 60), Color.Red); // распечатка длины уровня по Y 
+                spriteBatch.DrawString(storage.PullFont("font"), guards[0].X.ToString(), new Vector2(10, 0), Color.Red);
+                spriteBatch.DrawString(storage.PullFont("font"), guards[0].Y.ToString(), new Vector2(10, 20), Color.Red);
+                spriteBatch.DrawString(storage.PullFont("font"), lenghtX.ToString(), new Vector2(10, 40), Color.Red); // распечатка длины уровня по X
+                spriteBatch.DrawString(storage.PullFont("font"), lenghtY.ToString(), new Vector2(10, 60), Color.Red); // распечатка длины уровня по Y 
             }
             catch {
                 // TODO: необходимо как-то обрабатывать исключения!
@@ -483,12 +398,12 @@ namespace GameLevels
                     Rectangle Rect = new Rectangle(x, y, size, size);
                     if (s.Equals("0", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallEmpty, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("empty"), this, this.camera);
                         blocks.Add(block);
                     }
                     if (s.Equals("1", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, storage.Pull2DTexture("Horizont wall"), this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("wall_goriz"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -496,7 +411,7 @@ namespace GameLevels
                     }
                     if (s.Equals("2", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, storage.Pull2DTexture("Vertical wall"), this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("wall_vert"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -504,7 +419,7 @@ namespace GameLevels
                     }
                     if (s.Equals("3", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallDownRight, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("wall_down_right"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -512,7 +427,7 @@ namespace GameLevels
                     }
                     if (s.Equals("4", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallUpRight, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("wall_up_right"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -520,7 +435,7 @@ namespace GameLevels
                     }
                     if (s.Equals("5", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallLeftDown, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("wall_left_down"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -528,7 +443,7 @@ namespace GameLevels
                     }
                     if (s.Equals("6", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallLeftUp, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("wall_left_up"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -536,7 +451,7 @@ namespace GameLevels
                     }
                     if (s.Equals("7", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wall4sides, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("wall_4sides"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -544,7 +459,7 @@ namespace GameLevels
                     }
                     if (s.Equals("8", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallURD, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("wall_urd"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -552,7 +467,7 @@ namespace GameLevels
                     }
                     if (s.Equals("9", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallRDL, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("wall_rdl"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -560,7 +475,7 @@ namespace GameLevels
                     }
                     if (s.Equals("10", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallDLU, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("wall_dlu"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -568,7 +483,7 @@ namespace GameLevels
                     }
                     if (s.Equals("11", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, wallLUR, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("wall_lur"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -579,7 +494,7 @@ namespace GameLevels
                     //двери
                     if (s.Equals("20", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, doorHoriz, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -587,7 +502,7 @@ namespace GameLevels
                     }
                     if (s.Equals("21", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, doorVertic, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), this, this.camera);
                         blocks.Add(block);
 
                         // добавим стену в карту
@@ -595,24 +510,24 @@ namespace GameLevels
                     }
                     if (s.Equals("22", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, doorHorizOpen, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), this, this.camera);
                         blocks.Add(block);
                     }
                     if (s.Equals("23", StringComparison.OrdinalIgnoreCase))
                     {
-                        Block block = new Block(Rect, doorVerticOpen, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), this, this.camera);
                         blocks.Add(block);
                     }
 
                     if (s.Equals("30", StringComparison.OrdinalIgnoreCase))
                     { //буква "о"
                         //пол
-                        Block block = new Block(Rect, wallEmpty, this, this.camera);
+                        Block block = new Block(Rect, storage.Pull2DTexture("empty"), this, this.camera);
                         blocks.Add(block);
 
                         // инициализируем нового охранника
                         Rectangle RectGuard = new Rectangle(x + sizePeople / 4, y + sizePeople / 4, sizePeople, sizePeople);
-                        Guards guard = new Guards(guardIdleTexture, guardRunTextureVertic, guardRunTextureGoriz, RectGuard, this, player, this.camera);
+                        Guards guard = new Guards(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), RectGuard, this, player, this.camera);
                         guards.Add(guard);
                         guard.Run(PlayerMove.Left);
                     }
@@ -620,63 +535,63 @@ namespace GameLevels
                     // ключ и пластиковая карта
                     if (s.Equals("40", StringComparison.OrdinalIgnoreCase))
                     {
-                        Object obj = new Object(Rect, keyTexture, this, this.camera);
+                        Object obj = new Object(Rect, storage.Pull2DTexture("key"), this, this.camera);
                         objs.Add(obj);
                     }
                     if (s.Equals("41", StringComparison.OrdinalIgnoreCase))
                     {
-                        Object obj = new Object(Rect, cardTexture, this, this.camera);
+                        Object obj = new Object(Rect, storage.Pull2DTexture("card"), this, this.camera);
                         objs.Add(obj);
                     }
 
                     // золото
                     if (s.Equals("50", StringComparison.OrdinalIgnoreCase))
                     {
-                        Object obj = new Object(Rect, goldTexture, this, this.camera);
+                        Object obj = new Object(Rect, storage.Pull2DTexture("money"), this, this.camera);
                         objs.Add(obj);
                     }
 
                     // стол системы управления камерами
                     if (s.Equals("60", StringComparison.OrdinalIgnoreCase))
                     {
-                        Object obj = new Object(Rect, tableWithCompSystemLU, this, this.camera);
+                        Object obj = new Object(Rect, storage.Pull2DTexture("spLU"), this, this.camera);
                         objs.Add(obj);
                     }
                     if (s.Equals("61", StringComparison.OrdinalIgnoreCase))
                     {
-                        Object obj = new Object(Rect, tableWithCompSystemUR, this, this.camera);
+                        Object obj = new Object(Rect, storage.Pull2DTexture("spUR"), this, this.camera);
                         objs.Add(obj);
                     }
                     if (s.Equals("62", StringComparison.OrdinalIgnoreCase))
                     {
-                        Object obj = new Object(Rect, tableWithCompSystemRD, this, this.camera);
+                        Object obj = new Object(Rect, storage.Pull2DTexture("spRD"), this, this.camera);
                         objs.Add(obj);
                     }
                     if (s.Equals("63", StringComparison.OrdinalIgnoreCase))
                     {
-                        Object obj = new Object(Rect, tableWithCompSystemDL, this, this.camera);
+                        Object obj = new Object(Rect, storage.Pull2DTexture("spDL"), this, this.camera);
                         objs.Add(obj);
                     }
 
                     // стол с компьютером
                     if (s.Equals("70", StringComparison.OrdinalIgnoreCase))
                     {
-                        Object obj = new Object(Rect, tableWithCompU, this, this.camera);
+                        Object obj = new Object(Rect, storage.Pull2DTexture("tableU"), this, this.camera);
                         objs.Add(obj);
                     }
                     if (s.Equals("71", StringComparison.OrdinalIgnoreCase))
                     {
-                        Object obj = new Object(Rect, tableWithCompR, this, this.camera);
+                        Object obj = new Object(Rect, storage.Pull2DTexture("tableR"), this, this.camera);
                         objs.Add(obj);
                     }
                     if (s.Equals("72", StringComparison.OrdinalIgnoreCase))
                     {
-                        Object obj = new Object(Rect, tableWithCompD, this, this.camera);
+                        Object obj = new Object(Rect, storage.Pull2DTexture("tableD"), this, this.camera);
                         objs.Add(obj);
                     }
                     if (s.Equals("73", StringComparison.OrdinalIgnoreCase))
                     {
-                        Object obj = new Object(Rect, tableWithCompL, this, this.camera);
+                        Object obj = new Object(Rect, storage.Pull2DTexture("tableL"), this, this.camera);
                         objs.Add(obj);
                     }
 

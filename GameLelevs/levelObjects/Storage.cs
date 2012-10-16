@@ -96,7 +96,7 @@ namespace GameLevels.levelObjects
             // единственный недостаток - если текстуры называются одинаково, то они не загрузятся
             foreach (FileInfo file in fi) {
                 // проверка, чтобы не загружать файлы .xnb
-                if(!String.Equals(file.Name.Substring((file.Name.LastIndexOf('.')) + 1, 3), "xnb")) {
+                if(String.Equals(file.Name.Substring((file.Name.LastIndexOf('.')) + 1, 3), "xnb")) {
                     fileName = file.Name.Remove(file.Name.IndexOf('.'));
                     filePath = Path.Combine(newActiveDir, fileName);
                     PushTexture2D(fileName, TexturesLoader(filePath));
