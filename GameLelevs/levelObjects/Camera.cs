@@ -9,11 +9,13 @@ namespace GameLevels
     class Camera
     {
         Game1 game;
+        LevelLoader levelLoader;
         public Rectangle Rect { get; set; }
         
-        void camera(Game1 game)
+        void camera(Game1 game, LevelLoader levelLoader)
         {
             this.game = game;
+            this.levelLoader = levelLoader;
         }
         //экранные координаты - смещение камеры относительно начала мировых координат 
         int scrollX;
@@ -58,11 +60,11 @@ namespace GameLevels
         {
             // TODO: сделать, чтобы просмотр камеры не уходил, если есть еще много места для просмотра 
             //                                                    и при столкновении игрока со стенами
-            if (scrollX + dx > 0 && scrollX + dx < game.GetLenghtX - game.GetScreenWidth)
+            if (scrollX + dx > 0 && scrollX + dx < LevelLoader.GetLenghtX - game.GetScreenWidth)
             {
                 scrollX += dx;
             }
-            if (scrollY + dy > 0 && scrollY + dy < game.GetLenghtY - game.GetScreenHeight)
+            if (scrollY + dy > 0 && scrollY + dy < LevelLoader.GetLenghtY - game.GetScreenHeight)
             {
                 scrollY += dy;
             }

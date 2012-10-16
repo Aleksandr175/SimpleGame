@@ -41,6 +41,8 @@ namespace GameLevels
         // ссылка на камеру
         private Camera camera;
 
+        private LevelLoader levelLoader;
+
         // старое положение игрока
         private int oldPosX;
         private int oldPosY;
@@ -67,7 +69,7 @@ namespace GameLevels
         /// <param name="playerTexture">Текстура игрока</param>
         /// <param name="width">Ширина кадра</param>
         /// <param name="height">Высота кадра</param>
-        public Player(Texture2D idlTexture, Texture2D runTextureVert, Texture2D runTextureGoriz, Rectangle position, Game1 game, Camera camera)
+        public Player(Texture2D idlTexture, Texture2D runTextureVert, Texture2D runTextureGoriz, Rectangle position, Game1 game, Camera camera, LevelLoader levelLoader)
         {
             Init();
             this.idlTexture = idlTexture;
@@ -83,6 +85,7 @@ namespace GameLevels
 
             this.game = game;
             this.camera = camera;
+            this.levelLoader = levelLoader;
         }
 
         /// <summary>
@@ -201,8 +204,8 @@ namespace GameLevels
                 // новое положение игрока
                 Rectangle newPosition = playerInfo.position;
 
-                oldPosX = playerInfo.position.X / game.Size;
-                oldPosY = playerInfo.position.Y / game.Size;
+                oldPosX = playerInfo.position.X / LevelLoader.Size;
+                oldPosY = playerInfo.position.Y / LevelLoader.Size;
 
                 // смотрим, в каком направлении движемся 
                 switch (playerInfo.direction)
@@ -226,12 +229,12 @@ namespace GameLevels
                     default: break;
                 }
 
-                if (newPosition.Left > 0 && newPosition.Right < game.GetLenghtX && !game.CollidesWithLevel(newPosition))
+                if (newPosition.Left > 0 && newPosition.Right < LevelLoader.GetLenghtX && !game.CollidesWithLevel(newPosition))
                 {
                     // перемещаем игрока на новую позицию
                     playerInfo.position = newPosition;
-                    newPosX = playerInfo.position.X / game.Size;
-                    newPosY = playerInfo.position.Y / game.Size;
+                    newPosX = playerInfo.position.X / LevelLoader.Size;
+                    newPosY = playerInfo.position.Y / LevelLoader.Size;
                     //изменилась ли клетка, в кот. находился игрок?
                     if (newPosX != oldPosX || newPosY != oldPosY)
                     {
@@ -241,14 +244,14 @@ namespace GameLevels
 
                     // движение камеры за игроком. Камера не выходит за пределы экрана
                     // движение камеры по X (сравнение с границами уровня)
-                    if (playerInfo.position.X > game.GetScreenWidth / 2 - game.Size / 2 && playerInfo.position.X + game.GetScreenWidth / 2 + game.Size / 2 < game.GetLenghtX)
+                    if (playerInfo.position.X > game.GetScreenWidth / 2 - LevelLoader.Size / 2 && playerInfo.position.X + game.GetScreenWidth / 2 + LevelLoader.Size / 2 < LevelLoader.GetLenghtX)
                     {
-                        camera.SetCameraPosition(playerInfo.position.X - game.GetScreenWidth / 2 + game.Size / 2, camera.GetScrollY);
+                        camera.SetCameraPosition(playerInfo.position.X - game.GetScreenWidth / 2 + LevelLoader.Size / 2, camera.GetScrollY);
                     }
                     // движение камеры по Y (сравнение с границами уровня)
-                    if (playerInfo.position.Y > game.GetScreenHeight / 2 - game.Size / 2 && playerInfo.position.Y + game.GetScreenHeight / 2 + game.Size / 2 < game.GetLenghtY)
+                    if (playerInfo.position.Y > game.GetScreenHeight / 2 - LevelLoader.Size / 2 && playerInfo.position.Y + game.GetScreenHeight / 2 + LevelLoader.Size / 2 < LevelLoader.GetLenghtY)
                     {
-                        camera.SetCameraPosition(camera.GetScrollX, playerInfo.position.Y - game.GetScreenHeight / 2 + game.Size / 2);
+                        camera.SetCameraPosition(camera.GetScrollX, playerInfo.position.Y - game.GetScreenHeight / 2 + LevelLoader.Size / 2);
                     }
 
                 }

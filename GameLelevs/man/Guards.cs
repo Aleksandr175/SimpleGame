@@ -19,6 +19,7 @@ namespace GameLevels
 
         Rectangle position;
         Camera camera;
+        LevelLoader levelLoader;
 
         int oldPosGuardX; // старая позиция охранника. Для сравнения - "перешел ли охранник на новую клетку?"
         int oldPosGuardY;
@@ -46,7 +47,7 @@ namespace GameLevels
         private Texture2D runTextureGoriz;
 
         // для анимации
-        private FrameInfo frameInfo;
+        public FrameInfo frameInfo;
 
         // ссылка на экран
         private Game1 game;
@@ -101,7 +102,7 @@ namespace GameLevels
         /// <param name="playerTexture">Текстура охранника</param>
         /// <param name="width">Ширина кадра</param>
         /// <param name="height">Высота кадра</param>
-        public Guards(Texture2D idlTexture, Texture2D runTextureVert, Texture2D runTextureGoriz, Rectangle position, Game1 game, Player player, Camera camera)
+        public Guards(Texture2D idlTexture, Texture2D runTextureVert, Texture2D runTextureGoriz, Rectangle position, Game1 game, Player player, Camera camera, LevelLoader levelLoader)
         {
             Init();
             this.idlTexture = idlTexture;
@@ -111,17 +112,19 @@ namespace GameLevels
             this.game = game;
             this.camera = camera;
             this.player = player;
+            this.levelLoader = levelLoader;
 
             this.step = 1;
             
             //присваиваем положение охранника
-            x = position.X / game.Size;
-            y = position.Y / game.Size;
-            
-            
-            this.oldPosGuardX = x / game.Size;
-            this.oldPosGuardY = y / game.Size;
+            x = position.X / LevelLoader.Size;
+            y = position.Y / LevelLoader.Size;
 
+
+            this.oldPosGuardX = x / LevelLoader.Size;
+            this.oldPosGuardY = y / LevelLoader.Size;
+
+            
             frameInfo.height = frameInfo.width = runTextureVert.Height;
 
             // вычислим сколько кадров в анимации
@@ -300,13 +303,13 @@ namespace GameLevels
 
 
                 // смотрим, сместился ли на клетку охранник
-                x = newPosition.X / game.Size;
-                y = newPosition.Y / game.Size;
+                x = newPosition.X / LevelLoader.Size;
+                y = newPosition.Y / LevelLoader.Size;
 
 
                 //текущая клетка охранника
-                int nowPosGuardX = newPosition.X / game.Size;
-                int nowPosGuardY = newPosition.Y / game.Size;
+                int nowPosGuardX = newPosition.X / LevelLoader.Size;
+                int nowPosGuardY = newPosition.Y / LevelLoader.Size;
 
                 // следующая клетка, в кот. должен бежать охранник
                 int nextX = 0;
@@ -351,9 +354,9 @@ namespace GameLevels
                     }
 
                 }
-                
 
-                if (Math.Abs(this.oldPosGuardX * game.Size + game.Size / 2 - (newPosition.X + game.SizePeople / 2)) >= game.Size)
+
+                if (Math.Abs(this.oldPosGuardX * LevelLoader.Size + LevelLoader.Size / 2 - (newPosition.X + LevelLoader.SizePeople / 2)) >= LevelLoader.Size)
                 {
                     if (nowPosGuardX != this.oldPosGuardX)
                     {
@@ -367,7 +370,7 @@ namespace GameLevels
                         this.CheckStop();
                     }
                 }
-                if (Math.Abs(this.oldPosGuardY * game.Size + game.Size / 2 - (newPosition.Y + game.SizePeople / 2)) >= game.Size)
+                if (Math.Abs(this.oldPosGuardY * LevelLoader.Size + LevelLoader.Size / 2 - (newPosition.Y + LevelLoader.SizePeople / 2)) >= LevelLoader.Size)
                 {
                     if (nowPosGuardY != this.oldPosGuardY)
                     {
@@ -408,7 +411,7 @@ namespace GameLevels
                 }
             
                 // перемещение охранника
-                if (newPosition.Left > 0 && newPosition.Right < game.GetLenghtX)
+                if (newPosition.Left > 0 && newPosition.Right < LevelLoader.GetLenghtX)
                 {
                     this.position = newPosition;
                 }
