@@ -46,8 +46,8 @@ namespace GameLevels
             set { lenghtY = value; }
         }
 
-        int screenWidth = 300; // длина и высота экрана
-        int screenHeight = 300;
+        int screenWidth = 900; // длина и высота экрана
+        int screenHeight = 600;
 
         public int GetScreenWidth
         {
@@ -73,7 +73,7 @@ namespace GameLevels
 
         //информация об уровнях
         int currentLvl;
-        int maxLvl = 4;
+        int maxLvl = 5;
         KeyboardState oldState;
 
         List<Block> blocks; // объекты стен и дверей
@@ -140,11 +140,11 @@ namespace GameLevels
             storage.PushFont("font", Content.Load<SpriteFont>("myFont1"));
 
             // инициализируем нового игрока
-            Rectangle plaerPosition = new Rectangle(130, 130, sizePeople, sizePeople);
+            Rectangle plaerPosition = new Rectangle(120, 120, sizePeople, sizePeople);
             player = new Player(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), plaerPosition, this, camera);
 
             //сразу создаем первый уровень
-            CreateLevel(4);
+            CreateLevel(5);
 
             // TODO: use this.Content to load your game content here
             // TODO: возможно, стоит написать универсальный загрузчик ресурсов. Сейчас код кажется громоздким и неудобным / не гибким
@@ -350,14 +350,12 @@ namespace GameLevels
 
 
 
-        /*
-         * Ф-ция создания уровня.
-         * Считывает данные из файла.
-         * Файл д.б. с названием "lvlX.txt";
-         * 
-         * @param {int} lvl - номер уровня
-         * 
-         */
+        /// <summary>
+        /// Ф-ция создания уровня.
+        /// Считывает данные из файла.
+        /// Файл д.б. с названием "lvlX.txt";
+        /// </summary>
+        /// <param name="lvl">номер уровня</param>
         void CreateLevel(int lvl)
         {
             blocks = new List<Block>();
@@ -368,13 +366,10 @@ namespace GameLevels
             string[] lines = File.ReadAllLines(lvl_name); //получили массив строк
 
             // проверим уровень сложности
-            if (lvl == 4)
+            //if (lvl == 4)
                 complexity = Complexity.High;
-            else
-                complexity = Complexity.Low;
-
-            // выделим память для карты уровня
-            levelMap = new byte[lines[0].Length, lines.Length];
+            //else
+            //    complexity = Complexity.Low;
 
             // индексы для заполнения карты
             int indexI = 0;
@@ -385,235 +380,574 @@ namespace GameLevels
 
             string[] str = {};
 
-            foreach (string line in lines) //считали каждый символ в каждой строке
+            int tempIndex = 0;
+            int[] sizeFile = new int[2];
+
+            
+
+            // тестовый режим...
+            // ЕСЛИ УРОВЕНЬ ИЗ РЕДАКТОРА, ТО...
+            //приспособим загрузку уровней, сделанных в редакторе
+            if (lvl == 5)
             {
-                str = line.Split(' ');
 
-                foreach (string s in str)
+                lines = File.ReadAllLines(lvl_name); //получили массив строк                
+                //считываем размеры массива с уровнем (0 значение - строки, 1 - колонки)
+                foreach (string line in lines)
                 {
-                    
-                    //s.Equals("0", StringComparison.OrdinalIgnoreCase) - ф-ция сравнения строки s и "0"
-
-                    //добавили стену, соответвующую данному символу в файле
-                    Rectangle Rect = new Rectangle(x, y, size, size);
-                    if (s.Equals("0", StringComparison.OrdinalIgnoreCase))
+                    str = line.Split(' ');
+                    foreach (string s in str)
                     {
-                        Block block = new Block(Rect, storage.Pull2DTexture("empty"), this, this.camera);
-                        blocks.Add(block);
+                        sizeFile[tempIndex] = Convert.ToInt32(s);
+                        tempIndex++;
+                        if (tempIndex == 2) { break; }
                     }
-                    if (s.Equals("1", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("wall_goriz"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-                    if (s.Equals("2", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("wall_vert"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-                    if (s.Equals("3", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("wall_down_right"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-                    if (s.Equals("4", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("wall_up_right"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-                    if (s.Equals("5", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("wall_left_down"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-                    if (s.Equals("6", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("wall_left_up"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-                    if (s.Equals("7", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("wall_4sides"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-                    if (s.Equals("8", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("wall_urd"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-                    if (s.Equals("9", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("wall_rdl"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-                    if (s.Equals("10", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("wall_dlu"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-                    if (s.Equals("11", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("wall_lur"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-
-
-                    //двери
-                    if (s.Equals("20", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-                    if (s.Equals("21", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), this, this.camera);
-                        blocks.Add(block);
-
-                        // добавим стену в карту
-                        levelMap[indexI, indexJ] = 1;
-                    }
-                    if (s.Equals("22", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), this, this.camera);
-                        blocks.Add(block);
-                    }
-                    if (s.Equals("23", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), this, this.camera);
-                        blocks.Add(block);
-                    }
-
-                    if (s.Equals("30", StringComparison.OrdinalIgnoreCase))
-                    { //буква "о"
-                        //пол
-                        Block block = new Block(Rect, storage.Pull2DTexture("empty"), this, this.camera);
-                        blocks.Add(block);
-
-                        // инициализируем нового охранника
-                        Rectangle RectGuard = new Rectangle(x + sizePeople / 4, y + sizePeople / 4, sizePeople, sizePeople);
-                        Guards guard = new Guards(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), RectGuard, this, player, this.camera);
-                        guards.Add(guard);
-                        guard.Run(PlayerMove.Left);
-                    }
-
-                    // ключ и пластиковая карта
-                    if (s.Equals("40", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Object obj = new Object(Rect, storage.Pull2DTexture("key"), this, this.camera);
-                        objs.Add(obj);
-                    }
-                    if (s.Equals("41", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Object obj = new Object(Rect, storage.Pull2DTexture("card"), this, this.camera);
-                        objs.Add(obj);
-                    }
-
-                    // золото
-                    if (s.Equals("50", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Object obj = new Object(Rect, storage.Pull2DTexture("money"), this, this.camera);
-                        objs.Add(obj);
-                    }
-
-                    // стол системы управления камерами
-                    if (s.Equals("60", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Object obj = new Object(Rect, storage.Pull2DTexture("spLU"), this, this.camera);
-                        objs.Add(obj);
-                    }
-                    if (s.Equals("61", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Object obj = new Object(Rect, storage.Pull2DTexture("spUR"), this, this.camera);
-                        objs.Add(obj);
-                    }
-                    if (s.Equals("62", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Object obj = new Object(Rect, storage.Pull2DTexture("spRD"), this, this.camera);
-                        objs.Add(obj);
-                    }
-                    if (s.Equals("63", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Object obj = new Object(Rect, storage.Pull2DTexture("spDL"), this, this.camera);
-                        objs.Add(obj);
-                    }
-
-                    // стол с компьютером
-                    if (s.Equals("70", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Object obj = new Object(Rect, storage.Pull2DTexture("tableU"), this, this.camera);
-                        objs.Add(obj);
-                    }
-                    if (s.Equals("71", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Object obj = new Object(Rect, storage.Pull2DTexture("tableR"), this, this.camera);
-                        objs.Add(obj);
-                    }
-                    if (s.Equals("72", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Object obj = new Object(Rect, storage.Pull2DTexture("tableD"), this, this.camera);
-                        objs.Add(obj);
-                    }
-                    if (s.Equals("73", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Object obj = new Object(Rect, storage.Pull2DTexture("tableL"), this, this.camera);
-                        objs.Add(obj);
-                    }
-
-                    
-
-                    x += size;
-
-                    indexI++;
+                    break;
                 }
 
-                x = 0;
-                y += size;
+                // выделим память для карты уровня
+                levelMap = new byte[sizeFile[0] + 1, sizeFile[1] + 1];
 
-                indexI = 0;
-                indexJ++;
-            
+
+                tempIndex = 0;
+                //считывание уровня из файла
+                foreach (string line in lines)
+                {
+
+                    if (tempIndex == 0) { tempIndex++;  continue; } // пропускаем первую строку с данными размера уровня
+
+                    str = line.Split(' ');
+                    foreach (string s in str)
+                    {
+                        levelMap[indexI, indexJ] = 0;
+
+                        if (s.Equals("0", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 0;
+                        }
+                        if (s.Equals("1", StringComparison.OrdinalIgnoreCase))
+                        {
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+
+
+
+                        //двери
+                        if (s.Equals("20", StringComparison.OrdinalIgnoreCase))
+                        {
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 20;
+                        }
+                        if (s.Equals("21", StringComparison.OrdinalIgnoreCase))
+                        {
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 21;
+                        }
+                        if (s.Equals("22", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 22;
+                        }
+                        if (s.Equals("23", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 23;
+                        }
+
+                        if (s.Equals("30", StringComparison.OrdinalIgnoreCase))
+                        { //буква "о"
+                            levelMap[indexI, indexJ] = 30;
+                        }
+
+                        // ключ и пластиковая карта
+                        if (s.Equals("40", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 40;
+                        }
+                        if (s.Equals("41", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 41;
+                        }
+
+                        // золото
+                        if (s.Equals("50", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 50;
+                        }
+
+                        // стол системы управления камерами
+                        if (s.Equals("60", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 60;
+                        }
+                        if (s.Equals("61", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 61;
+                        }
+                        if (s.Equals("62", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 62;
+                        }
+                        if (s.Equals("63", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 63;
+                        }
+
+                        // стол с компьютером
+                        if (s.Equals("70", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 70;
+                        }
+                        if (s.Equals("71", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 71;
+                        }
+                        if (s.Equals("72", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 72;
+                        }
+                        if (s.Equals("73", StringComparison.OrdinalIgnoreCase))
+                        {
+                            levelMap[indexI, indexJ] = 73;
+                        }
+
+
+                        indexI++;
+
+                    }
+                    indexI = 0;
+                    indexJ++;
+
+                }
+
+
+                // преобразование значений объектов (стен) на уровне
+                for (int i = 0; i <= sizeFile[0]; i++)
+                {
+                    for (int j = 0; j <= sizeFile[1]; j++)
+                    {
+
+                    }
+                }
+
+
+
+                // создание объектов на уровне
+                for (int i = 0; i <= sizeFile[0]; i++)
+                {
+                    for (int j = 0; j <= sizeFile[1]; j++)
+                    {
+                        Rectangle Rect = new Rectangle(i * size, j * size, size, size);
+                        if (levelMap[i, j] == 0)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("empty"), this, this.camera);
+                            blocks.Add(block);
+                        } 
+                        if (levelMap[i, j] == 1)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_goriz"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 2)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_vertic"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 3)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_down_right"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 4)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_up_right"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 5)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_left_down"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 6)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_left_up"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 7)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_4sides"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 8)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_urd"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 9)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_rdl"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 10)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_dlu"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 11)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_lur"), this, this.camera);
+                            blocks.Add(block);
+                        }
+
+
+                        //двери
+                        if (levelMap[i, j] == 20)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 21)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 22)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (levelMap[i, j] == 23)
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), this, this.camera);
+                            blocks.Add(block);
+                        }
+
+                        if (levelMap[i, j] == 30)
+                        { //буква "о"
+                            //пол
+                            Block block = new Block(Rect, storage.Pull2DTexture("empty"), this, this.camera);
+                            blocks.Add(block);
+
+                            // инициализируем нового охранника
+                            Rectangle RectGuard = new Rectangle(x + sizePeople / 4, y + sizePeople / 4, sizePeople, sizePeople);
+                            Guards guard = new Guards(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), RectGuard, this, player, this.camera);
+                            guards.Add(guard);
+                            guard.Run(PlayerMove.Left);
+                        }
+
+                        // ключ и пластиковая карта
+                        if (levelMap[i, j] == 40)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("key"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (levelMap[i, j] == 41)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("card"), this, this.camera);
+                            objs.Add(obj);
+                        }
+
+                        // золото
+                        if (levelMap[i, j] == 50)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("money"), this, this.camera);
+                            objs.Add(obj);
+                        }
+
+                        // стол системы управления камерами
+                        if (levelMap[i, j] == 60)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("spLU"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (levelMap[i, j] == 61)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("spUR"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (levelMap[i, j] == 62)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("spRD"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (levelMap[i, j] == 63)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("spDL"), this, this.camera);
+                            objs.Add(obj);
+                        }
+
+                        // стол с компьютером
+                        if (levelMap[i, j] == 70)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("tableU"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (levelMap[i, j] == 71)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("tableR"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (levelMap[i, j] == 72)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("tableD"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (levelMap[i, j] == 73)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("tableL"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                    }
+                }
+                // конец создание объектов на уровне
+
+                lenghtX = size * sizeFile[1]; // длина уровня в пикселях
+                lenghtY = size * sizeFile[0];
+                
+
             }
 
-            lenghtX = size * str.Length; // длина уровня в пикселях
-            lenghtY = y;
 
-            Guards.SetLevelMap(levelMap, lenghtX / size, lenghtY / size);
+
+
+            // ЕСЛИ УРОВЕНЬ НЕ ИЗ РЕДАКТОРА, ТО ОБЫЧНАЯ ЗАГРУЗКА
+            else
+            {
+                // выделим память для карты уровня
+                levelMap = new byte[lines[0].Length, lines.Length];
+
+
+                foreach (string line in lines) //считали каждый символ в каждой строке
+                {
+                    str = line.Split(' ');
+
+                    foreach (string s in str)
+                    {
+
+                        //s.Equals("0", StringComparison.OrdinalIgnoreCase) - ф-ция сравнения строки s и "0"
+
+                        //добавили стену, соответвующую данному символу в файле
+                        Rectangle Rect = new Rectangle(x, y, size, size);
+                        if (s.Equals("0", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("empty"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (s.Equals("1", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_goriz"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+                        if (s.Equals("2", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_vert"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+                        if (s.Equals("3", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_down_right"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+                        if (s.Equals("4", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_up_right"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+                        if (s.Equals("5", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_left_down"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+                        if (s.Equals("6", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_left_up"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+                        if (s.Equals("7", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_4sides"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+                        if (s.Equals("8", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_urd"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+                        if (s.Equals("9", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_rdl"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+                        if (s.Equals("10", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_dlu"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+                        if (s.Equals("11", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("wall_lur"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+
+
+                        //двери
+                        if (s.Equals("20", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+                        if (s.Equals("21", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), this, this.camera);
+                            blocks.Add(block);
+
+                            // добавим стену в карту
+                            levelMap[indexI, indexJ] = 1;
+                        }
+                        if (s.Equals("22", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), this, this.camera);
+                            blocks.Add(block);
+                        }
+                        if (s.Equals("23", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), this, this.camera);
+                            blocks.Add(block);
+                        }
+
+                        if (s.Equals("30", StringComparison.OrdinalIgnoreCase))
+                        { //буква "о"
+                            //пол
+                            Block block = new Block(Rect, storage.Pull2DTexture("empty"), this, this.camera);
+                            blocks.Add(block);
+
+                            // инициализируем нового охранника
+                            Rectangle RectGuard = new Rectangle(x + sizePeople / 4, y + sizePeople / 4, sizePeople, sizePeople);
+                            Guards guard = new Guards(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), RectGuard, this, player, this.camera);
+                            guards.Add(guard);
+                            guard.Run(PlayerMove.Left);
+                        }
+
+                        // ключ и пластиковая карта
+                        if (s.Equals("40", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("key"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (s.Equals("41", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("card"), this, this.camera);
+                            objs.Add(obj);
+                        }
+
+                        // золото
+                        if (s.Equals("50", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("money"), this, this.camera);
+                            objs.Add(obj);
+                        }
+
+                        // стол системы управления камерами
+                        if (s.Equals("60", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("spLU"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (s.Equals("61", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("spUR"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (s.Equals("62", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("spRD"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (s.Equals("63", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("spDL"), this, this.camera);
+                            objs.Add(obj);
+                        }
+
+                        // стол с компьютером
+                        if (s.Equals("70", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("tableU"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (s.Equals("71", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("tableR"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (s.Equals("72", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("tableD"), this, this.camera);
+                            objs.Add(obj);
+                        }
+                        if (s.Equals("73", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("tableL"), this, this.camera);
+                            objs.Add(obj);
+                        }
+
+
+
+                        x += size;
+
+                        indexI++;
+                    }
+
+                    x = 0;
+                    y += size;
+
+                    indexI = 0;
+                    indexJ++;
+
+                } //end foreach
+
+                lenghtX = size * str.Length; // длина уровня в пикселях
+                lenghtY = y;
+
+                Guards.SetLevelMap(levelMap, lenghtX / size, lenghtY / size);
+            }
+
+
         }
 
     }

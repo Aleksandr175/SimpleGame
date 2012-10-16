@@ -28,7 +28,6 @@ Content\Textures\Objects\card.xnb
 Content\Textures\Objects\key.xnb
 Content\Textures\Objects\money.xnb
 Content\players\player_run_goriz.xnb
-Content\myFont1.xnb
 Content\Textures\Objects\laser1_horiz.xnb
 Content\Textures\Objects\laser1_vert.xnb
 Content\Textures\Objects\laser2_horiz.xnb
@@ -37,6 +36,7 @@ Content\Textures\Objects\laser3_horiz.xnb
 Content\Textures\Objects\laser3_vert.xnb
 Content\Textures\Objects\laser4_horiz.xnb
 Content\Textures\Objects\laser4_vert.xnb
+Content\myFont1.xnb
 Content\Textures\lvl\wall_goriz.JPG
 Content\Textures\lvl\wall_vert.JPG
 Content\Textures\lvl\wall_4sides.JPG
@@ -53,3 +53,4 @@ Content\lvls\lvl1.txt
 Content\lvls\lvl2.txt
 Content\lvls\lvl3.txt
 Content\lvls\lvl4.txt
+Content\lvls\lvl5.txt
