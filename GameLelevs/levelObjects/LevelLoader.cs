@@ -108,7 +108,7 @@ namespace GameLevels
             // тестовый режим...
             // ЕСЛИ УРОВЕНЬ ИЗ РЕДАКТОРА, ТО...
             //приспособим загрузку уровней, сделанных в редакторе
-            if (lvl == 5)
+            if (lvl >= 5)
             {
 
                 lines = File.ReadAllLines(lvl_name); //получили массив строк                
@@ -231,18 +231,17 @@ namespace GameLevels
                         }
 
 
-                        indexI++;
+                        indexJ++;
 
                     }
-                    indexI = 0;
-                    indexJ++;
+                    indexJ = 0;
+                    indexI++;
 
                 }
 
 
 
 
-                int[,] tempArray = new int[sizeFile[0] + 1, sizeFile[1] + 1]; //временный массив, используется для преобразований
                 int[,] map = new int[sizeFile[0] + 1, sizeFile[1] + 1]; // карта уровня после преобразования
 
                 // преобразование значений объектов (стен) на уровне
@@ -253,35 +252,12 @@ namespace GameLevels
 
 
                         map[i, j] = 0;
-
-
-                        if (i > 0 && i < sizeFile[0] && j > 0 && j < sizeFile[1])
+                        
+                        if (levelMap[i, j] == 1)
                         {
-                            if (isWallAround(levelMap, i, j, sizeFile[0], sizeFile[1]))
-                            {
-                                map[i, j] = 7; // wall4sides
-                                break;
-                            }
-
-
-
-
-
-
+                            map[i, j] = isWallType(levelMap, i, j, sizeFile[0] - 1, sizeFile[1] - 1);
                         }
-
-
-                        if (isWallGoriz(levelMap, i, j, sizeFile[0], sizeFile[1]))
-                        {
-                            map[i, j] = 2; // почему-то надо наоборот с вертикальной стеной
-                        }
-                        if (isWallVertic(levelMap, i, j, sizeFile[0], sizeFile[1]))
-                        {
-                            map[i, j] = 1; // почему-то надо наоборот с горизонтальной стеной
-                        }
-
-                        //isWallTurn();
-
+                        
 
                     }
                 }
@@ -289,11 +265,11 @@ namespace GameLevels
 
 
                 // создание объектов на уровне
-                for (int i = 0; i <= sizeFile[0]; i++)
+                for (int i = 0; i < sizeFile[0]; i++)
                 {
-                    for (int j = 0; j <= sizeFile[1]; j++)
+                    for (int j = 0; j < sizeFile[1]; j++)
                     {
-                        Rectangle Rect = new Rectangle(i * LevelLoader.Size, j * LevelLoader.Size, LevelLoader.Size, LevelLoader.Size);
+                        Rectangle Rect = new Rectangle(j * LevelLoader.Size, i * LevelLoader.Size, LevelLoader.Size, LevelLoader.Size);
                         if (map[i, j] == 0)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("empty"), game, this.camera);
@@ -309,22 +285,22 @@ namespace GameLevels
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_vert"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (levelMap[i, j] == 3)
+                        if (map[i, j] == 3)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_down_right"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (levelMap[i, j] == 4)
+                        if (map[i, j] == 4)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_up_right"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (levelMap[i, j] == 5)
+                        if (map[i, j] == 5)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_left_down"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (levelMap[i, j] == 6)
+                        if (map[i, j] == 6)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_left_up"), game, this.camera);
                             blocks.Add(block);
@@ -334,22 +310,22 @@ namespace GameLevels
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_4sides"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (levelMap[i, j] == 8)
+                        if (map[i, j] == 8)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_urd"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (levelMap[i, j] == 9)
+                        if (map[i, j] == 9)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_rdl"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (levelMap[i, j] == 10)
+                        if (map[i, j] == 10)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_dlu"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (levelMap[i, j] == 11)
+                        if (map[i, j] == 11)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_lur"), game, this.camera);
                             blocks.Add(block);
@@ -709,116 +685,329 @@ namespace GameLevels
 
 
 
+
+
         /// <summary>
-        /// 
+        /// Фунция возвращает тип стены.
+        /// Анализирует соседние клетки и делает вывод.
         /// </summary>
-        /// <param name="array">Карта уровня</param>
-        /// <param name="i">Номер текущей строки</param>
-        /// <param name="j">Номер текущей колонки</param>
-        /// <param name="iEnd">Всего строк</param>
-        /// <param name="jEnd">Всего колонок</param>
-        /// <returns></returns>
-        bool isWallGoriz(byte[,] array, int i, int j, int iEnd, int jEnd)
+        /// <param name="array">Весь массив уровня</param>
+        /// <param name="i">Текущая строка</param>
+        /// <param name="j">Текущая колонка</param>
+        /// <param name="iEnd">Максимальная строка</param>
+        /// <param name="jEnd">Максимальная колонка</param>
+        /// <returns>Тип стены в веди int</returns>
+        int isWallType(byte[,] array, int i, int j, int iEnd, int jEnd)
         {
 
-            if (i == 0)
+            // проверка краевых точек массива
+
+            /*
+             * *----
+             * -----
+             * -----
+             * -----
+             */
+            if (i == 0 && j == 0 && isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
             {
-                if (array[i, j] == 1 && array[i + 1, j] == 0)
-                {
-                    return true;
-                }
+                return 3;
             }
-            else
+
+            /*
+             * ----*
+             * -----
+             * -----
+             * -----
+             */
+            if (i == 0 && j == jEnd && isWall(array[i, j - 1]) && isWall(array[i + 1, j]))
             {
-                if (i == iEnd)
+                return 5;
+            }
+
+            /*
+             * -----
+             * -----
+             * -----
+             * *----
+             */
+            if (i == iEnd && j == 0 && isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
+            {
+                return 4;
+            }
+
+            /*
+             * -----
+             * -----
+             * -----
+             * ----*
+             */
+            if (i == iEnd && j == jEnd && isWall(array[i, j - 1]) && isWall(array[i - 1, j]))
+            {
+                return 6;
+            }
+
+
+            // проверяем крайнии линии (краевые точки уже проверили и сделали return)
+            /*
+             * -***-
+             * -----
+             * -----
+             * -----
+             */
+            if (i == 0) {
+
+                // ***
+                //  *
+                if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
                 {
-                    if (array[i, j] == 1 && array[i - 1, j] == 0)
-                    {
-                        return true;
-                    }
+                    return 9;
                 }
-                else
+
+                // **
+                if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
                 {
-                    if (array[i, j] == 1 && array[i - 1, j] == 0 && array[i + 1, j] == 0)
-                    {
-                        return true;
-                    }
-                    return false;
+                    return 1;
+                }
+
+                // **
+                //  *
+                if (isWall(array[i, j - 1]) && isWall(array[i + 1, j]))
+                {
+                    return 5;
+                }
+
+                // **
+                // *
+                if (isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
+                {
+                    return 3;
+                }
+                
+
+            }
+
+            /*
+             * -----
+             * -----
+             * -----
+             * -***-
+             */
+            if (i == iEnd)
+            {
+                //  *
+                // ***
+                if (isWall(array[i - 1, j]) && isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
+                {
+                    return 11;
+                }
+
+                // **
+                if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
+                {
+                    return 1;
+                }
+
+                //  *
+                // **
+                if (isWall(array[i - 1, j]) && isWall(array[i, j - 1]))
+                {
+                    return 6;
+                }
+
+                // *
+                // **
+                if (isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
+                {
+                    return 4;
                 }
             }
 
-            return false;
+            /*
+             * -----
+             * *----
+             * *----
+             * -----
+             */
+            if (j == 0) 
+            {
+                // *
+                // **
+                // *
+                if (isWall(array[i, j + 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
+                {
+                    return 8;
+                }
+                
+                // *
+                // *
+                if (isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
+                {
+                    return 2;
+                }
+                // *
+                // **
+                if (isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
+                {
+                    return 4;
+                }
+                // **
+                // *
+                if (isWall(array[i + 1, j]) && isWall(array[i, j + 1]))
+                {
+                    return 3;
+                }
+            }
+
+            /*
+             * -----
+             * ----*
+             * ----*
+             * -----
+             */
+            if (j == jEnd)
+            {
+                //  *
+                // **
+                //  *
+                if (isWall(array[i, j - 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
+                {
+                    return 10;
+                }
+
+                // *
+                // *
+                if (isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
+                {
+                    return 2;
+                }
+                //  *
+                // **
+                if (isWall(array[i, j - 1]) && isWall(array[i - 1, j]))
+                {
+                    return 6;
+                }
+                // **
+                //  *
+                if (isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
+                {
+                    return 5;
+                }
+            }
+
+
+            // проверяем центральную часть уровня
+            /*
+             * -----
+             * -***-
+             * -***-
+             * -----
+             */
+
+            //  *
+            // ***
+            //  *
+            if (isWall(array[i - 1, j]) && isWall(array[i + 1, j]) && isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
+            {
+                return 7;
+            }
+
+            // *
+            // **
+            // *
+            if (isWall(array[i, j + 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
+            {
+                return 8;
+            }
+
+            //  *
+            // **
+            //  *
+            if (isWall(array[i, j - 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
+            {
+                return 10;
+            }
+
+            //  *
+            // ***
+            if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]) && isWall(array[i - 1, j]))
+            {
+                return 11;
+            }
+
+            // ***
+            //  *
+            if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
+            {
+                return 9;
+            }
+
+
+            // **
+            if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
+            {
+                return 1;
+            }
+
+            // *
+            // *
+            if (isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
+            {
+                return 2;
+            }
+
+            // *
+            // *
+            if (isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
+            {
+                return 4;
+            }
+
+            // *
+            // *
+            if (isWall(array[i - 1, j]) && isWall(array[i, j - 1]))
+            {
+                return 6;
+            }
+
+            // *
+            // *
+            if (isWall(array[i, j - 1]) && isWall(array[i + 1, j]))
+            {
+                return 5;
+            }
+
+            // *
+            // *
+            if (isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
+            {
+                return 3;
+            }
+
+
+            // если попали сюда - то неизвестная стена - возвращаем пустое место
+            return 0;
+
+
+
+
+
+
+
 
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="array"></param>
-        /// <param name="i"></param>
-        /// <param name="j"></param>
-        /// <param name="iEnd"></param>
-        /// <param name="jEnd"></param>
-        /// <returns></returns>
-        bool isWallVertic(byte[,] array, int i, int j, int iEnd, int jEnd)
-        {
-
-            if (j == 0)
-            {
-                if (array[i, j] == 1 && array[i, j + 1] == 0)
-                {
-                    return true;
-                }
-            }
-            else
-            {
-                if (j == jEnd)
-                {
-                    if (array[i, j] == 1 && array[i, j - 1] == 0)
-                    {
-                        return true;
-                    }
-                }
-                else
-                {
-                    if (array[i, j] == 1 && array[i, j - 1] == 0 && array[i, j + 1] == 0)
-                    {
-                        return true;
-                    }
-                    return false;
-                }
-            }
-
-            return false;
-
-        }
 
         /// <summary>
-        /// 
+        /// Проверяет, является ли текущая клетка стеной
         /// </summary>
-        /// <param name="array"></param>
-        /// <param name="i"></param>
-        /// <param name="j"></param>
-        /// <param name="iEnd"></param>
-        /// <param name="jEnd"></param>
-        /// <returns></returns>
-        bool isWallAround(byte[,] array, int i, int j, int iEnd, int jEnd)
+        /// <param name="element">Значение ячейки карты</param>
+        /// <returns>true - стена, false - нет</returns>
+        bool isWall(byte element)
         {
-            if (array[i, j] == 1 && array[i + 1, j] == 1 && array[i - 1, j] == 1 && array[i, j + 1] == 1 && array[i, j - 1] == 1)
+            if (element > 0 && element <= 29) {  // стены 1-11 и двери 20-23
                 return true;
-            else
-                return false;
+            }
+            return false;
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

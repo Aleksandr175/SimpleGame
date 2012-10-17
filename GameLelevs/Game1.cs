@@ -51,7 +51,7 @@ namespace GameLevels
 
         //информация об уровнях
         int currentLvl;
-        int maxLvl = 5;
+        int maxLvl = 6;
         KeyboardState oldState;
 
         public Game1()

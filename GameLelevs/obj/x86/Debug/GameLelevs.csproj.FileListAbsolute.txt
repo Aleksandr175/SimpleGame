@@ -286,3 +286,25 @@ C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser4_vert.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl5.txt
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl5.txt
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spDL.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spLU.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spRD.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spUR.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableD.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableL.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableR.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableU.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\card.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\key.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\money.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run_goriz.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_horiz.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_vert.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_horiz.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_vert.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser4_horiz.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser4_vert.xnb
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl5.txt
+C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl6.txt
