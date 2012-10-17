@@ -258,5 +258,12 @@ namespace GameLevels
             }
         }
 
+        public Rectangle Position {
+            get {
+                return playerInfo.position;
+            }
+            private set { }
+        }
+
     }
 }

@@ -115,15 +115,6 @@ namespace GameLevels
 
             //сразу создаем первый уровень
             levelLoader.CreateLevel(4);
-
-            // TODO: use this.Content to load your game content here
-            // TODO: возможно, стоит написать универсальный загрузчик ресурсов. Сейчас код кажется громоздким и неудобным / не гибким
-            //       interface ILoaderResources { 
-            //                                    Load(string wayToLoad, type SpriteFont / Texture2D by default, ref or out whereLoad);
-            //                                    GetResources(string name); 
-            //                                   }
-            //                                    **перегрузить метод Load для загрузки массива объектов
-            //                                    **перегрузить метод Load для загрузки целой папки с ресурсами
         }
 
         /// <summary>
@@ -263,6 +254,16 @@ namespace GameLevels
             foreach (Guards guard in levelLoader.guards)
             {
                 guard.Update(gameTime);
+            }
+
+            int i = 0;
+            while (i < levelLoader.objs.Count) {
+                if (levelLoader.objs[i].Rect.Intersects(player.Position))
+                {
+                    levelLoader.blocks.Add(new Block(levelLoader.objs[i].Rect, storage.Pull2DTexture("empty"), this, this.camera));
+                    levelLoader.objs.RemoveAt(i);
+                }
+                else i++;
             }
 
             base.Update(gameTime);
