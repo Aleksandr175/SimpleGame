@@ -30,11 +30,11 @@ namespace GameLevels
 
         
         
-        public LevelLoader(Game1 game, Player player, Storage storage)
+        public LevelLoader(Game1 game, Player player, Storage storage, Camera camera)
         {
             this.game = game;
             this.player = player;
-            this.camera = new Camera();
+            this.camera = camera;
             this.storage = storage;
             storage = new Storage();
         }

@@ -35,8 +35,8 @@ namespace GameLevels
 
         
         
-        int screenWidth = 900; // длина и высота экрана
-        int screenHeight = 600;
+        int screenWidth = 300; // длина и высота экрана
+        int screenHeight = 300;
 
         public int GetScreenWidth
         {
@@ -111,7 +111,7 @@ namespace GameLevels
             player = new Player(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), plaerPosition, this, camera, levelLoader);
 
 
-            this.levelLoader = new LevelLoader(this, player, storage);
+            this.levelLoader = new LevelLoader(this, player, storage, camera);
 
             //сразу создаем первый уровень
             levelLoader.CreateLevel(4);
