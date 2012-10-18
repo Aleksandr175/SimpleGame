@@ -126,7 +126,7 @@ namespace GameLevels
                 }
 
                 // выделим память для карты уровня
-                levelMap = new byte[sizeFile[0] + 1, sizeFile[1] + 1];
+                levelMap = new byte[sizeFile[1] + 1, sizeFile[0] + 1];
 
 
                 tempIndex = 0;
@@ -231,23 +231,23 @@ namespace GameLevels
                         }
 
 
-                        indexJ++;
+                        indexI++;
 
                     }
-                    indexJ = 0;
-                    indexI++;
+                    indexI = 0;
+                    indexJ++;
 
                 }
 
 
 
 
-                int[,] map = new int[sizeFile[0] + 1, sizeFile[1] + 1]; // карта уровня после преобразования
+                int[,] map = new int[sizeFile[1] + 1, sizeFile[0] + 1]; // карта уровня после преобразования
 
                 // преобразование значений объектов (стен) на уровне
-                for (int i = 0; i <= sizeFile[0]; i++)
+                for (int i = 0; i < sizeFile[1]; i++)
                 {
-                    for (int j = 0; j <= sizeFile[1]; j++)
+                    for (int j = 0; j < sizeFile[0]; j++)
                     {
 
 
@@ -265,11 +265,11 @@ namespace GameLevels
 
 
                 // создание объектов на уровне
-                for (int i = 0; i < sizeFile[0]; i++)
+                for (int i = 0; i < sizeFile[1]; i++)
                 {
-                    for (int j = 0; j < sizeFile[1]; j++)
+                    for (int j = 0; j < sizeFile[0]; j++)
                     {
-                        Rectangle Rect = new Rectangle(j * LevelLoader.Size, i * LevelLoader.Size, LevelLoader.Size, LevelLoader.Size);
+                        Rectangle Rect = new Rectangle(i * LevelLoader.Size, j * LevelLoader.Size, LevelLoader.Size, LevelLoader.Size);
                         if (map[i, j] == 0)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("empty"), game, this.camera);
@@ -429,14 +429,21 @@ namespace GameLevels
                             Object obj = new Object(Rect, storage.Pull2DTexture("tableL"), game, this.camera);
                             objs.Add(obj);
                         }
+
+                        x += LevelLoader.Size;
+
                     }
+
+                    x = 0;
+                    y += LevelLoader.Size;
+
                 }
                 // конец создание объектов на уровне
 
                 lenghtX = LevelLoader.Size * sizeFile[1]; // длина уровня в пикселях
                 lenghtY = LevelLoader.Size * sizeFile[0];
 
-
+                Guards.SetLevelMap(levelMap, lenghtX / LevelLoader.Size, lenghtY / LevelLoader.Size);
             }
 
 
@@ -714,25 +721,25 @@ namespace GameLevels
             }
 
             /*
-             * ----*
-             * -----
-             * -----
-             * -----
-             */
-            if (i == 0 && j == jEnd && isWall(array[i, j - 1]) && isWall(array[i + 1, j]))
-            {
-                return 5;
-            }
-
-            /*
              * -----
              * -----
              * -----
              * *----
              */
-            if (i == iEnd && j == 0 && isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
+            if (i == 0 && j == jEnd && isWall(array[i, j - 1]) && isWall(array[i + 1, j]))
             {
                 return 4;
+            }
+
+            /*
+             * ----*
+             * -----
+             * -----
+             * -----
+             */
+            if (i == iEnd && j == 0 && isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
+            {
+                return 5;
             }
 
             /*
@@ -749,38 +756,40 @@ namespace GameLevels
 
             // проверяем крайнии линии (краевые точки уже проверили и сделали return)
             /*
-             * -***-
              * -----
-             * -----
+             * *----
+             * *----
              * -----
              */
             if (i == 0) {
 
-                // ***
+                //  *
+                //  **
                 //  *
                 if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
                 {
-                    return 9;
+                    return 8;
                 }
 
-                // **
+                // *
+                // *
                 if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
                 {
-                    return 1;
+                    return 2;
                 }
 
-                // **
+                //  **
                 //  *
-                if (isWall(array[i, j - 1]) && isWall(array[i + 1, j]))
-                {
-                    return 5;
-                }
-
-                // **
-                // *
                 if (isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
                 {
                     return 3;
+                }
+
+                // *
+                // **
+                if (isWall(array[i + 1, j]) && isWall(array[i, j - 1]))
+                {
+                    return 4;
                 }
                 
 
@@ -788,23 +797,32 @@ namespace GameLevels
 
             /*
              * -----
+             * ----*
+             * ----*
              * -----
-             * -----
-             * -***-
              */
             if (i == iEnd)
             {
                 //  *
-                // ***
+                // **
+                //  *
                 if (isWall(array[i - 1, j]) && isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
                 {
-                    return 11;
+                    return 10;
+                }
+
+                // *
+                // *
+                if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
+                {
+                    return 2;
                 }
 
                 // **
-                if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
+                //  *
+                if (isWall(array[i, j + 1]) && isWall(array[i - 1, j]))
                 {
-                    return 1;
+                    return 5;
                 }
 
                 //  *
@@ -812,13 +830,6 @@ namespace GameLevels
                 if (isWall(array[i - 1, j]) && isWall(array[i, j - 1]))
                 {
                     return 6;
-                }
-
-                // *
-                // **
-                if (isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
-                {
-                    return 4;
                 }
             }
 
@@ -830,31 +841,29 @@ namespace GameLevels
              */
             if (j == 0) 
             {
-                // *
-                // **
-                // *
+                // ***
+                //  *
                 if (isWall(array[i, j + 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
                 {
-                    return 8;
+                    return 9;
                 }
                 
-                // *
-                // *
+                // **
                 if (isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
                 {
-                    return 2;
-                }
-                // *
-                // **
-                if (isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
-                {
-                    return 4;
+                    return 1;
                 }
                 // **
                 // *
                 if (isWall(array[i + 1, j]) && isWall(array[i, j + 1]))
                 {
                     return 3;
+                }
+                // **
+                //  *
+                if (isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
+                {
+                    return 5;
                 }
             }
 
@@ -867,18 +876,16 @@ namespace GameLevels
             if (j == jEnd)
             {
                 //  *
-                // **
-                //  *
+                // ***
                 if (isWall(array[i, j - 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
                 {
-                    return 10;
+                    return 11;
                 }
 
-                // *
-                // *
+                // **
                 if (isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
                 {
-                    return 2;
+                    return 1;
                 }
                 //  *
                 // **
@@ -886,11 +893,11 @@ namespace GameLevels
                 {
                     return 6;
                 }
+                // *
                 // **
-                //  *
-                if (isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
+                if (isWall(array[i + 1, j]) && isWall(array[i, j - 1]))
                 {
-                    return 5;
+                    return 4;
                 }
             }
 
@@ -914,7 +921,7 @@ namespace GameLevels
             // *
             // **
             // *
-            if (isWall(array[i, j + 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
+            if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
             {
                 return 8;
             }
@@ -922,21 +929,21 @@ namespace GameLevels
             //  *
             // **
             //  *
-            if (isWall(array[i, j - 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
+            if (isWall(array[i - 1, j]) && isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
             {
                 return 10;
             }
 
             //  *
             // ***
-            if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]) && isWall(array[i - 1, j]))
+            if (isWall(array[i, j - 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
             {
                 return 11;
             }
 
             // ***
             //  *
-            if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
+            if (isWall(array[i, j + 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
             {
                 return 9;
             }
@@ -945,40 +952,40 @@ namespace GameLevels
             // **
             if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
             {
-                return 1;
+                return 2;
             }
 
             // *
             // *
             if (isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
             {
-                return 2;
+                return 1;
             }
 
             // *
-            // *
-            if (isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
+            // **
+            if (isWall(array[i + 1, j]) && isWall(array[i, j - 1]))
             {
                 return 4;
             }
 
-            // *
-            // *
-            if (isWall(array[i - 1, j]) && isWall(array[i, j - 1]))
+            //  *
+            // **
+            if (isWall(array[i, j - 1]) && isWall(array[i - 1, j]))
             {
                 return 6;
             }
 
-            // *
-            // *
-            if (isWall(array[i, j - 1]) && isWall(array[i + 1, j]))
+            // **
+            //  *
+            if (isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
             {
                 return 5;
             }
 
+            // **
             // *
-            // *
-            if (isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
+            if (isWall(array[i + 1, j]) && isWall(array[i, j + 1]))
             {
                 return 3;
             }

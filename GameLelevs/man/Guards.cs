@@ -35,7 +35,7 @@ namespace GameLevels
         PlayerMove direction; //направление охранника
         bool isRunning; //бежит или нет?
 
-        private bool alarm = false; // есть ли тревога ? True - включена
+        private bool alarm = true; // есть ли тревога ? True - включена
 
         // текстура для вывода охранника в состоянии спокойствия
         private Texture2D idlTexture;
@@ -140,12 +140,12 @@ namespace GameLevels
             wayToPatrol[0].Add(3); // второе - координата Y
             wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
             wayToPatrol[1].Add(3);
-            wayToPatrol[1].Add(5);
+            wayToPatrol[1].Add(4);
             wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
-            wayToPatrol[2].Add(5);
-            wayToPatrol[2].Add(5);
+            wayToPatrol[2].Add(4);
+            wayToPatrol[2].Add(4);
             wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
-            wayToPatrol[3].Add(7);
+            wayToPatrol[3].Add(4);
             wayToPatrol[3].Add(3);
             targetX = wayToPatrol[0][0];
             targetY = wayToPatrol[0][1];
