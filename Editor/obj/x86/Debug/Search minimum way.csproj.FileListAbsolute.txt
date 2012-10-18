@@ -1,0 +1,27 @@
+D:\Docyment\prog\Search_min_way\Visual\Search minimum way\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Docyment\prog\Search_min_way\Visual\Search minimum way\obj\x86\Debug\Search_minimum_way.Form1.resources
+D:\Docyment\prog\Search_min_way\Visual\Search minimum way\obj\x86\Debug\Search_minimum_way.Properties.Resources.resources
+D:\Docyment\prog\Search_min_way\Visual\Search minimum way\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Docyment\prog\Search_min_way\Visual\Search minimum way\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Docyment\prog\Search_min_way\Visual\Search minimum way\bin\Debug\Search minimum way.exe
+D:\Docyment\prog\Search_min_way\Visual\Search minimum way\bin\Debug\Search minimum way.pdb
+D:\Docyment\prog\Search_min_way\Visual\Search minimum way\obj\x86\Debug\Search minimum way.exe
+D:\Docyment\prog\Search_min_way\Visual\Search minimum way\obj\x86\Debug\Search minimum way.pdb
+C:\Documents and Settings\Администратор\Рабочий стол\Search_min_way\Visual\Search minimum way\obj\x86\Debug\Search minimum way.exe
+C:\Documents and Settings\Администратор\Рабочий стол\Search_min_way\Visual\Search minimum way\obj\x86\Debug\Search minimum way.pdb
+C:\Documents and Settings\Администратор\Рабочий стол\Search_min_way\Visual\Search minimum way\bin\Debug\Search minimum way.exe
+C:\Documents and Settings\Администратор\Рабочий стол\Search_min_way\Visual\Search minimum way\bin\Debug\Search minimum way.pdb
+C:\Documents and Settings\Администратор\Рабочий стол\Search_min_way\Visual\Search minimum way\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Администратор\Рабочий стол\Search_min_way\Visual\Search minimum way\obj\x86\Debug\Search_minimum_way.Form1.resources
+C:\Documents and Settings\Администратор\Рабочий стол\Search_min_way\Visual\Search minimum way\obj\x86\Debug\Search_minimum_way.Properties.Resources.resources
+C:\Documents and Settings\Администратор\Рабочий стол\Search_min_way\Visual\Search minimum way\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Администратор\Рабочий стол\Search_min_way\Visual\Search minimum way\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\Администратор\Рабочий стол\Editor\Visual\Editor\obj\x86\Debug\Search minimum way.exe
+C:\Documents and Settings\Администратор\Рабочий стол\Editor\Visual\Editor\obj\x86\Debug\Search minimum way.pdb
+C:\Documents and Settings\Администратор\Рабочий стол\Editor\Visual\Editor\bin\Debug\Search minimum way.exe
+C:\Documents and Settings\Администратор\Рабочий стол\Editor\Visual\Editor\bin\Debug\Search minimum way.pdb
+C:\Documents and Settings\Администратор\Рабочий стол\Editor\Visual\Editor\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Администратор\Рабочий стол\Editor\Visual\Editor\obj\x86\Debug\Search_minimum_way.Form1.resources
+C:\Documents and Settings\Администратор\Рабочий стол\Editor\Visual\Editor\obj\x86\Debug\Search_minimum_way.Properties.Resources.resources
+C:\Documents and Settings\Администратор\Рабочий стол\Editor\Visual\Editor\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Администратор\Рабочий стол\Editor\Visual\Editor\obj\x86\Debug\GenerateResource.write.1.tlog

@@ -126,7 +126,7 @@
             "Охранник"});
             this.cb_objs.Location = new System.Drawing.Point(721, 210);
             this.cb_objs.Name = "cb_objs";
-            this.cb_objs.Size = new System.Drawing.Size(121, 21);
+            this.cb_objs.Size = new System.Drawing.Size(214, 21);
             this.cb_objs.TabIndex = 10;
             this.cb_objs.SelectedIndexChanged += new System.EventHandler(this.cb_objs_SelectedIndexChanged);
             // 

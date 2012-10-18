@@ -43,14 +43,17 @@ namespace Search_minimum_way
         Image im_door_open_H = Image.FromFile(@"Icons\Door_open_H.PNG");
         Image im_door_closed_H = Image.FromFile(@"Icons\Door_closed_H.PNG");
         Image im_guard = Image.FromFile(@"Icons\Guard.PNG");
+        Image im_way_guard = Image.FromFile(@"Icons\Way_Guard.PNG");
         /////////////////
 
         bool f_start = false; // установлен ли старт
         bool f_finish = false;// установлен ли финиш
         bool f_pove_way = false; // проложен ли путь
-        List <List<int>> ArrWay; // массив пути
-        
-        
+        List <List<int>> WayGuards; // массив пути охранников
+        bool f_way_g = true; // установлен ли охранник (необходимо установить путь)
+        int num_guard = 1; // номер охранника
+        int num_step_guards = 1; // номер шага охранника
+
         public Form1()
         {
             InitializeComponent();
@@ -70,6 +73,7 @@ namespace Search_minimum_way
             Num_Cells_H = Convert.ToInt32(cb_n.SelectedItem);
             Num_Cells_V = Convert.ToInt32(cb_m.SelectedItem);
             Field_Cells = new Cell[Num_Cells_H ,Num_Cells_V];
+            WayGuards = new List<List<int>>();
             if (Num_Cells_V > Num_Cells_H)
                 Height_Cell = 400 / Num_Cells_V;
             else Height_Cell = 400 / Num_Cells_H;
@@ -138,6 +142,9 @@ namespace Search_minimum_way
                         case 30: // охранник
                             tmp = im_guard;
                             break;
+                        case 300: // охранник
+                            tmp = im_way_guard;
+                            break;
 
                     }
                     
@@ -164,13 +171,21 @@ namespace Search_minimum_way
             int y = (e.Location.Y - Control_Point.Y) / Height_Cell;
             if (e.Button == MouseButtons.Right)
             {
-                B_Wall.Enabled = true;
-                B_Delete.Enabled = false;
-                Field_Cells[x, y].Obj = 0;
+                if (!f_way_g)
+                {
+                    f_way_g = true;
+                    num_step_guards = 1;
+                    num_guard++;
+                }
+                else
+                {
+                    B_Delete.Enabled = false;
+                    Field_Cells[x, y].Obj = 0;
+                    B_Delete.Enabled = true;                    
+                }
                 Invalidate();
                 return;
-            }
-            
+            }           
             label1.Text = Convert.ToString(x) + " " + Convert.ToString(y);
             if ((x >= 0 && x < Num_Cells_H) && (y >= 0 && y < Num_Cells_V))
             {
@@ -187,6 +202,21 @@ namespace Search_minimum_way
                 }
                 else
                 {
+                    if (!f_way_g)
+                    {
+                        Field_Cells[x, y].Obj = 300;
+                        
+                        WayGuards.Add(new List<int>());
+                        WayGuards.Add(new List<int>());
+                        WayGuards[num_guard - 1].Add(3000 + num_guard);
+                        WayGuards[num_guard - 1].Add(num_step_guards);
+                        num_step_guards++;
+                        WayGuards[num_guard - 1].Add(x);
+                        WayGuards[num_guard - 1].Add(y);
+                        Invalidate();
+                        return;
+                    }
+
                     /*
                     Дверь открытая вертикальная
                     Дверь открытая горизонатальная
@@ -214,6 +244,7 @@ namespace Search_minimum_way
 
                         case "Охранник":
                             Field_Cells[x, y].Obj = 30;
+                            f_way_g = false;
                             break;
                            
                     }
