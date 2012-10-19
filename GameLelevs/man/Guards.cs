@@ -35,7 +35,7 @@ namespace GameLevels
         PlayerMove direction; //направление охранника
         bool isRunning; //бежит или нет?
 
-        private bool alarm = false; // есть ли тревога ? True - включена
+        private bool alarm = true; // есть ли тревога ? True - включена
 
         // текстура для вывода охранника в состоянии спокойствия
         private Texture2D idlTexture;
@@ -55,7 +55,9 @@ namespace GameLevels
 
         List<List<int>> wayToTarget = new List<List<int>>(); // путь к цели
         List<List<int>> wayToPatrol = new List<List<int>>(); // траектория для патрулирования
-        
+
+        static int countGuards = 0; // кол-во охранников на уровне
+        static int goneGuard = 0; // кол-во охранников, бегущих за игроком
 
 
         //карта уроня для алгоритма поиска пути (получаем из кл. Game1.cs)
@@ -71,9 +73,9 @@ namespace GameLevels
         /// <summary>
         /// запоминаем карту уровня
         /// </summary>
-        /// <param name="tempLevelMap"></param>
-        /// <param name="n"></param>
-        /// <param name="m"></param>
+        /// <param name="tempLevelMap">Карта уровня в 0 и 1</param>
+        /// <param name="n">Кол-во столбцов</param>
+        /// <param name="m">Кол-во строк</param>
         public static void SetLevelMap(byte[,] tempLevelMap, int n, int m) 
         {
             levelWidth = n;
@@ -162,6 +164,8 @@ namespace GameLevels
             //targetX = wayToPatrol[1][0]; // 0 - x
             //targetY = wayToPatrol[1][1]; // 1 - y
 
+            countGuards++;
+
         }
 
         /// <summary>
@@ -196,7 +200,8 @@ namespace GameLevels
 
         /// <summary>
         /// Функция устанавливает флаг в состояние бега
-        /// </summary>>
+        /// </summary>
+        /// <param name="move">Направление движения</param>
         public void Run(PlayerMove move)
         {
             this.isRunning = true;
@@ -282,7 +287,12 @@ namespace GameLevels
             //изменяем точку, в кот. идет охранник, если игрок сместился на другую клетку и включена тревога
             if (player.changedPos && alarm)
             {
-                player.changedPos = false;
+                //player.changedPos = false;
+                goneGuard++;
+                if (countGuards == goneGuard) {
+                    goneGuard = 0;
+                    player.changedPos = false;
+                }
                 this.targetX = player.NewPosX;
                 this.targetY = player.NewPosY;
                 this.Run();
