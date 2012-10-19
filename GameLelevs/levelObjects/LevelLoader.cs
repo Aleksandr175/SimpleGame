@@ -337,21 +337,25 @@ namespace GameLevels
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera);
                             blocks.Add(block);
+                            levelMap[i, j] = 1;
                         }
                         if (levelMap[i, j] == 21)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera);
                             blocks.Add(block);
+                            levelMap[i, j] = 1;
                         }
                         if (levelMap[i, j] == 22)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera);
                             blocks.Add(block);
+                            levelMap[i, j] = 0;
                         }
                         if (levelMap[i, j] == 23)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera);
                             blocks.Add(block);
+                            levelMap[i, j] = 0;
                         }
 
                         if (levelMap[i, j] == 30)
@@ -372,11 +376,13 @@ namespace GameLevels
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("key"), game, this.camera);
                             objs.Add(obj);
+                            levelMap[i, j] = 0;
                         }
                         if (levelMap[i, j] == 41)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("card"), game, this.camera);
                             objs.Add(obj);
+                            levelMap[i, j] = 0;
                         }
 
                         // золото
@@ -384,6 +390,7 @@ namespace GameLevels
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("money"), game, this.camera);
                             objs.Add(obj);
+                            levelMap[i, j] = 0;
                         }
 
                         // стол системы управления камерами
@@ -391,21 +398,25 @@ namespace GameLevels
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("spLU"), game, this.camera);
                             objs.Add(obj);
+                            levelMap[i, j] = 1;
                         }
                         if (levelMap[i, j] == 61)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("spUR"), game, this.camera);
                             objs.Add(obj);
+                            levelMap[i, j] = 1;
                         }
                         if (levelMap[i, j] == 62)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("spRD"), game, this.camera);
                             objs.Add(obj);
+                            levelMap[i, j] = 1;
                         }
                         if (levelMap[i, j] == 63)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("spDL"), game, this.camera);
                             objs.Add(obj);
+                            levelMap[i, j] = 1;
                         }
 
                         // стол с компьютером
@@ -413,21 +424,25 @@ namespace GameLevels
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("tableU"), game, this.camera);
                             objs.Add(obj);
+                            levelMap[i, j] = 1;
                         }
                         if (levelMap[i, j] == 71)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("tableR"), game, this.camera);
                             objs.Add(obj);
+                            levelMap[i, j] = 1;
                         }
                         if (levelMap[i, j] == 72)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("tableD"), game, this.camera);
                             objs.Add(obj);
+                            levelMap[i, j] = 1;
                         }
                         if (levelMap[i, j] == 73)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("tableL"), game, this.camera);
                             objs.Add(obj);
+                            levelMap[i, j] = 1;
                         }
 
                         x += LevelLoader.Size;

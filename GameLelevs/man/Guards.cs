@@ -35,7 +35,7 @@ namespace GameLevels
         PlayerMove direction; //направление охранника
         bool isRunning; //бежит или нет?
 
-        private bool alarm = true; // есть ли тревога ? True - включена
+        private bool alarm = false; // есть ли тревога ? True - включена
 
         // текстура для вывода охранника в состоянии спокойствия
         private Texture2D idlTexture;
@@ -63,8 +63,17 @@ namespace GameLevels
         private static int levelWidth; //длина уровня (клеток)
         private static int levelHeight; // высота уровня (клеток)
 
+        public static byte GetLevelMap(int i, int j)
+        {
+            return levelMap[i, j];
+        }
 
-        //запоминаем карту уровня
+        /// <summary>
+        /// запоминаем карту уровня
+        /// </summary>
+        /// <param name="tempLevelMap"></param>
+        /// <param name="n"></param>
+        /// <param name="m"></param>
         public static void SetLevelMap(byte[,] tempLevelMap, int n, int m) 
         {
             levelWidth = n;

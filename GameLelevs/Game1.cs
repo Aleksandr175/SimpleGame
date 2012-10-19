@@ -297,6 +297,13 @@ namespace GameLevels
                 spriteBatch.DrawString(storage.PullFont("font"), levelLoader.guards[0].Y.ToString(), new Vector2(10, 20), Color.Red);
                 spriteBatch.DrawString(storage.PullFont("font"), LevelLoader.GetLenghtX.ToString(), new Vector2(10, 40), Color.Red); // распечатка длины уровня по X
                 spriteBatch.DrawString(storage.PullFont("font"), LevelLoader.GetLenghtY.ToString(), new Vector2(10, 60), Color.Red); // распечатка длины уровня по Y 
+                spriteBatch.DrawString(storage.PullFont("font"), Guards.GetLevelMap(0, 0).ToString(), new Vector2(100, 60), Color.Red); // распечатка длины уровня по Y 
+                spriteBatch.DrawString(storage.PullFont("font"), Guards.GetLevelMap(0, 1).ToString(), new Vector2(100, 80), Color.Red); // распечатка длины уровня по Y 
+                spriteBatch.DrawString(storage.PullFont("font"), Guards.GetLevelMap(0, 2).ToString(), new Vector2(100, 100), Color.Red); // распечатка длины уровня по Y 
+                spriteBatch.DrawString(storage.PullFont("font"), Guards.GetLevelMap(1, 0).ToString(), new Vector2(140, 60), Color.Red); // распечатка длины уровня по Y 
+                spriteBatch.DrawString(storage.PullFont("font"), Guards.GetLevelMap(1, 1).ToString(), new Vector2(140, 80), Color.Red); // распечатка длины уровня по Y 
+                spriteBatch.DrawString(storage.PullFont("font"), Guards.GetLevelMap(1, 2).ToString(), new Vector2(140, 100), Color.Red); // распечатка длины уровня по Y 
+                
             }
             catch {
                 // TODO: необходимо как-то обрабатывать исключения!
