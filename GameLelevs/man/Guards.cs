@@ -29,6 +29,23 @@ namespace GameLevels
 
         int targetX = 10; //координаты цели, к кот. идет охранник
         int targetY = 8;
+
+        // следующая клетка, в кот. должен бежать охранник
+        int nextX = 0;
+        int nextY = 0;
+
+        public int NextX
+        {
+            get { return nextX; }
+            set { nextX = value; }
+        }
+        public int NextY
+        {
+            get { return nextY; }
+            set { nextY = value; }
+        }
+
+
         int currentStepPatrol = 0; // текущий шаг для патрулирования
 
         int speed;
@@ -314,26 +331,14 @@ namespace GameLevels
                     frameInfo.current = (frameInfo.current + 1) % frameInfo.count;
                 }
 
-                // передвижение охранника
-                int offset = this.speed * gameTime.ElapsedGameTime.Milliseconds / 10;
-                
-                // новое положение охранника
-                Rectangle newPosition = this.position;
 
+                int offset = 0;
+                Rectangle newPosition;
+                int nowPosGuardX;
+                int nowPosGuardY;
 
-                // смотрим, сместился ли на клетку охранник
-                x = newPosition.X / LevelLoader.Size;
-                y = newPosition.Y / LevelLoader.Size;
-
-
-                //текущая клетка охранника
-                int nowPosGuardX = newPosition.X / LevelLoader.Size;
-                int nowPosGuardY = newPosition.Y / LevelLoader.Size;
-
-                // следующая клетка, в кот. должен бежать охранник
-                int nextX = 0;
-                int nextY = 0;
-
+                nextX = 0;
+                nextY = 0;
 
                 if (!this.waySet)
                 {
@@ -343,6 +348,20 @@ namespace GameLevels
                 
                 if (wayToTarget != null)
                 {
+                    // передвижение охранника
+                    offset = this.speed * gameTime.ElapsedGameTime.Milliseconds / 10;
+
+                    // новое положение охранника
+                    newPosition = this.position;
+                    
+                    //текущая клетка охранника
+                    nowPosGuardX = newPosition.X / LevelLoader.Size;
+                    nowPosGuardY = newPosition.Y / LevelLoader.Size;
+                    
+                    // смотрим, сместился ли на клетку охранник
+                    x = newPosition.X / LevelLoader.Size;
+                    y = newPosition.Y / LevelLoader.Size;
+
                     try
                     {
                         nextX = this.wayToTarget[1][0]; // координаты след. клетки
@@ -372,67 +391,73 @@ namespace GameLevels
                         this.direction = PlayerMove.Left;
                     }
 
-                }
 
 
-                if (Math.Abs(this.oldPosGuardX * LevelLoader.Size + LevelLoader.Size / 2 - (newPosition.X + LevelLoader.SizePeople / 2)) >= LevelLoader.Size)
-                {
-                    if (nowPosGuardX != this.oldPosGuardX)
+
+                    if (Math.Abs(this.oldPosGuardX * LevelLoader.Size + LevelLoader.Size / 2 - (newPosition.X + LevelLoader.SizePeople / 2)) >= LevelLoader.Size)
                     {
-                        this.oldPosGuardX = nowPosGuardX;
-                        step++;
-                        this.waySet = false;
+                        if (nowPosGuardX != this.oldPosGuardX)
+                        {
+                            this.oldPosGuardX = nowPosGuardX;
+                            step++;
+                            this.waySet = false;
+                        }
+
+                        if (this.oldPosGuardX == this.targetX && this.oldPosGuardY == this.targetY)
+                        {
+                            this.CheckStop();
+                        }
+                    }
+                    if (Math.Abs(this.oldPosGuardY * LevelLoader.Size + LevelLoader.Size / 2 - (newPosition.Y + LevelLoader.SizePeople / 2)) >= LevelLoader.Size)
+                    {
+                        if (nowPosGuardY != this.oldPosGuardY)
+                        {
+                            this.oldPosGuardY = nowPosGuardY;
+                            step++;
+                            this.waySet = false;
+                        }
+                        if (this.oldPosGuardX == this.targetX && this.oldPosGuardY == this.targetY)
+                        {
+                            this.CheckStop();
+                        }
                     }
 
-                    if (this.oldPosGuardX == this.targetX && this.oldPosGuardY == this.targetY) 
-                    {
-                        this.CheckStop();
-                    }
-                }
-                if (Math.Abs(this.oldPosGuardY * LevelLoader.Size + LevelLoader.Size / 2 - (newPosition.Y + LevelLoader.SizePeople / 2)) >= LevelLoader.Size)
-                {
-                    if (nowPosGuardY != this.oldPosGuardY)
-                    {
-                        this.oldPosGuardY = nowPosGuardY;
-                        step++;
-                        this.waySet = false;
-                    }
-                    if (this.oldPosGuardX == this.targetX && this.oldPosGuardY == this.targetY) 
-                    {
-                        this.CheckStop();
-                    }
-                }
+
                 
-
-
                 
                 
-                // смотрим, в каком направлении движемся 
-                switch (this.direction)
-                {
-                    case PlayerMove.Up:
-                        newPosition.Offset(0, -offset);
-                        break;
+                    // смотрим, в каком направлении движемся 
+                    switch (this.direction)
+                    {
+                        case PlayerMove.Up:
+                            newPosition.Offset(0, -offset);
+                            break;
 
-                    case PlayerMove.Left:
-                        newPosition.Offset(-offset, 0);
-                        break;
+                        case PlayerMove.Left:
+                            newPosition.Offset(-offset, 0);
+                            break;
 
-                    case PlayerMove.Right:
-                        newPosition.Offset(offset, 0);
-                        break;
+                        case PlayerMove.Right:
+                            newPosition.Offset(offset, 0);
+                            break;
 
-                    case PlayerMove.Down:
-                        newPosition.Offset(0, offset);
-                        break;
+                        case PlayerMove.Down:
+                            newPosition.Offset(0, offset);
+                            break;
 
-                    default: break;
-                }
+                        default: break;
+                    }
             
-                // перемещение охранника
-                if (newPosition.Left > 0 && newPosition.Right < LevelLoader.GetLenghtX)
+                    // перемещение охранника
+                    if (newPosition.Left > 0 && newPosition.Right < LevelLoader.GetLenghtX)
+                    {
+                        this.position = newPosition;
+                    }
+
+                }
+                else
                 {
-                    this.position = newPosition;
+                    this.Stop();
                 }
                 
             }

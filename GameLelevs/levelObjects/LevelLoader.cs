@@ -445,12 +445,12 @@ namespace GameLevels
                             levelMap[i, j] = 1;
                         }
 
-                        x += LevelLoader.Size;
+                        y += LevelLoader.Size;
 
                     }
 
-                    x = 0;
-                    y += LevelLoader.Size;
+                    y = 0;
+                    x += LevelLoader.Size;
 
                 }
                 // конец создание объектов на уровне
