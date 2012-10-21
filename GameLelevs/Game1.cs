@@ -31,12 +31,12 @@ namespace GameLevels
         // хранилище данных
         Storage storage;
 
-        
 
+        bool debugMode = false; // режим отладки. При нем включается вывод информации о объектах. Горячая клавиша D.
         
         
-        int screenWidth = 300; // длина и высота экрана
-        int screenHeight = 300;
+        int screenWidth = 600; // длина и высота экрана
+        int screenHeight = 600;
 
         public int GetScreenWidth
         {
@@ -181,10 +181,23 @@ namespace GameLevels
         private bool CollidesHigh(Rectangle rect)
         {
             // координаты верхнего леового и нижнего правого угла игрока.
-            int minx = rect.Left / LevelLoader.Size; // size - размер клетки
-            int miny = rect.Top / LevelLoader.Size;
-            int maxx = rect.Right / LevelLoader.Size;
-            int maxy = rect.Bottom / LevelLoader.Size;
+            int minx = (rect.Left + LevelLoader.SizePeople / 2 - 1) / LevelLoader.Size; // size - размер клетки
+            int miny = (rect.Top + LevelLoader.SizePeople / 2 - 1) / LevelLoader.Size;
+            int maxx = (rect.Right - LevelLoader.SizePeople / 2 + 1) / LevelLoader.Size;
+            int maxy = (rect.Bottom - LevelLoader.SizePeople / 2 + 1) / LevelLoader.Size;
+
+            /*int currentI = (rect.Left + LevelLoader.SizePeople / 2)  / LevelLoader.Size;
+            int currentJ = (rect.Top + LevelLoader.SizePeople / 2)  / LevelLoader.Size;
+
+
+            if (levelLoader.levelMap[currentI, currentJ] >= 20 && levelLoader.levelMap[currentI, currentJ] <= 23)
+            {
+                minx = (rect.Left) / LevelLoader.Size; // size - размер клетки
+                miny = (rect.Top) / LevelLoader.Size;
+                maxx = (rect.Right) / LevelLoader.Size;
+                maxy = (rect.Bottom) / LevelLoader.Size;
+            }*/
+
 
             for (int i = minx; i <= maxx; i++)
             {
@@ -212,7 +225,13 @@ namespace GameLevels
 
             // TODO: Add your update logic here
             KeyboardState state = Keyboard.GetState();
-            
+
+
+            if (state.IsKeyDown(Keys.D))
+            {
+                debugMode = !debugMode;
+            }
+
             //смена уровня по нажатию на пробел
             if (state.IsKeyDown(Keys.Space) && oldState.IsKeyUp(Keys.Space)) {
                 if (oldState != state)
@@ -293,18 +312,23 @@ namespace GameLevels
 
             try
             {
-                spriteBatch.DrawString(storage.PullFont("font"), levelLoader.guards[0].X.ToString(), new Vector2(10, 0), Color.Red);
-                spriteBatch.DrawString(storage.PullFont("font"), levelLoader.guards[0].Y.ToString(), new Vector2(10, 20), Color.Red);
-                spriteBatch.DrawString(storage.PullFont("font"), LevelLoader.GetLenghtX.ToString(), new Vector2(10, 40), Color.Red); // распечатка длины уровня по X
-                spriteBatch.DrawString(storage.PullFont("font"), LevelLoader.GetLenghtY.ToString(), new Vector2(10, 60), Color.Red); // распечатка длины уровня по Y 
-                spriteBatch.DrawString(storage.PullFont("font"), Guards.GetLevelMap(0, 0).ToString(), new Vector2(100, 60), Color.Red); // распечатка уровня игры для охранника
-                spriteBatch.DrawString(storage.PullFont("font"), Guards.GetLevelMap(0, 1).ToString(), new Vector2(100, 80), Color.Red);  
-                spriteBatch.DrawString(storage.PullFont("font"), Guards.GetLevelMap(0, 2).ToString(), new Vector2(100, 100), Color.Red);
-                spriteBatch.DrawString(storage.PullFont("font"), Guards.GetLevelMap(1, 0).ToString(), new Vector2(140, 60), Color.Red); 
-                spriteBatch.DrawString(storage.PullFont("font"), Guards.GetLevelMap(1, 1).ToString(), new Vector2(140, 80), Color.Red);
-                spriteBatch.DrawString(storage.PullFont("font"), "NextStepGuardX - " + levelLoader.guards[0].NextX.ToString(), new Vector2(10, 250), Color.Red);
-                spriteBatch.DrawString(storage.PullFont("font"), "NextStepGuardY - " + levelLoader.guards[0].NextY.ToString(), new Vector2(10, 270), Color.Red); // распечатка клетки для следующего хода охранника
-                
+                if (debugMode)
+                {
+                    spriteBatch.DrawString(storage.PullFont("font"), "PosGuard[0].X = " + levelLoader.guards[0].X.ToString(), new Vector2(10, 0), Color.Red);
+                    spriteBatch.DrawString(storage.PullFont("font"), "PosGuard[0].Y = " + levelLoader.guards[0].Y.ToString(), new Vector2(10, 20), Color.Red);
+                    spriteBatch.DrawString(storage.PullFont("font"), "LevelLenght = " + LevelLoader.GetLenghtX.ToString(), new Vector2(10, 40), Color.Red); // распечатка длины уровня по X
+                    spriteBatch.DrawString(storage.PullFont("font"), "LevelHeight = " + LevelLoader.GetLenghtY.ToString(), new Vector2(10, 60), Color.Red); // распечатка длины уровня по Y 
+                    spriteBatch.DrawString(storage.PullFont("font"), "LvlMapGuard(0, 0) = " + Guards.GetLevelMap(0, 0).ToString(), new Vector2(10, 80), Color.Red); // распечатка уровня игры для охранника
+                    spriteBatch.DrawString(storage.PullFont("font"), "LvlMapGuard(0, 1) = " + Guards.GetLevelMap(0, 1).ToString(), new Vector2(10, 100), Color.Red);
+                    spriteBatch.DrawString(storage.PullFont("font"), "LvlMapGuard(0, 2) = " + Guards.GetLevelMap(0, 2).ToString(), new Vector2(10, 120), Color.Red);
+                    spriteBatch.DrawString(storage.PullFont("font"), "LvlMapGuard(1, 0) = " + Guards.GetLevelMap(1, 0).ToString(), new Vector2(10, 140), Color.Red);
+                    spriteBatch.DrawString(storage.PullFont("font"), "LvlMapGuard(1, 1) = " + Guards.GetLevelMap(1, 1).ToString(), new Vector2(10, 160), Color.Red);
+                    spriteBatch.DrawString(storage.PullFont("font"), "NextStepGuardX - " + levelLoader.guards[0].NextX.ToString(), new Vector2(10, 250), Color.Red);
+                    spriteBatch.DrawString(storage.PullFont("font"), "NextStepGuardY - " + levelLoader.guards[0].NextY.ToString(), new Vector2(10, 270), Color.Red); // распечатка клетки для следующего хода охранника
+
+                    spriteBatch.DrawString(storage.PullFont("font"), "MyPosX - " + player.NewPosX.ToString(), new Vector2(10, 330), Color.Red); // распечатка клетки для следующего хода охранника
+                    spriteBatch.DrawString(storage.PullFont("font"), "MyPosY - " + player.NewPosY.ToString(), new Vector2(10, 350), Color.Red); // распечатка клетки для следующего хода охранника
+                }
             }
             catch {
                 // TODO: необходимо как-то обрабатывать исключения!

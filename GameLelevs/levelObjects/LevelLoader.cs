@@ -41,14 +41,14 @@ namespace GameLevels
 
 
 
-        static int sizePeople = 20; //размер изображения игрока и охранников
+        static int sizePeople = 25; //размер изображения игрока и охранников
         public static int SizePeople
         {
             get { return sizePeople; }
         }
 
         //размер 1 ячейки уровня
-        static int size = 30;
+        static int size = 40;
         public static int Size
         {
             get { return size; }

@@ -204,8 +204,9 @@ namespace GameLevels
                 // новое положение игрока
                 Rectangle newPosition = playerInfo.position;
 
-                oldPosX = playerInfo.position.X / LevelLoader.Size;
-                oldPosY = playerInfo.position.Y / LevelLoader.Size;
+                // считаем старую клетку игрока. Считается от центра игрока.
+                oldPosX = (playerInfo.position.X + (LevelLoader.SizePeople / 2)) / LevelLoader.Size;
+                oldPosY = (playerInfo.position.Y + (LevelLoader.SizePeople / 2)) / LevelLoader.Size;
 
                 // смотрим, в каком направлении движемся 
                 switch (playerInfo.direction)
@@ -233,8 +234,9 @@ namespace GameLevels
                 {
                     // перемещаем игрока на новую позицию
                     playerInfo.position = newPosition;
-                    newPosX = playerInfo.position.X / LevelLoader.Size;
-                    newPosY = playerInfo.position.Y / LevelLoader.Size;
+                    //считаем новую клетку игрока. Считается от центра игрока
+                    newPosX = (playerInfo.position.X + (LevelLoader.SizePeople / 2)) / LevelLoader.Size;
+                    newPosY = (playerInfo.position.Y + (LevelLoader.SizePeople / 2)) / LevelLoader.Size;
                     //изменилась ли клетка, в кот. находился игрок?
                     if (newPosX != oldPosX || newPosY != oldPosY)
                     {
