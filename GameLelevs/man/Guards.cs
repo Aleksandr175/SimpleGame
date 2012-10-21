@@ -54,6 +54,12 @@ namespace GameLevels
 
         private bool alarm = true; // есть ли тревога ? True - включена
 
+        public bool Alarm
+        {
+            get { return alarm; }
+            set { alarm = value; }
+        }
+
         // текстура для вывода охранника в состоянии спокойствия
         private Texture2D idlTexture;
 
@@ -316,9 +322,11 @@ namespace GameLevels
             }
 
 
+            // если тревога отключена - то идем патрулировать.
             if (alarm == false)
             {
-                //this.Patrol();
+                this.isRunning = true;
+                this.Patrol();
             }
             
             if (this.isRunning) 

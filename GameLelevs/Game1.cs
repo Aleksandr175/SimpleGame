@@ -232,6 +232,15 @@ namespace GameLevels
                 debugMode = !debugMode;
             }
 
+            // вкл, выкл. тревогу
+            if (state.IsKeyDown(Keys.A))
+            {
+                foreach (Guards guard in levelLoader.guards)
+                {
+                    guard.Alarm = !guard.Alarm;
+                }
+            }
+
             //смена уровня по нажатию на пробел
             if (state.IsKeyDown(Keys.Space) && oldState.IsKeyUp(Keys.Space)) {
                 if (oldState != state)
@@ -328,6 +337,8 @@ namespace GameLevels
 
                     spriteBatch.DrawString(storage.PullFont("font"), "MyPosX - " + player.NewPosX.ToString(), new Vector2(10, 330), Color.Red); // распечатка клетки для следующего хода охранника
                     spriteBatch.DrawString(storage.PullFont("font"), "MyPosY - " + player.NewPosY.ToString(), new Vector2(10, 350), Color.Red); // распечатка клетки для следующего хода охранника
+                    spriteBatch.DrawString(storage.PullFont("font"), "Alarm - " + levelLoader.guards[0].Alarm, new Vector2(10, 380), Color.Red); // тревога
+
                 }
             }
             catch {
