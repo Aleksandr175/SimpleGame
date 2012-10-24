@@ -114,8 +114,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="levelObjects\BaseObject.cs" />
     <Compile Include="levelObjects\Block.cs" />
     <Compile Include="levelObjects\Camera.cs" />
+    <Compile Include="levelObjects\IBaseObject.cs" />
+    <Compile Include="levelObjects\IBlock.cs" />
+    <Compile Include="levelObjects\ICard.cs" />
+    <Compile Include="levelObjects\IKey.cs" />
     <Compile Include="levelObjects\LevelLoader.cs" />
     <Compile Include="levelObjects\Storage.cs" />
     <Compile Include="man\Enumeration.cs" />
