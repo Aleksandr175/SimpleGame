@@ -105,6 +105,9 @@ namespace GameLevels
             storage.LoadTexture2DFolder("Content/Textures");
             storage.LoadTexture2DFolder("Content/players");
             storage.PushFont("font", Content.Load<SpriteFont>("myFont1"));
+            
+            // выбираем все возможные номера уровней
+            storage.GetLevelNumbers();
 
             // инициализируем нового игрока
             Rectangle plaerPosition = new Rectangle(120, 120, LevelLoader.SizePeople, LevelLoader.SizePeople);

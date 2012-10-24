@@ -309,3 +309,4 @@ C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelev
 C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl5.txt
 C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl6.txt
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl6.txt
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl6.txt

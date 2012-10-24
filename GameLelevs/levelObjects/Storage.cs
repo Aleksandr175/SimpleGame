@@ -24,6 +24,9 @@ namespace GameLevels.levelObjects
 
         // словарь для шрифтов
         private Dictionary<String, SpriteFont> fonts = new Dictionary<String, SpriteFont>();
+
+        // все возможные уровни игры
+        int[] levels;
                 
         /// <summary>
         /// Добавляет текстуру в хранилице
@@ -109,6 +112,53 @@ namespace GameLevels.levelObjects
             foreach (DirectoryInfo dir in directories) {
                 LoadTexture2DFolder(Path.Combine(activeDir, dir.Name));
             }
+        }
+
+        /// <summary>
+        /// Открытый метод, необходим для считывания всех возможных номеров уровней
+        /// </summary>
+        /// <param name="activeDir">Папка с уровнями</param>
+        /// <returns>Удалось ли выполнить операцию</returns>
+        public bool GetLevelNumbers(string activeDir = "Content/lvls") {
+
+            // если папки не существует то вызывать исключение
+            if (!Directory.Exists(activeDir))
+                return false;
+
+            // найдем информацию о папке
+            DirectoryInfo di = new DirectoryInfo(activeDir);
+
+            // загрузим по одному файлу
+            FileInfo[] fi = di.GetFiles();
+
+            int size = fi.Length;
+            int index = 0;
+            string levelIndex;
+
+            levels = new int[size];
+
+            foreach (FileInfo info in fi) {
+                levelIndex = info.Name.Substring(info.Name.LastIndexOf('l') + 1, info.Name.IndexOf('.') - info.Name.LastIndexOf('l') - 1);
+                // обработать исключение!
+                try {
+                    levels[index] = Int32.Parse(levelIndex);
+                }
+                catch {
+                    levels[index] = 0;
+                }
+
+                index++;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Открытый метод, возвращает максимаотно возможный уровень
+        /// </summary>
+        /// <returns>Максимально возможный уровень</returns>
+        public int GetMaxLevelNumber() {
+            return levels.Max();
         }
 
     }
