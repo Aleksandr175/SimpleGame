@@ -5,7 +5,6 @@ Content\Textures\lvl\wall_down_right.xnb
 Content\Textures\lvl\wall_left_down.xnb
 Content\Textures\lvl\wall_left_up.xnb
 Content\Textures\lvl\wall_up_right.xnb
-Content\Textures\lvl\empty.xnb
 Content\Textures\lvl\wall_dlu.xnb
 Content\Textures\lvl\wall_lur.xnb
 Content\Textures\lvl\wall_urd.xnb
@@ -36,7 +35,9 @@ Content\Textures\Objects\laser3_horiz.xnb
 Content\Textures\Objects\laser3_vert.xnb
 Content\Textures\Objects\laser4_horiz.xnb
 Content\Textures\Objects\laser4_vert.xnb
+Content\Textures\lvl\floor.xnb
 Content\myFont1.xnb
+Content\Textures\lvl\empty.xnb
 Content\Textures\lvl\wall_goriz.JPG
 Content\Textures\lvl\wall_vert.JPG
 Content\Textures\lvl\wall_4sides.JPG
@@ -44,7 +45,6 @@ Content\Textures\lvl\wall_down_right.JPG
 Content\Textures\lvl\wall_left_down.JPG
 Content\Textures\lvl\wall_left_up.JPG
 Content\Textures\lvl\wall_up_right.JPG
-Content\Textures\lvl\empty.JPG
 Content\Textures\lvl\wall_dlu.JPG
 Content\Textures\lvl\wall_lur.JPG
 Content\Textures\lvl\wall_urd.JPG
@@ -55,3 +55,4 @@ Content\lvls\lvl3.txt
 Content\lvls\lvl4.txt
 Content\lvls\lvl5.txt
 Content\lvls\lvl6.txt
+Content\lvls\lvl7.txt

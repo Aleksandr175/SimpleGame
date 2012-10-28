@@ -27,8 +27,8 @@ namespace GameLevels
         // карта уровня
         // так же используется для алгоритма поиска пути к игроку
         public byte[,] levelMap;
+        public byte[,] levelMapFloor; // карта пола
 
-        
         
         public LevelLoader(Game1 game, Player player, Storage storage, Camera camera)
         {
@@ -73,7 +73,7 @@ namespace GameLevels
         /// <summary>
         /// Ф-ция создания уровня.
         /// Считывает данные из файла.
-        /// Файл д.б. с названием "lvlX.txt";
+        /// Файл должен быть с названием "lvlX.txt";
         /// </summary>
         /// <param name="lvl">номер уровня</param>
         public void CreateLevel(int lvl)
@@ -112,18 +112,16 @@ namespace GameLevels
             {
 
                 lines = File.ReadAllLines(lvl_name); //получили массив строк                
-                //считываем размеры массива с уровнем (0 значение - строки, 1 - колонки)
-                foreach (string line in lines)
+                
+                //считываем размеры массива с уровнем (sizeFile[0] значение - строки, sizeFile[1] - колонки)
+                str = lines[0].Split(' ');
+                foreach (string s in str)
                 {
-                    str = line.Split(' ');
-                    foreach (string s in str)
-                    {
-                        sizeFile[tempIndex] = Convert.ToInt32(s);
-                        tempIndex++;
-                        if (tempIndex == 2) { break; }
-                    }
-                    break;
+                    sizeFile[tempIndex] = Convert.ToInt32(s);
+                    tempIndex++;
+                    if (tempIndex == 2) { break; }
                 }
+                    
 
                 // выделим память для карты уровня
                 levelMap = new byte[sizeFile[1] + 1, sizeFile[0] + 1];
@@ -131,12 +129,11 @@ namespace GameLevels
 
                 tempIndex = 0;
                 //считывание уровня из файла
-                foreach (string line in lines)
-                {
+                for (int i = 0; i <= sizeFile[0]; i++) {
 
                     if (tempIndex == 0) { tempIndex++; continue; } // пропускаем первую строку с данными размера уровня
 
-                    str = line.Split(' ');
+                    str = lines[i].Split(' ');
                     foreach (string s in str)
                     {
                         levelMap[indexI, indexJ] = 0;
@@ -241,6 +238,34 @@ namespace GameLevels
 
 
 
+                indexI = 0;
+                indexJ = 0;
+
+                if (lvl == 7)
+                {
+                    // выделим память для карты уровня
+                    levelMapFloor = new byte[sizeFile[1] + 1, sizeFile[0] + 1];
+
+                    //считывание пола в игре
+                    for (int i = sizeFile[0] + 1; i <= 2 * sizeFile[0]; i++)
+                    {
+                        str = lines[i].Split(' ');
+                        foreach (string s in str)
+                        {
+                            levelMapFloor[indexI, indexJ] = 0;
+                            // пол в игре
+                            if (s.Equals("90", StringComparison.OrdinalIgnoreCase))
+                            {
+                                levelMapFloor[indexI, indexJ] = 90;
+                            }
+                            indexI++;
+                        }
+                        indexI = 0;
+                        indexJ++;
+                    }
+                }
+
+
 
                 int[,] map = new int[sizeFile[1] + 1, sizeFile[0] + 1]; // карта уровня после преобразования
 
@@ -261,6 +286,83 @@ namespace GameLevels
 
                     }
                 }
+
+
+
+
+
+                // создание пола на уровне
+                // пол
+                // берется из 2 массива уровня в файле.
+                // 1 1 2 3 1 2
+                // ...........
+                // 1 2 3 4 1 2 - осн. массив уровня
+                // 90 90 90 90 - далее идет массив пола
+                // 0 90 90 0
+                // ..........  
+                if (lvl == 7)
+                {
+                    for (int i = 0; i < sizeFile[1]; i++)
+                    {
+                        for (int j = sizeFile[0]; j <= 2 * sizeFile[0]; j++)
+                        {
+                            Rectangle Rect = new Rectangle(i * LevelLoader.Size - LevelLoader.Size / 2, (j - sizeFile[0]) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
+                            //Rectangle Rect2 = new Rectangle((i + 1) * LevelLoader.Size - LevelLoader.Size / 2, (j - sizeFile[0]) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
+                            //Rectangle Rect3 = new Rectangle(i * LevelLoader.Size - LevelLoader.Size / 2, ((j - sizeFile[0]) + 1) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
+
+                            if (levelMapFloor[i, j - sizeFile[0]] == 90)
+                            {
+                                Block block = new Block(Rect, storage.Pull2DTexture("floor"), game, this.camera);
+                                blocks.Add(block);
+                            }
+
+                            // - пустое место
+                            // * пол
+
+                            // *-
+                            // *-
+                            if (j - sizeFile[0] - 1 > 0) // не выходим за границы массива
+                            {
+                                if (levelMapFloor[i, j - sizeFile[0] - 1] == 90) // если клетка выше - пол, то и ниже тоже пол
+                                {
+                                    Rectangle Rect2 = new Rectangle(i * LevelLoader.Size - LevelLoader.Size / 2, (j - sizeFile[0]) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
+                                    Block block = new Block(Rect2, storage.Pull2DTexture("floor"), game, this.camera);
+                                    blocks.Add(block);
+                                }
+                            }
+
+                            // **
+                            // --
+                            if (i - 1 > 0) // не выходим за границы массива
+                            {
+
+                                if (levelMapFloor[i - 1, j - sizeFile[0]] == 90) // если клетка выше - пол, то и ниже тоже пол
+                                {
+                                    Rectangle Rect2 = new Rectangle(i * LevelLoader.Size - LevelLoader.Size / 2, (j - sizeFile[0]) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
+                                    Block block = new Block(Rect2, storage.Pull2DTexture("floor"), game, this.camera);
+                                    blocks.Add(block);
+                                }
+
+                            }
+
+                            // *-
+                            // -*
+                            if (i - 1 > 0 && j - sizeFile[0] - 1 > 0) // не выходим за границы массива
+                            {
+
+                                if (levelMapFloor[i - 1, j - sizeFile[0] - 1] == 90) // если клетка выше - пол, то и ниже тоже пол
+                                {
+                                    Rectangle Rect2 = new Rectangle(i * LevelLoader.Size - LevelLoader.Size / 2, (j - sizeFile[0]) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
+                                    Block block = new Block(Rect2, storage.Pull2DTexture("floor"), game, this.camera);
+                                    blocks.Add(block);
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+                // конец создания пола
 
 
 
@@ -445,6 +547,10 @@ namespace GameLevels
                             levelMap[i, j] = 1;
                         }
 
+
+                        
+
+
                         y += LevelLoader.Size;
 
                     }
@@ -457,6 +563,7 @@ namespace GameLevels
 
                 lenghtX = LevelLoader.Size * sizeFile[1]; // длина уровня в пикселях
                 lenghtY = LevelLoader.Size * sizeFile[0];
+
 
                 Guards.SetLevelMap(levelMap, lenghtX / LevelLoader.Size, lenghtY / LevelLoader.Size);
             }

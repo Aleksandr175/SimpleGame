@@ -182,7 +182,6 @@ C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_down.JPG
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_up.JPG
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_up_right.JPG
-C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\empty.JPG
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_dlu.JPG
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_lur.JPG
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_urd.JPG
@@ -310,3 +309,5 @@ C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelev
 C:\Documents and Settings\Administrator\My Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl6.txt
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl6.txt
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl6.txt
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\floor.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl7.txt

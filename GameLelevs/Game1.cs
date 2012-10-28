@@ -116,8 +116,10 @@ namespace GameLevels
 
             this.levelLoader = new LevelLoader(this, player, storage, camera);
 
-            //сразу создаем первый уровень
-            levelLoader.CreateLevel(5);
+
+            maxLvl = storage.GetMaxLevelNumber();
+            //сразу создаем уровень
+            levelLoader.CreateLevel(7);
         }
 
         /// <summary>
@@ -311,16 +313,17 @@ namespace GameLevels
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            // отрисовываем стены
-            foreach (Block block in levelLoader.blocks)
-            {
-                block.Draw(spriteBatch);
-            }
             // отрисовываем объекты
             foreach (Object obj in levelLoader.objs)
             {
                 obj.Draw(spriteBatch);
             }
+            // отрисовываем стены
+            foreach (Block block in levelLoader.blocks)
+            {
+                block.Draw(spriteBatch);
+            }
+            
 
             try
             {
