@@ -122,6 +122,7 @@
     <Compile Include="levelObjects\ICard.cs" />
     <Compile Include="levelObjects\IKey.cs" />
     <Compile Include="levelObjects\LevelLoader.cs" />
+    <Compile Include="levelObjects\Shadow.cs" />
     <Compile Include="levelObjects\Storage.cs" />
     <Compile Include="man\Enumeration.cs" />
     <Compile Include="levelObjects\FPSCounter.cs" />

@@ -24,6 +24,8 @@ namespace GameLevels
         int oldPosGuardX; // старая позиция охранника. Для сравнения - "перешел ли охранник на новую клетку?"
         int oldPosGuardY;
 
+        public bool visible = true; // отображаем ли охранника?
+
         bool waySet = false; // задан ли охраннику путь к цели ?
         int step; // номер шага клетки, куда нужно идти
 
