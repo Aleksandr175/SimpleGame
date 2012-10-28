@@ -2,139 +2,13 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>Textures\lvl\wall_goriz.JPG</Source>
-      <Name>Textures\lvl\wall_goriz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
+      <Source>myFont1.spritefont</Source>
+      <Name>myFont1</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_goriz.xnb</Output>
-      <Time>2012-10-28T11:18:55.15625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\wall_vert.JPG</Source>
-      <Name>Textures\lvl\wall_vert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_vert.xnb</Output>
-      <Time>2012-10-28T11:18:55.15625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\wall_4sides.JPG</Source>
-      <Name>Textures\lvl\wall_4sides</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_4sides.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\wall_down_right.JPG</Source>
-      <Name>Textures\lvl\wall_down_right</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_down_right.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\wall_left_down.JPG</Source>
-      <Name>Textures\lvl\wall_left_down</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_down.xnb</Output>
-      <Time>2012-10-28T11:18:55.15625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\wall_left_up.JPG</Source>
-      <Name>Textures\lvl\wall_left_up</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_up.xnb</Output>
-      <Time>2012-10-28T11:18:55.15625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\wall_up_right.JPG</Source>
-      <Name>Textures\lvl\wall_up_right</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_up_right.xnb</Output>
-      <Time>2012-10-28T11:18:55.15625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\wall_dlu.JPG</Source>
-      <Name>Textures\lvl\wall_dlu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_dlu.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\wall_lur.JPG</Source>
-      <Name>Textures\lvl\wall_lur</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_lur.xnb</Output>
-      <Time>2012-10-28T11:18:55.15625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\wall_urd.JPG</Source>
-      <Name>Textures\lvl\wall_urd</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_urd.xnb</Output>
-      <Time>2012-10-28T11:18:55.15625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\wall_rdl.JPG</Source>
-      <Name>Textures\lvl\wall_rdl</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_rdl.xnb</Output>
-      <Time>2012-10-28T11:18:55.15625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\doors\door_horiz.JPG</Source>
-      <Name>Textures\lvl\doors\door_horiz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\doors\door_horiz_open.JPG</Source>
-      <Name>Textures\lvl\doors\door_horiz_open</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz_open.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\doors\door_vertic.JPG</Source>
-      <Name>Textures\lvl\doors\door_vertic</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lvl\doors\door_vertic_open.JPG</Source>
-      <Name>Textures\lvl\doors\door_vertic_open</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic_open.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\myFont1.xnb</Output>
+      <Time>2012-10-22T01:41:26.6551201+04:00</Time>
     </Item>
     <Item>
       <Source>players\player.png</Source>
@@ -142,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player.xnb</Output>
-      <Time>2012-10-28T11:18:55.171875+03:00</Time>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player.xnb</Output>
+      <Time>2012-10-25T19:34:03.0347836+04:00</Time>
     </Item>
     <Item>
       <Source>players\player_run.png</Source>
@@ -151,107 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run.xnb</Output>
-      <Time>2012-10-28T11:18:55.171875+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\spDL.jpg</Source>
-      <Name>Textures\Objects\spDL</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spDL.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\spLU.jpg</Source>
-      <Name>Textures\Objects\spLU</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spLU.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\spRD.jpg</Source>
-      <Name>Textures\Objects\spRD</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spRD.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\spUR.jpg</Source>
-      <Name>Textures\Objects\spUR</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spUR.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\tableD.jpg</Source>
-      <Name>Textures\Objects\tableD</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableD.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\tableL.jpg</Source>
-      <Name>Textures\Objects\tableL</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableL.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\tableR.jpg</Source>
-      <Name>Textures\Objects\tableR</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableR.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\tableU.jpg</Source>
-      <Name>Textures\Objects\tableU</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableU.xnb</Output>
-      <Time>2012-10-28T11:18:55.140625+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\card.jpg</Source>
-      <Name>Textures\Objects\card</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\card.xnb</Output>
-      <Time>2012-10-28T11:18:55.109375+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\key.jpg</Source>
-      <Name>Textures\Objects\key</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\key.xnb</Output>
-      <Time>2012-10-28T11:18:55.109375+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\money.jpg</Source>
-      <Name>Textures\Objects\money</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\money.xnb</Output>
-      <Time>2012-10-28T11:18:55.125+03:00</Time>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run.xnb</Output>
+      <Time>2012-10-25T19:34:52.240598+04:00</Time>
     </Item>
     <Item>
       <Source>players\player_run_goriz.png</Source>
@@ -259,80 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run_goriz.xnb</Output>
-      <Time>2012-10-28T11:18:55.171875+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\laser1_horiz.jpg</Source>
-      <Name>Textures\Objects\laser1_horiz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_horiz.xnb</Output>
-      <Time>2012-10-28T11:18:55.125+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\laser1_vert.jpg</Source>
-      <Name>Textures\Objects\laser1_vert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_vert.xnb</Output>
-      <Time>2012-10-28T11:18:55.125+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\laser2_horiz.jpg</Source>
-      <Name>Textures\Objects\laser2_horiz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz.xnb</Output>
-      <Time>2012-10-28T11:18:55.125+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\laser2_vert.jpg</Source>
-      <Name>Textures\Objects\laser2_vert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert.xnb</Output>
-      <Time>2012-10-28T11:18:55.125+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\laser3_horiz.jpg</Source>
-      <Name>Textures\Objects\laser3_horiz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_horiz.xnb</Output>
-      <Time>2012-10-28T11:18:55.125+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\laser3_vert.jpg</Source>
-      <Name>Textures\Objects\laser3_vert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_vert.xnb</Output>
-      <Time>2012-10-28T11:18:55.125+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\laser4_horiz.jpg</Source>
-      <Name>Textures\Objects\laser4_horiz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser4_horiz.xnb</Output>
-      <Time>2012-10-28T11:18:55.125+03:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Objects\laser4_vert.jpg</Source>
-      <Name>Textures\Objects\laser4_vert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser4_vert.xnb</Output>
-      <Time>2012-10-28T11:18:55.125+03:00</Time>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run_goriz.xnb</Output>
+      <Time>2012-10-25T19:36:42.0958813+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\floor.JPG</Source>
@@ -340,17 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\floor.xnb</Output>
-      <Time>2012-10-28T11:26:49.5+03:00</Time>
-    </Item>
-    <Item>
-      <Source>myFont1.spritefont</Source>
-      <Name>myFont1</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\myFont1.xnb</Output>
-      <Time>2012-10-28T11:18:55.15625+03:00</Time>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\floor.xnb</Output>
+      <Time>2012-10-28T17:47:35.1222291+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\empty.png</Source>
@@ -358,8 +52,359 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\empty.xnb</Output>
-      <Time>2012-10-28T12:23:00.5+03:00</Time>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\empty.xnb</Output>
+      <Time>2012-10-28T17:47:35.1222291+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\brilliant.png</Source>
+      <Name>Textures\Objects\brilliant</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\brilliant.xnb</Output>
+      <Time>2012-10-28T19:38:07.2375644+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\card.png</Source>
+      <Name>Textures\Objects\card</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\card.xnb</Output>
+      <Time>2012-10-28T19:18:31.184298+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\key.png</Source>
+      <Name>Textures\Objects\key</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\key.xnb</Output>
+      <Time>2012-10-28T19:18:28.1101222+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\laser1_horiz.png</Source>
+      <Name>Textures\Objects\laser1_horiz</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_horiz.xnb</Output>
+      <Time>2012-10-28T20:31:58.4923816+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\laser1_vert.png</Source>
+      <Name>Textures\Objects\laser1_vert</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_vert.xnb</Output>
+      <Time>2012-10-28T20:31:29.3007119+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\laser2_horiz.png</Source>
+      <Name>Textures\Objects\laser2_horiz</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz.xnb</Output>
+      <Time>2012-10-28T20:35:27.5523391+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\laser2_vert.png</Source>
+      <Name>Textures\Objects\laser2_vert</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert.xnb</Output>
+      <Time>2012-10-28T20:35:41.9841646+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\laser3_D.png</Source>
+      <Name>Textures\Objects\laser3_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_D.xnb</Output>
+      <Time>2012-10-28T20:34:23.3936695+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\laser3_L.png</Source>
+      <Name>Textures\Objects\laser3_L</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_L.xnb</Output>
+      <Time>2012-10-28T20:34:33.2492332+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\laser3_R.png</Source>
+      <Name>Textures\Objects\laser3_R</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_R.xnb</Output>
+      <Time>2012-10-28T20:34:05.2416312+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\laser3_U.png</Source>
+      <Name>Textures\Objects\laser3_U</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_U.xnb</Output>
+      <Time>2012-10-28T20:34:41.8017224+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\money.png</Source>
+      <Name>Textures\Objects\money</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\money.xnb</Output>
+      <Time>2012-10-28T20:09:25.5119955+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\picture1.png</Source>
+      <Name>Textures\Objects\picture1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture1.xnb</Output>
+      <Time>2012-10-28T18:30:11.7934623+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\picture2.png</Source>
+      <Name>Textures\Objects\picture2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture2.xnb</Output>
+      <Time>2012-10-28T19:20:26.644902+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\picture3.png</Source>
+      <Name>Textures\Objects\picture3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture3.xnb</Output>
+      <Time>2012-10-28T18:30:47.1994874+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\rubin.png</Source>
+      <Name>Textures\Objects\rubin</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\rubin.xnb</Output>
+      <Time>2012-10-28T19:18:20.2556729+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\spDL.png</Source>
+      <Name>Textures\Objects\spDL</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spDL.xnb</Output>
+      <Time>2012-10-28T19:29:52.5932724+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\spLU.png</Source>
+      <Name>Textures\Objects\spLU</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spLU.xnb</Output>
+      <Time>2012-10-28T19:29:40.9216048+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\spRD.png</Source>
+      <Name>Textures\Objects\spRD</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spRD.xnb</Output>
+      <Time>2012-10-28T19:30:09.7852557+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\spUR.png</Source>
+      <Name>Textures\Objects\spUR</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spUR.xnb</Output>
+      <Time>2012-10-28T19:30:22.2249672+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\tableD.png</Source>
+      <Name>Textures\Objects\tableD</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableD.xnb</Output>
+      <Time>2012-10-28T19:24:46.1467446+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\tableL.png</Source>
+      <Name>Textures\Objects\tableL</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableL.xnb</Output>
+      <Time>2012-10-28T19:24:35.9051588+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\tableR.png</Source>
+      <Name>Textures\Objects\tableR</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableR.xnb</Output>
+      <Time>2012-10-28T19:29:10.9868926+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\tableU.png</Source>
+      <Name>Textures\Objects\tableU</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableU.xnb</Output>
+      <Time>2012-10-28T19:24:10.4317018+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\wall_4sides.png</Source>
+      <Name>Textures\lvl\wall_4sides</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_4sides.xnb</Output>
+      <Time>2012-10-28T19:13:53.5954208+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\wall_dlu.png</Source>
+      <Name>Textures\lvl\wall_dlu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_dlu.xnb</Output>
+      <Time>2012-10-28T19:12:34.2288813+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\wall_down_right.png</Source>
+      <Name>Textures\lvl\wall_down_right</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_down_right.xnb</Output>
+      <Time>2012-10-28T19:11:25.3819435+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\wall_goriz.png</Source>
+      <Name>Textures\lvl\wall_goriz</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_goriz.xnb</Output>
+      <Time>2012-10-28T19:09:47.7913616+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\wall_left_down.png</Source>
+      <Name>Textures\lvl\wall_left_down</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_down.xnb</Output>
+      <Time>2012-10-28T19:33:01.9871051+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\wall_left_up.png</Source>
+      <Name>Textures\lvl\wall_left_up</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_up.xnb</Output>
+      <Time>2012-10-28T19:07:53.5488273+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\wall_lur.png</Source>
+      <Name>Textures\lvl\wall_lur</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_lur.xnb</Output>
+      <Time>2012-10-28T19:15:39.4164734+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\wall_rdl.png</Source>
+      <Name>Textures\lvl\wall_rdl</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_rdl.xnb</Output>
+      <Time>2012-10-28T19:01:34.9231712+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\wall_up_right.png</Source>
+      <Name>Textures\lvl\wall_up_right</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_up_right.xnb</Output>
+      <Time>2012-10-28T19:01:45.1067536+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\wall_urd.png</Source>
+      <Name>Textures\lvl\wall_urd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_urd.xnb</Output>
+      <Time>2012-10-28T19:02:44.2021337+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\wall_vert.png</Source>
+      <Name>Textures\lvl\wall_vert</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_vert.xnb</Output>
+      <Time>2012-10-28T19:02:53.0086374+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\doors\door_horiz.png</Source>
+      <Name>Textures\lvl\doors\door_horiz</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz.xnb</Output>
+      <Time>2012-10-28T18:33:46.0777187+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\doors\door_horiz_open.png</Source>
+      <Name>Textures\lvl\doors\door_horiz_open</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz_open.xnb</Output>
+      <Time>2012-10-28T18:33:45.3466769+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\doors\door_vertic.png</Source>
+      <Name>Textures\lvl\doors\door_vertic</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic.xnb</Output>
+      <Time>2012-10-28T18:33:44.7626435+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\doors\door_vertic_open.png</Source>
+      <Name>Textures\lvl\doors\door_vertic_open</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic_open.xnb</Output>
+      <Time>2012-10-28T18:33:43.8785929+04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -367,39 +412,39 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>D:\user\Documents\GitHub\SimpleGame\GameLelevs\Content\</RootDirectory>
+      <LoggerRootDirectory>D:\user\Documents\GitHub\SimpleGame\GameLelevs\</LoggerRootDirectory>
+      <IntermediateDirectory>D:\user\Documents\GitHub\SimpleGame\GameLelevs\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2010-08-23T11:41:18+03:00</Value>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T13:41:18+05:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2010-08-23T11:41:18+03:00</Value>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T13:41:18+05:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2010-08-23T11:41:18+03:00</Value>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T13:41:18+05:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2010-08-23T11:41:18+03:00</Value>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T13:41:18+05:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2010-08-23T11:41:18+03:00</Value>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T13:41:18+05:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2010-08-23T11:41:18+03:00</Value>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T13:41:18+05:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2012-09-07T08:01:20.359375+03:00</Value>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2012-10-06T22:37:40.5054704+04:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
