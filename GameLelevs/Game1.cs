@@ -121,8 +121,12 @@ namespace GameLevels
 
 
             maxLvl = storage.GetMaxLevelNumber();
-            //сразу создаем уровень
-            levelLoader.CreateLevel(7);
+
+            // стоит проверять существование уровня
+            if(storage.IsExist(7))
+                levelLoader.CreateLevel(7);
+            else
+                levelLoader.CreateLevel(maxLvl);
         }
 
         /// <summary>

@@ -161,5 +161,13 @@ namespace GameLevels.levelObjects
             return levels.Max();
         }
 
+        /// <summary>
+        /// Метод проверяет существование заданного уровня
+        /// </summary>
+        /// <param name="level">Номер уровня</param>
+        /// <returns>Существование уровня</returns>
+        public bool IsExist(int level) {
+            return this.levels.Contains<int>(level);
+        }
     }
 }

@@ -136,18 +136,6 @@ D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz_
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic_open.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player.xnb
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_goriz.JPG
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_vert.JPG
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_4sides.JPG
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_down_right.JPG
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_down.JPG
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_up.JPG
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_up_right.JPG
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\empty.JPG
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_dlu.JPG
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_lur.JPG
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_urd.JPG
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_rdl.JPG
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl1.txt
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl2.txt
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl3.txt
@@ -271,10 +259,6 @@ D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_horiz.
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_vert.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert.xnb
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_horiz.xnb
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_vert.xnb
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser4_horiz.xnb
-D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser4_vert.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_horiz.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_vert.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz.xnb
@@ -369,3 +353,14 @@ D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.csprojRe
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.exe
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.pdb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\floor.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\brilliant.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_D.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_L.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_R.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_U.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture1.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture2.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture3.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\rubin.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl7.txt
