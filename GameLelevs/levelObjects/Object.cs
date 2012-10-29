@@ -8,7 +8,7 @@ using GameLevels.levelObjects;
 
 namespace GameLevels
 {
-    class Object : BaseObject, ICard
+    class Object : BaseObject
     {
         public Object(Rectangle rect, Texture2D texture, Game1 game, Camera camera)
             : base(rect, texture, game, camera) {

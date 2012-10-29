@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Enumerations;
+using GameLevels.levelObjects;
 
 namespace GameLevels
 {
@@ -35,6 +36,12 @@ namespace GameLevels
 
         // информация об игроке
         private PlayerInfo playerInfo;
+
+        // рюкзак игрока
+        private List<BaseObject> backpack;
+
+        // максимальный размер рюкзака
+        private const int maxSizeBackpack = 6;
 
         // ссылка на экран
         private Game1 game;
@@ -86,6 +93,8 @@ namespace GameLevels
             this.game = game;
             this.camera = camera;
             this.levelLoader = levelLoader;
+
+            this.backpack = new List<BaseObject>();
         }
 
         /// <summary>
@@ -260,6 +269,9 @@ namespace GameLevels
             }
         }
 
+        /// <summary>
+        /// Возвращает позицию игрока
+        /// </summary>
         public Rectangle Position {
             get {
                 return playerInfo.position;
@@ -267,5 +279,18 @@ namespace GameLevels
             private set { }
         }
 
+        /// <summary>
+        /// Добавляет предмет в рюкзак
+        /// </summary>
+        /// <param name="obj">Предмет</param>
+        /// <returns>Успешность операции</returns>
+        public bool AddItem(BaseObject obj) {
+            if (this.backpack.Count >= maxSizeBackpack)
+                return false;
+
+            backpack.Add(obj);
+
+            return true;
+        }
     }
 }

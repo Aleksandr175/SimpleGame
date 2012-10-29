@@ -21,6 +21,8 @@ namespace GameLevels
         public List<Object> objs; // объекты на уровне
         public List<Guards> guards; // список охранников
 
+        public List<BaseObject> interactionSubjects;
+
         // сложность уровня
         public Complexity complexity;
 
@@ -81,6 +83,7 @@ namespace GameLevels
             blocks = new List<Block>();
             objs = new List<Object>();
             guards = new List<Guards>();
+            interactionSubjects = new List<BaseObject>();
 
             string lvl_name = "content/lvls/lvl" + Convert.ToString(lvl) + ".txt";
             string[] lines = File.ReadAllLines(lvl_name); //получили массив строк
@@ -476,14 +479,22 @@ namespace GameLevels
                         // ключ и пластиковая карта
                         if (levelMap[i, j] == 40)
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("key"), game, this.camera);
-                            objs.Add(obj);
+                            // Object obj = new Object(Rect, storage.Pull2DTexture("key"), game, this.camera);
+                            // objs.Add(obj);
+
+                            Key key = new Key(Rect, storage.Pull2DTexture("key"), game, this.camera);
+                            interactionSubjects.Add(key);
+
                             levelMap[i, j] = 0;
                         }
                         if (levelMap[i, j] == 41)
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("card"), game, this.camera);
-                            objs.Add(obj);
+                            // Object obj = new Object(Rect, storage.Pull2DTexture("card"), game, this.camera);
+                            // objs.Add(obj);
+
+                            Card card = new Card(Rect, storage.Pull2DTexture("card"), game, this.camera);
+                            interactionSubjects.Add(card);
+
                             levelMap[i, j] = 0;
                         }
 
@@ -728,20 +739,29 @@ namespace GameLevels
                         // ключ и пластиковая карта
                         if (s.Equals("40", StringComparison.OrdinalIgnoreCase))
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("key"), game, this.camera);
-                            objs.Add(obj);
+                            // Object obj = new Object(Rect, storage.Pull2DTexture("key"), game, this.camera);
+                            // objs.Add(obj);
+
+                            Key key = new Key(Rect, storage.Pull2DTexture("key"), game, this.camera);
+                            interactionSubjects.Add(key);
                         }
                         if (s.Equals("41", StringComparison.OrdinalIgnoreCase))
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("card"), game, this.camera);
-                            objs.Add(obj);
+                            // Object obj = new Object(Rect, storage.Pull2DTexture("card"), game, this.camera);
+                            // objs.Add(obj);
+
+                            Card card = new Card(Rect, storage.Pull2DTexture("card"), game, this.camera);
+                            interactionSubjects.Add(card);
                         }
 
                         // золото
                         if (s.Equals("50", StringComparison.OrdinalIgnoreCase))
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("money"), game, this.camera);
-                            objs.Add(obj);
+                            // Object obj = new Object(Rect, storage.Pull2DTexture("money"), game, this.camera);
+                            // objs.Add(obj);
+
+                            Money money = new Money(Rect, storage.Pull2DTexture("money"), game, this.camera, 10);
+                            interactionSubjects.Add(money);
                         }
 
                         // стол системы управления камерами

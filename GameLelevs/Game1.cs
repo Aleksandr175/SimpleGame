@@ -32,6 +32,7 @@ namespace GameLevels
         // хранилище данных
         Storage storage;
 
+        private List<string> toDraw;
 
         bool debugMode = false; // режим отладки. При нем включается вывод информации о объектах. Горячая клавиша D.
         
@@ -67,6 +68,7 @@ namespace GameLevels
 
             this.camera = new Camera();
             storage = new Storage();
+            toDraw = new List<string>();
 
             shadow = new Shadow();
 
@@ -123,8 +125,8 @@ namespace GameLevels
             maxLvl = storage.GetMaxLevelNumber();
 
             // стоит проверять существование уровня
-            if(storage.IsExist(7))
-                levelLoader.CreateLevel(7);
+            if(storage.IsExist(4))
+                levelLoader.CreateLevel(4);
             else
                 levelLoader.CreateLevel(maxLvl);
         }
@@ -304,11 +306,27 @@ namespace GameLevels
             }
 
             int i = 0;
-            while (i < levelLoader.objs.Count) {
-                if (levelLoader.objs[i].Rect.Intersects(player.Position))
+            while (i < levelLoader.interactionSubjects.Count) {
+                if (levelLoader.interactionSubjects[i].Rect.Intersects(player.Position))
                 {
-                    levelLoader.blocks.Add(new Block(levelLoader.objs[i].Rect, storage.Pull2DTexture("empty"), this, this.camera));
-                    levelLoader.objs.RemoveAt(i);
+                    if (player.AddItem(levelLoader.interactionSubjects[i])) {
+
+                        levelLoader.blocks.Add(new Block(levelLoader.interactionSubjects[i].Rect, storage.Pull2DTexture("empty"), this, this.camera));
+
+                        // если объект это карта
+                        if (levelLoader.interactionSubjects[i] is Card)
+                            toDraw.Add("Add a map to a list of items!");
+
+                        if (levelLoader.interactionSubjects[i] is Key)
+                            toDraw.Add("Add a key to a list of items!");
+
+                        if (levelLoader.interactionSubjects[i] is Money)
+                            toDraw.Add("Add coin worth " + ((Money)levelLoader.interactionSubjects[i]).Cost);
+
+                        levelLoader.interactionSubjects.RemoveAt(i);
+                    }
+                    else
+                        toDraw.Add("Too much items in backpack");
                 }
                 else i++;
             }
@@ -340,6 +358,9 @@ namespace GameLevels
             {
                 block.Draw(spriteBatch);
             }
+
+            foreach (BaseObject bo in levelLoader.interactionSubjects)
+                bo.Draw(spriteBatch);
             
 
             try
@@ -372,6 +393,13 @@ namespace GameLevels
                 else
                 {
                     spriteBatch.DrawString(storage.PullFont("font"), "D - debug", new Vector2(400, 20), Color.LimeGreen); // тревога
+
+                    int xCoord = 40;
+                    foreach (string str in toDraw) {
+                        spriteBatch.DrawString(storage.PullFont("font"), str, new Vector2(300, xCoord), Color.Red);
+                        xCoord += 20;
+                    }
+                    
                 }
 
                 
@@ -393,8 +421,7 @@ namespace GameLevels
 
             // отрисовываем положение игрока
             player.Draw(spriteBatch);
-            
-            
+
             base.Draw(gameTime);
         }
 

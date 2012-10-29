@@ -114,16 +114,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="levelObjects\BaseObject.cs" />
-    <Compile Include="levelObjects\Block.cs" />
+    <Compile Include="levelObjects\baseObject\BaseObject.cs" />
+    <Compile Include="levelObjects\block\Block.cs" />
     <Compile Include="levelObjects\Camera.cs" />
-    <Compile Include="levelObjects\IBaseObject.cs" />
-    <Compile Include="levelObjects\IBlock.cs" />
-    <Compile Include="levelObjects\ICard.cs" />
-    <Compile Include="levelObjects\IKey.cs" />
+    <Compile Include="levelObjects\card\Card.cs" />
+    <Compile Include="levelObjects\baseObject\IBaseObject.cs" />
+    <Compile Include="levelObjects\block\IBlock.cs" />
+    <Compile Include="levelObjects\card\ICard.cs" />
+    <Compile Include="levelObjects\key\IKey.cs" />
+    <Compile Include="levelObjects\money\IMoney.cs" />
+    <Compile Include="levelObjects\key\Key.cs" />
     <Compile Include="levelObjects\LevelLoader.cs" />
+    <Compile Include="levelObjects\money\Money.cs" />
     <Compile Include="levelObjects\Shadow.cs" />
-    <Compile Include="levelObjects\Storage.cs" />
+    <Compile Include="storage\Storage.cs" />
     <Compile Include="man\Enumeration.cs" />
     <Compile Include="levelObjects\FPSCounter.cs" />
     <Compile Include="man\Guards.cs" />
