@@ -21,12 +21,12 @@ namespace GameLevels
         int scrollX;
         int scrollY;
 
-        public int GetScrollX
+        public int ScrollX
         {
             get { return scrollX; }
             set { scrollX = value; }
         }
-        public int GetScrollY
+        public int ScrollY
         {
             get { return scrollY; }
             set { scrollY = value; }

@@ -129,6 +129,8 @@ namespace GameLevels
                 levelLoader.CreateLevel(5);
             else
                 levelLoader.CreateLevel(maxLvl);
+
+
         }
 
         /// <summary>

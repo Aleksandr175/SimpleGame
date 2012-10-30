@@ -257,12 +257,12 @@ namespace GameLevels
                     // движение камеры по X (сравнение с границами уровня)
                     if (playerInfo.position.X > game.GetScreenWidth / 2 - LevelLoader.Size / 2 && playerInfo.position.X + game.GetScreenWidth / 2 + LevelLoader.Size / 2 < LevelLoader.GetLenghtX)
                     {
-                        camera.SetCameraPosition(playerInfo.position.X - game.GetScreenWidth / 2 + LevelLoader.Size / 2, camera.GetScrollY);
+                        camera.SetCameraPosition(playerInfo.position.X - game.GetScreenWidth / 2 + LevelLoader.Size / 2, camera.ScrollY);
                     }
                     // движение камеры по Y (сравнение с границами уровня)
                     if (playerInfo.position.Y > game.GetScreenHeight / 2 - LevelLoader.Size / 2 && playerInfo.position.Y + game.GetScreenHeight / 2 + LevelLoader.Size / 2 < LevelLoader.GetLenghtY)
                     {
-                        camera.SetCameraPosition(camera.GetScrollX, playerInfo.position.Y - game.GetScreenHeight / 2 + LevelLoader.Size / 2);
+                        camera.SetCameraPosition(camera.ScrollX, playerInfo.position.Y - game.GetScreenHeight / 2 + LevelLoader.Size / 2);
                     }
 
                 }
@@ -276,7 +276,9 @@ namespace GameLevels
             get {
                 return playerInfo.position;
             }
-            private set { }
+            set {
+                playerInfo.position = value;
+            }
         }
 
         /// <summary>

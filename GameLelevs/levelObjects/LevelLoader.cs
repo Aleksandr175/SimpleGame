@@ -239,6 +239,38 @@ namespace GameLevels
                         }
 
 
+                        // игрок 
+                        if (s.Equals("100", StringComparison.OrdinalIgnoreCase))
+                        {
+                            int playerPosX = indexJ * size;
+                            int playerPosY = indexI * size;
+
+                            //размещаем игрока в начальную позицию
+                            player.Position = new Rectangle(playerPosY, playerPosX, LevelLoader.SizePeople, LevelLoader.SizePeople);
+                            camera.ScrollX = playerPosY - game.GetScreenWidth / 2;
+                            camera.ScrollY = playerPosX - game.GetScreenHeight / 2;
+
+                            if (camera.ScrollX < 0)
+                            {
+                                camera.ScrollX = 0;
+                            }
+                            if (camera.ScrollY < 0)
+                            {
+                                camera.ScrollY = 0;
+                            }
+                            if (camera.ScrollX > game.GetScreenWidth)
+                            {
+                                camera.ScrollX = game.GetScreenWidth;
+                            }
+                            if (camera.ScrollY > game.GetScreenHeight)
+                            {
+                                camera.ScrollY = game.GetScreenHeight;
+                            }
+
+                        }
+
+
+
                         indexI++;
 
                     }
@@ -627,6 +659,8 @@ namespace GameLevels
 
 
                 Guards.SetLevelMap(levelMap, lenghtX / LevelLoader.Size, lenghtY / LevelLoader.Size);
+
+                
             }
 
 
