@@ -32,6 +32,15 @@ namespace GameLevels
         int targetX = 10; //координаты цели, к кот. идет охранник
         int targetY = 8;
 
+        public int TargetX
+        {
+            set { targetX = value; }
+        }
+        public int TargetY
+        {
+            set { targetY = value; }
+        }
+
         // следующая клетка, в кот. должен бежать охранник
         int nextX = 0;
         int nextY = 0;
@@ -49,6 +58,13 @@ namespace GameLevels
 
 
         int currentStepPatrol = 0; // текущий шаг для патрулирования
+        int maxStepToPatrol = 0;
+
+        public int MaxStepToPatrol
+        {
+            get { return maxStepToPatrol; }
+            set { maxStepToPatrol = value; }
+        }
 
         int speed;
         PlayerMove direction; //направление охранника
@@ -79,7 +95,7 @@ namespace GameLevels
         private Player player;
 
         List<List<int>> wayToTarget = new List<List<int>>(); // путь к цели
-        List<List<int>> wayToPatrol = new List<List<int>>(); // траектория для патрулирования
+        public List<List<int>> wayToPatrol = new List<List<int>>(); // траектория для патрулирования
 
         static int countGuards = 0; // кол-во охранников на уровне
         static int goneGuard = 0; // кол-во охранников, бегущих за игроком
@@ -171,7 +187,7 @@ namespace GameLevels
 
             //массив для патрулирования
             // временный. Потом будет считываться из файла
-            wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
+            /*wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
             wayToPatrol[0].Add(3); // первым указывается координата X
             wayToPatrol[0].Add(3); // второе - координата Y
             wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
@@ -183,8 +199,9 @@ namespace GameLevels
             wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
             wayToPatrol[3].Add(4);
             wayToPatrol[3].Add(3);
-            targetX = wayToPatrol[0][0];
-            targetY = wayToPatrol[0][1];
+            */
+            //targetX = wayToPatrol[0][0];
+            //targetY = wayToPatrol[0][1];
 
             //targetX = wayToPatrol[1][0]; // 0 - x
             //targetY = wayToPatrol[1][1]; // 1 - y
@@ -502,7 +519,7 @@ namespace GameLevels
         /// </summary>
         private void Patrol()
         {
-            if (currentStepPatrol > 3)
+            if (currentStepPatrol >= maxStepToPatrol)
             {
                 currentStepPatrol = 0;
             }

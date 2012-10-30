@@ -173,9 +173,17 @@ namespace GameLevels
                             levelMap[indexI, indexJ] = 23;
                         }
 
-                        if (s.Equals("30", StringComparison.OrdinalIgnoreCase))
-                        { //буква "о"
-                            levelMap[indexI, indexJ] = 30;
+
+
+                        if (s.Length >= 2)
+                        {
+                            string s2 = s;
+
+                            s2 = s2.Substring(0, 2); // берем первые 2 символа из строки s / Например из строки: 3001, 3002
+                            if (s2.Equals("30", StringComparison.OrdinalIgnoreCase))
+                            { //буква "о"
+                                levelMap[indexI, indexJ] = 30;
+                            }
                         }
 
                         // ключ и пластиковая карта
@@ -574,6 +582,48 @@ namespace GameLevels
 
                 lenghtX = LevelLoader.Size * sizeFile[1]; // длина уровня в пикселях
                 lenghtY = LevelLoader.Size * sizeFile[0];
+
+
+
+
+                //считывание пути траекторий охранников
+                lines = File.ReadAllLines(lvl_name); //получили массив строк                
+
+                //считываем размеры массива с уровнем (sizeFile[0] значение - строки, sizeFile[1] - колонки)
+                for (int i = sizeFile[0] + 1; i < lines.Length; i++)
+                {
+                    int step = 0;
+                    int numberGuard = 0;
+                    int nextX = 0;
+                    int nextY = 0;
+
+                    str = lines[i].Split(' ');
+                    if (str[0] == "30")
+                    {
+                        step = Convert.ToInt32(str[2]);
+                        numberGuard = Convert.ToInt32(str[1]);
+                        nextX = Convert.ToInt32(str[4]);
+                        nextY = Convert.ToInt32(str[3]);
+
+                        // добавляем новую строку под координату
+                        guards[numberGuard].wayToPatrol.Add(new List<int>());
+
+                        //задание начальной точки следования для охранника
+                        if (step == 0)
+                        {
+                            guards[numberGuard].TargetX = nextX;
+                            guards[numberGuard].TargetY = nextY;
+                        }
+
+                        // задание точки патрилрования
+                        guards[numberGuard].wayToPatrol[step].Add(nextX);
+                        guards[numberGuard].wayToPatrol[step].Add(nextY);
+                        //максимальное кол-во шагов.
+                        guards[numberGuard].MaxStepToPatrol++;
+
+
+                    }
+                }
 
 
                 Guards.SetLevelMap(levelMap, lenghtX / LevelLoader.Size, lenghtY / LevelLoader.Size);
