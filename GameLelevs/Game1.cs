@@ -53,7 +53,7 @@ namespace GameLevels
 
         //информация об уровнях
         int currentLvl;
-        int maxLvl = 6;
+        int maxLvl;
         KeyboardState oldState;
 
         public Game1()
@@ -152,6 +152,7 @@ namespace GameLevels
         /// <returns>Bool - пересечение</returns>
         public bool CollidesWithLevel(Rectangle rect) 
         {
+            
             bool collides = false;
 
             switch (levelLoader.complexity) 

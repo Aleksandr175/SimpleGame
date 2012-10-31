@@ -26,11 +26,14 @@ namespace GameLevels
         // сложность уровня
         public Complexity complexity;
 
+        public LevelObject levelObject;
+
         // карта уровня
         // так же используется для алгоритма поиска пути к игроку
         public byte[,] levelMap;
         public byte[,] levelMapFloor; // карта пола
 
+        public LevelObject[,] levelMapObj; // карта уровня в "названиях"
         
         public LevelLoader(Game1 game, Player player, Storage storage, Camera camera)
         {
@@ -128,6 +131,7 @@ namespace GameLevels
 
                 // выделим память для карты уровня
                 levelMap = new byte[sizeFile[1] + 1, sizeFile[0] + 1];
+                levelMapObj = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
 
 
                 tempIndex = 0;
@@ -140,7 +144,50 @@ namespace GameLevels
                     foreach (string s in str)
                     {
                         levelMap[indexI, indexJ] = 0;
+                        LevelObject obj = (LevelObject)Int32.Parse(s);
+                        
+                        switch(obj)
+                        {
+                            case LevelObject.Empty:
+                                levelMapObj[indexI, indexJ] = LevelObject.Empty;
+                                break;
+                            case LevelObject.Wall:
+                                levelMapObj[indexI, indexJ] = LevelObject.Wall;
+                                break;
 
+                            case LevelObject.DoorHoriz:
+                                levelMapObj[indexI, indexJ] = LevelObject.DoorHoriz;
+                                break;
+                            case LevelObject.DoorVertic:
+                                levelMapObj[indexI, indexJ] = LevelObject.DoorVertic;
+                                break;
+                            case LevelObject.DoorHorizOpen:
+                                levelMapObj[indexI, indexJ] = LevelObject.DoorHorizOpen;
+                                break;
+                            case LevelObject.DoorVerticOpen:
+                                levelMapObj[indexI, indexJ] = LevelObject.DoorVerticOpen;
+                                break;
+
+                            case LevelObject.Guard:
+                                levelMapObj[indexI, indexJ] = LevelObject.Guard;
+                                break;
+
+                            case LevelObject.Key:
+                                levelMapObj[indexI, indexJ] = LevelObject.Key;
+                                break;
+
+                            case LevelObject.Card:
+                                levelMapObj[indexI, indexJ] = LevelObject.Card;
+                                break;
+
+                            case LevelObject.Gold:
+                                levelMapObj[indexI, indexJ] = LevelObject.Gold;
+                                break;
+
+
+                        }
+
+                        
                         if (s.Equals("0", StringComparison.OrdinalIgnoreCase))
                         {
                             levelMap[indexI, indexJ] = 0;
@@ -250,6 +297,7 @@ namespace GameLevels
                             camera.ScrollX = playerPosY - game.GetScreenWidth / 2;
                             camera.ScrollY = playerPosX - game.GetScreenHeight / 2;
 
+                            // установка камеры в начальную позицию
                             if (camera.ScrollX < 0)
                             {
                                 camera.ScrollX = 0;
@@ -323,7 +371,7 @@ namespace GameLevels
                         
                         if (levelMap[i, j] == 1)
                         {
-                            map[i, j] = isWallType(levelMap, i, j, sizeFile[0] - 1, sizeFile[1] - 1);
+                            map[i, j] = isWallType(levelMapObj, i, j, sizeFile[0] - 1, sizeFile[1] - 1);
                         }
                         
 
@@ -930,7 +978,7 @@ namespace GameLevels
         /// <param name="iEnd">Максимальная строка</param>
         /// <param name="jEnd">Максимальная колонка</param>
         /// <returns>Тип стены в веди int</returns>
-        int isWallType(byte[,] array, int i, int j, int iEnd, int jEnd)
+        int isWallType(LevelObject[,] array, int i, int j, int iEnd, int jEnd)
         {
 
             // проверка краевых точек массива
@@ -1234,9 +1282,9 @@ namespace GameLevels
         /// </summary>
         /// <param name="element">Значение ячейки карты</param>
         /// <returns>true - стена, false - нет</returns>
-        bool isWall(byte element)
+        bool isWall(LevelObject element)
         {
-            if (element > 0 && element <= 29) {  // стены 1-11 и двери 20-23
+            if ((int)element > 0 && (int)element <= 29) {  // стены 1-11 и двери 20-23
                 return true;
             }
             return false;
