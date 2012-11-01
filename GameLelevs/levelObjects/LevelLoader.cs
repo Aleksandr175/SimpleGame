@@ -31,7 +31,7 @@ namespace GameLevels
         // карта уровня
         // так же используется для алгоритма поиска пути к игроку
         public byte[,] levelMap;
-        public byte[,] levelMapFloor; // карта пола
+        public LevelObject[,] levelMapFloor; // карта пола
 
         public LevelObject[,] levelMapObj; // карта уровня в "названиях"
         
@@ -150,9 +150,11 @@ namespace GameLevels
                         {
                             case LevelObject.Empty:
                                 levelMapObj[indexI, indexJ] = LevelObject.Empty;
+                                levelMap[indexI, indexJ] = 0;
                                 break;
                             case LevelObject.Wall:
                                 levelMapObj[indexI, indexJ] = LevelObject.Wall;
+                                levelMap[indexI, indexJ] = 1;
                                 break;
 
                             case LevelObject.DoorHoriz:
@@ -176,6 +178,7 @@ namespace GameLevels
                                 levelMapObj[indexI, indexJ] = LevelObject.Key;
                                 break;
 
+                            // пластиковая карта
                             case LevelObject.Card:
                                 levelMapObj[indexI, indexJ] = LevelObject.Card;
                                 break;
@@ -184,140 +187,65 @@ namespace GameLevels
                                 levelMapObj[indexI, indexJ] = LevelObject.Gold;
                                 break;
 
+                            //стол управления камерами
+                            case LevelObject.SpLU:
+                                levelMapObj[indexI, indexJ] = LevelObject.SpLU;
+                                break;
+                            case LevelObject.SpUR:
+                                levelMapObj[indexI, indexJ] = LevelObject.SpUR;
+                                break;
+                            case LevelObject.SpRD:
+                                levelMapObj[indexI, indexJ] = LevelObject.SpRD;
+                                break;
+                            case LevelObject.SpDL:
+                                levelMapObj[indexI, indexJ] = LevelObject.SpDL;
+                                break;
 
-                        }
+                            //стол с компьютером
+                            case LevelObject.TableU:
+                                levelMapObj[indexI, indexJ] = LevelObject.TableU;
+                                break;
+                            case LevelObject.TableR:
+                                levelMapObj[indexI, indexJ] = LevelObject.TableR;
+                                break;
+                            case LevelObject.TableD:
+                                levelMapObj[indexI, indexJ] = LevelObject.TableD;
+                                break;
+                            case LevelObject.TableL:
+                                levelMapObj[indexI, indexJ] = LevelObject.TableL;
+                                break;
 
-                        
-                        if (s.Equals("0", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 0;
-                        }
-                        if (s.Equals("1", StringComparison.OrdinalIgnoreCase))
-                        {
-                            // добавим стену в карту
-                            levelMap[indexI, indexJ] = 1;
-                        }
+                            // устанавливаем игрока и камеру в нач. позицию.
+                            case LevelObject.Player:
+                                int playerPosX = indexJ * size;
+                                int playerPosY = indexI * size;
 
+                                //размещаем игрока в начальную позицию
+                                player.Position = new Rectangle(playerPosY, playerPosX, LevelLoader.SizePeople, LevelLoader.SizePeople);
+                                camera.ScrollX = playerPosY - game.GetScreenWidth / 2;
+                                camera.ScrollY = playerPosX - game.GetScreenHeight / 2;
 
-
-                        //двери
-                        if (s.Equals("20", StringComparison.OrdinalIgnoreCase))
-                        {
-                            // добавим стену в карту
-                            levelMap[indexI, indexJ] = 20;
-                        }
-                        if (s.Equals("21", StringComparison.OrdinalIgnoreCase))
-                        {
-                            // добавим стену в карту
-                            levelMap[indexI, indexJ] = 21;
-                        }
-                        if (s.Equals("22", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 22;
-                        }
-                        if (s.Equals("23", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 23;
-                        }
-
-
-
-                        if (s.Length >= 2)
-                        {
-                            string s2 = s;
-
-                            s2 = s2.Substring(0, 2); // берем первые 2 символа из строки s / Например из строки: 3001, 3002
-                            if (s2.Equals("30", StringComparison.OrdinalIgnoreCase))
-                            { //буква "о"
-                                levelMap[indexI, indexJ] = 30;
-                            }
-                        }
-
-                        // ключ и пластиковая карта
-                        if (s.Equals("40", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 40;
-                        }
-                        if (s.Equals("41", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 41;
-                        }
-
-                        // золото
-                        if (s.Equals("50", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 50;
-                        }
-
-                        // стол системы управления камерами
-                        if (s.Equals("60", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 60;
-                        }
-                        if (s.Equals("61", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 61;
-                        }
-                        if (s.Equals("62", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 62;
-                        }
-                        if (s.Equals("63", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 63;
-                        }
-
-                        // стол с компьютером
-                        if (s.Equals("70", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 70;
-                        }
-                        if (s.Equals("71", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 71;
-                        }
-                        if (s.Equals("72", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 72;
-                        }
-                        if (s.Equals("73", StringComparison.OrdinalIgnoreCase))
-                        {
-                            levelMap[indexI, indexJ] = 73;
-                        }
+                                // установка камеры в начальную позицию
+                                if (camera.ScrollX < 0)
+                                {
+                                    camera.ScrollX = 0;
+                                }
+                                if (camera.ScrollY < 0)
+                                {
+                                    camera.ScrollY = 0;
+                                }
+                                if (camera.ScrollX > game.GetScreenWidth)
+                                {
+                                    camera.ScrollX = game.GetScreenWidth;
+                                }
+                                if (camera.ScrollY > game.GetScreenHeight)
+                                {
+                                    camera.ScrollY = game.GetScreenHeight;
+                                }
+                                break;
 
 
-                        // игрок 
-                        if (s.Equals("100", StringComparison.OrdinalIgnoreCase))
-                        {
-                            int playerPosX = indexJ * size;
-                            int playerPosY = indexI * size;
-
-                            //размещаем игрока в начальную позицию
-                            player.Position = new Rectangle(playerPosY, playerPosX, LevelLoader.SizePeople, LevelLoader.SizePeople);
-                            camera.ScrollX = playerPosY - game.GetScreenWidth / 2;
-                            camera.ScrollY = playerPosX - game.GetScreenHeight / 2;
-
-                            // установка камеры в начальную позицию
-                            if (camera.ScrollX < 0)
-                            {
-                                camera.ScrollX = 0;
-                            }
-                            if (camera.ScrollY < 0)
-                            {
-                                camera.ScrollY = 0;
-                            }
-                            if (camera.ScrollX > game.GetScreenWidth)
-                            {
-                                camera.ScrollX = game.GetScreenWidth;
-                            }
-                            if (camera.ScrollY > game.GetScreenHeight)
-                            {
-                                camera.ScrollY = game.GetScreenHeight;
-                            }
-
                         }
-
-
 
                         indexI++;
 
@@ -335,7 +263,7 @@ namespace GameLevels
                 if (lvl == 7)
                 {
                     // выделим память для карты уровня
-                    levelMapFloor = new byte[sizeFile[1] + 1, sizeFile[0] + 1];
+                    levelMapFloor = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
 
                     //считывание пола в игре
                     for (int i = sizeFile[0] + 1; i <= 2 * sizeFile[0]; i++)
@@ -343,11 +271,12 @@ namespace GameLevels
                         str = lines[i].Split(' ');
                         foreach (string s in str)
                         {
-                            levelMapFloor[indexI, indexJ] = 0;
+
+                            levelMapFloor[indexI, indexJ] = LevelObject.Empty;
                             // пол в игре
                             if (s.Equals("90", StringComparison.OrdinalIgnoreCase))
                             {
-                                levelMapFloor[indexI, indexJ] = 90;
+                                levelMapFloor[indexI, indexJ] = LevelObject.Floor;
                             }
                             indexI++;
                         }
@@ -358,7 +287,7 @@ namespace GameLevels
 
 
 
-                int[,] map = new int[sizeFile[1] + 1, sizeFile[0] + 1]; // карта уровня после преобразования
+                LevelObject[,] map = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1]; // карта уровня после преобразования
 
                 // преобразование значений объектов (стен) на уровне
                 for (int i = 0; i < sizeFile[1]; i++)
@@ -369,7 +298,7 @@ namespace GameLevels
 
                         map[i, j] = 0;
                         
-                        if (levelMap[i, j] == 1)
+                        if (levelMapObj[i, j] == LevelObject.Wall)
                         {
                             map[i, j] = isWallType(levelMapObj, i, j, sizeFile[0] - 1, sizeFile[1] - 1);
                         }
@@ -401,7 +330,7 @@ namespace GameLevels
                             //Rectangle Rect2 = new Rectangle((i + 1) * LevelLoader.Size - LevelLoader.Size / 2, (j - sizeFile[0]) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
                             //Rectangle Rect3 = new Rectangle(i * LevelLoader.Size - LevelLoader.Size / 2, ((j - sizeFile[0]) + 1) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
 
-                            if (levelMapFloor[i, j - sizeFile[0]] == 90)
+                            if (levelMapFloor[i, j - sizeFile[0]] == LevelObject.Floor)
                             {
                                 Block block = new Block(Rect, storage.Pull2DTexture("floor"), game, this.camera);
                                 blocks.Add(block);
@@ -414,7 +343,7 @@ namespace GameLevels
                             // *-
                             if (j - sizeFile[0] - 1 > 0) // не выходим за границы массива
                             {
-                                if (levelMapFloor[i, j - sizeFile[0] - 1] == 90) // если клетка выше - пол, то и ниже тоже пол
+                                if (levelMapFloor[i, j - sizeFile[0] - 1] == LevelObject.Floor) // если клетка выше - пол, то и ниже тоже пол
                                 {
                                     Rectangle Rect2 = new Rectangle(i * LevelLoader.Size - LevelLoader.Size / 2, (j - sizeFile[0]) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
                                     Block block = new Block(Rect2, storage.Pull2DTexture("floor"), game, this.camera);
@@ -427,7 +356,7 @@ namespace GameLevels
                             if (i - 1 > 0) // не выходим за границы массива
                             {
 
-                                if (levelMapFloor[i - 1, j - sizeFile[0]] == 90) // если клетка выше - пол, то и ниже тоже пол
+                                if (levelMapFloor[i - 1, j - sizeFile[0]] == LevelObject.Floor) // если клетка выше - пол, то и ниже тоже пол
                                 {
                                     Rectangle Rect2 = new Rectangle(i * LevelLoader.Size - LevelLoader.Size / 2, (j - sizeFile[0]) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
                                     Block block = new Block(Rect2, storage.Pull2DTexture("floor"), game, this.camera);
@@ -441,7 +370,7 @@ namespace GameLevels
                             if (i - 1 > 0 && j - sizeFile[0] - 1 > 0) // не выходим за границы массива
                             {
 
-                                if (levelMapFloor[i - 1, j - sizeFile[0] - 1] == 90) // если клетка выше - пол, то и ниже тоже пол
+                                if (levelMapFloor[i - 1, j - sizeFile[0] - 1] == LevelObject.Floor) // если клетка выше - пол, то и ниже тоже пол
                                 {
                                     Rectangle Rect2 = new Rectangle(i * LevelLoader.Size - LevelLoader.Size / 2, (j - sizeFile[0]) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
                                     Block block = new Block(Rect2, storage.Pull2DTexture("floor"), game, this.camera);
@@ -463,62 +392,62 @@ namespace GameLevels
                     for (int j = 0; j < sizeFile[0]; j++)
                     {
                         Rectangle Rect = new Rectangle(i * LevelLoader.Size, j * LevelLoader.Size, LevelLoader.Size, LevelLoader.Size);
-                        if (map[i, j] == 0)
+                        if (map[i, j] == LevelObject.Empty)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("empty"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (map[i, j] == 1)
+                        if (map[i, j] == LevelObject.Wall)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_goriz"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (map[i, j] == 2)
+                        if (map[i, j] == LevelObject.WallVertic)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_vert"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (map[i, j] == 3)
+                        if (map[i, j] == LevelObject.WallDownRight)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_down_right"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (map[i, j] == 4)
+                        if (map[i, j] == LevelObject.WallUpRight)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_up_right"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (map[i, j] == 5)
+                        if (map[i, j] == LevelObject.WallLeftDown)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_left_down"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (map[i, j] == 6)
+                        if (map[i, j] == LevelObject.WallLeftUp)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_left_up"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (map[i, j] == 7)
+                        if (map[i, j] == LevelObject.Wall4Sides)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_4sides"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (map[i, j] == 8)
+                        if (map[i, j] == LevelObject.WallURD)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_urd"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (map[i, j] == 9)
+                        if (map[i, j] == LevelObject.WallRDL)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_rdl"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (map[i, j] == 10)
+                        if (map[i, j] == LevelObject.WallDLU)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_dlu"), game, this.camera);
                             blocks.Add(block);
                         }
-                        if (map[i, j] == 11)
+                        if (map[i, j] == LevelObject.WallLUR)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("wall_lur"), game, this.camera);
                             blocks.Add(block);
@@ -526,32 +455,32 @@ namespace GameLevels
 
 
                         //двери
-                        if (levelMap[i, j] == 20)
+                        if (levelMapObj[i, j] == LevelObject.DoorHoriz)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera);
                             blocks.Add(block);
                             levelMap[i, j] = 1;
                         }
-                        if (levelMap[i, j] == 21)
+                        if (levelMapObj[i, j] == LevelObject.DoorVertic)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera);
                             blocks.Add(block);
                             levelMap[i, j] = 1;
                         }
-                        if (levelMap[i, j] == 22)
+                        if (levelMapObj[i, j] == LevelObject.DoorHorizOpen)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera);
                             blocks.Add(block);
                             levelMap[i, j] = 0;
                         }
-                        if (levelMap[i, j] == 23)
+                        if (levelMapObj[i, j] == LevelObject.DoorVerticOpen)
                         {
                             Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera);
                             blocks.Add(block);
                             levelMap[i, j] = 0;
                         }
 
-                        if (levelMap[i, j] == 30)
+                        if (levelMapObj[i, j] == LevelObject.Guard)
                         { //буква "о"
                             //пол
                             Block block = new Block(Rect, storage.Pull2DTexture("empty"), game, this.camera);
@@ -565,7 +494,7 @@ namespace GameLevels
                         }
 
                         // ключ и пластиковая карта
-                        if (levelMap[i, j] == 40)
+                        if (levelMapObj[i, j] == LevelObject.Key)
                         {
                             // Object obj = new Object(Rect, storage.Pull2DTexture("key"), game, this.camera);
                             // objs.Add(obj);
@@ -575,7 +504,7 @@ namespace GameLevels
 
                             levelMap[i, j] = 0;
                         }
-                        if (levelMap[i, j] == 41)
+                        if (levelMapObj[i, j] == LevelObject.Card)
                         {
                             // Object obj = new Object(Rect, storage.Pull2DTexture("card"), game, this.camera);
                             // objs.Add(obj);
@@ -587,7 +516,7 @@ namespace GameLevels
                         }
 
                         // золото
-                        if (levelMap[i, j] == 50)
+                        if (levelMapObj[i, j] == LevelObject.Gold)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("money"), game, this.camera);
                             objs.Add(obj);
@@ -595,25 +524,25 @@ namespace GameLevels
                         }
 
                         // стол системы управления камерами
-                        if (levelMap[i, j] == 60)
+                        if (levelMapObj[i, j] == LevelObject.SpLU)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("spLU"), game, this.camera);
                             objs.Add(obj);
                             levelMap[i, j] = 1;
                         }
-                        if (levelMap[i, j] == 61)
+                        if (levelMapObj[i, j] == LevelObject.SpUR)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("spUR"), game, this.camera);
                             objs.Add(obj);
                             levelMap[i, j] = 1;
                         }
-                        if (levelMap[i, j] == 62)
+                        if (levelMapObj[i, j] == LevelObject.SpRD)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("spRD"), game, this.camera);
                             objs.Add(obj);
                             levelMap[i, j] = 1;
                         }
-                        if (levelMap[i, j] == 63)
+                        if (levelMapObj[i, j] == LevelObject.SpDL)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("spDL"), game, this.camera);
                             objs.Add(obj);
@@ -621,25 +550,25 @@ namespace GameLevels
                         }
 
                         // стол с компьютером
-                        if (levelMap[i, j] == 70)
+                        if (levelMapObj[i, j] == LevelObject.TableU)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("tableU"), game, this.camera);
                             objs.Add(obj);
                             levelMap[i, j] = 1;
                         }
-                        if (levelMap[i, j] == 71)
+                        if (levelMapObj[i, j] == LevelObject.TableR)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("tableR"), game, this.camera);
                             objs.Add(obj);
                             levelMap[i, j] = 1;
                         }
-                        if (levelMap[i, j] == 72)
+                        if (levelMapObj[i, j] == LevelObject.TableD)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("tableD"), game, this.camera);
                             objs.Add(obj);
                             levelMap[i, j] = 1;
                         }
-                        if (levelMap[i, j] == 73)
+                        if (levelMapObj[i, j] == LevelObject.TableL)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("tableL"), game, this.camera);
                             objs.Add(obj);
@@ -678,7 +607,9 @@ namespace GameLevels
                     int nextY = 0;
 
                     str = lines[i].Split(' ');
-                    if (str[0] == "30")
+                    LevelObject obj = (LevelObject)Int32.Parse(str[0]);
+
+                    if (obj == LevelObject.Guard)
                     {
                         step = Convert.ToInt32(str[2]);
                         numberGuard = Convert.ToInt32(str[1]);
@@ -978,7 +909,7 @@ namespace GameLevels
         /// <param name="iEnd">Максимальная строка</param>
         /// <param name="jEnd">Максимальная колонка</param>
         /// <returns>Тип стены в веди int</returns>
-        int isWallType(LevelObject[,] array, int i, int j, int iEnd, int jEnd)
+        LevelObject isWallType(LevelObject[,] array, int i, int j, int iEnd, int jEnd)
         {
 
             // проверка краевых точек массива
@@ -991,7 +922,7 @@ namespace GameLevels
              */
             if (i == 0 && j == 0 && isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
             {
-                return 3;
+                return LevelObject.WallDownRight;
             }
 
             /*
@@ -1002,7 +933,7 @@ namespace GameLevels
              */
             if (i == 0 && j == jEnd && isWall(array[i, j - 1]) && isWall(array[i + 1, j]))
             {
-                return 4;
+                return LevelObject.WallUpRight;
             }
 
             /*
@@ -1013,7 +944,7 @@ namespace GameLevels
              */
             if (i == iEnd && j == 0 && isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
             {
-                return 5;
+                return LevelObject.WallLeftDown;
             }
 
             /*
@@ -1024,7 +955,7 @@ namespace GameLevels
              */
             if (i == iEnd && j == jEnd && isWall(array[i, j - 1]) && isWall(array[i - 1, j]))
             {
-                return 6;
+                return LevelObject.WallLeftUp;
             }
 
 
@@ -1042,28 +973,28 @@ namespace GameLevels
                 //  *
                 if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
                 {
-                    return 8;
+                    return LevelObject.WallURD;
                 }
 
                 // *
                 // *
                 if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
                 {
-                    return 2;
+                    return LevelObject.WallVertic;
                 }
 
                 //  **
                 //  *
                 if (isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
                 {
-                    return 3;
+                    return LevelObject.WallDownRight;
                 }
 
                 // *
                 // **
                 if (isWall(array[i + 1, j]) && isWall(array[i, j - 1]))
                 {
-                    return 4;
+                    return LevelObject.WallUpRight;
                 }
                 
 
@@ -1082,28 +1013,28 @@ namespace GameLevels
                 //  *
                 if (isWall(array[i - 1, j]) && isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
                 {
-                    return 10;
+                    return LevelObject.WallDLU;
                 }
 
                 // *
                 // *
                 if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
                 {
-                    return 2;
+                    return LevelObject.WallVertic;
                 }
 
                 // **
                 //  *
                 if (isWall(array[i, j + 1]) && isWall(array[i - 1, j]))
                 {
-                    return 5;
+                    return LevelObject.WallLeftDown;
                 }
 
                 //  *
                 // **
                 if (isWall(array[i - 1, j]) && isWall(array[i, j - 1]))
                 {
-                    return 6;
+                    return LevelObject.WallLeftUp;
                 }
             }
 
@@ -1119,25 +1050,25 @@ namespace GameLevels
                 //  *
                 if (isWall(array[i, j + 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
                 {
-                    return 9;
+                    return LevelObject.WallRDL;
                 }
                 
                 // **
                 if (isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
                 {
-                    return 1;
+                    return LevelObject.Wall;
                 }
                 // **
                 // *
                 if (isWall(array[i + 1, j]) && isWall(array[i, j + 1]))
                 {
-                    return 3;
+                    return LevelObject.WallDownRight;
                 }
                 // **
                 //  *
                 if (isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
                 {
-                    return 5;
+                    return LevelObject.WallLeftDown;
                 }
             }
 
@@ -1153,25 +1084,25 @@ namespace GameLevels
                 // ***
                 if (isWall(array[i, j - 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
                 {
-                    return 11;
+                    return LevelObject.WallLUR;
                 }
 
                 // **
                 if (isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
                 {
-                    return 1;
+                    return LevelObject.Wall;
                 }
                 //  *
                 // **
                 if (isWall(array[i, j - 1]) && isWall(array[i - 1, j]))
                 {
-                    return 6;
+                    return LevelObject.WallLeftUp;
                 }
                 // *
                 // **
                 if (isWall(array[i + 1, j]) && isWall(array[i, j - 1]))
                 {
-                    return 4;
+                    return LevelObject.WallUpRight;
                 }
             }
 
@@ -1189,7 +1120,7 @@ namespace GameLevels
             //  *
             if (isWall(array[i - 1, j]) && isWall(array[i + 1, j]) && isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
             {
-                return 7;
+                return LevelObject.Wall4Sides;
             }
 
             // *
@@ -1197,7 +1128,7 @@ namespace GameLevels
             // *
             if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
             {
-                return 8;
+                return LevelObject.WallURD;
             }
 
             //  *
@@ -1205,63 +1136,63 @@ namespace GameLevels
             //  *
             if (isWall(array[i - 1, j]) && isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
             {
-                return 10;
+                return LevelObject.WallDLU;
             }
 
             //  *
             // ***
             if (isWall(array[i, j - 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
             {
-                return 11;
+                return LevelObject.WallLUR;
             }
 
             // ***
             //  *
             if (isWall(array[i, j + 1]) && isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
             {
-                return 9;
+                return LevelObject.WallRDL;
             }
 
 
             // **
             if (isWall(array[i, j - 1]) && isWall(array[i, j + 1]))
             {
-                return 2;
+                return LevelObject.WallVertic;
             }
 
             // *
             // *
             if (isWall(array[i - 1, j]) && isWall(array[i + 1, j]))
             {
-                return 1;
+                return LevelObject.Wall;
             }
 
             // *
             // **
             if (isWall(array[i + 1, j]) && isWall(array[i, j - 1]))
             {
-                return 4;
+                return LevelObject.WallUpRight;
             }
 
             //  *
             // **
             if (isWall(array[i, j - 1]) && isWall(array[i - 1, j]))
             {
-                return 6;
+                return LevelObject.WallLeftUp;
             }
 
             // **
             //  *
             if (isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
             {
-                return 5;
+                return LevelObject.WallLeftDown;
             }
 
             // **
             // *
             if (isWall(array[i + 1, j]) && isWall(array[i, j + 1]))
             {
-                return 3;
+                return LevelObject.WallDownRight;
             }
 
 
