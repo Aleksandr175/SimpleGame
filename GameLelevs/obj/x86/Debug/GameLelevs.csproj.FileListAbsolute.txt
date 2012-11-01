@@ -422,3 +422,4 @@ C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\ResolveAssem
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.exe
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.pdb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl8.txt
