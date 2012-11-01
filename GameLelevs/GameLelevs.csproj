@@ -128,7 +128,7 @@
     <Compile Include="levelObjects\money\Money.cs" />
     <Compile Include="levelObjects\Shadow.cs" />
     <Compile Include="storage\Storage.cs" />
-    <Compile Include="man\Enumeration.cs" />
+    <Compile Include="storage\Enumeration.cs" />
     <Compile Include="levelObjects\FPSCounter.cs" />
     <Compile Include="man\Guards.cs" />
     <Compile Include="man\IMan.cs" />

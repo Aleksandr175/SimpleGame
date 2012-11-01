@@ -102,11 +102,11 @@ namespace GameLevels
 
 
         //карта уроня для алгоритма поиска пути (получаем из кл. Game1.cs)
-        private static byte[,] levelMap;
+        private static LevelObject[,] levelMap;
         private static int levelWidth; //длина уровня (клеток)
         private static int levelHeight; // высота уровня (клеток)
 
-        public static byte GetLevelMap(int i, int j)
+        public static LevelObject GetLevelMap(int i, int j)
         {
             return levelMap[i, j];
         }
@@ -117,12 +117,12 @@ namespace GameLevels
         /// <param name="tempLevelMap">Карта уровня в 0 и 1</param>
         /// <param name="n">Кол-во столбцов</param>
         /// <param name="m">Кол-во строк</param>
-        public static void SetLevelMap(byte[,] tempLevelMap, int n, int m) 
+        public static void SetLevelMap(LevelObject[,] tempLevelMap, int n, int m) 
         {
             levelWidth = n;
             levelHeight = m;
 
-            levelMap = new byte[n, m];
+            levelMap = new LevelObject[n, m];
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < m; j++)
@@ -543,7 +543,7 @@ namespace GameLevels
         /// <param name="x_f">Координата конечной точки Х</param>
         /// <param name="y_f">Координата конечной точки У</param>
         /// <returns>Список точек пути до конечной точки</returns>
-        public List<List<int>> Way(byte[,] arr, int N, int M, int x_f, int y_f)
+        public List<List<int>> Way(LevelObject[,] arr, int N, int M, int x_f, int y_f)
         {
             int[,] workarr = new int[N + 1, M + 1];
             int k;
@@ -555,7 +555,7 @@ namespace GameLevels
             {
                 for (j = 0; j < M; j++)
                 {
-                    if (arr[i, j] == 0 )
+                    if (arr[i, j] == LevelObject.Empty)
                         workarr[i, j] = (int)Propety.FreeWay; // проходимо
                     else
                         workarr[i, j] = (int)Propety.Wall; // не проходимо

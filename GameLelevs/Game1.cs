@@ -219,7 +219,7 @@ namespace GameLevels
             for (int i = minx; i <= maxx; i++)
             {
                 for (int j = miny; j <= maxy; j++)
-                    if (levelLoader.levelMap[i, j] == 1)
+                    if (levelLoader.levelMap[i, j] == LevelObject.Wall)
                         return true;
             }
 
