@@ -15,6 +15,17 @@ namespace GameLevels.levelObjects
         public List<Guards> guards; // список охранников
         public List<Object> objs; // объекты на уровне
 
+        private static int levelLenghtX; // длина уровня
+        private static int levelLenghtY;
+
+        public static int LevelLenghtX
+        {
+            set { Shadow.levelLenghtX = value; }
+        }
+        public static int LevelLenghtY
+        {
+            set { Shadow.levelLenghtY = value; }
+        }
 
         public bool isShadow = false; // включен ли туман войны?
 
@@ -55,9 +66,15 @@ namespace GameLevels.levelObjects
         /// <summary>
         /// Показываем все объекты в комнате
         /// </summary>
-        public void ShowInRoom()
+        public static void ShowInRoom()
         {
+            for (int i = 0; i <= levelLenghtX; i++)
+            {
+                for (int j = 0; j < levelLenghtY; j++)
+                {
 
+                }
+            }
         }
 
         /// <summary>

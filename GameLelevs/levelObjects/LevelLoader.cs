@@ -258,7 +258,7 @@ namespace GameLevels
                 indexI = 0;
                 indexJ = 0;
 
-                if (lvl == 7)
+                if (lvl == 7 || lvl == 8)
                 {
                     // выделим память для карты уровня
                     levelMapFloor = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
@@ -282,6 +282,12 @@ namespace GameLevels
                         indexJ++;
                     }
 
+                }
+
+                if (lvl == 7 || lvl == 8)
+                {
+                    indexI = 0;
+                    indexJ = 0;
 
                     // выделим память для комнат уровня
                     levelMapRooms = new int[sizeFile[1] + 1, sizeFile[0] + 1];
@@ -336,7 +342,7 @@ namespace GameLevels
                 // 90 90 90 90 - далее идет массив пола
                 // 0 90 90 0
                 // ..........  
-                if (lvl == 7)
+                if (lvl == 7 || lvl == 8)
                 {
                     for (int i = 0; i < sizeFile[1]; i++)
                     {

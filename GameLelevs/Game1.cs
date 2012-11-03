@@ -70,8 +70,6 @@ namespace GameLevels
             storage = new Storage();
             toDraw = new List<string>();
 
-            shadow = new Shadow();
-
             
             // отключили ограничение fps счетчика
             IsFixedTimeStep = true;
@@ -116,11 +114,12 @@ namespace GameLevels
 
             // инициализируем нового игрока
             Rectangle plaerPosition = new Rectangle(120, 120, LevelLoader.SizePeople, LevelLoader.SizePeople);
-            player = new Player(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), plaerPosition, this, camera, levelLoader);
+            player = new Player(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), plaerPosition, this, camera);
 
 
             this.levelLoader = new LevelLoader(this, player, storage, camera);
-
+            
+            player.setLinkLevelLoader(levelLoader); // передадим игроку ссылку на загрузчик уровней
 
             maxLvl = storage.GetMaxLevelNumber();
 
@@ -129,6 +128,10 @@ namespace GameLevels
                 levelLoader.CreateLevel(5);
             else
                 levelLoader.CreateLevel(maxLvl);
+
+            shadow = new Shadow();
+            Shadow.LevelLenghtX = LevelLoader.GetLenghtX / LevelLoader.Size;
+            Shadow.LevelLenghtY = LevelLoader.GetLenghtY / LevelLoader.Size;
 
 
         }
@@ -348,14 +351,7 @@ namespace GameLevels
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            // отрисовываем объекты
-            foreach (Object obj in levelLoader.objs)
-            {
-                if (obj.visible)
-                {
-                    obj.Draw(spriteBatch);
-                }
-            }
+            
             // отрисовываем стены
             foreach (Block block in levelLoader.blocks)
             {
@@ -370,28 +366,29 @@ namespace GameLevels
             {
                 if (debugMode)
                 {
-                    spriteBatch.DrawString(storage.PullFont("font"), "PosGuard[0].X = " + levelLoader.guards[0].X.ToString(), new Vector2(10, 0), Color.Orange);
-                    spriteBatch.DrawString(storage.PullFont("font"), "PosGuard[0].Y = " + levelLoader.guards[0].Y.ToString(), new Vector2(10, 20), Color.Orange);
+                    // подсказки управления
+                    spriteBatch.DrawString(storage.PullFont("font"), "S - shadow", new Vector2(400, 40), Color.LimeGreen);
+                    spriteBatch.DrawString(storage.PullFont("font"), "Arrows - control", new Vector2(400, 60), Color.LimeGreen);
+                    spriteBatch.DrawString(storage.PullFont("font"), "Space - chage level", new Vector2(400, 80), Color.LimeGreen);
+                    
+                    // инфа о уровне
                     spriteBatch.DrawString(storage.PullFont("font"), "LevelLenght = " + LevelLoader.GetLenghtX.ToString(), new Vector2(10, 40), Color.Orange); // распечатка длины уровня по X
                     spriteBatch.DrawString(storage.PullFont("font"), "LevelHeight = " + LevelLoader.GetLenghtY.ToString(), new Vector2(10, 60), Color.Orange); // распечатка длины уровня по Y 
-                    spriteBatch.DrawString(storage.PullFont("font"), "LvlMapGuard(0, 0) = " + Guards.GetLevelMap(0, 0).ToString(), new Vector2(10, 80), Color.Orange); // распечатка уровня игры для охранника
-                    spriteBatch.DrawString(storage.PullFont("font"), "LvlMapGuard(0, 1) = " + Guards.GetLevelMap(0, 1).ToString(), new Vector2(10, 100), Color.Orange);
-                    spriteBatch.DrawString(storage.PullFont("font"), "LvlMapGuard(0, 2) = " + Guards.GetLevelMap(0, 2).ToString(), new Vector2(10, 120), Color.Orange);
-                    spriteBatch.DrawString(storage.PullFont("font"), "LvlMapGuard(1, 0) = " + Guards.GetLevelMap(1, 0).ToString(), new Vector2(10, 140), Color.Orange);
-                    spriteBatch.DrawString(storage.PullFont("font"), "LvlMapGuard(1, 1) = " + Guards.GetLevelMap(1, 1).ToString(), new Vector2(10, 160), Color.Orange);
-                    spriteBatch.DrawString(storage.PullFont("font"), "NextStepGuardX - " + levelLoader.guards[0].NextX.ToString(), new Vector2(10, 250), Color.Orange);
-                    spriteBatch.DrawString(storage.PullFont("font"), "NextStepGuardY - " + levelLoader.guards[0].NextY.ToString(), new Vector2(10, 270), Color.Orange); // распечатка клетки для следующего хода охранника
-
+                    
+                    // все для игрока
+                    spriteBatch.DrawString(storage.PullFont("font"), "CurrentRoom - " + player.room, new Vector2(10, 420), Color.Orange); // тревога
                     spriteBatch.DrawString(storage.PullFont("font"), "MyPosX - " + player.NewPosX.ToString(), new Vector2(10, 330), Color.Orange); // распечатка клетки для следующего хода охранника
                     spriteBatch.DrawString(storage.PullFont("font"), "MyPosY - " + player.NewPosY.ToString(), new Vector2(10, 350), Color.Orange); // распечатка клетки для следующего хода охранника
-                    spriteBatch.DrawString(storage.PullFont("font"), "Alarm - " + levelLoader.guards[0].Alarm, new Vector2(10, 380), Color.Orange); // тревога
                     spriteBatch.DrawString(storage.PullFont("font"), "ShadowOfWar - " + shadow.isShadow, new Vector2(10, 400), Color.Orange); // тревога
-
-                    // подсказки управления
-                    spriteBatch.DrawString(storage.PullFont("font"), "S - shadow", new Vector2(400, 40), Color.LimeGreen); 
-                    spriteBatch.DrawString(storage.PullFont("font"), "Arrows - control", new Vector2(400, 60), Color.LimeGreen); 
-                    spriteBatch.DrawString(storage.PullFont("font"), "Space - chage level", new Vector2(400, 80), Color.LimeGreen);
-
+                    
+                    // все для охранника 0
+                    spriteBatch.DrawString(storage.PullFont("font"), "PosGuard[0].X = " + levelLoader.guards[0].X.ToString(), new Vector2(10, 0), Color.Orange);
+                    spriteBatch.DrawString(storage.PullFont("font"), "PosGuard[0].Y = " + levelLoader.guards[0].Y.ToString(), new Vector2(10, 20), Color.Orange);
+                    spriteBatch.DrawString(storage.PullFont("font"), "NextStepGuardX - " + levelLoader.guards[0].NextX.ToString(), new Vector2(10, 250), Color.Orange);
+                    spriteBatch.DrawString(storage.PullFont("font"), "NextStepGuardY - " + levelLoader.guards[0].NextY.ToString(), new Vector2(10, 270), Color.Orange); // распечатка клетки для следующего хода охранника
+                    spriteBatch.DrawString(storage.PullFont("font"), "Alarm - " + levelLoader.guards[0].Alarm, new Vector2(10, 380), Color.Orange); // тревога
+                    
+                    
                 }
                 else
                 {
@@ -411,7 +408,17 @@ namespace GameLevels
                 // TODO: необходимо как-то обрабатывать исключения!
             }
 
+            // отрисовываем объекты
+            foreach (Object obj in levelLoader.objs)
+            {
+                if (obj.visible)
+                {
+                    obj.Draw(spriteBatch);
+                }
+            }
+
             spriteBatch.End();
+
 
             // отрисовываем охранников
             foreach (Guards guard in levelLoader.guards)
