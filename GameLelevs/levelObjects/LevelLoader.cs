@@ -30,6 +30,8 @@ namespace GameLevels
         // так же используется для алгоритма поиска пути к игроку
         public LevelObject[,] levelMap; // карта уровня в "названиях"
         public LevelObject[,] levelMapFloor; // карта пола
+        public int[,] levelMapRooms; // карта комнат
+
 
         
         public LevelLoader(Game1 game, Player player, Storage storage, Camera camera)
@@ -279,6 +281,24 @@ namespace GameLevels
                         indexI = 0;
                         indexJ++;
                     }
+
+
+                    // выделим память для комнат уровня
+                    levelMapRooms = new int[sizeFile[1] + 1, sizeFile[0] + 1];
+
+                    //считывание комнат в игре из файла
+                    for (int i = sizeFile[0] * 2 + 1; i <= 3 * sizeFile[0]; i++)
+                    {
+                        str = lines[i].Split(' ');
+                        foreach (string s in str)
+                        {
+                            //заносим конаты в массив
+                            levelMapRooms[indexI, indexJ] = Convert.ToInt32(s);
+                            indexI++;
+                        }
+                        indexI = 0;
+                        indexJ++;
+                    }
                 }
 
 
@@ -379,7 +399,6 @@ namespace GameLevels
                     }
                 }
                 // конец создания пола
-
 
 
                 // создание объектов на уровне
