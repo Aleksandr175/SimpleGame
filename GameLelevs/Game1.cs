@@ -246,6 +246,14 @@ namespace GameLevels
             // TODO: Add your update logic here
             KeyboardState state = Keyboard.GetState();
 
+            //изменить видимость игрока по кнопке V
+            if (state.IsKeyDown(Keys.V) && oldState.IsKeyUp(Keys.V))
+            {
+                if (!player.IsVisible())
+                    player.SetVisible();
+                else
+                    player.SetInvisible();
+            }
 
             if (state.IsKeyDown(Keys.D))
             {

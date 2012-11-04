@@ -127,6 +127,7 @@ namespace GameLevels
         public void Init()
         {
             playerInfo.speed = 2;
+            playerInfo.isVisible = true;
 
             frameInfo.height = 0;
             frameInfo.width = 0;
@@ -163,6 +164,17 @@ namespace GameLevels
 
             Rectangle sourceRect = new Rectangle(frameInfo.width * frameInfo.current, 0, frameInfo.width, frameInfo.height);
 
+            Color color;
+
+            if (playerInfo.isVisible)
+            {
+                color = Color.White;
+            }
+            else
+            {
+                color = new Color(255, 255, 255, 150);
+            }
+
             if (playerInfo.isRunning)
             {
                 SpriteEffects currentEffect = new SpriteEffects();
@@ -188,11 +200,11 @@ namespace GameLevels
                         break;
                 }
                 
-                spriteBatch.Draw(currentTexture, screenRect, sourceRect, Color.White, 0, Vector2.Zero, currentEffect, 0);
+                spriteBatch.Draw(currentTexture, screenRect, sourceRect, color, 0, Vector2.Zero, currentEffect, 0);
             }
             else
             {
-                spriteBatch.Draw(idlTexture, screenRect, Color.White);
+                spriteBatch.Draw(idlTexture, screenRect, color);
             }
 
             spriteBatch.End();
@@ -304,6 +316,31 @@ namespace GameLevels
             backpack.Add(obj);
 
             return true;
+        }
+
+        /// <summary>
+        /// Делает игрока видимым
+        /// </summary>
+        public void SetVisible()
+        {
+            playerInfo.isVisible = true;
+        }
+
+        /// <summary>
+        /// Делает игрока невидимым
+        /// </summary>
+        public void SetInvisible()
+        {
+            playerInfo.isVisible = false;
+        }
+
+        /// <summary>
+        /// Проверяет видимость игрока
+        /// </summary>
+        /// <returns>видимость игрока</returns>
+        public bool IsVisible()
+        {
+            return playerInfo.isVisible;
         }
     }
 }

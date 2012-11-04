@@ -27,6 +27,8 @@ namespace Structs
     {
         // двигается ли игрок
         public bool isRunning;
+        // видимость игрока
+        public bool isVisible;
         // скорость игрока
         public short speed;
         // текущее положение
