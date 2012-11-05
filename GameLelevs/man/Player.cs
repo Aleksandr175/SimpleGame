@@ -62,6 +62,13 @@ namespace GameLevels
 
         public int room;  // в какой комнате игрок?
 
+        //отсчет с момента использования невидимости
+        private float timer = 0;
+        //через сколько секунд можно опять использовать невидимость
+        private float cooldown = 30.0f;
+        //максимальная длительность невидимости
+        private float timeInvisible = 5.0f;
+
         public int NewPosX
         {
             get { return newPosX; }
@@ -306,6 +313,17 @@ namespace GameLevels
 
                 }
             }
+
+            //обратный отсчет со времени включения невидимости
+            if (timer > 0)
+            {
+                timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            //игрок возвращается в нормальное состояние через несколько секунд
+            if (!playerInfo.isVisible && timer < cooldown - timeInvisible)
+            {
+                playerInfo.isVisible = true;
+            }
         }
 
         /// <summary>
@@ -347,7 +365,11 @@ namespace GameLevels
         /// </summary>
         public void SetInvisible()
         {
-            playerInfo.isVisible = false;
+            if (timer <= 0)
+            {
+                playerInfo.isVisible = false;
+                timer = cooldown;
+            }
         }
 
         /// <summary>
