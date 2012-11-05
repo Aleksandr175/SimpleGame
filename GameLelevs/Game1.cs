@@ -71,7 +71,7 @@ namespace GameLevels
             toDraw = new List<string>();
 
             
-            // отключили ограничение fps счетчика
+            // включили ограничение fps счетчика
             IsFixedTimeStep = true;
             graphics.SynchronizeWithVerticalRetrace = true;
         }
@@ -124,14 +124,16 @@ namespace GameLevels
             maxLvl = storage.GetMaxLevelNumber();
 
             // стоит проверять существование уровня
-            if(storage.IsExist(5))
-                levelLoader.CreateLevel(5);
+            if(storage.IsExist(7))
+                levelLoader.CreateLevel(7);
             else
                 levelLoader.CreateLevel(maxLvl);
 
-            shadow = new Shadow();
+            shadow = new Shadow(levelLoader.guards, levelLoader.objs);
             Shadow.LevelLenghtX = LevelLoader.GetLenghtX / LevelLoader.Size;
             Shadow.LevelLenghtY = LevelLoader.GetLenghtY / LevelLoader.Size;
+            shadow.ShowInRoom(LevelLoader.levelMapRooms[player.Position.X / LevelLoader.Size, player.Position.Y / LevelLoader.Size]);
+            player.setShadow(shadow); // передадим игроку ссылку на на туман войны
 
 
         }
@@ -273,7 +275,7 @@ namespace GameLevels
             if (state.IsKeyDown(Keys.S))
             {
                 shadow.isShadow = !shadow.isShadow;
-                shadow.HideOrShowAll(levelLoader.guards, levelLoader.objs); // отображает или скрывание сущности на экране
+                shadow.HideOrShowAll(); // отображает или скрывание сущности на экране
             }
 
             //смена уровня по нажатию на пробел
@@ -286,6 +288,12 @@ namespace GameLevels
                         currentLvl = 1;
                     }
                     levelLoader.CreateLevel(currentLvl);
+                    shadow = new Shadow(levelLoader.guards, levelLoader.objs);
+                    Shadow.LevelLenghtX = LevelLoader.GetLenghtX / LevelLoader.Size;
+                    Shadow.LevelLenghtY = LevelLoader.GetLenghtY / LevelLoader.Size;
+                    shadow.ShowInRoom(LevelLoader.levelMapRooms[player.Position.X / LevelLoader.Size, player.Position.Y / LevelLoader.Size]);
+                    player.setShadow(shadow); // передадим игроку ссылку на на туман войны
+
                 }
             }
             oldState = state;
@@ -419,7 +427,7 @@ namespace GameLevels
             // отрисовываем объекты
             foreach (Object obj in levelLoader.objs)
             {
-                if (obj.visible)
+                if (obj.isVisible)
                 {
                     obj.Draw(spriteBatch);
                 }
@@ -431,7 +439,7 @@ namespace GameLevels
             // отрисовываем охранников
             foreach (Guards guard in levelLoader.guards)
             {
-                if (guard.visible)
+                if (guard.isVisible)
                 {
                     guard.Draw(spriteBatch);
                 }

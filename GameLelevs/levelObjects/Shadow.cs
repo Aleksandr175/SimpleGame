@@ -29,8 +29,12 @@ namespace GameLevels.levelObjects
 
         public bool isShadow = false; // включен ли туман войны?
 
-        public Shadow()
+        public Shadow(List<Guards> guards, List<Object> objs)
         {
+            this.guards = new List<Guards>();
+            this.guards = guards;
+            this.objs = new List<Object>();
+            this.objs = objs;
         }
 
         /// <summary>
@@ -40,11 +44,11 @@ namespace GameLevels.levelObjects
         {
             foreach (Guards guard in guards)
             {
-                guard.visible = false;
+                guard.isVisible = false;
             }
             foreach (Object obj in objs)
             {
-                obj.visible = false;
+                obj.isVisible = false;
             }
         }
 
@@ -55,25 +59,41 @@ namespace GameLevels.levelObjects
         {
             foreach (Guards guard in guards)
             {
-                guard.visible = true;
+                guard.isVisible = true;
             }
             foreach (Object obj in objs)
             {
-                obj.visible = true;
+                obj.isVisible = true;
             }
         }
 
         /// <summary>
         /// Показываем все объекты в комнате
         /// </summary>
-        public static void ShowInRoom()
+        /// <param name="room">Номер комнаты</param>
+        public void ShowInRoom(int room)
         {
-            for (int i = 0; i <= levelLenghtX; i++)
+/*            foreach (Guards guard in guards)
             {
-                for (int j = 0; j < levelLenghtY; j++)
+                guard.visible = true;
+            }*/
+            if (room != 0)
+            {
+                foreach (Object obj in objs)
                 {
-
+                    if (LevelLoader.levelMapRooms[obj.Rect.X / LevelLoader.Size, obj.Rect.Y / LevelLoader.Size] == room)
+                    {
+                        obj.isVisible = true;
+                    }
                 }
+                foreach (Guards guard in guards)
+                {
+                    if (LevelLoader.levelMapRooms[guard.Rect.X / LevelLoader.Size, guard.Rect.Y / LevelLoader.Size] == room)
+                    {
+                        guard.isVisible = true;
+                    }
+                }
+
             }
         }
 
@@ -84,13 +104,8 @@ namespace GameLevels.levelObjects
         /// </summary>
         /// <param name="guards">Список экземпляров охранников</param>
         /// <param name="objs">Список экземпляров объектов</param>
-        public void HideOrShowAll(List<Guards> guards, List<Object> objs)
+        public void HideOrShowAll()
         {
-            this.guards = new List<Guards>();
-            this.guards = guards;
-            this.objs = new List<Object>();
-            this.objs = objs;
-
             if (this.isShadow)
             {
                 HideAll();

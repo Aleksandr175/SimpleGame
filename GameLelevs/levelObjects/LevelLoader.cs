@@ -30,7 +30,7 @@ namespace GameLevels
         // так же используется для алгоритма поиска пути к игроку
         public LevelObject[,] levelMap; // карта уровня в "названиях"
         public LevelObject[,] levelMapFloor; // карта пола
-        public int[,] levelMapRooms; // карта комнат
+        public static int[,] levelMapRooms; // карта комнат
 
 
         

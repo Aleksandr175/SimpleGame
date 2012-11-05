@@ -48,6 +48,8 @@ namespace GameLevels
         // ссылка на камеру
         private Camera camera;
 
+        private Shadow shadow;
+
         private LevelLoader levelLoader;
 
         // старое положение игрока
@@ -98,10 +100,24 @@ namespace GameLevels
             this.backpack = new List<BaseObject>();
         }
 
+        /// <summary>
+        /// Передаем ссылку на загрузчик уровней
+        /// </summary>
+        /// <param name="levelLoader"></param>
         public void setLinkLevelLoader(LevelLoader levelLoader)
         {
             this.levelLoader = levelLoader;
         }
+
+        /// <summary>
+        /// Передаем ссылку на туман войны
+        /// </summary>
+        /// <param name="shadow"></param>
+        public void setShadow(Shadow shadow)
+        {
+            this.shadow = shadow;
+        }
+        
 
         /// <summary>
         /// Перегруженный конструктор класса
@@ -234,7 +250,7 @@ namespace GameLevels
                 // считаем старую клетку игрока. Считается от центра игрока.
                 oldPosX = (playerInfo.position.X + (LevelLoader.SizePeople / 2)) / LevelLoader.Size;
                 oldPosY = (playerInfo.position.Y + (LevelLoader.SizePeople / 2)) / LevelLoader.Size;
-                room = levelLoader.levelMapRooms[oldPosX, oldPosY]; // текущая комната
+                room = LevelLoader.levelMapRooms[oldPosX, oldPosY]; // текущая комната
 
                 // смотрим, в каком направлении движемся 
                 switch (playerInfo.direction)
@@ -269,9 +285,9 @@ namespace GameLevels
                     if (newPosX != oldPosX || newPosY != oldPosY)
                     {
                         changedPos = true;
-                        if (room != levelLoader.levelMapRooms[newPosX, newPosY]) {
-                            room = levelLoader.levelMapRooms[newPosX, newPosY];
-                            Shadow.ShowInRoom(); // показать объекты в комнате
+                        if (room != LevelLoader.levelMapRooms[newPosX, newPosY]) {
+                            room = LevelLoader.levelMapRooms[newPosX, newPosY];
+                            shadow.ShowInRoom(room); // показать объекты в комнате
                         }
                     }
 

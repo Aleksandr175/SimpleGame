@@ -17,6 +17,8 @@ namespace GameLevels.levelObjects
         /// </summary>
         private EType type;
 
+        private bool isVisible = false;
+
         /// <summary>
         /// Конструктор класса
         /// </summary>

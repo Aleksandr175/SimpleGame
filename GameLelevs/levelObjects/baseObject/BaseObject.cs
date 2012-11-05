@@ -15,7 +15,7 @@ namespace GameLevels.levelObjects
         private Game1 game;
         private Camera camera;
 
-        public bool visible = true; // отображаем ли объект на экране?
+        public bool isVisible = false; // отображаем ли объект на экране?
 
         /// <summary>
         /// Конструктор класса
