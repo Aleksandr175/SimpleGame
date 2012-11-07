@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework.Storage;
 using System.IO;
 using Enumerations;
 using GameLevels.levelObjects;
+using GameLevels.levelObjects.door;
 
 namespace GameLevels
 {
@@ -293,11 +294,35 @@ namespace GameLevels
                     Shadow.LevelLenghtY = LevelLoader.GetLenghtY / LevelLoader.Size;
                     shadow.ShowInRoom(LevelLoader.levelMapRooms[player.Position.X / LevelLoader.Size, player.Position.Y / LevelLoader.Size]);
                     player.setShadow(shadow); // передадим игроку ссылку на на туман войны
-
+                    toDraw.Clear();
                 }
             }
             oldState = state;
 
+            // открываем дверь
+            if (state.IsKeyDown(Keys.E)) {
+                int j = 0;
+                while (j < levelLoader.doors.Count)
+                {
+                    // если игрок пересекается с каким-либо "интерактивным" объектом на уровне
+                    if (levelLoader.doors[j].Rect.Intersects(player.Position))
+                    {
+                        Door door = (Door)levelLoader.doors[j];
+                        if (door.IsClosed()) {
+
+                            Texture2D openDoor = door.GetOrientation() == DoorOrientation.Horiz ? storage.Pull2DTexture("door_horiz_open") : storage.Pull2DTexture("door_vertic_open");
+
+                            if (door.Open(openDoor)) {
+                                toDraw.Add("The door was open");
+                                levelLoader.levelMap[door.GetIndexI(), door.GetIndexJ()] = LevelObject.Empty;
+                            }
+                        }
+
+                    }
+
+                    j++;
+                }
+            }
             
             // перемещение игрока
             if (state.IsKeyDown(Keys.Left))
@@ -329,8 +354,10 @@ namespace GameLevels
 
             int i = 0;
             while (i < levelLoader.interactionSubjects.Count) {
+                // если игрок пересекается с каким-либо "интерактивным" объектом на уровне
                 if (levelLoader.interactionSubjects[i].Rect.Intersects(player.Position))
                 {
+                    // если удалось добавить объект в рюкзак
                     if (player.AddItem(levelLoader.interactionSubjects[i])) {
 
                         levelLoader.blocks.Add(new Block(levelLoader.interactionSubjects[i].Rect, storage.Pull2DTexture("empty"), this, this.camera));
@@ -376,7 +403,9 @@ namespace GameLevels
 
             foreach (BaseObject bo in levelLoader.interactionSubjects)
                 bo.Draw(spriteBatch);
-            
+
+            foreach (BaseObject bo in levelLoader.doors)
+                bo.Draw(spriteBatch);
 
             try
             {

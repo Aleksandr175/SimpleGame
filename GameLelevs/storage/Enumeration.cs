@@ -10,6 +10,9 @@ namespace Enumerations
     // сложность уровня
     enum Complexity { Low, Medium, High };
 
+    // ориентация дверей
+    enum DoorOrientation { Horiz, Vert };
+
     enum LevelObject { 
         Empty = 0, 
         

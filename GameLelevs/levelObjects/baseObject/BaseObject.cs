@@ -7,11 +7,11 @@ using Microsoft.Xna.Framework;
 
 namespace GameLevels.levelObjects
 {
-    class BaseObject : IBaseObject
+    abstract class BaseObject : IBaseObject
     {
         public Rectangle Rect { get; set; }
 
-        private Texture2D texture;
+        protected Texture2D texture;
         private Game1 game;
         private Camera camera;
 

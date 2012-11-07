@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using System.IO;
 using Enumerations;
 using GameLevels.levelObjects;
+using GameLevels.levelObjects.door;
 
 namespace GameLevels
 {
@@ -21,7 +22,11 @@ namespace GameLevels
         public List<Object> objs; // объекты на уровне
         public List<Guards> guards; // список охранников
 
+        // список "интерактивных" объектов
         public List<BaseObject> interactionSubjects;
+
+        // список дверей
+        public List<BaseObject> doors;
 
         // сложность уровня
         public Complexity complexity;
@@ -86,6 +91,7 @@ namespace GameLevels
             objs = new List<Object>();
             guards = new List<Guards>();
             interactionSubjects = new List<BaseObject>();
+            doors = new List<BaseObject>();
 
             string lvl_name = "content/lvls/lvl" + Convert.ToString(lvl) + ".txt";
             string[] lines = File.ReadAllLines(lvl_name); //получили массив строк
@@ -478,26 +484,42 @@ namespace GameLevels
                         //двери
                         if (levelMap[i, j] == LevelObject.DoorHoriz)
                         {
-                            Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera);
-                            blocks.Add(block);
+                            // Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera);
+                            // blocks.Add(block);
+
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera, DoorOrientation.Horiz, true, i, j);
+                            doors.Add(door);
+
                             levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.DoorVertic)
                         {
-                            Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera);
-                            blocks.Add(block);
+                            // Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera);
+                            // blocks.Add(block);
+
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera, DoorOrientation.Vert, true, i, j);
+                            doors.Add(door);
+                            
                             levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.DoorHorizOpen)
                         {
-                            Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera);
-                            blocks.Add(block);
+                            // Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera);
+                            // blocks.Add(block);
+
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera, DoorOrientation.Horiz);
+                            doors.Add(door);
+                            
                             levelMap[i, j] = LevelObject.Empty;
                         }
                         if (levelMap[i, j] == LevelObject.DoorVerticOpen)
                         {
-                            Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera);
-                            blocks.Add(block);
+                            // Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera);
+                            // blocks.Add(block);
+
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera, DoorOrientation.Vert);
+                            doors.Add(door);
+
                             levelMap[i, j] = LevelObject.Empty;
                         }
 
@@ -782,29 +804,41 @@ namespace GameLevels
                         //двери
                         if (s.Equals("20", StringComparison.OrdinalIgnoreCase))
                         {
-                            Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera);
-                            blocks.Add(block);
+                            // Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera);
+                            // blocks.Add(block);
+
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera, DoorOrientation.Horiz, true, indexI, indexJ);
+                            doors.Add(door);
 
                             // добавим стену в карту
                             levelMap[indexI, indexJ] = LevelObject.Wall;
                         }
                         if (s.Equals("21", StringComparison.OrdinalIgnoreCase))
                         {
-                            Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera);
-                            blocks.Add(block);
+                            // Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera);
+                            // blocks.Add(block);
+
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera, DoorOrientation.Vert, true, indexI, indexJ);
+                            doors.Add(door);
 
                             // добавим стену в карту
                             levelMap[indexI, indexJ] = LevelObject.Wall;
                         }
                         if (s.Equals("22", StringComparison.OrdinalIgnoreCase))
                         {
-                            Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera);
-                            blocks.Add(block);
+                            // Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera);
+                            // blocks.Add(block);
+
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera, DoorOrientation.Horiz);
+                            doors.Add(door);
                         }
                         if (s.Equals("23", StringComparison.OrdinalIgnoreCase))
                         {
-                            Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera);
-                            blocks.Add(block);
+                            // Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera);
+                            // blocks.Add(block);
+
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera, DoorOrientation.Vert);
+                            doors.Add(door);
                         }
 
                         if (s.Equals("30", StringComparison.OrdinalIgnoreCase))

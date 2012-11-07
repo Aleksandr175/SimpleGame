@@ -121,6 +121,8 @@
     <Compile Include="levelObjects\baseObject\IBaseObject.cs" />
     <Compile Include="levelObjects\block\IBlock.cs" />
     <Compile Include="levelObjects\card\ICard.cs" />
+    <Compile Include="levelObjects\door\Door.cs" />
+    <Compile Include="levelObjects\door\IDoor.cs" />
     <Compile Include="levelObjects\key\IKey.cs" />
     <Compile Include="levelObjects\money\IMoney.cs" />
     <Compile Include="levelObjects\key\Key.cs" />
