@@ -125,8 +125,8 @@ namespace GameLevels
             maxLvl = storage.GetMaxLevelNumber();
 
             // стоит проверять существование уровня
-            if(storage.IsExist(7))
-                levelLoader.CreateLevel(7);
+            if(storage.IsExist(8))
+                levelLoader.CreateLevel(8);
             else
                 levelLoader.CreateLevel(maxLvl);
 
@@ -323,6 +323,9 @@ namespace GameLevels
                     j++;
                 }
             }
+
+
+
             
             // перемещение игрока
             if (state.IsKeyDown(Keys.Left))
@@ -399,6 +402,10 @@ namespace GameLevels
             foreach (Block block in levelLoader.blocks)
             {
                 block.Draw(spriteBatch);
+            }
+            foreach (Laser laser in levelLoader.lasers)
+            {
+                laser.Draw(spriteBatch);
             }
 
             foreach (BaseObject bo in levelLoader.interactionSubjects)

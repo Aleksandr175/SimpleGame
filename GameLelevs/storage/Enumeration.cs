@@ -43,15 +43,29 @@ namespace Enumerations
 
         Gold = 50, 
 
+        // стол управления камерами
         SpLU = 60,
         SpUR = 61,
         SpRD = 62,
         SpDL = 63,
 
+        // стол с компьютером
         TableU = 70,
         TableR = 71,
         TableD = 72,
         TableL = 73,
+
+        //все виды лазеров
+        LaserHoriz = 80,
+        LaserVertic = 81,
+        LaserHorizL = 82,
+        LaserHorizR = 83,
+        LaserVerticU = 84,
+        LaserVerticD = 85,
+        LaserHorizMiddle = 86,
+        LaserVerticMiddle = 87,
+
+        
 
         Floor = 90,
 

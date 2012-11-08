@@ -124,6 +124,8 @@
     <Compile Include="levelObjects\door\Door.cs" />
     <Compile Include="levelObjects\door\IDoor.cs" />
     <Compile Include="levelObjects\key\IKey.cs" />
+    <Compile Include="levelObjects\laser\ILaser.cs" />
+    <Compile Include="levelObjects\laser\Laser.cs" />
     <Compile Include="levelObjects\money\IMoney.cs" />
     <Compile Include="levelObjects\key\Key.cs" />
     <Compile Include="levelObjects\LevelLoader.cs" />

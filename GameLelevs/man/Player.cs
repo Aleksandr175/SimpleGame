@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Enumerations;
 using GameLevels.levelObjects;
+using Microsoft.Xna.Framework.Input;
 
 namespace GameLevels
 {
@@ -312,6 +313,11 @@ namespace GameLevels
                     }
 
                 }
+
+
+                showInCloseRoom();
+
+
             }
 
             //обратный отсчет со времени включения невидимости
@@ -325,6 +331,114 @@ namespace GameLevels
                 playerInfo.isVisible = true;
             }
         }
+
+
+        /// <summary>
+        /// Подглядывание через дверь в комнату.
+        /// Открывает все объекты в соседней комнате.
+        /// Игрок должен смотреть в сторону двери, что открыть объекты
+        /// </summary>
+        public void showInCloseRoom()
+        {
+            KeyboardState state = Keyboard.GetState();
+            // подглядываем в закрытую дверь
+            if (state.IsKeyDown(Keys.L))
+            {
+                int nearX;
+                int nearY;
+
+                // смотрим, в каком направлении движемся 
+                switch (playerInfo.direction)
+                {
+                    case PlayerMove.Up:
+                        nearX = newPosX;
+                        nearY = nearPlace(PlayerMove.Up);
+                        if (levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorHorizOpen || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorHoriz
+                            || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVerticOpen || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVertic)
+
+                        {
+                            room = LevelLoader.levelMapRooms[nearX, nearY - 1];
+                            shadow.ShowInRoom(room);                        
+                        }
+                        break;
+
+                    case PlayerMove.Left:
+                        nearX = nearPlace(PlayerMove.Left);
+                        nearY = newPosY;
+                        if (levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorHorizOpen || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorHoriz
+                            || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVerticOpen || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVertic)
+                        {
+                            room = LevelLoader.levelMapRooms[nearX - 1, nearY];
+                            shadow.ShowInRoom(room);                        
+                        }
+                        break;
+
+                    case PlayerMove.Right:
+                        nearX = nearPlace(PlayerMove.Right);
+                        nearY = newPosY;
+                        if (levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorHorizOpen || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorHoriz
+                            || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVerticOpen || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVertic)
+                        {
+                            room = LevelLoader.levelMapRooms[nearX + 1, nearY];
+                            shadow.ShowInRoom(room);                        
+                        }
+                        break;
+
+                    case PlayerMove.Down:
+                        nearX = newPosX;
+                        nearY = nearPlace(PlayerMove.Down);
+                        if (levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorHorizOpen || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorHoriz
+                            || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVerticOpen || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVertic)
+                        {
+                            room = LevelLoader.levelMapRooms[nearX, nearY + 1];
+                            shadow.ShowInRoom(room);                        
+                        }
+                        break;
+
+                    default: break;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Считает точную координату соседней клетки относительно игрока,
+        /// учитывает точное положение игрока (в пикселях)
+        /// </summary>
+        /// <param name="direction">
+        ///                         Положение клетки относительно игрока
+        ///                         Варианты:
+        ///                         PlayerMove.Up - координата клетки выше игрока
+        ///                         PlayerMove.Down - координата клетки ниже игрока
+        ///                         PlayerMove.Left - координата клетки слева от игрока
+        ///                         PlayerMove.Right - координата клетки справа от игрока
+        /// </param>
+        /// <returns></returns>
+        private int nearPlace(PlayerMove playerMove) 
+        {
+            int coord; // координата соседней точки
+
+            if (playerMove == PlayerMove.Up)
+            {
+                return coord = (playerInfo.position.Y + LevelLoader.SizePeople - LevelLoader.Size / 2) / LevelLoader.Size;
+            }
+            if (playerMove == PlayerMove.Left)
+            {
+                return coord = (playerInfo.position.X + LevelLoader.SizePeople - LevelLoader.Size / 2) / LevelLoader.Size;
+            }
+            if (playerMove == PlayerMove.Down)
+            {
+                return coord = (playerInfo.position.Y + LevelLoader.SizePeople + LevelLoader.Size / 2) / LevelLoader.Size;
+            }
+            if (playerMove == PlayerMove.Right)
+            {
+                return coord = (playerInfo.position.X + LevelLoader.SizePeople + LevelLoader.Size / 2) / LevelLoader.Size;
+            }
+
+            return 0;
+        }
+
+
 
         /// <summary>
         /// Возвращает позицию игрока

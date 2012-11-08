@@ -21,6 +21,7 @@ namespace GameLevels
         public List<Block> blocks; // объекты стен и дверей
         public List<Object> objs; // объекты на уровне
         public List<Guards> guards; // список охранников
+        public List<Laser> lasers; // список охранников
 
         // список "интерактивных" объектов
         public List<BaseObject> interactionSubjects;
@@ -35,8 +36,9 @@ namespace GameLevels
         // так же используется для алгоритма поиска пути к игроку
         public LevelObject[,] levelMap; // карта уровня в "названиях"
         public LevelObject[,] levelMapFloor; // карта пола
+        public LevelObject[,] levelDoors; // карта дверей
         public static int[,] levelMapRooms; // карта комнат
-
+        
 
         
         public LevelLoader(Game1 game, Player player, Storage storage, Camera camera)
@@ -90,6 +92,7 @@ namespace GameLevels
             blocks = new List<Block>();
             objs = new List<Object>();
             guards = new List<Guards>();
+            lasers = new List<Laser>();
             interactionSubjects = new List<BaseObject>();
             doors = new List<BaseObject>();
 
@@ -136,6 +139,8 @@ namespace GameLevels
 
                 // выделим память для карты уровня
                 levelMap = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
+                //выделим память для дверей уровня
+                levelDoors = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
 
 
                 tempIndex = 0;
@@ -154,24 +159,26 @@ namespace GameLevels
                         {
                             case LevelObject.Empty:
                                 levelMap[indexI, indexJ] = LevelObject.Empty;
-                                levelMap[indexI, indexJ] = LevelObject.Empty;
                                 break;
                             case LevelObject.Wall:
-                                levelMap[indexI, indexJ] = LevelObject.Wall;
                                 levelMap[indexI, indexJ] = LevelObject.Wall;
                                 break;
 
                             case LevelObject.DoorHoriz:
                                 levelMap[indexI, indexJ] = LevelObject.DoorHoriz;
+                                levelDoors[indexI, indexJ] = LevelObject.DoorHoriz;
                                 break;
                             case LevelObject.DoorVertic:
                                 levelMap[indexI, indexJ] = LevelObject.DoorVertic;
+                                levelDoors[indexI, indexJ] = LevelObject.DoorVertic;
                                 break;
                             case LevelObject.DoorHorizOpen:
                                 levelMap[indexI, indexJ] = LevelObject.DoorHorizOpen;
+                                levelDoors[indexI, indexJ] = LevelObject.DoorHorizOpen;
                                 break;
                             case LevelObject.DoorVerticOpen:
                                 levelMap[indexI, indexJ] = LevelObject.DoorVerticOpen;
+                                levelDoors[indexI, indexJ] = LevelObject.DoorVerticOpen;
                                 break;
 
                             case LevelObject.Guard:
@@ -218,6 +225,35 @@ namespace GameLevels
                             case LevelObject.TableL:
                                 levelMap[indexI, indexJ] = LevelObject.TableL;
                                 break;
+
+                            // лазеры
+                            case LevelObject.LaserHoriz:
+                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
+                                break;
+                            case LevelObject.LaserVertic:
+                                levelMap[indexI, indexJ] = LevelObject.LaserVertic;
+                                break;
+                            case LevelObject.LaserHorizL:
+                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
+                                break;
+                            case LevelObject.LaserHorizR:
+                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
+                                break;
+                            case LevelObject.LaserVerticU:
+                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
+                                break;
+                            case LevelObject.LaserVerticD:
+                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
+                                break;
+                            case LevelObject.LaserHorizMiddle:
+                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
+                                break;
+                            case LevelObject.LaserVerticMiddle:
+                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
+                                break;
+
+
+
 
                             // устанавливаем игрока и камеру в нач. позицию.
                             case LevelObject.Player:
@@ -618,6 +654,34 @@ namespace GameLevels
                             levelMap[i, j] = LevelObject.Wall;
                         }
 
+
+
+                        // лазеры
+                        if (levelMap[i, j] == LevelObject.LaserHoriz) 
+                        {
+                            Laser laser = new Laser(Rect, storage.Pull2DTexture("laser2_horiz"), game, this.camera);
+                            lasers.Add(laser);
+                            //levelMap[i, j] = LevelObject.Wall;
+                        }
+                        if (levelMap[i, j] == LevelObject.LaserVertic) 
+                        {
+                            Laser laser = new Laser(Rect, storage.Pull2DTexture("laser2_vert"), game, this.camera);
+                            lasers.Add(laser);
+                            //levelMap[i, j] = LevelObject.Wall;
+                        }
+
+                        if (levelMap[i, j] == LevelObject.LaserHorizL) 
+                        {
+                            Laser laser = new Laser(Rect, storage.Pull2DTexture("laser3_L"), game, this.camera);
+                            lasers.Add(laser);
+                            //levelMap[i, j] = LevelObject.Wall;
+                        }
+                        if (levelMap[i, j] == LevelObject.LaserHorizR) 
+                        {
+                            Laser laser = new Laser(Rect, storage.Pull2DTexture("laser3_R"), game, this.camera);
+                            lasers.Add(laser);
+                            //levelMap[i, j] = LevelObject.Wall;
+                        }
 
                         
 
