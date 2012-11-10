@@ -125,8 +125,8 @@ namespace GameLevels
             maxLvl = storage.GetMaxLevelNumber();
 
             // стоит проверять существование уровня
-            if(storage.IsExist(8))
-                levelLoader.CreateLevel(8);
+            if(storage.IsExist(5))
+                levelLoader.CreateLevel(5);
             else
                 levelLoader.CreateLevel(maxLvl);
 
@@ -266,9 +266,21 @@ namespace GameLevels
             // вкл, выкл. тревогу
             if (state.IsKeyDown(Keys.A))
             {
-                foreach (Guards guard in levelLoader.guards)
+                if (Guards.generalAlarm) // анализируем всеобщую тревогу
                 {
-                    guard.Alarm = !guard.Alarm;
+                    foreach (Guards guard in levelLoader.guards)
+                    {
+                        guard.Alarm = false;
+                    }
+                    Guards.generalAlarm = false;
+                }
+                else
+                {
+                    foreach (Guards guard in levelLoader.guards)
+                    {
+                        guard.Alarm = true;
+                    }
+                    Guards.generalAlarm = true;
                 }
             }
 

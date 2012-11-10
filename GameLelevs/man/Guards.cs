@@ -70,7 +70,9 @@ namespace GameLevels
         PlayerMove direction; //направление охранника
         bool isRunning; //бежит или нет?
 
-        private bool alarm = true; // есть ли тревога ? True - включена
+        public static bool generalAlarm = false; // всеобщая тревога. True - включена
+
+        private bool alarm = false; // охранник встревожен ? True - включена
 
         public bool Alarm
         {
@@ -95,6 +97,7 @@ namespace GameLevels
         private Player player;
 
         List<List<int>> wayToTarget = new List<List<int>>(); // путь к цели
+        List<List<int>> wayToPlayer = new List<List<int>>(); // путь к цели
         public List<List<int>> wayToPatrol = new List<List<int>>(); // траектория для патрулирования
 
         static int countGuards = 0; // кол-во охранников на уровне
@@ -183,28 +186,6 @@ namespace GameLevels
             frameInfo.count = this.runTextureVert.Width / frameInfo.width;
 
             this.position = position;
-
-
-            //массив для патрулирования
-            // временный. Потом будет считываться из файла
-            /*wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
-            wayToPatrol[0].Add(3); // первым указывается координата X
-            wayToPatrol[0].Add(3); // второе - координата Y
-            wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
-            wayToPatrol[1].Add(3);
-            wayToPatrol[1].Add(4);
-            wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
-            wayToPatrol[2].Add(4);
-            wayToPatrol[2].Add(4);
-            wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
-            wayToPatrol[3].Add(4);
-            wayToPatrol[3].Add(3);
-            */
-            //targetX = wayToPatrol[0][0];
-            //targetY = wayToPatrol[0][1];
-
-            //targetX = wayToPatrol[1][0]; // 0 - x
-            //targetY = wayToPatrol[1][1]; // 1 - y
 
             countGuards++;
 
@@ -345,7 +326,13 @@ namespace GameLevels
             if (alarm == false)
             {
                 this.isRunning = true;
+                this.speed = 1;
                 this.Patrol();
+                this.checkAlarm();
+            }
+            else
+            {
+                this.speed = 2;
             }
             
             if (this.isRunning) 
@@ -376,7 +363,7 @@ namespace GameLevels
                 if (wayToTarget != null)
                 {
                     // передвижение охранника
-                    offset = this.speed * gameTime.ElapsedGameTime.Milliseconds / 10;
+                    offset = this.speed * gameTime.ElapsedGameTime.Milliseconds / 15;
 
                     // новое положение охранника
                     newPosition = this.position;
@@ -510,7 +497,25 @@ namespace GameLevels
             
         }
 
-
+        /// <summary>
+        /// Проверяем, сколько до игрока клеток и, если расстояние
+        /// менбше 3-х клеток - бежим к игроку и устанавливаем тревогу
+        /// </summary>
+        private void checkAlarm()
+        {
+            wayToPlayer = this.Way(levelMap, levelWidth, levelHeight, player.NewPosX, player.NewPosY); // прокладываем путь к игроку
+            if (wayToPlayer != null)
+            {
+                try
+                {
+                    if (wayToPlayer.Count <= 3)
+                    {
+                        this.alarm = true;
+                    }
+                }
+                catch { }
+            }
+        }
 
 
 

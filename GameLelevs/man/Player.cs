@@ -250,7 +250,7 @@ namespace GameLevels
                 }
 
                 // передвижение игрока
-                int offset = playerInfo.speed;//playerInfo.speed * gameTime.ElapsedGameTime.Milliseconds / 10;
+                int offset = /*playerInfo.speed;*/ playerInfo.speed * gameTime.ElapsedGameTime.Milliseconds / 15;
 
                 // новое положение игрока
                 Rectangle newPosition = playerInfo.position;

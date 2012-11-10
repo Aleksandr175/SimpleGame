@@ -300,8 +300,8 @@ namespace GameLevels
                 indexI = 0;
                 indexJ = 0;
 
-                if (lvl == 7 || lvl == 8)
-                {
+                //if (lvl == 7 || lvl == 8)
+               // {
                     // выделим память для карты уровня
                     levelMapFloor = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
 
@@ -324,10 +324,10 @@ namespace GameLevels
                         indexJ++;
                     }
 
-                }
+                //}
 
-                if (lvl == 7 || lvl == 8)
-                {
+                //if (lvl == 7 || lvl == 8)
+                //{
                     indexI = 0;
                     indexJ = 0;
 
@@ -347,7 +347,7 @@ namespace GameLevels
                         indexI = 0;
                         indexJ++;
                     }
-                }
+                //}
 
 
 
@@ -384,8 +384,8 @@ namespace GameLevels
                 // 90 90 90 90 - далее идет массив пола
                 // 0 90 90 0
                 // ..........  
-                if (lvl == 7 || lvl == 8)
-                {
+                //if (lvl == 7 || lvl == 8)
+                //{
                     for (int i = 0; i < sizeFile[1]; i++)
                     {
                         for (int j = sizeFile[0]; j <= 2 * sizeFile[0]; j++)
@@ -445,7 +445,7 @@ namespace GameLevels
 
                         }
                     }
-                }
+                //}
                 // конец создания пола
 
 
