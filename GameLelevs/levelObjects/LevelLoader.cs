@@ -523,7 +523,7 @@ namespace GameLevels
                             // Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera);
                             // blocks.Add(block);
 
-                            Door door = new Door(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera, DoorOrientation.Horiz, true, i, j);
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera, EColor.Blue, DoorOrientation.Horiz, true, i, j);
                             doors.Add(door);
 
                             levelMap[i, j] = LevelObject.Wall;
@@ -533,7 +533,7 @@ namespace GameLevels
                             // Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera);
                             // blocks.Add(block);
 
-                            Door door = new Door(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera, DoorOrientation.Vert, true, i, j);
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera, EColor.Blue, DoorOrientation.Vert, true, i, j);
                             doors.Add(door);
                             
                             levelMap[i, j] = LevelObject.Wall;
@@ -543,7 +543,7 @@ namespace GameLevels
                             // Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera);
                             // blocks.Add(block);
 
-                            Door door = new Door(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera, DoorOrientation.Horiz);
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera, EColor.Blue, DoorOrientation.Horiz);
                             doors.Add(door);
                             
                             levelMap[i, j] = LevelObject.Empty;
@@ -553,7 +553,7 @@ namespace GameLevels
                             // Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera);
                             // blocks.Add(block);
 
-                            Door door = new Door(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera, DoorOrientation.Vert);
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera, EColor.Blue, DoorOrientation.Vert);
                             doors.Add(door);
 
                             levelMap[i, j] = LevelObject.Empty;
@@ -578,7 +578,7 @@ namespace GameLevels
                             // Object obj = new Object(Rect, storage.Pull2DTexture("key"), game, this.camera);
                             // objs.Add(obj);
 
-                            Key key = new Key(Rect, storage.Pull2DTexture("key"), game, this.camera);
+                            Key key = new Key(Rect, storage.Pull2DTexture("key"), game, this.camera, EColor.Blue);
                             interactionSubjects.Add(key);
 
                             levelMap[i, j] = LevelObject.Empty;
@@ -871,7 +871,7 @@ namespace GameLevels
                             // Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera);
                             // blocks.Add(block);
 
-                            Door door = new Door(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera, DoorOrientation.Horiz, true, indexI, indexJ);
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera, EColor.Blue, DoorOrientation.Horiz, true, indexI, indexJ);
                             doors.Add(door);
 
                             // добавим стену в карту
@@ -882,7 +882,7 @@ namespace GameLevels
                             // Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera);
                             // blocks.Add(block);
 
-                            Door door = new Door(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera, DoorOrientation.Vert, true, indexI, indexJ);
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera, EColor.Blue, DoorOrientation.Vert, true, indexI, indexJ);
                             doors.Add(door);
 
                             // добавим стену в карту
@@ -893,7 +893,7 @@ namespace GameLevels
                             // Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera);
                             // blocks.Add(block);
 
-                            Door door = new Door(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera, DoorOrientation.Horiz);
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera, EColor.Blue, DoorOrientation.Horiz);
                             doors.Add(door);
                         }
                         if (s.Equals("23", StringComparison.OrdinalIgnoreCase))
@@ -901,7 +901,7 @@ namespace GameLevels
                             // Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera);
                             // blocks.Add(block);
 
-                            Door door = new Door(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera, DoorOrientation.Vert);
+                            Door door = new Door(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera, EColor.Blue, DoorOrientation.Vert);
                             doors.Add(door);
                         }
 
@@ -924,7 +924,7 @@ namespace GameLevels
                             // Object obj = new Object(Rect, storage.Pull2DTexture("key"), game, this.camera);
                             // objs.Add(obj);
 
-                            Key key = new Key(Rect, storage.Pull2DTexture("key"), game, this.camera);
+                            Key key = new Key(Rect, storage.Pull2DTexture("key"), game, this.camera, EColor.Blue);
                             interactionSubjects.Add(key);
                         }
                         if (s.Equals("41", StringComparison.OrdinalIgnoreCase))

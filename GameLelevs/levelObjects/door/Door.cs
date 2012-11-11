@@ -42,7 +42,7 @@ namespace GameLevels.levelObjects.door
         /// <param name="indexI">Индекс в карте уровня</param>
         /// <param name="indexJ">Индекс в карте уровня</param>
         /// <param name="isCLosed">Закрыта ли дверь</param>
-        public Door(Rectangle rect, Texture2D texture, Game1 game, Camera camera, DoorOrientation orientation, bool isCLosed = false, int indexI = -1, int indexJ = -1)
+        public Door(Rectangle rect, Texture2D texture, Game1 game, Camera camera, EColor color, DoorOrientation orientation, bool isCLosed = false, int indexI = -1, int indexJ = -1)
             : base(rect, texture, game, camera) {
 
                 this.orientation = orientation;
@@ -50,6 +50,8 @@ namespace GameLevels.levelObjects.door
 
                 this.indexI = indexI;
                 this.indexJ = indexJ;
+
+                this.color = color;
         }
 
         /// <summary>

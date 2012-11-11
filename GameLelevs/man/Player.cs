@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Content;
 using Enumerations;
 using GameLevels.levelObjects;
 using Microsoft.Xna.Framework.Input;
+using GameLevels.levelObjects.door;
 
 namespace GameLevels
 {
@@ -464,6 +465,23 @@ namespace GameLevels
             backpack.Add(obj);
 
             return true;
+        }
+
+        /// <summary>
+        /// Возвращает может ли игрок открыть дверь
+        /// </summary>
+        /// <param name="door">Ссылка на дверь</param>
+        /// <returns>Возможность открыть дверь</returns>
+        public bool IsCanOpen(Door door) {
+
+            foreach (BaseObject obj in backpack) {
+                if (obj is Key) { 
+                    if( door.GetColor().Equals( ((Key)obj).GetColor() ) )
+                        return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>

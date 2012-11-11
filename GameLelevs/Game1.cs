@@ -320,6 +320,7 @@ namespace GameLevels
                     if (levelLoader.doors[j].Rect.Intersects(player.Position))
                     {
                         Door door = (Door)levelLoader.doors[j];
+
                         if (door.IsClosed()) {
 
                             Texture2D openDoor = door.GetOrientation() == DoorOrientation.Horiz ? storage.Pull2DTexture("door_horiz_open") : storage.Pull2DTexture("door_vertic_open");

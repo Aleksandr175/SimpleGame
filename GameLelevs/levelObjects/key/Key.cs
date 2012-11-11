@@ -5,17 +5,15 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-enum EType { Simple, Hard };
-
 namespace GameLevels.levelObjects
 {
     class Key : BaseObject, IKey
     {
 
         /// <summary>
-        /// тип ключа
+        /// цвет ключа
         /// </summary>
-        private EType type;
+        private EColor color;
 
         private bool isVisible = false;
 
@@ -26,8 +24,18 @@ namespace GameLevels.levelObjects
         /// <param name="texture">Текстура</param>
         /// <param name="game">Ссылка на игру</param>
         /// <param name="camera">Ссылка на камеру</param>
-        public Key(Rectangle rect, Texture2D texture, Game1 game, Camera camera)
+        public Key(Rectangle rect, Texture2D texture, Game1 game, Camera camera, EColor color)
             : base(rect, texture, game, camera) {
+
+                this.color = color;
+        }
+
+        /// <summary>
+        /// Возвращает цвет ключа
+        /// </summary>
+        /// <returns></returns>
+        public EColor GetColor() {
+            return this.color;
         }
     }
 }
