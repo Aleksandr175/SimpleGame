@@ -199,6 +199,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\XMLContent\XMLContent.csproj">
+      <Project>{A9DD8A95-F107-4EEF-82B2-9934176EE85B}</Project>
+      <Name>XMLContent</Name>
+    </ProjectReference>
     <ProjectReference Include="Content\GameLelevsContent.contentproj">
       <Project>{50F8ECC9-E48C-43D4-870F-FEC366B2B5E2}</Project>
       <Name>GameLelevsContent %28Content%29</Name>

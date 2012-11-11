@@ -14,6 +14,7 @@ using System.IO;
 using Enumerations;
 using GameLevels.levelObjects;
 using GameLevels.levelObjects.door;
+using XMLContent;
 
 namespace GameLevels
 {
@@ -32,6 +33,8 @@ namespace GameLevels
 
         // хранилище данных
         Storage storage;
+
+        XMLCoreMissionLoader xmlCoreMissionLoader;
 
         private List<string> toDraw;
 
@@ -112,6 +115,9 @@ namespace GameLevels
             
             // выбираем все возможные номера уровней
             storage.GetLevelNumbers();
+
+            // xmlCoreMissionLoader = Content.Load<XMLCoreMissionLoader>("Content/lvls/levelMission/missionDescription1");
+            // System.Console.WriteLine(xmlCoreMissionLoader.mainTarget);
 
             // инициализируем нового игрока
             Rectangle plaerPosition = new Rectangle(120, 120, LevelLoader.SizePeople, LevelLoader.SizePeople);

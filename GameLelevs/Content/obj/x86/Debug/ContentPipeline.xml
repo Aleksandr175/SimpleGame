@@ -8,7 +8,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\myFont1.xnb</Output>
-      <Time>2012-11-11T13:59:15.3564921+04:00</Time>
+      <Time>2012-11-11T16:38:08.3577486+04:00</Time>
     </Item>
     <Item>
       <Source>players\player.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player.xnb</Output>
-      <Time>2012-11-11T13:59:15.3864938+04:00</Time>
+      <Time>2012-11-11T16:38:08.3677492+04:00</Time>
     </Item>
     <Item>
       <Source>players\player_run.png</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run.xnb</Output>
-      <Time>2012-11-11T13:59:15.388494+04:00</Time>
+      <Time>2012-11-11T16:38:08.3687492+04:00</Time>
     </Item>
     <Item>
       <Source>players\player_run_goriz.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run_goriz.xnb</Output>
-      <Time>2012-11-11T13:59:15.3904941+04:00</Time>
+      <Time>2012-11-11T16:38:08.3707494+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\floor.JPG</Source>
@@ -44,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\floor.xnb</Output>
-      <Time>2012-11-11T13:59:15.3304906+04:00</Time>
+      <Time>2012-11-11T16:38:08.3387475+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\empty.png</Source>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\empty.xnb</Output>
-      <Time>2012-11-11T13:59:15.3284905+04:00</Time>
+      <Time>2012-11-11T16:38:08.3367474+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\brilliant.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\brilliant.xnb</Output>
-      <Time>2012-11-11T13:59:15.1834822+04:00</Time>
+      <Time>2012-11-11T16:38:08.294745+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\card.png</Source>
@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\card.xnb</Output>
-      <Time>2012-11-11T13:59:15.1844823+04:00</Time>
+      <Time>2012-11-11T16:38:08.2967451+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\key.png</Source>
@@ -80,7 +80,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\key.xnb</Output>
-      <Time>2012-11-11T13:59:15.1854823+04:00</Time>
+      <Time>2012-11-11T16:38:08.2967451+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\laser1_horiz.png</Source>
@@ -89,7 +89,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_horiz.xnb</Output>
-      <Time>2012-11-11T13:59:15.1864824+04:00</Time>
+      <Time>2012-11-11T16:38:08.2977452+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\laser1_vert.png</Source>
@@ -98,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_vert.xnb</Output>
-      <Time>2012-11-11T13:59:15.1874825+04:00</Time>
+      <Time>2012-11-11T16:38:08.2987452+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\laser2_horiz.png</Source>
@@ -107,7 +107,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz.xnb</Output>
-      <Time>2012-11-11T13:59:15.1884825+04:00</Time>
+      <Time>2012-11-11T16:38:08.3007454+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\laser2_vert.png</Source>
@@ -116,7 +116,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert.xnb</Output>
-      <Time>2012-11-11T13:59:15.1904826+04:00</Time>
+      <Time>2012-11-11T16:38:08.3007454+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\laser3_D.png</Source>
@@ -125,7 +125,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_D.xnb</Output>
-      <Time>2012-11-11T13:59:15.1914827+04:00</Time>
+      <Time>2012-11-11T16:38:08.3027455+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\laser3_L.png</Source>
@@ -134,7 +134,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_L.xnb</Output>
-      <Time>2012-11-11T13:59:15.1924827+04:00</Time>
+      <Time>2012-11-11T16:38:08.3027455+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\laser3_R.png</Source>
@@ -143,7 +143,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_R.xnb</Output>
-      <Time>2012-11-11T13:59:15.1924827+04:00</Time>
+      <Time>2012-11-11T16:38:08.3047456+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\laser3_U.png</Source>
@@ -152,7 +152,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_U.xnb</Output>
-      <Time>2012-11-11T13:59:15.1954829+04:00</Time>
+      <Time>2012-11-11T16:38:08.3057456+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\money.png</Source>
@@ -161,7 +161,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\money.xnb</Output>
-      <Time>2012-11-11T13:59:15.196483+04:00</Time>
+      <Time>2012-11-11T16:38:08.3067457+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\picture1.png</Source>
@@ -170,7 +170,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture1.xnb</Output>
-      <Time>2012-11-11T13:59:15.197483+04:00</Time>
+      <Time>2012-11-11T16:38:08.3077458+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\picture2.png</Source>
@@ -179,7 +179,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture2.xnb</Output>
-      <Time>2012-11-11T13:59:15.197483+04:00</Time>
+      <Time>2012-11-11T16:38:08.3087458+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\picture3.png</Source>
@@ -188,7 +188,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture3.xnb</Output>
-      <Time>2012-11-11T13:59:15.1994831+04:00</Time>
+      <Time>2012-11-11T16:38:08.3097459+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\rubin.png</Source>
@@ -197,7 +197,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\rubin.xnb</Output>
-      <Time>2012-11-11T13:59:15.1994831+04:00</Time>
+      <Time>2012-11-11T16:38:08.3107459+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\spDL.png</Source>
@@ -206,7 +206,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spDL.xnb</Output>
-      <Time>2012-11-11T13:59:15.2514861+04:00</Time>
+      <Time>2012-11-11T16:38:08.3147462+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\spLU.png</Source>
@@ -215,7 +215,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spLU.xnb</Output>
-      <Time>2012-11-11T13:59:15.2524862+04:00</Time>
+      <Time>2012-11-11T16:38:08.3167463+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\spRD.png</Source>
@@ -224,7 +224,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spRD.xnb</Output>
-      <Time>2012-11-11T13:59:15.2614867+04:00</Time>
+      <Time>2012-11-11T16:38:08.3167463+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\spUR.png</Source>
@@ -233,7 +233,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spUR.xnb</Output>
-      <Time>2012-11-11T13:59:15.2614867+04:00</Time>
+      <Time>2012-11-11T16:38:08.3187464+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\tableD.png</Source>
@@ -242,7 +242,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableD.xnb</Output>
-      <Time>2012-11-11T13:59:15.2624868+04:00</Time>
+      <Time>2012-11-11T16:38:08.3187464+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\tableL.png</Source>
@@ -251,7 +251,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableL.xnb</Output>
-      <Time>2012-11-11T13:59:15.2774876+04:00</Time>
+      <Time>2012-11-11T16:38:08.3207465+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\tableR.png</Source>
@@ -260,7 +260,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableR.xnb</Output>
-      <Time>2012-11-11T13:59:15.2824879+04:00</Time>
+      <Time>2012-11-11T16:38:08.3217466+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\tableU.png</Source>
@@ -269,7 +269,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableU.xnb</Output>
-      <Time>2012-11-11T13:59:15.2854881+04:00</Time>
+      <Time>2012-11-11T16:38:08.3227466+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\wall_4sides.png</Source>
@@ -278,7 +278,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_4sides.xnb</Output>
-      <Time>2012-11-11T13:59:15.3314907+04:00</Time>
+      <Time>2012-11-11T16:38:08.3397476+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\wall_dlu.png</Source>
@@ -287,7 +287,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_dlu.xnb</Output>
-      <Time>2012-11-11T13:59:15.3344909+04:00</Time>
+      <Time>2012-11-11T16:38:08.3407476+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\wall_down_right.png</Source>
@@ -296,7 +296,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_down_right.xnb</Output>
-      <Time>2012-11-11T13:59:15.336491+04:00</Time>
+      <Time>2012-11-11T16:38:08.3417477+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\wall_goriz.png</Source>
@@ -305,7 +305,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_goriz.xnb</Output>
-      <Time>2012-11-11T13:59:15.337491+04:00</Time>
+      <Time>2012-11-11T16:38:08.3427478+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\wall_left_down.png</Source>
@@ -314,7 +314,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_down.xnb</Output>
-      <Time>2012-11-11T13:59:15.3384911+04:00</Time>
+      <Time>2012-11-11T16:38:08.3427478+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\wall_left_up.png</Source>
@@ -323,7 +323,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_up.xnb</Output>
-      <Time>2012-11-11T13:59:15.3394912+04:00</Time>
+      <Time>2012-11-11T16:38:08.3437478+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\wall_lur.png</Source>
@@ -332,7 +332,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_lur.xnb</Output>
-      <Time>2012-11-11T13:59:15.3404912+04:00</Time>
+      <Time>2012-11-11T16:38:08.3447479+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\wall_rdl.png</Source>
@@ -341,7 +341,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_rdl.xnb</Output>
-      <Time>2012-11-11T13:59:15.3414913+04:00</Time>
+      <Time>2012-11-11T16:38:08.3457479+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\wall_up_right.png</Source>
@@ -350,7 +350,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_up_right.xnb</Output>
-      <Time>2012-11-11T13:59:15.3424913+04:00</Time>
+      <Time>2012-11-11T16:38:08.346748+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\wall_urd.png</Source>
@@ -359,7 +359,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_urd.xnb</Output>
-      <Time>2012-11-11T13:59:15.3424913+04:00</Time>
+      <Time>2012-11-11T16:38:08.346748+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\wall_vert.png</Source>
@@ -368,7 +368,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_vert.xnb</Output>
-      <Time>2012-11-11T13:59:15.3444914+04:00</Time>
+      <Time>2012-11-11T16:38:08.347748+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\doors\door_horiz.png</Source>
@@ -377,7 +377,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz.xnb</Output>
-      <Time>2012-11-11T13:59:15.3084894+04:00</Time>
+      <Time>2012-11-11T16:38:08.328747+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\doors\door_horiz_open.png</Source>
@@ -386,7 +386,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz_open.xnb</Output>
-      <Time>2012-11-11T13:59:15.3094894+04:00</Time>
+      <Time>2012-11-11T16:38:08.329747+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\doors\door_vertic.png</Source>
@@ -395,7 +395,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic.xnb</Output>
-      <Time>2012-11-11T13:59:15.3124896+04:00</Time>
+      <Time>2012-11-11T16:38:08.3307471+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\lvl\doors\door_vertic_open.png</Source>
@@ -404,7 +404,16 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic_open.xnb</Output>
-      <Time>2012-11-11T13:59:15.3134897+04:00</Time>
+      <Time>2012-11-11T16:38:08.3327472+04:00</Time>
+    </Item>
+    <Item>
+      <Source>lvls\levelMission\missionDescription1.xml</Source>
+      <Name>lvls\levelMission\missionDescription1</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\levelMission\missionDescription1.xnb</Output>
+      <Time>2012-11-12T00:10:46.3529426+04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -418,6 +427,10 @@
       <OutputDirectory>D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
+      <Assembly>
+        <Key>D:\C#\SimpleGame\XMLContent\bin\x86\Debug\XMLContent.dll</Key>
+        <Value>2012-11-11T23:52:42.9819773+04:00</Value>
+      </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
         <Value>2010-08-23T13:41:18+05:00</Value>
