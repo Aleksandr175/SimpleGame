@@ -423,3 +423,5 @@ D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl8.txt
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.dll
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.pdb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\levelMission\missionDescription1.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.dll
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.pdb

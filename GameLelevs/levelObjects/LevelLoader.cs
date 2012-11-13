@@ -262,8 +262,8 @@ namespace GameLevels
 
                                 //размещаем игрока в начальную позицию
                                 player.Position = new Rectangle(playerPosY, playerPosX, LevelLoader.SizePeople, LevelLoader.SizePeople);
-                                camera.ScrollX = playerPosY - game.GetScreenWidth / 2;
-                                camera.ScrollY = playerPosX - game.GetScreenHeight / 2;
+                                camera.ScrollX = playerPosY - game.GetScreenWidth / 2 + size / 2;
+                                camera.ScrollY = playerPosX - game.GetScreenHeight / 2 + size / 2;
 
                                 // установка камеры в начальную позицию
                                 if (camera.ScrollX < 0)

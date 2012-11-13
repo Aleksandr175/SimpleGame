@@ -13,7 +13,7 @@ namespace GameLevels.levelObjects
 
         protected Texture2D texture;
         private Game1 game;
-        private Camera camera;
+        protected Camera camera;
 
         public bool isVisible = false; // отображаем ли объект на экране?
 

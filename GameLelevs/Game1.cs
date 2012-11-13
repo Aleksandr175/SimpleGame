@@ -34,7 +34,7 @@ namespace GameLevels
         // хранилище данных
         Storage storage;
 
-        XMLCoreMissionLoader xmlCoreMissionLoader;
+        //XMLCoreMissionLoader xmlCoreMissionLoader;
 
         private List<string> toDraw;
 
@@ -372,6 +372,11 @@ namespace GameLevels
             foreach (Guards guard in levelLoader.guards)
             {
                 guard.Update(gameTime);
+            }
+            // обновляем лазеры
+            foreach (Laser laser in levelLoader.lasers)
+            {
+                laser.Update(gameTime);
             }
 
             int i = 0;
