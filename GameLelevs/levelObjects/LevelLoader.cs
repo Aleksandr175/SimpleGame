@@ -659,27 +659,33 @@ namespace GameLevels
                         // лазеры
                         if (levelMap[i, j] == LevelObject.LaserHoriz) 
                         {
-                            Laser laser = new Laser(Rect, storage.Pull2DTexture("laser2_horiz"), game, this.camera);
+                            int size2 = (int)(size * 1.5);
+                            Rectangle Rect2 = new Rectangle(i * LevelLoader.Size - size / 4, j * LevelLoader.Size, size2, size);
+                            Laser laser = new Laser(Rect2, storage.Pull2DTexture("laser2_horiz"), storage.Pull2DTexture("laser2_horiz_inactive"), game, this.camera);
+                            laser.typeLaser = LevelObject.LaserHoriz;
                             lasers.Add(laser);
                             //levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.LaserVertic) 
                         {
-                            Laser laser = new Laser(Rect, storage.Pull2DTexture("laser2_vert"), game, this.camera);
+                            int size2 = (int)(size * 1.5);
+                            Rectangle Rect2 = new Rectangle(i * LevelLoader.Size, j * LevelLoader.Size - size / 4, size, size2);
+                            Laser laser = new Laser(Rect2, storage.Pull2DTexture("laser2_vert"), storage.Pull2DTexture("laser2_vert_inactive"), game, this.camera);
+                            laser.typeLaser = LevelObject.LaserVertic;
                             lasers.Add(laser);
                             //levelMap[i, j] = LevelObject.Wall;
                         }
 
                         if (levelMap[i, j] == LevelObject.LaserHorizL) 
                         {
-                            Laser laser = new Laser(Rect, storage.Pull2DTexture("laser3_L"), game, this.camera);
-                            lasers.Add(laser);
+//                            Laser laser = new Laser(Rect, storage.Pull2DTexture("laser3_L"), game, this.camera);
+//                            lasers.Add(laser);
                             //levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.LaserHorizR) 
                         {
-                            Laser laser = new Laser(Rect, storage.Pull2DTexture("laser3_R"), game, this.camera);
-                            lasers.Add(laser);
+//                            Laser laser = new Laser(Rect, storage.Pull2DTexture("laser3_R"), game, this.camera);
+//                            lasers.Add(laser);
                             //levelMap[i, j] = LevelObject.Wall;
                         }
 

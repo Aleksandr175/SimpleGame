@@ -116,7 +116,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert.xnb</Output>
-      <Time>2012-10-30T02:41:09.4391491+04:00</Time>
+      <Time>2012-11-13T11:01:56.9446753+04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects\laser3_D.png</Source>
@@ -405,6 +405,24 @@
       <Options>None</Options>
       <Output>C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic_open.xnb</Output>
       <Time>2012-11-10T17:33:09.8600387+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\laser2_horiz_inactive.png</Source>
+      <Name>Textures\Objects\laser2_horiz_inactive</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz_inactive.xnb</Output>
+      <Time>2012-11-13T12:16:50.358068+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\laser2_vert_inactive.png</Source>
+      <Name>Textures\Objects\laser2_vert_inactive</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert_inactive.xnb</Output>
+      <Time>2012-11-13T12:17:21.9828768+04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

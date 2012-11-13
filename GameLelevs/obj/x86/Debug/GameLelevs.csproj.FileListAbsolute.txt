@@ -425,3 +425,5 @@ D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.pdb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\levelMission\missionDescription1.xnb
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.dll
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.pdb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz_inactive.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert_inactive.xnb

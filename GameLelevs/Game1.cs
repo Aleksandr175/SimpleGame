@@ -177,6 +177,7 @@ namespace GameLevels
                     break;
                 case Complexity.High:
                     collides = CollidesHigh(rect);
+                    CollidesLasers(rect);
                     break;
                 default: break;
             }
@@ -236,6 +237,42 @@ namespace GameLevels
             }
 
             return false;
+        }
+
+
+
+        void CollidesLasers(Rectangle rect) 
+        {
+            int minx = (rect.Left + LevelLoader.SizePeople / 2 - 1); // size - размер клетки
+            int miny = (rect.Top + LevelLoader.SizePeople / 2 - 1);
+            int maxx = (rect.Right - LevelLoader.SizePeople / 2 + 1);
+            int maxy = (rect.Bottom - LevelLoader.SizePeople / 2 + 1);
+
+            int centerX = rect.Left + LevelLoader.SizePeople / 2;
+            int centerY = rect.Top + LevelLoader.SizePeople / 2;
+
+
+            foreach (Laser laser in levelLoader.lasers)
+            {
+                if (laser.IsActive)
+                {
+                    if (laser.typeLaser == LevelObject.LaserVertic)
+                    {
+                        if (Math.Abs(laser.Rect.X + 20 - centerX) < 10 && Math.Abs(laser.Rect.Y + 30 - centerY) < 30)
+                        {
+                            Guards.generalAlarm = true;
+                        }
+                    }
+                    if (laser.typeLaser == LevelObject.LaserHoriz)
+                    {
+                        if (Math.Abs(laser.Rect.X + 30 - centerX) < 30 && Math.Abs(laser.Rect.Y + 20 - centerY) < 10)
+                        {
+                            Guards.generalAlarm = true;
+                        }
+                    }
+                }
+            }
+
         }
         
 
