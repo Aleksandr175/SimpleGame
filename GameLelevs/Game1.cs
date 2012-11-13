@@ -241,16 +241,10 @@ namespace GameLevels
 
 
 
-        void CollidesLasers(Rectangle rect) 
+        void CollidesLasers(Rectangle rect)
         {
-            int minx = (rect.Left + LevelLoader.SizePeople / 2 - 1); // size - размер клетки
-            int miny = (rect.Top + LevelLoader.SizePeople / 2 - 1);
-            int maxx = (rect.Right - LevelLoader.SizePeople / 2 + 1);
-            int maxy = (rect.Bottom - LevelLoader.SizePeople / 2 + 1);
-
             int centerX = rect.Left + LevelLoader.SizePeople / 2;
             int centerY = rect.Top + LevelLoader.SizePeople / 2;
-
 
             foreach (Laser laser in levelLoader.lasers)
             {
@@ -261,6 +255,7 @@ namespace GameLevels
                         if (Math.Abs(laser.Rect.X + 20 - centerX) < 10 && Math.Abs(laser.Rect.Y + 30 - centerY) < 30)
                         {
                             Guards.generalAlarm = true;
+                            changeAlarmGuards();
                         }
                     }
                     if (laser.typeLaser == LevelObject.LaserHoriz)
@@ -268,6 +263,7 @@ namespace GameLevels
                         if (Math.Abs(laser.Rect.X + 30 - centerX) < 30 && Math.Abs(laser.Rect.Y + 20 - centerY) < 10)
                         {
                             Guards.generalAlarm = true;
+                            changeAlarmGuards();
                         }
                     }
                 }
@@ -276,6 +272,26 @@ namespace GameLevels
         }
         
 
+        /// <summary>
+        /// Изменяем встревоженность каждого охранника в зависимости от общей тревоги
+        /// </summary>
+        private void changeAlarmGuards() 
+        {
+            if (Guards.generalAlarm)
+            {
+                foreach (Guards guard in levelLoader.guards)
+                {
+                    guard.Alarm = true;
+                }
+            }
+            else
+            {
+                foreach (Guards guard in levelLoader.guards)
+                {
+                    guard.Alarm = false;
+                }
+            }
+        }
 
 
         /// <summary>

@@ -25,6 +25,14 @@ namespace GameLevels
         private float timer; // время до следующего отключения, вкл. лазера
         public LevelObject typeLaser; // тип лазера (гориз/вертик).
         
+        /// <summary>
+        /// Конструктор лазера
+        /// </summary>
+        /// <param name="rect">Прямоугольник</param>
+        /// <param name="texture">Текстура лазера</param>
+        /// <param name="textureInactive">Текстура выключенного лазера</param>
+        /// <param name="game">ссылка на игру</param>
+        /// <param name="camera">ссылка на камеру</param>
         public Laser(Rectangle rect, Texture2D texture, Texture2D textureInactive, Game1 game, Camera camera) 
             : base(rect, texture, game, camera) {
                 timer = intervalActivity;
@@ -33,6 +41,10 @@ namespace GameLevels
             this.textureInactive = textureInactive;
         }
 
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             if (timer > 0)
@@ -66,9 +78,9 @@ namespace GameLevels
                 currentTexture = textureInactive;
             }
             
-
             Rectangle screenRect = camera.GetScreenRect(Rect);  // рисуем только то, что помещается на экране
             spriteBatch.Draw(currentTexture, screenRect, Color.White);
+
         }
 
     }
