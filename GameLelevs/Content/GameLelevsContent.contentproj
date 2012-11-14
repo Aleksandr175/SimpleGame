@@ -373,9 +373,7 @@
       <Name>XMLContent</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="lvls\levelMission\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="Textures\Objects\laser2_horiz_inactive.png">
       <Name>laser2_horiz_inactive</Name>
@@ -386,6 +384,13 @@
       <Name>laser2_vert_inactive</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="lvls\tasks\mission_description1.xml">
+      <Name>mission_description1</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

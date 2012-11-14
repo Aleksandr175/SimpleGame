@@ -34,7 +34,7 @@ namespace GameLevels
         // хранилище данных
         Storage storage;
 
-        //XMLCoreMissionLoader xmlCoreMissionLoader;
+        XMLCoreMissionLoader xmlCoreMissionLoader;
 
         private List<string> toDraw;
 
@@ -116,7 +116,7 @@ namespace GameLevels
             // выбираем все возможные номера уровней
             storage.GetLevelNumbers();
 
-            // xmlCoreMissionLoader = Content.Load<XMLCoreMissionLoader>("Content/lvls/levelMission/missionDescription1");
+            // xmlCoreMissionLoader = Content.Load<XMLCoreMissionLoader>("lvls/tasks/mission_description1");
             // System.Console.WriteLine(xmlCoreMissionLoader.mainTarget);
 
             // инициализируем нового игрока
