@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="XMLContent.XMLCoreMissionLoader">
+
+    <number>1</number>
+    <mainTarget>Main target of mission</mainTarget>
+    <secondaryTarget>Secondary targer</secondaryTarget>
+    
+  </Asset>
+</XnaContent>
