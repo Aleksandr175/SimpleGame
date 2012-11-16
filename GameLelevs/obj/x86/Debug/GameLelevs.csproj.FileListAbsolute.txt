@@ -334,7 +334,6 @@ D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl6.t
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl7.txt
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\GameLelevs.exe
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\GameLelevs.pdb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.csprojResolveAssemblyReference.cache
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.exe
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.pdb
@@ -429,3 +428,16 @@ C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Text
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz_inactive.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert_inactive.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\tasks\mission_description1.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_D.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_L.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_R.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_U.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_D.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_L.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_R.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_U.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz_inactive.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert_inactive.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\tasks\mission_description1.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.dll
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.pdb
