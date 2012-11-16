@@ -60,6 +60,11 @@ namespace GameLevels
         int maxLvl;
         KeyboardState oldState;
 
+        //текстура инвентаря
+        private Texture2D inventory;
+        //текстура меню
+        private Texture2D menu;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -142,6 +147,8 @@ namespace GameLevels
             shadow.ShowInRoom(LevelLoader.levelMapRooms[player.Position.X / LevelLoader.Size, player.Position.Y / LevelLoader.Size]);
             player.setShadow(shadow); // передадим игроку ссылку на на туман войны
 
+            inventory = storage.Pull2DTexture("inventory");
+            menu = storage.Pull2DTexture("menu");
 
         }
 
@@ -545,6 +552,11 @@ namespace GameLevels
                     obj.Draw(spriteBatch);
                 }
             }
+
+            //рисуется кнопка "меню"
+            spriteBatch.Draw(menu, new Rectangle(screenWidth - menu.Width, 0, menu.Width, menu.Height), Color.White);
+            //рисуется инвентарь
+            spriteBatch.Draw(inventory, new Rectangle(screenWidth - inventory.Width, menu.Width, inventory.Width, inventory.Height), Color.White);
 
             spriteBatch.End();
 

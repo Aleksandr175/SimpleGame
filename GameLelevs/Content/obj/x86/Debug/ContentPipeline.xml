@@ -505,6 +505,24 @@
       <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\tasks\mission_description1.xnb</Output>
       <Time>2012-11-16T20:20:32.1428946+04:00</Time>
     </Item>
+    <Item>
+      <Source>Textures\inventory.png</Source>
+      <Name>Textures\inventory</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\inventory.xnb</Output>
+      <Time>2012-11-16T16:49:18.9380288+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\menu.png</Source>
+      <Name>Textures\menu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\menu.xnb</Output>
+      <Time>2012-11-16T21:31:14.3785366+04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

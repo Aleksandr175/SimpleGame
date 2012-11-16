@@ -233,6 +233,8 @@ namespace GameLevels
             }
 
             spriteBatch.End();
+
+            DrawItems(spriteBatch);
         }
 
         /// <summary>
@@ -511,6 +513,25 @@ namespace GameLevels
         public bool IsVisible()
         {
             return playerInfo.isVisible;
+        }
+
+        /// <summary>
+        /// Рисует объекты в инвентаре
+        /// </summary>
+        public void DrawItems(SpriteBatch spriteBatch)
+        {
+            Rectangle rect = new Rectangle(game.GetScreenWidth - 40, 0, 40, 40);
+            Rectangle itemPosition = new Rectangle(game.GetScreenWidth - 40, 40, 40, 40);
+
+            spriteBatch.Begin();
+
+            foreach (BaseObject objects in backpack)
+            {
+                spriteBatch.Draw(objects.Texture, itemPosition, Color.White);
+                itemPosition.Offset(0, 40);
+            }
+
+            spriteBatch.End();
         }
     }
 }

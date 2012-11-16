@@ -54,6 +54,8 @@ Content\Textures\Objects\sofa_U.xnb
 Content\Textures\Objects\laser2_horiz_inactive.xnb
 Content\Textures\Objects\laser2_vert_inactive.xnb
 Content\lvls\tasks\mission_description1.xnb
+Content\Textures\inventory.xnb
+Content\Textures\menu.xnb
 Content\lvls\lvl1.txt
 Content\lvls\lvl2.txt
 Content\lvls\lvl3.txt

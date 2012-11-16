@@ -41,5 +41,10 @@ namespace GameLevels.levelObjects
             Rectangle screenRect = camera.GetScreenRect(Rect);  // рисуем только то, что помещается на экране
             spriteBatch.Draw(texture, screenRect, Color.White);
         }
+
+        public Texture2D Texture
+        {
+            get { return texture; }
+        }
     }
 }

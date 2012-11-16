@@ -441,3 +441,6 @@ D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Ob
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\tasks\mission_description1.xnb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.dll
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.pdb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.csprojResolveAssemblyReference.cache
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\inventory.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\menu.xnb
