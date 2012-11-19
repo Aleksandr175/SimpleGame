@@ -2,9 +2,34 @@
 <XnaContent>
   <Asset Type="XMLContent.XMLCoreMissionLoader">
 
-    <number>1</number>
-    <mainTarget>Main target of mission</mainTarget>
-    <secondaryTarget>Secondary targer</secondaryTarget>
+    <mainTarget>
+      <description>
+        Main target of the mission
+      </description>
+    </mainTarget>
+    
+    <secondaryTarget>                 <!-- задание второстепенной цели -->
+      <Item>
+        <description>                 <!-- описание -->
+          Secondary targer #1
+        </description>
+      
+        <keyPoint>                    <!-- задание ключевой точки -->
+          <point>10 10</point>        <!-- сама точка -->
+          <effect>Booom!</effect>     <!-- какой-то эффект, надо подумать, как его программировать -->
+        </keyPoint>
+      </Item>
+      <Item>
+        <description>                 <!-- описание -->
+          Secondary targer #2
+        </description>
+
+        <keyPoint>                    <!-- задание ключевой точки -->
+          <point>12 12</point>        <!-- сама точка -->
+          <effect>Boooms!</effect>    <!-- какой-то эффект, надо подумать, как уго программировать -->
+        </keyPoint>
+      </Item>
+    </secondaryTarget>
     
   </Asset>
 </XnaContent>

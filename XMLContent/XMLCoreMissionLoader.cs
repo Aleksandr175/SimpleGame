@@ -13,8 +13,7 @@ namespace XMLContent
 {
     public class XMLCoreMissionLoader
     {
-        public int number;
-        public string mainTarget;
-        public string secondaryTarget;
+        public MainTarget mainTarget;
+        public List<SecondaryTarget> secondaryTarget;
     }
 }

@@ -455,3 +455,13 @@ C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Text
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\inventory.xnb
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\menu.xnb
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\tasks\mission_description1.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_D.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_L.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_R.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_U.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_D.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_L.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_R.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_U.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\inventory.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\menu.xnb

@@ -15,6 +15,7 @@ using Enumerations;
 using GameLevels.levelObjects;
 using GameLevels.levelObjects.door;
 using XMLContent;
+using System.Text;
 
 namespace GameLevels
 {
@@ -121,8 +122,11 @@ namespace GameLevels
             // выбираем все возможные номера уровней
             storage.GetLevelNumbers();
 
-            // xmlCoreMissionLoader = Content.Load<XMLCoreMissionLoader>("lvls/tasks/mission_description1");
-            // System.Console.WriteLine(xmlCoreMissionLoader.mainTarget);
+            xmlCoreMissionLoader = Content.Load<XMLCoreMissionLoader>("lvls/tasks/mission_description1");
+            foreach (SecondaryTarget st in xmlCoreMissionLoader.secondaryTarget) {
+                toDraw.Add("Key point: " + st.keyPoint.point);
+                toDraw.Add("Effect: " + st.keyPoint.effect);
+            }
 
             // инициализируем нового игрока
             Rectangle plaerPosition = new Rectangle(120, 120, LevelLoader.SizePeople, LevelLoader.SizePeople);

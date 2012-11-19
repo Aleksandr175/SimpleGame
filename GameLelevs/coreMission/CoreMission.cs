@@ -26,7 +26,7 @@ namespace GameLevels.coreMission
         /// <param name="point">Точка</param>
         /// <param name="effect">Эффект</param>
         /// <returns>Удалось ли установить точку</returns>
-        public bool SetKeyPoint(Point point, Effect effect) {
+        public bool SetKeyPoint(Vector2 point, Effect effect) {
             return true;
         }
     }
