@@ -523,6 +523,10 @@ namespace GameLevels
                     spriteBatch.DrawString(storage.PullFont("font"), "NextStepGuardX - " + levelLoader.guards[0].NextX.ToString(), new Vector2(10, 250), Color.Orange);
                     spriteBatch.DrawString(storage.PullFont("font"), "NextStepGuardY - " + levelLoader.guards[0].NextY.ToString(), new Vector2(10, 270), Color.Orange); // распечатка клетки для следующего хода охранника
                     spriteBatch.DrawString(storage.PullFont("font"), "Alarm - " + levelLoader.guards[0].Alarm, new Vector2(10, 380), Color.Orange); // тревога
+
+                    spriteBatch.DrawString(storage.PullFont("font"), "LaserX - " + Convert.ToInt32(levelLoader.lasers[0].Rect.X + LevelLoader.Size / 2), new Vector2(10, 460), Color.Orange); // координата Х лазера
+                    spriteBatch.DrawString(storage.PullFont("font"), "LaserY - " + Convert.ToInt32(levelLoader.lasers[0].Rect.Y + LevelLoader.Size / 2), new Vector2(10, 480), Color.Orange);
+
                     
                     
                 }

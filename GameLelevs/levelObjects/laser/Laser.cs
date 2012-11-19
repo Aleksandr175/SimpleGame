@@ -18,8 +18,8 @@ namespace GameLevels
         int targetX;
         int targetY;
 
-        int oldPosGuardX; // старая позиция лазера. Для сравнения - "перешел ли лазер на новую клетку?"
-        int oldPosGuardY;
+        int oldPosLaserX; // старая позиция лазера. Для сравнения - "перешел ли лазер на новую клетку?"
+        int oldPosLaserY;
 
 
         public bool IsActive
@@ -61,11 +61,11 @@ namespace GameLevels
             //массив для патрулирования
             // временный. Потом будет считываться из файла
             wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
-            wayToPatrol[0].Add(11); // первым указывается координата X
-            wayToPatrol[0].Add(3); // второе - координата Y
+            wayToPatrol[0].Add(8); // первым указывается координата X
+            wayToPatrol[0].Add(5); // второе - координата Y
             wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
+            wayToPatrol[1].Add(11);
             wayToPatrol[1].Add(8);
-            wayToPatrol[1].Add(3);
 
 
             //проверяем на тип лазера. Будет ли он двигаться или нет.
@@ -105,23 +105,6 @@ namespace GameLevels
                 int offset = 0;
                 Rectangle newPosition;
 
-                oldPosGuardX = this.Rect.X / LevelLoader.Size;
-                oldPosGuardY = this.Rect.Y / LevelLoader.Size;
-
-
-
-                int currentPositionX = this.oldPosGuardX * LevelLoader.Size + LevelLoader.Size / 2;
-                int positionTargetX = targetX * LevelLoader.Size + LevelLoader.SizePeople / 2;
-
-                // проверка достижения точки патрулирования по X
-                if (Math.Abs(currentPositionX - (positionTargetX)) <= LevelLoader.Size / 4)
-                {
-                    currentStepPatrol++;
-                    Patrol();
-                }
-
-
-
 
                 // передвижение лазера
                 offset = this.speed * gameTime.ElapsedGameTime.Milliseconds / 15;
@@ -129,13 +112,48 @@ namespace GameLevels
                 // новое положение охранника
                 newPosition = this.Rect;
                 //смещение
-                if (this.oldPosGuardX * LevelLoader.Size + LevelLoader.Size / 2 > targetX * LevelLoader.Size + LevelLoader.SizePeople / 2)
+                // движение вертикального лазера по горизонтали
+                if (typeLaser == LevelObject.LaserVerticMoving)
                 {
-                    newPosition.Offset(-offset, 0);
+                    int currentPositionX = this.Rect.X + LevelLoader.Size / 2;
+                    int positionTargetX = targetX * LevelLoader.Size + LevelLoader.Size / 2;
+                    
+                    // проверка достижения точки патрулирования по X
+                    if (Math.Abs(currentPositionX - (positionTargetX)) <= 1)
+                    {
+                        currentStepPatrol++;
+                        Patrol();
+                    }
+                    if (currentPositionX > positionTargetX)
+                    {
+                        newPosition.Offset(-offset, 0);
+                    }
+                    if (currentPositionX < positionTargetX)
+                    {
+                        newPosition.Offset(offset, 0);
+                    }
                 }
-                if (this.oldPosGuardX * LevelLoader.Size + LevelLoader.Size / 2 < targetX * LevelLoader.Size + LevelLoader.SizePeople / 2)
+
+                // движение горизонтального лазера по вертикали
+                if (typeLaser == LevelObject.LaserHorizMoving)
                 {
-                    newPosition.Offset(offset, 0);
+                    int currentPositionY = this.Rect.Y + LevelLoader.Size / 2;
+                    int positionTargetY = targetY * LevelLoader.Size + LevelLoader.Size / 2;
+                    
+                    // проверка достижения точки патрулирования по Y
+                    if (Math.Abs(currentPositionY - (positionTargetY)) <= 1)
+                    {
+                        currentStepPatrol++;
+                        Patrol();
+                    }
+                    if (currentPositionY > positionTargetY)
+                    {
+                        newPosition.Offset(0, -offset);
+                    }
+                    if (currentPositionY < positionTargetY)
+                    {
+                        newPosition.Offset(0, offset);
+                    }
                 }
 
                 //                newPosition.Offset(offset, 0);
