@@ -233,25 +233,13 @@ namespace GameLevels
                             case LevelObject.LaserVertic:
                                 levelMap[indexI, indexJ] = LevelObject.LaserVertic;
                                 break;
-                            case LevelObject.LaserHorizL:
-                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
+                            // движущиеся лазеры
+                            case LevelObject.LaserHorizMoving:
+                                levelMap[indexI, indexJ] = LevelObject.LaserHorizMoving;
                                 break;
-                            case LevelObject.LaserHorizR:
-                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
+                            case LevelObject.LaserVerticMoving:
+                                levelMap[indexI, indexJ] = LevelObject.LaserVerticMoving;
                                 break;
-                            case LevelObject.LaserVerticU:
-                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
-                                break;
-                            case LevelObject.LaserVerticD:
-                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
-                                break;
-                            case LevelObject.LaserHorizMiddle:
-                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
-                                break;
-                            case LevelObject.LaserVerticMiddle:
-                                levelMap[indexI, indexJ] = LevelObject.LaserHoriz;
-                                break;
-
 
 
 
@@ -661,7 +649,7 @@ namespace GameLevels
                         {
                             int size2 = (int)(size * 1.5);
                             Rectangle Rect2 = new Rectangle(i * LevelLoader.Size - size / 4, j * LevelLoader.Size, size2, size);
-                            Laser laser = new Laser(Rect2, storage.Pull2DTexture("laser2_horiz"), storage.Pull2DTexture("laser2_horiz_inactive"), game, this.camera);
+                            Laser laser = new Laser(Rect2, storage.Pull2DTexture("laser2_horiz"), storage.Pull2DTexture("laser2_horiz_inactive"), LevelObject.LaserHoriz, game, this.camera);
                             laser.typeLaser = LevelObject.LaserHoriz;
                             lasers.Add(laser);
                             //levelMap[i, j] = LevelObject.Wall;
@@ -670,22 +658,28 @@ namespace GameLevels
                         {
                             int size2 = (int)(size * 1.5);
                             Rectangle Rect2 = new Rectangle(i * LevelLoader.Size, j * LevelLoader.Size - size / 4, size, size2);
-                            Laser laser = new Laser(Rect2, storage.Pull2DTexture("laser2_vert"), storage.Pull2DTexture("laser2_vert_inactive"), game, this.camera);
+                            Laser laser = new Laser(Rect2, storage.Pull2DTexture("laser2_vert"), storage.Pull2DTexture("laser2_vert_inactive"), LevelObject.LaserVertic, game, this.camera);
                             laser.typeLaser = LevelObject.LaserVertic;
                             lasers.Add(laser);
                             //levelMap[i, j] = LevelObject.Wall;
                         }
 
-                        if (levelMap[i, j] == LevelObject.LaserHorizL) 
+                        if (levelMap[i, j] == LevelObject.LaserHorizMoving) 
                         {
-//                            Laser laser = new Laser(Rect, storage.Pull2DTexture("laser3_L"), game, this.camera);
-//                            lasers.Add(laser);
+                            int size2 = (int)(size * 1.5);
+                            Rectangle Rect2 = new Rectangle(i * LevelLoader.Size - size / 4, j * LevelLoader.Size, size2, size);
+                            Laser laser = new Laser(Rect2, storage.Pull2DTexture("laser2_horiz"), storage.Pull2DTexture("laser2_horiz_inactive"), LevelObject.LaserHorizMoving, game, this.camera);
+                            laser.typeLaser = LevelObject.LaserHorizMoving;
+                            lasers.Add(laser);
                             //levelMap[i, j] = LevelObject.Wall;
                         }
-                        if (levelMap[i, j] == LevelObject.LaserHorizR) 
+                        if (levelMap[i, j] == LevelObject.LaserVerticMoving) 
                         {
-//                            Laser laser = new Laser(Rect, storage.Pull2DTexture("laser3_R"), game, this.camera);
-//                            lasers.Add(laser);
+                            int size2 = (int)(size * 1.5);
+                            Rectangle Rect2 = new Rectangle(i * LevelLoader.Size, j * LevelLoader.Size - size / 4, size, size2);
+                            Laser laser = new Laser(Rect2, storage.Pull2DTexture("laser2_vert"), storage.Pull2DTexture("laser2_vert_inactive"), LevelObject.LaserVerticMoving, game, this.camera);
+                            laser.typeLaser = LevelObject.LaserVerticMoving;
+                            lasers.Add(laser);
                             //levelMap[i, j] = LevelObject.Wall;
                         }
 

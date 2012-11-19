@@ -444,3 +444,14 @@ D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.pdb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.csprojResolveAssemblyReference.cache
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\inventory.xnb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\menu.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_D.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_L.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_R.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_U.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_D.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_L.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_R.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_U.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\inventory.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\menu.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\tasks\mission_description1.xnb

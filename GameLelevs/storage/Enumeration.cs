@@ -58,13 +58,8 @@ namespace Enumerations
         //все виды лазеров
         LaserHoriz = 80,
         LaserVertic = 81,
-        LaserHorizL = 82,
-        LaserHorizR = 83,
-        LaserVerticU = 84,
-        LaserVerticD = 85,
-        LaserHorizMiddle = 86,
-        LaserVerticMiddle = 87,
-
+        LaserHorizMoving = 82,
+        LaserVerticMoving = 83,
         
 
         Floor = 90,
