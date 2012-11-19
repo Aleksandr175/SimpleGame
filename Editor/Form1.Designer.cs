@@ -31,8 +31,6 @@
             this.B_Delete = new System.Windows.Forms.Button();
             this.B_Wall = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.cb_n = new System.Windows.Forms.ComboBox();
             this.cb_m = new System.Windows.Forms.ComboBox();
             this.cb_objs = new System.Windows.Forms.ComboBox();
@@ -40,7 +38,9 @@
             this.menu_str = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // B_Delete
@@ -49,7 +49,7 @@
             this.B_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.B_Delete.ForeColor = System.Drawing.Color.SandyBrown;
             this.B_Delete.Image = global::Search_minimum_way.Properties.Resources.Empty_Cells;
-            this.B_Delete.Location = new System.Drawing.Point(721, 335);
+            this.B_Delete.Location = new System.Drawing.Point(514, 200);
             this.B_Delete.Name = "B_Delete";
             this.B_Delete.Size = new System.Drawing.Size(77, 42);
             this.B_Delete.TabIndex = 3;
@@ -63,7 +63,7 @@
             this.B_Wall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.B_Wall.ForeColor = System.Drawing.Color.SandyBrown;
             this.B_Wall.Image = global::Search_minimum_way.Properties.Resources.Wall;
-            this.B_Wall.Location = new System.Drawing.Point(721, 145);
+            this.B_Wall.Location = new System.Drawing.Point(514, 90);
             this.B_Wall.Name = "B_Wall";
             this.B_Wall.Size = new System.Drawing.Size(77, 42);
             this.B_Wall.TabIndex = 0;
@@ -74,33 +74,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(718, 386);
+            this.label1.Location = new System.Drawing.Point(511, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(759, 386);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "label2";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(699, 134);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 13);
-            this.label3.TabIndex = 7;
-            // 
             // cb_n
             // 
             this.cb_n.FormattingEnabled = true;
-            this.cb_n.Location = new System.Drawing.Point(678, 67);
+            this.cb_n.Location = new System.Drawing.Point(514, 50);
             this.cb_n.Name = "cb_n";
             this.cb_n.Size = new System.Drawing.Size(121, 21);
             this.cb_n.TabIndex = 8;
@@ -109,7 +92,7 @@
             // cb_m
             // 
             this.cb_m.FormattingEnabled = true;
-            this.cb_m.Location = new System.Drawing.Point(842, 67);
+            this.cb_m.Location = new System.Drawing.Point(678, 50);
             this.cb_m.Name = "cb_m";
             this.cb_m.Size = new System.Drawing.Size(121, 21);
             this.cb_m.TabIndex = 9;
@@ -124,7 +107,7 @@
             "Дверь закрытая вертикальная",
             "Дверь закрытая горизонатальная",
             "Охранник"});
-            this.cb_objs.Location = new System.Drawing.Point(721, 210);
+            this.cb_objs.Location = new System.Drawing.Point(514, 156);
             this.cb_objs.Name = "cb_objs";
             this.cb_objs.Size = new System.Drawing.Size(214, 21);
             this.cb_objs.TabIndex = 10;
@@ -136,7 +119,7 @@
             this.menu_str});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1028, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(829, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -163,27 +146,40 @@
             this.SaveToolStripMenuItem.Text = "Сохранить ";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(603, 183);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(196, 247);
+            this.dataGridView1.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 460);
+            this.ClientSize = new System.Drawing.Size(829, 460);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cb_objs);
             this.Controls.Add(this.cb_m);
             this.Controls.Add(this.cb_n);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.B_Delete);
             this.Controls.Add(this.B_Wall);
             this.Controls.Add(this.menuStrip1);
+            this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,8 +190,6 @@
         private System.Windows.Forms.Button B_Wall;
         private System.Windows.Forms.Button B_Delete;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cb_n;
         private System.Windows.Forms.ComboBox cb_m;
         private System.Windows.Forms.ComboBox cb_objs;
@@ -203,6 +197,7 @@
         private System.Windows.Forms.ToolStripMenuItem menu_str;
         private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dataGridView1;
 
 
     }
