@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KeyPoint.cs" />
+    <Compile Include="MainTarget.cs" />
     <Compile Include="SecondaryTarget.cs" />
     <Compile Include="XMLCoreMissionLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
