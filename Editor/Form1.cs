@@ -45,6 +45,35 @@ namespace Search_minimum_way
         Image im_door_closed_H = Image.FromFile(@"Icons\Door_closed_H.PNG");
         Image im_guard = Image.FromFile(@"Icons\Guard.PNG");
         Image im_way_guard = Image.FromFile(@"Icons\Way_Guard.PNG");
+        Image brilliant = Image.FromFile(@"Icons\brilliant.png");
+        Image card = Image.FromFile(@"Icons\card.png");
+        Image chairs_D = Image.FromFile(@"Icons\chairs_D.png");
+        Image chairs_L = Image.FromFile(@"Icons\chairs_L.png");
+        Image chairs_R = Image.FromFile(@"Icons\chairs_R.png");
+        Image chairs_U = Image.FromFile(@"Icons\chairs_U.png");
+        Image key = Image.FromFile(@"Icons\key.png");
+        Image laser2_horiz = Image.FromFile(@"Icons\laser2_horiz.png");
+        Image laser2_vert = Image.FromFile(@"Icons\laser2_vert.png");
+        Image money = Image.FromFile(@"Icons\money.png");
+        Image picture1 = Image.FromFile(@"Icons\picture1.png");
+        Image picture2 = Image.FromFile(@"Icons\picture2.png");
+        Image picture3 = Image.FromFile(@"Icons\picture3.png");
+        Image Player = Image.FromFile(@"Icons\Player.PNG");
+        Image rubin = Image.FromFile(@"Icons\rubin.png");
+        Image sofa_D = Image.FromFile(@"Icons\sofa_D.png");
+        Image sofa_L = Image.FromFile(@"Icons\sofa_L.png");
+        Image sofa_R = Image.FromFile(@"Icons\sofa_R.png");
+        Image sofa_U = Image.FromFile(@"Icons\sofa_U.png");
+        Image spDL = Image.FromFile(@"Icons\spDL.png");
+        Image spLU = Image.FromFile(@"Icons\spLU.png");
+        Image spRD = Image.FromFile(@"Icons\spRD.png");
+        Image spUR = Image.FromFile(@"Icons\spUR.png");
+        Image tableD = Image.FromFile(@"Icons\tableD.png");
+        Image tableL = Image.FromFile(@"Icons\tableL.png");
+        Image tableR = Image.FromFile(@"Icons\tableR.png");
+        Image tableU = Image.FromFile(@"Icons\tableU.png");
+        Image player = Image.FromFile(@"Icons\Player.PNG");
+        //Image im_way_guard = Image.FromFile(@"Icons\");
         /////////////////
 
         List <List<int>> WayGuards; // массив пути охранников
@@ -145,6 +174,94 @@ namespace Search_minimum_way
                         case 30: // охранник
                             tmp = im_guard;
                             break;
+                        case 32: // охранник
+                            tmp = chairs_U;
+                            break;
+                        case 33: // охранник
+                            tmp = chairs_R;
+                            break;
+                        case 34: // охранник
+                            tmp = chairs_D;
+                            break;
+                        case 35: // охранник
+                            tmp = chairs_L;
+                            break;
+                        case 36: // охранник
+                            tmp = sofa_U;
+                            break;
+                        case 37: // охранник
+                            tmp = sofa_R;
+                            break;
+                        case 38: // охранник
+                            tmp = sofa_D;
+                            break;
+                        case 39: // охранник
+                            tmp = sofa_L;
+                            break;
+                        case 40: // охранник
+                            tmp = key;
+                            break;
+                        case 41: // охранник
+                            tmp = card;
+                            break;
+                        case 50: // охранник
+                            tmp = money;
+                            break;
+                        case 51: // охранник
+                            tmp = rubin;
+                            break;
+                        case 52: // охранник
+                            tmp = brilliant;
+                            break;
+                        case 53: // охранник
+                            tmp = picture1;
+                            break;
+                        case 54: // охранник
+                            tmp = picture2;
+                            break;
+                        case 55: // охранник
+                            tmp = picture3;
+                            break;
+                        case 60: // охранник
+                            tmp = spLU;
+                            break;
+                        case 61: // охранник
+                            tmp = spUR;
+                            break;
+                        case 62: // охранник
+                            tmp = spRD;
+                            break;
+                        case 63: // охранник
+                            tmp = spDL;
+                            break;
+                        case 70: // охранник
+                            tmp = tableU;
+                            break;
+                        case 71: // охранник
+                            tmp = tableR;
+                            break;
+                        case 72: // охранник
+                            tmp = tableD;
+                            break;
+                        case 73: // охранник
+                            tmp = tableL;
+                            break;
+                        case 80: // охранник
+                            tmp = laser2_horiz;
+                            break;
+                        case 81: // охранник
+                            tmp = laser2_vert;
+                            break;
+                        case 82: // охранник
+                            tmp = laser2_horiz;
+                            break;
+                        case 83: // охранник
+                            tmp = laser2_vert;
+                            break;
+                        case 100: // охранник
+                            tmp = player;
+                            break;
+
                         case 300: // ход охранника
                             tmp = im_way_guard;
                             break;
@@ -224,7 +341,36 @@ namespace Search_minimum_way
                             Дверь открытая вертикальная
                             Дверь открытая горизонатальная
                             Дверь закрытая вертикальная
-                            Дверь закрытая горизонатальная*/
+                            Дверь закрытая горизонатальная
+                             Chairs_U = 32,
+                            Chairs_R = 33,
+                            Chairs_D = 34,
+                            Chairs_L = 35,
+                            sofa_U = 36,
+                            sofa_R = 37,
+                            sofa_D = 38,
+                            sofa_L = 39,
+                            Key = 40,
+                            Card = 41,
+                            Gold = 50,
+                            Rubin = 51,
+                            Brilliant = 52,
+                            Picture1 = 53,
+                            Picture2 = 54,
+                            Picture3 = 55,
+                            SpLU = 60,
+                            SpUR = 61,
+                            SpRD = 62,
+                            SpDL = 63,
+                            TableU = 70,
+                            TableR = 71,
+                            TableD = 72,
+                            TableL = 73,
+                            LaserHoriz = 80,
+                            LaserVertic = 81,
+                            LaserHorizMoving = 82,
+                            LaserVerticMoving = 83,
+                            Player = 100*/
 
                             switch (Convert.ToString(cb_objs.SelectedItem))
                             {
@@ -245,6 +391,122 @@ namespace Search_minimum_way
                                 case "Дверь закрытая горизонатальная":
                                     Field_Cells[x, y].Obj = 20;
                                     break;
+
+                                case "Chairs_U = 32,":
+                                    Field_Cells[x, y].Obj = 32;
+                                    break;
+                                case "Chairs_R = 33,":
+
+                                    Field_Cells[x, y].Obj = 33;
+                                    break;
+
+                                case "Chairs_D = 34,":
+                                    Field_Cells[x, y].Obj = 34;
+                                    break;
+
+                                case "Chairs_L = 35,":
+                                    Field_Cells[x, y].Obj = 35;
+                                    break;
+                                case "sofa_U = 36,":
+
+                                    Field_Cells[x, y].Obj = 36;
+                                    break;
+
+                                case "sofa_R = 37,":
+                                    Field_Cells[x, y].Obj = 37;
+                                    break;
+
+                                case "sofa_D = 38,":
+                                    Field_Cells[x, y].Obj = 38;
+                                    break;
+                                case "sofa_L = 39,":
+
+                                    Field_Cells[x, y].Obj = 39;
+                                    break;
+
+                                case "Key = 40,":
+                                    Field_Cells[x, y].Obj = 40;
+                                    break;
+
+                                case "Card = 41,":
+                                    Field_Cells[x, y].Obj = 41;
+                                    break;
+
+                                case "Gold = 50,":
+                                    Field_Cells[x, y].Obj = 50;
+                                    break;
+
+                                case "Rubin = 51,":
+                                    Field_Cells[x, y].Obj = 51;
+                                    break;
+                                case "Brilliant = 52,":
+
+                                    Field_Cells[x, y].Obj = 52;
+                                    break;
+
+                                case "Picture1 = 53,":
+                                    Field_Cells[x, y].Obj = 53;
+                                    break;
+
+                                case "Picture2 = 54,":
+                                    Field_Cells[x, y].Obj = 54;
+                                    break;
+                                case "Picture3 = 55,":
+
+                                    Field_Cells[x, y].Obj = 55;
+                                    break;
+
+                                case "SpLU = 60,":
+                                    Field_Cells[x, y].Obj = 60;
+                                    break;
+
+                                case "SpUR = 61,":
+                                    Field_Cells[x, y].Obj = 61;
+                                    break;
+                                case "SpRD = 62,":
+                                    Field_Cells[x, y].Obj = 62;
+                                    break;
+
+                                case "SpDL = 63,":
+                                    Field_Cells[x, y].Obj = 63;
+                                    break;
+                                case "TableU = 70,":
+
+                                    Field_Cells[x, y].Obj = 70;
+                                    break;
+
+                                case "TableR = 71,":
+                                    Field_Cells[x, y].Obj = 71;
+                                    break;
+
+                                case "TableD = 72,":
+                                    Field_Cells[x, y].Obj = 72;
+                                    break;
+
+                                case "TableL = 73,":
+                                    Field_Cells[x, y].Obj = 73;
+                                    break;
+                                case "LaserHoriz = 80,":
+                                    Field_Cells[x, y].Obj = 80;
+                                    break;
+
+                                case "LaserVertic = 81,":
+                                    Field_Cells[x, y].Obj = 81;
+                                    break;
+                                case "LaserHorizMoving = 82,":
+
+                                    Field_Cells[x, y].Obj = 82;
+                                    break;
+
+                                case "LaserVerticMoving = 83,":
+                                    Field_Cells[x, y].Obj = 83;
+                                    break;
+
+                                case "Player = 100":
+                                    Field_Cells[x, y].Obj = 100;
+                                    break;
+
+                               
 
                                 case "Охранник":
                                     if (!f_way_g)

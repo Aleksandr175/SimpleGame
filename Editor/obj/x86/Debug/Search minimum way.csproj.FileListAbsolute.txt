@@ -25,3 +25,12 @@ C:\Documents and Settings\Администратор\Рабочий стол\Edi
 C:\Documents and Settings\Администратор\Рабочий стол\Editor\Visual\Editor\obj\x86\Debug\Search_minimum_way.Properties.Resources.resources
 C:\Documents and Settings\Администратор\Рабочий стол\Editor\Visual\Editor\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Documents and Settings\Администратор\Рабочий стол\Editor\Visual\Editor\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Docyment\prog\Editor\Visual\Editor\obj\x86\Debug\Search minimum way.exe
+D:\Docyment\prog\Editor\Visual\Editor\obj\x86\Debug\Search minimum way.pdb
+D:\Docyment\prog\Editor\Visual\Editor\bin\Debug\Search minimum way.exe
+D:\Docyment\prog\Editor\Visual\Editor\bin\Debug\Search minimum way.pdb
+D:\Docyment\prog\Editor\Visual\Editor\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Docyment\prog\Editor\Visual\Editor\obj\x86\Debug\Search_minimum_way.Form1.resources
+D:\Docyment\prog\Editor\Visual\Editor\obj\x86\Debug\Search_minimum_way.Properties.Resources.resources
+D:\Docyment\prog\Editor\Visual\Editor\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Docyment\prog\Editor\Visual\Editor\obj\x86\Debug\GenerateResource.write.1.tlog

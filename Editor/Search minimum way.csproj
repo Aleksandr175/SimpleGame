@@ -81,11 +81,46 @@
     <None Include="bin\Debug\Icons\Start.PNG" />
     <None Include="bin\Debug\Icons\Wall.PNG" />
     <None Include="bin\Debug\Icons\Start_col.PNG" />
-    <None Include="bin\Debug\Icons\Finish_col.PNG" />
     <None Include="bin\Debug\Icons\Empty_Cells.PNG" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\Icons\brilliant.png" />
+    <Content Include="bin\Debug\Icons\card.png" />
+    <Content Include="bin\Debug\Icons\chairs_D.png" />
+    <Content Include="bin\Debug\Icons\chairs_L.png" />
+    <Content Include="bin\Debug\Icons\chairs_R.png" />
+    <Content Include="bin\Debug\Icons\chairs_U.png" />
+    <Content Include="bin\Debug\Icons\Door_closed_H.PNG" />
+    <Content Include="bin\Debug\Icons\Door_closed_V.PNG" />
+    <Content Include="bin\Debug\Icons\Door_open_H.PNG" />
+    <Content Include="bin\Debug\Icons\Door_open_V.PNG" />
+    <Content Include="bin\Debug\Icons\Guard.PNG" />
+    <Content Include="bin\Debug\Icons\key.png" />
+    <Content Include="bin\Debug\Icons\laser2_horiz.png" />
+    <Content Include="bin\Debug\Icons\laser2_horiz_inactive.png" />
+    <Content Include="bin\Debug\Icons\laser2_vert.png" />
+    <Content Include="bin\Debug\Icons\laser2_vert_inactive.png" />
+    <Content Include="bin\Debug\Icons\money.png" />
+    <Content Include="bin\Debug\Icons\picture1.png" />
+    <Content Include="bin\Debug\Icons\picture2.png" />
+    <Content Include="bin\Debug\Icons\picture3.png" />
+    <Content Include="bin\Debug\Icons\Player.PNG" />
+    <Content Include="bin\Debug\Icons\rubin.png" />
+    <Content Include="bin\Debug\Icons\sofa_D.png" />
+    <Content Include="bin\Debug\Icons\sofa_L.png" />
+    <Content Include="bin\Debug\Icons\sofa_R.png" />
+    <Content Include="bin\Debug\Icons\sofa_U.png" />
+    <Content Include="bin\Debug\Icons\spDL.png" />
+    <Content Include="bin\Debug\Icons\spLU.png" />
+    <Content Include="bin\Debug\Icons\spRD.png" />
+    <Content Include="bin\Debug\Icons\spUR.png" />
+    <Content Include="bin\Debug\Icons\tableD.png" />
+    <Content Include="bin\Debug\Icons\tableL.png" />
+    <Content Include="bin\Debug\Icons\tableR.png" />
+    <Content Include="bin\Debug\Icons\tableU.png" />
     <Content Include="bin\Debug\Icons\Trail.PNG" />
+    <Content Include="bin\Debug\Icons\Way_Guard.PNG" />
+    <Content Include="bin\Debug\Icons\Копия Empty_Cells.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

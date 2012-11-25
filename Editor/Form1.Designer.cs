@@ -106,7 +106,36 @@
             "Дверь открытая горизонатальная",
             "Дверь закрытая вертикальная",
             "Дверь закрытая горизонатальная",
-            "Охранник"});
+            "Охранник",
+            "Chairs_U = 32,",
+            "Chairs_R = 33,",
+            "Chairs_D = 34,",
+            "Chairs_L = 35,",
+            "sofa_U = 36,",
+            "sofa_R = 37,",
+            "sofa_D = 38,",
+            "sofa_L = 39,",
+            "Key = 40,",
+            "Card = 41,",
+            "Gold = 50,",
+            "Rubin = 51,",
+            "Brilliant = 52,",
+            "Picture1 = 53,",
+            "Picture2 = 54,",
+            "Picture3 = 55,",
+            "SpLU = 60,",
+            "SpUR = 61,",
+            "SpRD = 62,",
+            "SpDL = 63,",
+            "TableU = 70,",
+            "TableR = 71,",
+            "TableD = 72,",
+            "TableL = 73,",
+            "LaserHoriz = 80,",
+            "LaserVertic = 81,",
+            "LaserHorizMoving = 82,",
+            "LaserVerticMoving = 83,",
+            "Player = 100"});
             this.cb_objs.Location = new System.Drawing.Point(514, 156);
             this.cb_objs.Name = "cb_objs";
             this.cb_objs.Size = new System.Drawing.Size(214, 21);
@@ -135,14 +164,14 @@
             // OpenToolStripMenuItem
             // 
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.OpenToolStripMenuItem.Text = "Открыть";
             this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.SaveToolStripMenuItem.Text = "Сохранить ";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
