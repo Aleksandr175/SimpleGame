@@ -38,10 +38,31 @@ namespace Enumerations
 
         Guard = 30,
 
+        // кресла
+        Chairs_U = 32,
+        Chairs_R = 33,
+        Chairs_D = 34,
+        Chairs_L = 35,
+
+        // диван
+        Sofa_U = 36,
+        Sofa_R = 37,
+        Sofa_D = 38,
+        Sofa_L = 39,
+
+        // ключ, карта
         Key = 40,
         Card = 41,
 
-        Gold = 50, 
+        // золото и др. для кражи
+        Gold = 50,
+        Rubin = 51,
+        Brilliant = 52,
+        Picture1 = 53,
+        Picture2 = 54,
+        Picture3 = 55,
+
+
 
         // стол управления камерами
         SpLU = 60,

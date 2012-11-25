@@ -122,7 +122,7 @@ namespace GameLevels
             // тестовый режим...
             // ЕСЛИ УРОВЕНЬ ИЗ РЕДАКТОРА, ТО...
             //приспособим загрузку уровней, сделанных в редакторе
-            if (lvl >= 5)
+            if (lvl >= 1)
             {
 
                 lines = File.ReadAllLines(lvl_name); //получили массив строк                
@@ -185,6 +185,40 @@ namespace GameLevels
                                 levelMap[indexI, indexJ] = LevelObject.Guard;
                                 break;
 
+                                // кресла
+                            case LevelObject.Chairs_U:
+                                levelMap[indexI, indexJ] = LevelObject.Chairs_U;
+                                break;
+
+                            case LevelObject.Chairs_R:
+                                levelMap[indexI, indexJ] = LevelObject.Chairs_R;
+                                break;
+
+                            case LevelObject.Chairs_D:
+                                levelMap[indexI, indexJ] = LevelObject.Chairs_D;
+                                break;
+
+                            case LevelObject.Chairs_L:
+                                levelMap[indexI, indexJ] = LevelObject.Chairs_L;
+                                break;
+
+                                // диваны
+                            case LevelObject.Sofa_U:
+                                levelMap[indexI, indexJ] = LevelObject.Sofa_U;
+                                break;
+                            case LevelObject.Sofa_R:
+                                levelMap[indexI, indexJ] = LevelObject.Sofa_R;
+                                break;
+                            case LevelObject.Sofa_D:
+                                levelMap[indexI, indexJ] = LevelObject.Sofa_D;
+                                break;
+                            case LevelObject.Sofa_L:
+                                levelMap[indexI, indexJ] = LevelObject.Sofa_L;
+                                break;
+
+
+                                
+
                             case LevelObject.Key:
                                 levelMap[indexI, indexJ] = LevelObject.Key;
                                 break;
@@ -194,9 +228,29 @@ namespace GameLevels
                                 levelMap[indexI, indexJ] = LevelObject.Card;
                                 break;
 
+                                // драгоценности для кражи
                             case LevelObject.Gold:
                                 levelMap[indexI, indexJ] = LevelObject.Gold;
                                 break;
+
+                            case LevelObject.Rubin:
+                                levelMap[indexI, indexJ] = LevelObject.Rubin;
+                                break;
+                            case LevelObject.Brilliant:
+                                levelMap[indexI, indexJ] = LevelObject.Brilliant;
+                                break;
+
+                                // картины для кражи
+                            case LevelObject.Picture1:
+                                levelMap[indexI, indexJ] = LevelObject.Picture1;
+                                break;
+                            case LevelObject.Picture2:
+                                levelMap[indexI, indexJ] = LevelObject.Picture2;
+                                break;
+                            case LevelObject.Picture3:
+                                levelMap[indexI, indexJ] = LevelObject.Picture3;
+                                break;
+
 
                             //стол управления камерами
                             case LevelObject.SpLU:
@@ -288,8 +342,8 @@ namespace GameLevels
                 indexI = 0;
                 indexJ = 0;
 
-                //if (lvl == 7 || lvl == 8)
-               // {
+                if (lvl >= 5)
+                {
                     // выделим память для карты уровня
                     levelMapFloor = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
 
@@ -312,10 +366,6 @@ namespace GameLevels
                         indexJ++;
                     }
 
-                //}
-
-                //if (lvl == 7 || lvl == 8)
-                //{
                     indexI = 0;
                     indexJ = 0;
 
@@ -335,7 +385,38 @@ namespace GameLevels
                         indexI = 0;
                         indexJ++;
                     }
-                //}
+                }
+
+
+
+
+                if (lvl < 5)
+                {
+                    // выделим память для карты уровня
+                    levelMapFloor = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
+                    // выделим память для комнат уровня
+                    levelMapRooms = new int[sizeFile[1] + 1, sizeFile[0] + 1];
+
+                    //считывание пола с комнатами в игре
+                    for (int i = sizeFile[0] + 1; i <= 2 * sizeFile[0]; i++)
+                    {
+                        str = lines[i].Split(' ');
+                        foreach (string s in str)
+                        {
+
+                            levelMapFloor[indexI, indexJ] = LevelObject.Empty;
+                            // пол в игре
+                            if (!s.Equals("-1", StringComparison.OrdinalIgnoreCase))
+                            {
+                                levelMapFloor[indexI, indexJ] = LevelObject.Floor; // пол
+                                levelMapRooms[indexI, indexJ] = Convert.ToInt32(s); // номер комнаты
+                            }
+                            indexI++;
+                        }
+                        indexI = 0;
+                        indexJ++;
+                    }
+                }
 
 
 
@@ -372,8 +453,8 @@ namespace GameLevels
                 // 90 90 90 90 - далее идет массив пола
                 // 0 90 90 0
                 // ..........  
-                //if (lvl == 7 || lvl == 8)
-                //{
+                if (lvl >=1)// || lvl == 8)
+                {
                     for (int i = 0; i < sizeFile[1]; i++)
                     {
                         for (int j = sizeFile[0]; j <= 2 * sizeFile[0]; j++)
@@ -433,7 +514,7 @@ namespace GameLevels
 
                         }
                     }
-                //}
+                }
                 // конец создания пола
 
 
@@ -560,6 +641,60 @@ namespace GameLevels
                             guard.Run(PlayerMove.Left);
                         }
 
+                        
+                        // кресла
+                        if (levelMap[i, j] == LevelObject.Chairs_U)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("chairs_U"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Wall;
+                        }
+                        if (levelMap[i, j] == LevelObject.Chairs_R)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("chairs_R"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Wall;
+                        }
+                        if (levelMap[i, j] == LevelObject.Chairs_D)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("chairs_D"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Wall;
+                        }
+                        if (levelMap[i, j] == LevelObject.Chairs_L)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("chairs_L"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Wall;
+                        }
+
+                        // диваны
+                        if (levelMap[i, j] == LevelObject.Sofa_U)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("sofa_U"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Wall;
+                        }
+                        if (levelMap[i, j] == LevelObject.Sofa_R)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("sofa_R"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Wall;
+                        }
+                        if (levelMap[i, j] == LevelObject.Sofa_D)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("sofa_D"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Wall;
+                        }
+                        if (levelMap[i, j] == LevelObject.Sofa_L)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("sofa_L"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Wall;
+                        }
+
+
                         // ключ и пластиковая карта
                         if (levelMap[i, j] == LevelObject.Key)
                         {
@@ -586,6 +721,41 @@ namespace GameLevels
                         if (levelMap[i, j] == LevelObject.Gold)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("money"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Empty;
+                        }
+
+                        if (levelMap[i, j] == LevelObject.Rubin)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("rubin"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Empty;
+                        }
+
+                        if (levelMap[i, j] == LevelObject.Brilliant)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("brilliant"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Empty;
+                        }
+
+                        if (levelMap[i, j] == LevelObject.Picture1)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("picture1"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Empty;
+                        }
+
+                        if (levelMap[i, j] == LevelObject.Picture2)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("picture2"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Empty;
+                        }
+
+                        if (levelMap[i, j] == LevelObject.Picture3)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("picture3"), game, this.camera);
                             objs.Add(obj);
                             levelMap[i, j] = LevelObject.Empty;
                         }
@@ -756,7 +926,7 @@ namespace GameLevels
             else
             {
                 // выделим память для карты уровня
-                levelMap = new LevelObject[lines[0].Length, lines.Length];
+                /*levelMap = new LevelObject[lines[0].Length, lines.Length];
 
 
                 foreach (string line in lines) //считали каждый символ в каждой строке
@@ -1009,8 +1179,10 @@ namespace GameLevels
                 lenghtY = y;
 
                 //Guards.SetLevelMap(levelMap, lenghtX / LevelLoader.Size, lenghtY / LevelLoader.Size);
+            
+                 */ 
             }
-
+            
 
         }
 
@@ -1039,7 +1211,7 @@ namespace GameLevels
              * -----
              * -----
              */
-            if (i == 0 && j == 0 && isWall(array[i, j + 1]) && isWall(array[i + 1, j]))
+            if (i == 0 && j == 0)
             {
                 return LevelObject.WallDownRight;
             }
@@ -1050,7 +1222,7 @@ namespace GameLevels
              * -----
              * *----
              */
-            if (i == 0 && j == jEnd && isWall(array[i, j - 1]) && isWall(array[i + 1, j]))
+            if (i == 0 && j == jEnd)
             {
                 return LevelObject.WallUpRight;
             }
@@ -1061,7 +1233,7 @@ namespace GameLevels
              * -----
              * -----
              */
-            if (i == iEnd && j == 0 && isWall(array[i - 1, j]) && isWall(array[i, j + 1]))
+            if (i == iEnd && j == 0)
             {
                 return LevelObject.WallLeftDown;
             }
@@ -1072,7 +1244,7 @@ namespace GameLevels
              * -----
              * ----*
              */
-            if (i == iEnd && j == jEnd && isWall(array[i, j - 1]) && isWall(array[i - 1, j]))
+            if (i == iEnd && j == jEnd)
             {
                 return LevelObject.WallLeftUp;
             }

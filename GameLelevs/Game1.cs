@@ -140,8 +140,11 @@ namespace GameLevels
             maxLvl = storage.GetMaxLevelNumber();
 
             // стоит проверять существование уровня
-            if(storage.IsExist(5))
-                levelLoader.CreateLevel(5);
+            if (storage.IsExist(1))
+            {
+                levelLoader.CreateLevel(1);
+                currentLvl = 1;
+            }
             else
                 levelLoader.CreateLevel(maxLvl);
 
@@ -261,7 +264,7 @@ namespace GameLevels
             {
                 if (laser.IsActive)
                 {
-                    if (laser.typeLaser == LevelObject.LaserVertic)
+                    if (laser.typeLaser == LevelObject.LaserVertic || laser.typeLaser == LevelObject.LaserVerticMoving)
                     {
                         if (Math.Abs(laser.Rect.X + 20 - centerX) < 10 && Math.Abs(laser.Rect.Y + 30 - centerY) < 30)
                         {
@@ -269,7 +272,7 @@ namespace GameLevels
                             changeAlarmGuards();
                         }
                     }
-                    if (laser.typeLaser == LevelObject.LaserHoriz)
+                    if (laser.typeLaser == LevelObject.LaserHoriz || laser.typeLaser == LevelObject.LaserHorizMoving)
                     {
                         if (Math.Abs(laser.Rect.X + 30 - centerX) < 30 && Math.Abs(laser.Rect.Y + 20 - centerY) < 10)
                         {
