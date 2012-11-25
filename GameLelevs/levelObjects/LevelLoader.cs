@@ -698,9 +698,6 @@ namespace GameLevels
                         // ключ и пластиковая карта
                         if (levelMap[i, j] == LevelObject.Key)
                         {
-                            // Object obj = new Object(Rect, storage.Pull2DTexture("key"), game, this.camera);
-                            // objs.Add(obj);
-
                             Key key = new Key(Rect, storage.Pull2DTexture("key"), game, this.camera, EColor.Blue);
                             interactionSubjects.Add(key);
 
@@ -708,9 +705,6 @@ namespace GameLevels
                         }
                         if (levelMap[i, j] == LevelObject.Card)
                         {
-                            // Object obj = new Object(Rect, storage.Pull2DTexture("card"), game, this.camera);
-                            // objs.Add(obj);
-
                             Card card = new Card(Rect, storage.Pull2DTexture("card"), game, this.camera);
                             interactionSubjects.Add(card);
 
@@ -720,43 +714,49 @@ namespace GameLevels
                         // золото
                         if (levelMap[i, j] == LevelObject.Gold)
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("money"), game, this.camera);
-                            objs.Add(obj);
+                            Money money = new Money(Rect, storage.Pull2DTexture("money"), game, this.camera, 10);
+                            interactionSubjects.Add(money); 
+                            
                             levelMap[i, j] = LevelObject.Empty;
                         }
 
                         if (levelMap[i, j] == LevelObject.Rubin)
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("rubin"), game, this.camera);
-                            objs.Add(obj);
+                            Money rubin = new Money(Rect, storage.Pull2DTexture("rubin"), game, this.camera, 20);
+                            interactionSubjects.Add(rubin);
+
                             levelMap[i, j] = LevelObject.Empty;
                         }
 
                         if (levelMap[i, j] == LevelObject.Brilliant)
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("brilliant"), game, this.camera);
-                            objs.Add(obj);
+                            Money brilliant = new Money(Rect, storage.Pull2DTexture("brilliant"), game, this.camera, 50);
+                            interactionSubjects.Add(brilliant);
+                            
                             levelMap[i, j] = LevelObject.Empty;
                         }
 
                         if (levelMap[i, j] == LevelObject.Picture1)
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("picture1"), game, this.camera);
-                            objs.Add(obj);
+                            Money picture1 = new Money(Rect, storage.Pull2DTexture("picture1"), game, this.camera, 30);
+                            interactionSubjects.Add(picture1);
+                            
                             levelMap[i, j] = LevelObject.Empty;
                         }
 
                         if (levelMap[i, j] == LevelObject.Picture2)
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("picture2"), game, this.camera);
-                            objs.Add(obj);
+                            Money picture2 = new Money(Rect, storage.Pull2DTexture("picture2"), game, this.camera, 30);
+                            interactionSubjects.Add(picture2);
+                            
                             levelMap[i, j] = LevelObject.Empty;
                         }
 
                         if (levelMap[i, j] == LevelObject.Picture3)
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("picture3"), game, this.camera);
-                            objs.Add(obj);
+                            Money picture3 = new Money(Rect, storage.Pull2DTexture("picture3"), game, this.camera, 30);
+                            interactionSubjects.Add(picture3);
+                            
                             levelMap[i, j] = LevelObject.Empty;
                         }
 
