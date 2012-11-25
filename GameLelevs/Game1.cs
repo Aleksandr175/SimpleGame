@@ -148,7 +148,7 @@ namespace GameLevels
             else
                 levelLoader.CreateLevel(maxLvl);
 
-            shadow = new Shadow(levelLoader.guards, levelLoader.objs);
+            shadow = new Shadow(levelLoader.guards, levelLoader.objs, levelLoader.lasers, levelLoader.cameras);
             Shadow.LevelLenghtX = LevelLoader.GetLenghtX / LevelLoader.Size;
             Shadow.LevelLenghtY = LevelLoader.GetLenghtY / LevelLoader.Size;
             shadow.ShowInRoom(LevelLoader.levelMapRooms[player.Position.X / LevelLoader.Size, player.Position.Y / LevelLoader.Size]);
@@ -374,7 +374,7 @@ namespace GameLevels
                         currentLvl = 1;
                     }
                     levelLoader.CreateLevel(currentLvl);
-                    shadow = new Shadow(levelLoader.guards, levelLoader.objs);
+                    shadow = new Shadow(levelLoader.guards, levelLoader.objs, levelLoader.lasers, levelLoader.cameras);
                     Shadow.LevelLenghtX = LevelLoader.GetLenghtX / LevelLoader.Size;
                     Shadow.LevelLenghtY = LevelLoader.GetLenghtY / LevelLoader.Size;
                     shadow.ShowInRoom(LevelLoader.levelMapRooms[player.Position.X / LevelLoader.Size, player.Position.Y / LevelLoader.Size]);
@@ -446,6 +446,7 @@ namespace GameLevels
                 laser.Update(gameTime);
             }
 
+
             int i = 0;
             while (i < levelLoader.interactionSubjects.Count) {
                 // если игрок пересекается с каким-либо "интерактивным" объектом на уровне
@@ -496,8 +497,20 @@ namespace GameLevels
             }
             foreach (Laser laser in levelLoader.lasers)
             {
-                laser.Draw(spriteBatch);
+                if (laser.isVisible)
+                {
+                    laser.Draw(spriteBatch);
+                }
             }
+            // отрисовываем камеры
+            foreach (Cameras camera in levelLoader.cameras)
+            {
+                if (camera.isVisible)
+                {
+                    camera.Draw(spriteBatch);
+                }
+            }
+
 
             foreach (BaseObject bo in levelLoader.interactionSubjects)
                 bo.Draw(spriteBatch);
@@ -580,6 +593,7 @@ namespace GameLevels
                     guard.Draw(spriteBatch);
                 }
             }
+
 
             // отрисовываем положение игрока
             player.Draw(spriteBatch);

@@ -14,6 +14,8 @@ namespace GameLevels.levelObjects
 
         public List<Guards> guards; // список охранников
         public List<Object> objs; // объекты на уровне
+        public List<Laser> lasers; // лазеры на уровне
+        public List<Cameras> cameras; // камеры на уровне
 
         private static int levelLenghtX; // длина уровня
         private static int levelLenghtY;
@@ -29,12 +31,17 @@ namespace GameLevels.levelObjects
 
         public bool isShadow = false; // включен ли туман войны?
 
-        public Shadow(List<Guards> guards, List<Object> objs)
+        public Shadow(List<Guards> guards, List<Object> objs, List<Laser> lasers, List<Cameras> cameras)
         {
             this.guards = new List<Guards>();
             this.guards = guards;
             this.objs = new List<Object>();
             this.objs = objs;
+            this.lasers = new List<Laser>();
+            this.lasers = lasers;
+            this.cameras = new List<Cameras>();
+            this.cameras = cameras;
+
         }
 
         /// <summary>
@@ -49,6 +56,14 @@ namespace GameLevels.levelObjects
             foreach (Object obj in objs)
             {
                 obj.isVisible = false;
+            }
+            foreach (Laser laser in lasers)
+            {
+                laser.isVisible = false;
+            }
+            foreach (Cameras camera in cameras)
+            {
+                camera.isVisible = false;
             }
         }
 
@@ -65,6 +80,15 @@ namespace GameLevels.levelObjects
             {
                 obj.isVisible = true;
             }
+            foreach (Laser laser in lasers)
+            {
+                laser.isVisible = true;
+            }
+            foreach (Cameras camera in cameras)
+            {
+                camera.isVisible = true;
+            }
+
         }
 
         /// <summary>
@@ -86,11 +110,25 @@ namespace GameLevels.levelObjects
                         obj.isVisible = true;
                     }
                 }
+                foreach (Laser laser in lasers)
+                {
+                    if (LevelLoader.levelMapRooms[laser.Rect.X / LevelLoader.Size, laser.Rect.Y / LevelLoader.Size] == room)
+                    {
+                        laser.isVisible = true;
+                    }
+                }
                 foreach (Guards guard in guards)
                 {
                     if (LevelLoader.levelMapRooms[guard.Rect.X / LevelLoader.Size, guard.Rect.Y / LevelLoader.Size] == room)
                     {
                         guard.isVisible = true;
+                    }
+                }
+                foreach (Cameras camera in cameras)
+                {
+                    if (LevelLoader.levelMapRooms[camera.posX, camera.posY] == room)
+                    {
+                        camera.isVisible = true;
                     }
                 }
 
