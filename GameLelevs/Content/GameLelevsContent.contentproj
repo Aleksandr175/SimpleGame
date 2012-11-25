@@ -435,12 +435,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\inventory.png">
+    <Compile Include="Textures\interface\inventory.png">
       <Name>inventory</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\menu.png">
+    <Compile Include="Textures\interface\menu.png">
       <Name>menu</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>

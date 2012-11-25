@@ -70,6 +70,10 @@ namespace Enumerations
         SpRD = 62,
         SpDL = 63,
 
+        CameraUL = 65,
+        CameraUR = 66,
+
+
         // стол с компьютером
         TableU = 70,
         TableR = 71,
