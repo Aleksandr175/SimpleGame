@@ -654,9 +654,9 @@ namespace Search_minimum_way
                 }
                 int[,] a = new int[Field_Cells.GetLength(1), Field_Cells.GetLength(0)];           
                 a = MakeRooms();
-                for (int i = 0; i < a.GetLength(1); i++)
+                for (int i = 0; i < a.GetLength(0); i++)
                 {
-                    for (int j = 0; j < a.GetLength(0); j++)
+                    for (int j = 0; j < a.GetLength(1); j++)
                     {
                         file.Write(" " + a[i,j]);
                     }
@@ -704,8 +704,8 @@ namespace Search_minimum_way
             }
 
             int num_room = 1;
-            for(int i = 0; i < a.GetLength(1); i++)
-                for(int j = 0; j < a.GetLength(0); j++)
+            for(int i = 0; i < a.GetLength(0); i++)
+                for(int j = 0; j < a.GetLength(1); j++)
                 {
                     // если втречаем не стену, распространяем волну номера комнаты
                     if(a[i,j] == 0)
@@ -720,10 +720,10 @@ namespace Search_minimum_way
         
         private int[,] FindRoom(int [,] a, int num_room, int i, int j)
         {
-            if ( i < a.GetLength(1) - 1)
+            if ( i < a.GetLength(0) - 1)
             {
                 
-                if( j < a.GetLength(0) - 1)
+                if( j < a.GetLength(1) - 1)
                 {
                     // комната закончилась
                     if (a[i, j + 1] != 0 && 
