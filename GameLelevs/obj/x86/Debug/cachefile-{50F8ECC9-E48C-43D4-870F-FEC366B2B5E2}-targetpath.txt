@@ -56,6 +56,9 @@ Content\Textures\Objects\laser2_vert_inactive.xnb
 Content\lvls\tasks\mission_description1.xnb
 Content\Textures\interface\inventory.xnb
 Content\Textures\interface\menu.xnb
+Content\Textures\Objects\camera_UL.xnb
+Content\Textures\Objects\camera_UR.xnb
+Content\Textures\Objects\camera_UL_active.xnb
 Content\lvls\lvl1.txt
 Content\lvls\lvl2.txt
 Content\lvls\lvl3.txt

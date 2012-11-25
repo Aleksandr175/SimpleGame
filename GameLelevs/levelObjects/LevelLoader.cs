@@ -266,6 +266,14 @@ namespace GameLevels
                                 levelMap[indexI, indexJ] = LevelObject.SpDL;
                                 break;
 
+                            // камеры
+                            case LevelObject.CameraUL:
+                                levelMap[indexI, indexJ] = LevelObject.CameraUL;
+                                break;
+                            case LevelObject.CameraUR:
+                                levelMap[indexI, indexJ] = LevelObject.CameraUR;
+                                break;
+
                             //стол с компьютером
                             case LevelObject.TableU:
                                 levelMap[indexI, indexJ] = LevelObject.TableU;
@@ -810,6 +818,24 @@ namespace GameLevels
                             Object obj = new Object(Rect, storage.Pull2DTexture("tableL"), game, this.camera);
                             objs.Add(obj);
                             levelMap[i, j] = LevelObject.Wall;
+                        }
+
+
+                        if (levelMap[i, j] == LevelObject.CameraUL)
+                        {
+                            Rectangle Rect2 = new Rectangle(i * LevelLoader.Size - size / 3, j * LevelLoader.Size - size / 3, Convert.ToInt32(size * 2.25), Convert.ToInt32(size * 2.25));
+                            Laser laser = new Laser(Rect2, storage.Pull2DTexture("camera_UL"), storage.Pull2DTexture("camera_UL_active"), LevelObject.LaserHoriz, game, this.camera);
+                            laser.typeLaser = LevelObject.LaserHoriz;
+                            lasers.Add(laser);
+                            levelMap[i, j] = LevelObject.Empty;
+                        }
+                        if (levelMap[i, j] == LevelObject.CameraUR)
+                        {
+                            Rectangle Rect2 = new Rectangle(i * LevelLoader.Size + size / 3, j * LevelLoader.Size - size / 3, size, size);
+                            Laser laser = new Laser(Rect2, storage.Pull2DTexture("camera_UR"), storage.Pull2DTexture("camera_UR"), LevelObject.LaserHoriz, game, this.camera);
+                            laser.typeLaser = LevelObject.LaserHoriz;
+                            lasers.Add(laser);
+                            levelMap[i, j] = LevelObject.Empty;
                         }
 
 

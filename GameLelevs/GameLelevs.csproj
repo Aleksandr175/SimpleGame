@@ -120,6 +120,7 @@
     <Compile Include="levelObjects\baseObject\BaseObject.cs" />
     <Compile Include="levelObjects\block\Block.cs" />
     <Compile Include="levelObjects\Camera.cs" />
+    <Compile Include="levelObjects\Cameras.cs" />
     <Compile Include="levelObjects\card\Card.cs" />
     <Compile Include="levelObjects\baseObject\IBaseObject.cs" />
     <Compile Include="levelObjects\block\IBlock.cs" />

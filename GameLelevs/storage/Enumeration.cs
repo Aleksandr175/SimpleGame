@@ -72,6 +72,8 @@ namespace Enumerations
 
         CameraUL = 65,
         CameraUR = 66,
+        CameraULActive = 67,
+        CameraURActive = 68,
 
 
         // стол с компьютером
