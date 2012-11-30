@@ -59,6 +59,7 @@ Content\Textures\Objects\camera_UL.xnb
 Content\Textures\Objects\camera_UR.xnb
 Content\Textures\Objects\camera_UL_active.xnb
 Content\lvls\tasks\mission_description1.xnb
+Content\Textures\Objects\camera_UR_active.xnb
 Content\lvls\lvl1.txt
 Content\lvls\lvl2.txt
 Content\lvls\lvl3.txt

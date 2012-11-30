@@ -471,3 +471,4 @@ D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Ob
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UR.xnb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UL_active.xnb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UR_active.xnb

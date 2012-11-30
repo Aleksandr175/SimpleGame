@@ -73,5 +73,15 @@ namespace GameLevels.levelObjects
         }
 
 
+        /// <summary>
+        /// Переключение состояния камеры
+        /// </summary>
+        public void changeActiveCamera()
+        {
+            this.isActive = !this.isActive;
+        }
+
+
+
     }
 }

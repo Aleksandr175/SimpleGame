@@ -357,6 +357,15 @@ namespace GameLevels
                 }
             }
 
+            // вкл, выкл. тревогу
+            if (state.IsKeyDown(Keys.C))
+            {
+                foreach (Cameras camera in levelLoader.cameras)
+                {
+                    camera.changeActiveCamera();
+                }
+            }
+
             // вкл, выкл. туман войны
             if (state.IsKeyDown(Keys.S))
             {
