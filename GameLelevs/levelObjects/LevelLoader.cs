@@ -23,6 +23,7 @@ namespace GameLevels
         public List<Guards> guards; // список охранников
         public List<Laser> lasers; // список охранников
         public List<Cameras> cameras; // список охранников
+        public List<SysControl> sysControls; // список столов управления камерами
 
         // список "интерактивных" объектов
         public List<BaseObject> interactionSubjects;
@@ -97,7 +98,7 @@ namespace GameLevels
             cameras = new List<Cameras>();
             interactionSubjects = new List<BaseObject>();
             doors = new List<BaseObject>();
-            
+            sysControls = new List<SysControl>();
 
             string lvl_name = "content/lvls/lvl" + Convert.ToString(lvl) + ".txt";
             string[] lines = File.ReadAllLines(lvl_name); //получили массив строк
@@ -774,26 +775,34 @@ namespace GameLevels
                         // стол системы управления камерами
                         if (levelMap[i, j] == LevelObject.SpLU)
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("spLU"), game, this.camera);
-                            objs.Add(obj);
+                            SysControl sysControl = new SysControl(Rect, storage.Pull2DTexture("spLU"), game, this.camera);
+                            sysControls.Add(sysControl);
+                            sysControl.posY = j;
+                            sysControl.posX = i;
                             levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.SpUR)
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("spUR"), game, this.camera);
-                            objs.Add(obj);
+                            SysControl sysControl = new SysControl(Rect, storage.Pull2DTexture("spUR"), game, this.camera);
+                            sysControls.Add(sysControl);
+                            sysControl.posY = j;
+                            sysControl.posX = i;
                             levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.SpRD)
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("spRD"), game, this.camera);
-                            objs.Add(obj);
+                            SysControl sysControl = new SysControl(Rect, storage.Pull2DTexture("spRD"), game, this.camera);
+                            sysControls.Add(sysControl);
+                            sysControl.posY = j;
+                            sysControl.posX = i;
                             levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.SpDL)
                         {
-                            Object obj = new Object(Rect, storage.Pull2DTexture("spDL"), game, this.camera);
-                            objs.Add(obj);
+                            SysControl sysControl = new SysControl(Rect, storage.Pull2DTexture("spDL"), game, this.camera);
+                            sysControls.Add(sysControl);
+                            sysControl.posY = j;
+                            sysControl.posX = i;
                             levelMap[i, j] = LevelObject.Wall;
                         }
 

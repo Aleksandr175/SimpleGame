@@ -9,9 +9,9 @@ using Enumerations;
 
 namespace GameLevels.levelObjects
 {
-    class Cameras : BaseObject
+    class SysControl : BaseObject
     {
-        private bool isActive = true; // включена ли камера?
+        private bool isActive = true;
 
         public int posX;
         public int posY;
@@ -19,14 +19,11 @@ namespace GameLevels.levelObjects
         public bool IsActive
         {
             get { return isActive; }
-            set { isActive = value; }
         }
 
-        Texture2D textureInactive; // текстура выключенного лазера
-        public LevelObject typeCamera; // тип лазера (гориз/вертик).
 
         /// <summary>
-        /// Конструктор лазера
+        /// Конструктор системы управления камерами
         /// </summary>
         /// <param name="rect">Прямоугольник</param>
         /// <param name="texture">Текстура лазера</param>
@@ -34,12 +31,9 @@ namespace GameLevels.levelObjects
         /// <param name="typeLaser">Тип лазера</param>
         /// <param name="game">ссылка на игру</param>
         /// <param name="camera">ссылка на камеру</param>
-        public Cameras(Rectangle Rect, Texture2D texture, Texture2D textureInactive, LevelObject typeCamera, Game1 game, Camera camera) 
-            : base(Rect, texture, game, camera) {
-
-            this.textureInactive = textureInactive;
-            this.typeCamera = typeCamera;
-
+        public SysControl(Rectangle Rect, Texture2D texture, Game1 game, Camera camera)
+            : base(Rect, texture, game, camera)
+        {
         }
 
         /// <summary>
@@ -51,7 +45,7 @@ namespace GameLevels.levelObjects
         }
 
 
-        
+
 
         /// <summary>
         /// Открытый метод, для отрисовки объекта
@@ -59,32 +53,18 @@ namespace GameLevels.levelObjects
         /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
-            Texture2D currentTexture = textureInactive;
-
-            if (this.isActive)
-            {
-                currentTexture = texture; 
-            }
-            else
-            {
-                currentTexture = textureInactive;
-            }
-            
             Rectangle screenRect = camera.GetScreenRect(Rect);  // рисуем только то, что помещается на экране
-            spriteBatch.Draw(currentTexture, screenRect, Color.White);
-
+            spriteBatch.Draw(texture, screenRect, Color.White);
         }
 
 
         /// <summary>
-        /// Переключение состояния камеры
+        /// Отключаем определенную камеру слежения
         /// </summary>
-        public void changeActiveCamera()
+        public void TurnOffCamera()
         {
-            this.isActive = !this.isActive;
+
         }
-
-
 
     }
 }

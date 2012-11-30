@@ -136,6 +136,8 @@
     <Compile Include="levelObjects\LevelLoader.cs" />
     <Compile Include="levelObjects\money\Money.cs" />
     <Compile Include="levelObjects\Shadow.cs" />
+    <Compile Include="levelObjects\sysControl\ISysControl.cs" />
+    <Compile Include="levelObjects\sysControl\SysControl.cs" />
     <Compile Include="storage\Storage.cs" />
     <Compile Include="storage\Enumeration.cs" />
     <Compile Include="levelObjects\FPSCounter.cs" />

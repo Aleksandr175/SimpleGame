@@ -16,6 +16,8 @@ namespace GameLevels.levelObjects
         public List<Object> objs; // объекты на уровне
         public List<Laser> lasers; // лазеры на уровне
         public List<Cameras> cameras; // камеры на уровне
+        public List<SysControl> sysControls; // камеры на уровне
+
 
         private static int levelLenghtX; // длина уровня
         private static int levelLenghtY;
@@ -31,7 +33,7 @@ namespace GameLevels.levelObjects
 
         public bool isShadow = false; // включен ли туман войны?
 
-        public Shadow(List<Guards> guards, List<Object> objs, List<Laser> lasers, List<Cameras> cameras)
+        public Shadow(List<Guards> guards, List<Object> objs, List<Laser> lasers, List<Cameras> cameras, List<SysControl> sysControls)
         {
             this.guards = new List<Guards>();
             this.guards = guards;
@@ -41,6 +43,9 @@ namespace GameLevels.levelObjects
             this.lasers = lasers;
             this.cameras = new List<Cameras>();
             this.cameras = cameras;
+            this.sysControls = new List<SysControl>();
+            this.sysControls = sysControls;
+            
 
         }
 
@@ -65,6 +70,10 @@ namespace GameLevels.levelObjects
             {
                 camera.isVisible = false;
             }
+            foreach (SysControl sysControl in sysControls)
+            {
+                sysControl.isVisible = false;
+            }
         }
 
         /// <summary>
@@ -88,6 +97,10 @@ namespace GameLevels.levelObjects
             {
                 camera.isVisible = true;
             }
+            foreach (SysControl sysControl in sysControls)
+            {
+                sysControl.isVisible = true;
+            }
 
         }
 
@@ -97,10 +110,7 @@ namespace GameLevels.levelObjects
         /// <param name="room">Номер комнаты</param>
         public void ShowInRoom(int room)
         {
-/*            foreach (Guards guard in guards)
-            {
-                guard.visible = true;
-            }*/
+
             if (room != 0)
             {
                 foreach (Object obj in objs)
@@ -129,6 +139,13 @@ namespace GameLevels.levelObjects
                     if (LevelLoader.levelMapRooms[camera.posX, camera.posY] == room)
                     {
                         camera.isVisible = true;
+                    }
+                }
+                foreach (SysControl sysControl in sysControls)
+                {
+                    if (LevelLoader.levelMapRooms[sysControl.posX, sysControl.posY] == room)
+                    {
+                        sysControl.isVisible = true;
                     }
                 }
 

@@ -149,7 +149,7 @@ namespace GameLevels
             else
                 levelLoader.CreateLevel(maxLvl);
 
-            shadow = new Shadow(levelLoader.guards, levelLoader.objs, levelLoader.lasers, levelLoader.cameras);
+            shadow = new Shadow(levelLoader.guards, levelLoader.objs, levelLoader.lasers, levelLoader.cameras, levelLoader.sysControls);
             Shadow.LevelLenghtX = LevelLoader.GetLenghtX / LevelLoader.Size;
             Shadow.LevelLenghtY = LevelLoader.GetLenghtY / LevelLoader.Size;
             shadow.ShowInRoom(LevelLoader.levelMapRooms[player.Position.X / LevelLoader.Size, player.Position.Y / LevelLoader.Size]);
@@ -406,12 +406,32 @@ namespace GameLevels
                 }
             }
 
-            // вкл, выкл. тревогу
+            // вкл, выкл. камеры
             if (state.IsKeyDown(Keys.C))
             {
                 foreach (Cameras camera in levelLoader.cameras)
                 {
                     camera.changeActiveCamera();
+                }
+            }
+
+            // взаимодействие с ПУК
+            if (state.IsKeyDown(Keys.F))
+            {
+                foreach (SysControl sysControl in levelLoader.sysControls)
+                {
+                    double radiusX = Math.Pow((player.Position.Center.X - sysControl.Rect.Center.X), 2);
+                    double radiusY = Math.Pow((player.Position.Center.Y - sysControl.Rect.Center.Y), 2);
+
+                    if (Math.Sqrt(radiusX + radiusY) <= 30) 
+                    {
+                        foreach (Cameras camera in levelLoader.cameras) 
+                        {
+                            camera.IsActive = false;
+                        }
+                    }
+                    //
+                    //camera.changeActiveCamera();
                 }
             }
 
@@ -432,7 +452,7 @@ namespace GameLevels
                         currentLvl = 1;
                     }
                     levelLoader.CreateLevel(currentLvl);
-                    shadow = new Shadow(levelLoader.guards, levelLoader.objs, levelLoader.lasers, levelLoader.cameras);
+                    shadow = new Shadow(levelLoader.guards, levelLoader.objs, levelLoader.lasers, levelLoader.cameras, levelLoader.sysControls);
                     Shadow.LevelLenghtX = LevelLoader.GetLenghtX / LevelLoader.Size;
                     Shadow.LevelLenghtY = LevelLoader.GetLenghtY / LevelLoader.Size;
                     shadow.ShowInRoom(LevelLoader.levelMapRooms[player.Position.X / LevelLoader.Size, player.Position.Y / LevelLoader.Size]);
@@ -502,6 +522,12 @@ namespace GameLevels
             foreach (Laser laser in levelLoader.lasers)
             {
                 laser.Update(gameTime);
+            }
+
+            // обновляем лазеры
+            foreach (SysControl sysControl in levelLoader.sysControls)
+            {
+                sysControl.Update(gameTime);
             }
 
 
@@ -630,6 +656,14 @@ namespace GameLevels
                 if (obj.isVisible)
                 {
                     obj.Draw(spriteBatch);
+                }
+            }
+            // отрисовываем объекты
+            foreach (SysControl sysControl in levelLoader.sysControls)
+            {
+                if (sysControl.isVisible)
+                {
+                    sysControl.Draw(spriteBatch);
                 }
             }
 
