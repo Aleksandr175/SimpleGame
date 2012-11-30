@@ -827,7 +827,7 @@ namespace GameLevels
                         if (levelMap[i, j] == LevelObject.CameraUL)
                         {
                             Rectangle Rect2 = new Rectangle(i * LevelLoader.Size - size / 3, j * LevelLoader.Size - size / 3, Convert.ToInt32(size * 2.25), Convert.ToInt32(size * 2.25));
-                            Cameras newCamera = new Cameras(Rect2, storage.Pull2DTexture("camera_UL_active"), storage.Pull2DTexture("camera_UL"), game, this.camera);
+                            Cameras newCamera = new Cameras(Rect2, storage.Pull2DTexture("camera_UL_active"), storage.Pull2DTexture("camera_UL"), LevelObject.CameraUL, game, this.camera);
                             cameras.Add(newCamera);
                             newCamera.posY = j;
                             newCamera.posX = i;
@@ -836,7 +836,7 @@ namespace GameLevels
                         if (levelMap[i, j] == LevelObject.CameraUR)
                         {
                             Rectangle Rect2 = new Rectangle(i * LevelLoader.Size - size / 3 * 2, j * LevelLoader.Size - size / 3, Convert.ToInt32(size * 2.25), Convert.ToInt32(size * 2.25));
-                            Cameras newCamera = new Cameras(Rect2, storage.Pull2DTexture("camera_UR_active"), storage.Pull2DTexture("camera_UR"), game, this.camera);
+                            Cameras newCamera = new Cameras(Rect2, storage.Pull2DTexture("camera_UR_active"), storage.Pull2DTexture("camera_UR"), LevelObject.CameraUR, game, this.camera);
                             newCamera.posY = j;
                             newCamera.posX = i;
                             cameras.Add(newCamera);

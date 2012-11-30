@@ -53,8 +53,9 @@ namespace GameLevels
         {
             get { return screenHeight; }
         }
-        
-        
+
+
+        double someValue;
 
         //информация об уровнях
         int currentLvl;
@@ -192,6 +193,7 @@ namespace GameLevels
                 case Complexity.High:
                     collides = CollidesHigh(rect);
                     CollidesLasers(rect);
+                    CollidesCameras(rect);
                     break;
                 default: break;
             }
@@ -278,6 +280,53 @@ namespace GameLevels
                         {
                             Guards.generalAlarm = true;
                             changeAlarmGuards();
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+
+        void CollidesCameras(Rectangle rect)
+        {
+            int centerX = rect.Left + LevelLoader.SizePeople / 2;
+            int centerY = rect.Top + LevelLoader.SizePeople / 2;
+
+            foreach (Cameras camera in levelLoader.cameras)
+            {
+                if (camera.IsActive)
+                {
+                    if (camera.typeCamera == LevelObject.CameraUL)
+                    {
+                        if (centerX >= camera.Rect.X && centerY >= camera.Rect.Y)
+                        {
+                            double radiusX = Math.Pow(Math.Abs(camera.Rect.X - centerX), 2);
+                            double radiusY = Math.Pow(Math.Abs(camera.Rect.Y - centerY), 2);
+
+                            if (Math.Sqrt(radiusX + radiusY) <= 100)
+                            {
+                                
+                                Guards.generalAlarm = true;
+                                changeAlarmGuards();
+                                this.someValue++;
+                            }
+                        }
+                    }
+                    if (camera.typeCamera == LevelObject.CameraUR)
+                    {
+                        if (centerX <= camera.Rect.X + 90 && centerY >= camera.Rect.Y)
+                        {
+                            double radiusX = Math.Pow(Math.Abs(camera.Rect.X + 90 - centerX), 2);
+                            double radiusY = Math.Pow(Math.Abs(camera.Rect.Y - centerY), 2);
+
+                            if (Math.Sqrt(radiusX + radiusY) <= 100)
+                            {
+                                Guards.generalAlarm = true;
+                                changeAlarmGuards();
+                                this.someValue++;
+                            }
                         }
                     }
                 }
@@ -511,14 +560,7 @@ namespace GameLevels
                     laser.Draw(spriteBatch);
                 }
             }
-            // отрисовываем камеры
-            foreach (Cameras camera in levelLoader.cameras)
-            {
-                if (camera.isVisible)
-                {
-                    camera.Draw(spriteBatch);
-                }
-            }
+            
 
 
             foreach (BaseObject bo in levelLoader.interactionSubjects)
@@ -535,17 +577,21 @@ namespace GameLevels
                     spriteBatch.DrawString(storage.PullFont("font"), "S - shadow", new Vector2(400, 40), Color.LimeGreen);
                     spriteBatch.DrawString(storage.PullFont("font"), "Arrows - control", new Vector2(400, 60), Color.LimeGreen);
                     spriteBatch.DrawString(storage.PullFont("font"), "Space - chage level", new Vector2(400, 80), Color.LimeGreen);
+                    spriteBatch.DrawString(storage.PullFont("font"), "C - turn off, on cameras", new Vector2(400, 100), Color.LimeGreen);
                     
                     // инфа о уровне
                     spriteBatch.DrawString(storage.PullFont("font"), "LevelLenght = " + LevelLoader.GetLenghtX.ToString(), new Vector2(10, 40), Color.Orange); // распечатка длины уровня по X
                     spriteBatch.DrawString(storage.PullFont("font"), "LevelHeight = " + LevelLoader.GetLenghtY.ToString(), new Vector2(10, 60), Color.Orange); // распечатка длины уровня по Y 
                     
                     // все для игрока
-                    spriteBatch.DrawString(storage.PullFont("font"), "CurrentRoom - " + player.room, new Vector2(10, 420), Color.Orange); // тревога
+                    spriteBatch.DrawString(storage.PullFont("font"), "CurrentRoom - " + player.room, new Vector2(10, 440), Color.Orange); // комната
                     spriteBatch.DrawString(storage.PullFont("font"), "MyPosX - " + player.NewPosX.ToString(), new Vector2(10, 330), Color.Orange); // распечатка клетки для следующего хода охранника
                     spriteBatch.DrawString(storage.PullFont("font"), "MyPosY - " + player.NewPosY.ToString(), new Vector2(10, 350), Color.Orange); // распечатка клетки для следующего хода охранника
                     spriteBatch.DrawString(storage.PullFont("font"), "ShadowOfWar - " + shadow.isShadow, new Vector2(10, 400), Color.Orange); // тревога
-                    
+                    spriteBatch.DrawString(storage.PullFont("font"), "CamerasIsActive - " + levelLoader.cameras[0].IsActive, new Vector2(10, 420), Color.Orange); // тревога
+
+                    spriteBatch.DrawString(storage.PullFont("font"), "SomeValue - " + this.someValue, new Vector2(10, 500), Color.Yellow);
+
                     // все для охранника 0
                     spriteBatch.DrawString(storage.PullFont("font"), "PosGuard[0].X = " + levelLoader.guards[0].X.ToString(), new Vector2(10, 0), Color.Orange);
                     spriteBatch.DrawString(storage.PullFont("font"), "PosGuard[0].Y = " + levelLoader.guards[0].Y.ToString(), new Vector2(10, 20), Color.Orange);
@@ -555,6 +601,7 @@ namespace GameLevels
 
                     spriteBatch.DrawString(storage.PullFont("font"), "LaserX - " + Convert.ToInt32(levelLoader.lasers[0].Rect.X + LevelLoader.Size / 2), new Vector2(10, 460), Color.Orange); // координата Х лазера
                     spriteBatch.DrawString(storage.PullFont("font"), "LaserY - " + Convert.ToInt32(levelLoader.lasers[0].Rect.Y + LevelLoader.Size / 2), new Vector2(10, 480), Color.Orange);
+
 
                     
                     
@@ -606,6 +653,17 @@ namespace GameLevels
 
             // отрисовываем положение игрока
             player.Draw(spriteBatch);
+
+            spriteBatch.Begin();
+            // отрисовываем камеры
+            foreach (Cameras camera in levelLoader.cameras)
+            {
+                if (camera.isVisible)
+                {
+                    camera.Draw(spriteBatch);
+                }
+            }
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

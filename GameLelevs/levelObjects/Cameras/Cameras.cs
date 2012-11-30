@@ -22,6 +22,7 @@ namespace GameLevels.levelObjects
         }
 
         Texture2D textureInactive; // текстура выключенного лазера
+        public LevelObject typeCamera; // тип лазера (гориз/вертик).
 
         /// <summary>
         /// Конструктор лазера
@@ -32,10 +33,11 @@ namespace GameLevels.levelObjects
         /// <param name="typeLaser">Тип лазера</param>
         /// <param name="game">ссылка на игру</param>
         /// <param name="camera">ссылка на камеру</param>
-        public Cameras(Rectangle Rect, Texture2D texture, Texture2D textureInactive, Game1 game, Camera camera) 
+        public Cameras(Rectangle Rect, Texture2D texture, Texture2D textureInactive, LevelObject typeCamera, Game1 game, Camera camera) 
             : base(Rect, texture, game, camera) {
 
             this.textureInactive = textureInactive;
+            this.typeCamera = typeCamera;
 
         }
 
