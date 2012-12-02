@@ -559,6 +559,51 @@
       <Output>C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UR_active.xnb</Output>
       <Time>2012-12-01T00:28:06.5469669+04:00</Time>
     </Item>
+    <Item>
+      <Source>Textures\lvl\doors\wood_door_horiz.png</Source>
+      <Name>Textures\lvl\doors\wood_door_horiz</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_horiz.xnb</Output>
+      <Time>2012-12-01T00:28:06.5639678+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\doors\wood_door_horiz_open.png</Source>
+      <Name>Textures\lvl\doors\wood_door_horiz_open</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_horiz_open.xnb</Output>
+      <Time>2012-12-01T00:28:06.5659679+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\doors\wood_door_vertic.png</Source>
+      <Name>Textures\lvl\doors\wood_door_vertic</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_vertic.xnb</Output>
+      <Time>2012-12-01T00:28:06.5689681+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lvl\doors\wood_door_vertic_open.png</Source>
+      <Name>Textures\lvl\doors\wood_door_vertic_open</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_vertic_open.xnb</Output>
+      <Time>2012-12-01T00:28:06.5729683+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\plant.png</Source>
+      <Name>Textures\Objects\plant</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\plant.xnb</Output>
+      <Time>2012-12-01T00:28:06.5479669+04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

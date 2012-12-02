@@ -185,6 +185,24 @@ namespace GameLevels
                                 levelDoors[indexI, indexJ] = LevelObject.DoorVerticOpen;
                                 break;
 
+                            // деревянные двери
+                            case LevelObject.DoorWoodHoriz:
+                                levelMap[indexI, indexJ] = LevelObject.DoorWoodHoriz;
+                                levelDoors[indexI, indexJ] = LevelObject.DoorWoodHoriz;
+                                break;
+                            case LevelObject.DoorWoodVertic:
+                                levelMap[indexI, indexJ] = LevelObject.DoorWoodVertic;
+                                levelDoors[indexI, indexJ] = LevelObject.DoorWoodVertic;
+                                break;
+                            case LevelObject.DoorWoodHorizOpen:
+                                levelMap[indexI, indexJ] = LevelObject.DoorWoodHorizOpen;
+                                levelDoors[indexI, indexJ] = LevelObject.DoorWoodHorizOpen;
+                                break;
+                            case LevelObject.DoorWoodVerticOpen:
+                                levelMap[indexI, indexJ] = LevelObject.DoorWoodVerticOpen;
+                                levelDoors[indexI, indexJ] = LevelObject.DoorWoodVerticOpen;
+                                break;
+
                             case LevelObject.Guard:
                                 levelMap[indexI, indexJ] = LevelObject.Guard;
                                 break;
@@ -291,6 +309,13 @@ namespace GameLevels
                             case LevelObject.TableL:
                                 levelMap[indexI, indexJ] = LevelObject.TableL;
                                 break;
+
+
+                            // куст
+                            case LevelObject.Plant:
+                                levelMap[indexI, indexJ] = LevelObject.Plant;
+                                break;
+
 
                             // лазеры
                             case LevelObject.LaserHoriz:
@@ -439,7 +464,6 @@ namespace GameLevels
                 {
                     for (int j = 0; j < sizeFile[0]; j++)
                     {
-
 
                         map[i, j] = 0;
                         
@@ -598,12 +622,9 @@ namespace GameLevels
                         }
 
 
-                        //двери
+                        //двери железные
                         if (levelMap[i, j] == LevelObject.DoorHoriz)
                         {
-                            // Block block = new Block(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera);
-                            // blocks.Add(block);
-
                             Door door = new Door(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera, EColor.Blue, DoorOrientation.Horiz, true, i, j);
                             doors.Add(door);
 
@@ -611,9 +632,6 @@ namespace GameLevels
                         }
                         if (levelMap[i, j] == LevelObject.DoorVertic)
                         {
-                            // Block block = new Block(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera);
-                            // blocks.Add(block);
-
                             Door door = new Door(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera, EColor.Blue, DoorOrientation.Vert, true, i, j);
                             doors.Add(door);
                             
@@ -621,9 +639,6 @@ namespace GameLevels
                         }
                         if (levelMap[i, j] == LevelObject.DoorHorizOpen)
                         {
-                            // Block block = new Block(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera);
-                            // blocks.Add(block);
-
                             Door door = new Door(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera, EColor.Blue, DoorOrientation.Horiz);
                             doors.Add(door);
                             
@@ -631,14 +646,47 @@ namespace GameLevels
                         }
                         if (levelMap[i, j] == LevelObject.DoorVerticOpen)
                         {
-                            // Block block = new Block(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera);
-                            // blocks.Add(block);
-
                             Door door = new Door(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera, EColor.Blue, DoorOrientation.Vert);
                             doors.Add(door);
 
                             levelMap[i, j] = LevelObject.Empty;
                         }
+
+
+
+                        //двери деревянные
+                        if (levelMap[i, j] == LevelObject.DoorWoodHoriz)
+                        {
+                            Door door = new Door(Rect, storage.Pull2DTexture("wood_door_horiz"), game, this.camera, EColor.Blue, DoorOrientation.Horiz, true, i, j);
+                            doors.Add(door);
+
+                            levelMap[i, j] = LevelObject.Wall;
+                        }
+                        if (levelMap[i, j] == LevelObject.DoorWoodVertic)
+                        {
+                            Door door = new Door(Rect, storage.Pull2DTexture("wood_door_vertic"), game, this.camera, EColor.Blue, DoorOrientation.Vert, true, i, j);
+                            doors.Add(door);
+
+                            levelMap[i, j] = LevelObject.Wall;
+                        }
+                        if (levelMap[i, j] == LevelObject.DoorWoodHorizOpen)
+                        {
+                            Door door = new Door(Rect, storage.Pull2DTexture("wood_door_horiz_open"), game, this.camera, EColor.Blue, DoorOrientation.Horiz);
+                            doors.Add(door);
+
+                            levelMap[i, j] = LevelObject.Empty;
+                        }
+                        if (levelMap[i, j] == LevelObject.DoorWoodVerticOpen)
+                        {
+                            Door door = new Door(Rect, storage.Pull2DTexture("wood_door_vertic_open"), game, this.camera, EColor.Blue, DoorOrientation.Vert);
+                            doors.Add(door);
+
+                            levelMap[i, j] = LevelObject.Empty;
+                        }
+
+
+
+
 
                         if (levelMap[i, j] == LevelObject.Guard)
                         { //буква "о"
@@ -828,6 +876,14 @@ namespace GameLevels
                         if (levelMap[i, j] == LevelObject.TableL)
                         {
                             Object obj = new Object(Rect, storage.Pull2DTexture("tableL"), game, this.camera);
+                            objs.Add(obj);
+                            levelMap[i, j] = LevelObject.Wall;
+                        }
+
+                        // куст
+                        if (levelMap[i, j] == LevelObject.Plant)
+                        {
+                            Object obj = new Object(Rect, storage.Pull2DTexture("plant"), game, this.camera);
                             objs.Add(obj);
                             levelMap[i, j] = LevelObject.Wall;
                         }

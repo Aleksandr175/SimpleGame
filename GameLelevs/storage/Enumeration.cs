@@ -36,6 +36,12 @@ namespace Enumerations
         DoorHorizOpen = 22, 
         DoorVerticOpen = 23,
 
+        DoorWoodHoriz = 24,
+        DoorWoodVertic = 25,
+        DoorWoodHorizOpen = 26,
+        DoorWoodVerticOpen = 27,
+
+
         Guard = 30,
 
         // кресла
@@ -81,6 +87,9 @@ namespace Enumerations
         TableR = 71,
         TableD = 72,
         TableL = 73,
+
+        // куст
+        Plant = 75,
 
         //все виды лазеров
         LaserHoriz = 80,
