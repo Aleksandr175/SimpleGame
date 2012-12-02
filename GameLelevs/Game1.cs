@@ -124,9 +124,9 @@ namespace GameLevels
             storage.GetLevelNumbers();
 
             xmlCoreMissionLoader = Content.Load<XMLCoreMissionLoader>("lvls/tasks/mission_description1");
-            foreach (SecondaryTarget st in xmlCoreMissionLoader.secondaryTarget) {
-                toDraw.Add("Key point: " + st.keyPoint.point);
-                toDraw.Add("Effect: " + st.keyPoint.effect);
+            foreach (XMLExpressionTarger st in xmlCoreMissionLoader.expressions) {
+                toDraw.Add("Key point: " + st.point);
+                toDraw.Add("Name: " + st.name + ", EXP: " + st.expression);
             }
 
             // инициализируем нового игрока

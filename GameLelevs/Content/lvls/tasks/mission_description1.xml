@@ -2,34 +2,57 @@
 <XnaContent>
   <Asset Type="XMLContent.XMLCoreMissionLoader">
 
-    <mainTarget>
-      <description>
-        Main target of the mission
-      </description>
-    </mainTarget>
-    
-    <secondaryTarget>                 <!-- задание второстепенной цели -->
+    <collects>
       <Item>
-        <description>                 <!-- описание -->
-          Secondary targer #1
-        </description>
-      
-        <keyPoint>                    <!-- задание ключевой точки -->
-          <point>10 10</point>        <!-- сама точка -->
-          <effect>Booom!</effect>     <!-- какой-то эффект, надо подумать, как его программировать -->
-        </keyPoint>
-      </Item>
-      <Item>
-        <description>                 <!-- описание -->
-          Secondary targer #2
-        </description>
+        <!-- базовые поля -->
+        <point>100 100</point>
+        <!-- не показываются русские буквы( -->
+        <name>Name mission 3</name>
+        <description>description 3</description>
+        <isMain>1</isMain>
 
-        <keyPoint>                    <!-- задание ключевой точки -->
-          <point>12 12</point>        <!-- сама точка -->
-          <effect>Boooms!</effect>    <!-- какой-то эффект, надо подумать, как уго программировать -->
-        </keyPoint>
+        <!-- специфичные поля -->
+        <count>5</count>
       </Item>
-    </secondaryTarget>
-    
+    </collects>
+
+    <expressions>
+      <Item>
+        <!-- базовые поля -->
+        <point>10 10</point>
+        <name>name</name>
+        <description>description</description>
+        <isMain>false</isMain>
+
+        <!-- специфичные поля -->
+        <expression>10 + 1</expression>
+        <rightValue>11</rightValue>
+      </Item>
+      <Item>
+        <!-- базовые поля -->
+        <point>100 100</point>
+        <name>name</name>
+        <description>description</description>
+        <isMain>false</isMain>
+
+        <!-- специфичные поля -->
+        <expression>10 + 12</expression>
+        <rightValue>22</rightValue>
+      </Item>
+    </expressions>
+
+    <times>
+      <Item>
+        <!-- базовые поля -->
+        <point>100 100</point>
+        <name>name</name>
+        <description>description</description>
+        <isMain>false</isMain>
+
+        <!-- специфичные поля -->
+        <runtime>100</runtime>
+      </Item>
+    </times>
+
   </Asset>
 </XnaContent>

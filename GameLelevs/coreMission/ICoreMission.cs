@@ -3,27 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using XMLContent;
 
 namespace GameLevels.coreMission
 {
     interface ICoreMission
     {
         /// <summary>
-        /// Задание основной цели миссии
+        /// Добавим все текущие цели
         /// </summary>
-        void SetMainMissionTarget();
+        /// <param name="loader">Загрузчик XML миссий</param>
+        void ParseLoader(XMLCoreMissionLoader loader);
 
         /// <summary>
-        /// Задание второстепенных целей
+        /// Проверяет может ли игрок перейти на новый уровень
         /// </summary>
-        void SetSecondaryMissionTarget();
-
-        /// <summary>
-        /// Задание ключевой точки
-        /// </summary>
-        /// <param name="point">Точка</param>
-        /// <param name="effect">Эффект</param>
-        /// <returns>Удалось ли установить точку</returns>
-        bool SetKeyPoint(Point point, Effect effect);
+        /// <returns>может ли перйти</returns>
+        bool GoNextLevel();
     }
 }

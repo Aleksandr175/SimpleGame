@@ -58,13 +58,13 @@ Content\Textures\interface\menu.xnb
 Content\Textures\Objects\camera_UL.xnb
 Content\Textures\Objects\camera_UR.xnb
 Content\Textures\Objects\camera_UL_active.xnb
-Content\lvls\tasks\mission_description1.xnb
 Content\Textures\Objects\camera_UR_active.xnb
 Content\Textures\lvl\doors\wood_door_horiz.xnb
 Content\Textures\lvl\doors\wood_door_horiz_open.xnb
 Content\Textures\lvl\doors\wood_door_vertic.xnb
 Content\Textures\lvl\doors\wood_door_vertic_open.xnb
 Content\Textures\Objects\plant.xnb
+Content\lvls\tasks\mission_description1.xnb
 Content\lvls\lvl1.txt
 Content\lvls\lvl2.txt
 Content\lvls\lvl3.txt

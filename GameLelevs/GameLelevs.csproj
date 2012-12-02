@@ -115,7 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="coreMission\CoreMission.cs" />
-    <Compile Include="coreMission\Effect.cs" />
+    <Compile Include="coreMission\Target.cs" />
     <Compile Include="coreMission\ICoreMission.cs" />
     <Compile Include="levelObjects\baseObject\BaseObject.cs" />
     <Compile Include="levelObjects\block\Block.cs" />

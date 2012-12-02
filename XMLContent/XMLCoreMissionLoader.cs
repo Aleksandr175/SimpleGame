@@ -13,7 +13,9 @@ namespace XMLContent
 {
     public class XMLCoreMissionLoader
     {
-        public MainTarget mainTarget;
-        public List<SecondaryTarget> secondaryTarget;
+        // списки всех миссий
+        public List<XMLCollectTarget> collects;
+        public List<XMLExpressionTarger> expressions;
+        public List<XMLTimeTarget> times;
     }
 }
