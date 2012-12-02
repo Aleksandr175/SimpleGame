@@ -415,24 +415,31 @@ namespace GameLevels
                 }
             }
 
-            // взаимодействие с ПУК
-            if (state.IsKeyDown(Keys.F))
+            
+            foreach (SysControl sysControl in levelLoader.sysControls)
             {
-                foreach (SysControl sysControl in levelLoader.sysControls)
-                {
-                    double radiusX = Math.Pow((player.Position.Center.X - sysControl.Rect.Center.X), 2);
-                    double radiusY = Math.Pow((player.Position.Center.Y - sysControl.Rect.Center.Y), 2);
+                double radiusX = Math.Pow((player.Position.Center.X - sysControl.Rect.Center.X), 2);
+                double radiusY = Math.Pow((player.Position.Center.Y - sysControl.Rect.Center.Y), 2);
 
-                    if (Math.Sqrt(radiusX + radiusY) <= 30) 
+                if (Math.Sqrt(radiusX + radiusY) <= 30)
+                {
+                    // взаимодействие с ПУК
+                    if (state.IsKeyDown(Keys.F))
                     {
-                        foreach (Cameras camera in levelLoader.cameras) 
+                        sysControl.IsVisibleExample = true;
+                        foreach (Cameras camera in levelLoader.cameras)
                         {
                             camera.IsActive = false;
                         }
                     }
-                    //
-                    //camera.changeActiveCamera();
                 }
+                else
+                {
+                    //все ПУК-и, от которых мы далеко - отключают примеры
+                    sysControl.IsVisibleExample = false;
+                }
+                //
+                //camera.changeActiveCamera();
             }
 
             // вкл, выкл. туман войны
@@ -649,6 +656,9 @@ namespace GameLevels
             catch {
                 // TODO: необходимо как-то обрабатывать исключения!
             }
+
+            spriteBatch.DrawString(storage.PullFont("font"), levelLoader.sysControls[0].GetGeneratedMathExample(), new Vector2(120, 120), Color.Red);
+
 
             // отрисовываем объекты
             foreach (Object obj in levelLoader.objs)

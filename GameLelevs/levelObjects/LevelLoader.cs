@@ -827,6 +827,7 @@ namespace GameLevels
                             sysControls.Add(sysControl);
                             sysControl.posY = j;
                             sysControl.posX = i;
+                            sysControl.generateMathEmample();
                             levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.SpUR)
@@ -835,6 +836,7 @@ namespace GameLevels
                             sysControls.Add(sysControl);
                             sysControl.posY = j;
                             sysControl.posX = i;
+                            sysControl.generateMathEmample();
                             levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.SpRD)
@@ -843,6 +845,7 @@ namespace GameLevels
                             sysControls.Add(sysControl);
                             sysControl.posY = j;
                             sysControl.posX = i;
+                            sysControl.generateMathEmample();
                             levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.SpDL)
@@ -851,6 +854,7 @@ namespace GameLevels
                             sysControls.Add(sysControl);
                             sysControl.posY = j;
                             sysControl.posX = i;
+                            sysControl.generateMathEmample();
                             levelMap[i, j] = LevelObject.Wall;
                         }
 
