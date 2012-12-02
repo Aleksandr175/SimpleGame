@@ -33,6 +33,14 @@ namespace GameLevels.levelObjects
 
         public bool isShadow = false; // включен ли туман войны?
 
+        /// <summary>
+        /// Принимаем объекты
+        /// </summary>
+        /// <param name="guards">Охранники</param>
+        /// <param name="objs">Объекты</param>
+        /// <param name="lasers">Лазеры</param>
+        /// <param name="cameras">Камеры слежения</param>
+        /// <param name="sysControls">Системы управления камерами</param>
         public Shadow(List<Guards> guards, List<Object> objs, List<Laser> lasers, List<Cameras> cameras, List<SysControl> sysControls)
         {
             this.guards = new List<Guards>();
