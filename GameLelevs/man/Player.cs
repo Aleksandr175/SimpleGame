@@ -533,5 +533,24 @@ namespace GameLevels
 
             spriteBatch.End();
         }
+
+        /// <summary>
+        /// Свойство для отображения количества монет в рюкзаке
+        /// </summary>
+        public int Coins
+        {
+            get
+            {
+                int count = 0;
+                foreach (BaseObject bo in backpack)
+                {
+                    if (bo is Money)
+                        count++;
+                }
+
+                return count;
+            }
+            private set { }
+        }
     }
 }
