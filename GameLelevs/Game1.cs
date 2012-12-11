@@ -64,8 +64,11 @@ namespace GameLevels
 
         //текстура инвентаря
         private Texture2D inventory;
-        //текстура меню
-        private Texture2D menu;
+        //кнопка меню в игре
+        Button menuButton;
+        Cursor cursor;
+        Menu menu;
+        GameState gameState = GameState.Menu;
 
         public Game1()
         {
@@ -96,7 +99,7 @@ namespace GameLevels
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            menu = new Menu(screenWidth);
             base.Initialize();
         }
 
@@ -156,10 +159,59 @@ namespace GameLevels
             player.setShadow(shadow); // передадим игроку ссылку на на туман войны
 
             inventory = storage.Pull2DTexture("inventory");
-            menu = storage.Pull2DTexture("menu");
+            menuButton = new Button(new Vector2(screenWidth - 40, 0), storage.Pull2DTexture("menu"));
+            cursor = new Cursor(storage.Pull2DTexture("cursor"));
+            LoadMenu();
 
         }
+        /// <summary>
+        /// Добавляет кнопки в меню
+        /// </summary>
+        public void LoadMenu()
+        {
+            Button exitGame = new Button(storage.Pull2DTexture("exitbutton"));
+            Button newGame = new Button(storage.Pull2DTexture("newgamebutton"));
+            Button chooseGame = new Button(storage.Pull2DTexture("chooselevel"));
+            exitGame.Click += new EventHandler(exitGame_Click);
+            newGame.Click += new EventHandler(newGame_Click);
+            menu.Items.Add(newGame);
+            menu.Items.Add(chooseGame);
+            menu.Items.Add(exitGame);
+        }
 
+        void newGame_Click(object sender, EventArgs e)
+        {
+            Button resumeGame = new Button(storage.Pull2DTexture("resumebutton"));
+            Button retryGame = new Button(storage.Pull2DTexture("retrybutton"));
+            resumeGame.Click += new EventHandler(resumeGame_Click);
+            retryGame.Click += new EventHandler(retryGame_Click);
+            menu.Items.RemoveAt(0);
+            menu.Items.Insert(0, resumeGame);
+            menu.Items.Insert(1, retryGame);
+            gameState = GameState.Game;
+        }
+
+        void exitGame_Click(object sender, EventArgs e)
+        {
+            this.Exit();
+        }
+
+        void resumeGame_Click(object sender, EventArgs e)
+        {
+            gameState = GameState.Game;
+        }
+
+        void retryGame_Click(object sender, EventArgs e)
+        {
+            levelLoader.CreateLevel(currentLvl);
+            shadow = new Shadow(levelLoader.guards, levelLoader.objs, levelLoader.lasers, levelLoader.cameras, levelLoader.sysControls);
+            Shadow.LevelLenghtX = LevelLoader.GetLenghtX / LevelLoader.Size;
+            Shadow.LevelLenghtY = LevelLoader.GetLenghtY / LevelLoader.Size;
+            shadow.ShowInRoom(LevelLoader.levelMapRooms[player.Position.X / LevelLoader.Size, player.Position.Y / LevelLoader.Size]);
+            player.setShadow(shadow);
+            player.ClearBackpack();
+            gameState = GameState.Game;
+        }
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
@@ -364,12 +416,26 @@ namespace GameLevels
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            if (gameState == GameState.Game)
+                UpdateGame(gameTime);
+            else
+                menu.Update();
+            cursor.Update();
+            base.Update(gameTime);
+        }
+
+        private void UpdateGame(GameTime gameTime)
+        {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
             // TODO: Add your update logic here
             KeyboardState state = Keyboard.GetState();
+            MouseState mouseState = Mouse.GetState();
+
+            if (menuButton.ButtonClick())
+                gameState = GameState.Menu;
 
             //изменить видимость игрока по кнопке V
             if (state.IsKeyDown(Keys.V) && oldState.IsKeyUp(Keys.V))
@@ -415,7 +481,7 @@ namespace GameLevels
                 }
             }
 
-            
+
             foreach (SysControl sysControl in levelLoader.sysControls)
             {
                 double radiusX = Math.Pow((player.Position.Center.X - sysControl.Rect.Center.X), 2);
@@ -450,7 +516,8 @@ namespace GameLevels
             }
 
             //смена уровня по нажатию на пробел
-            if (state.IsKeyDown(Keys.Space) && oldState.IsKeyUp(Keys.Space)) {
+            if (state.IsKeyDown(Keys.Space) && oldState.IsKeyUp(Keys.Space))
+            {
                 if (oldState != state)
                 {
                     currentLvl++;
@@ -470,7 +537,8 @@ namespace GameLevels
             oldState = state;
 
             // открываем дверь
-            if (state.IsKeyDown(Keys.E)) {
+            if (state.IsKeyDown(Keys.E))
+            {
                 int j = 0;
                 while (j < levelLoader.doors.Count)
                 {
@@ -479,11 +547,13 @@ namespace GameLevels
                     {
                         Door door = (Door)levelLoader.doors[j];
 
-                        if (door.IsClosed()) {
+                        if (door.IsClosed())
+                        {
 
                             Texture2D openDoor = door.GetOrientation() == DoorOrientation.Horiz ? storage.Pull2DTexture("door_horiz_open") : storage.Pull2DTexture("door_vertic_open");
 
-                            if (door.Open(openDoor)) {
+                            if (door.Open(openDoor))
+                            {
                                 toDraw.Add("The door was open");
                                 levelLoader.levelMap[door.GetIndexI(), door.GetIndexJ()] = LevelObject.Empty;
                             }
@@ -497,7 +567,7 @@ namespace GameLevels
 
 
 
-            
+
             // перемещение игрока
             if (state.IsKeyDown(Keys.Left))
             {
@@ -515,7 +585,7 @@ namespace GameLevels
             {
                 player.Run(PlayerMove.Down);
             }
-            else 
+            else
                 player.Stop();
 
             player.Update(gameTime);
@@ -539,12 +609,14 @@ namespace GameLevels
 
 
             int i = 0;
-            while (i < levelLoader.interactionSubjects.Count) {
+            while (i < levelLoader.interactionSubjects.Count)
+            {
                 // если игрок пересекается с каким-либо "интерактивным" объектом на уровне
                 if (levelLoader.interactionSubjects[i].Rect.Intersects(player.Position))
                 {
                     // если удалось добавить объект в рюкзак
-                    if (player.AddItem(levelLoader.interactionSubjects[i])) {
+                    if (player.AddItem(levelLoader.interactionSubjects[i]))
+                    {
 
                         levelLoader.blocks.Add(new Block(levelLoader.interactionSubjects[i].Rect, storage.Pull2DTexture("empty"), this, this.camera));
 
@@ -565,8 +637,6 @@ namespace GameLevels
                 }
                 else i++;
             }
-
-            base.Update(gameTime);
         }
 
         /// <summary>
@@ -576,11 +646,22 @@ namespace GameLevels
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            if (gameState == GameState.Game)
+                DrawGame();
+            else
+                menu.Draw(spriteBatch);
+            spriteBatch.Begin();
+            cursor.Draw(spriteBatch);
+            spriteBatch.End();
+            base.Draw(gameTime);
+        }
 
+        private void DrawGame()
+        {
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            
+
             // отрисовываем стены
             foreach (Block block in levelLoader.blocks)
             {
@@ -593,7 +674,7 @@ namespace GameLevels
                     laser.Draw(spriteBatch);
                 }
             }
-            
+
 
 
             foreach (BaseObject bo in levelLoader.interactionSubjects)
@@ -611,11 +692,11 @@ namespace GameLevels
                     spriteBatch.DrawString(storage.PullFont("font"), "Arrows - control", new Vector2(400, 60), Color.LimeGreen);
                     spriteBatch.DrawString(storage.PullFont("font"), "Space - chage level", new Vector2(400, 80), Color.LimeGreen);
                     spriteBatch.DrawString(storage.PullFont("font"), "C - turn off, on cameras", new Vector2(400, 100), Color.LimeGreen);
-                    
+
                     // инфа о уровне
                     spriteBatch.DrawString(storage.PullFont("font"), "LevelLenght = " + LevelLoader.GetLenghtX.ToString(), new Vector2(10, 40), Color.Orange); // распечатка длины уровня по X
                     spriteBatch.DrawString(storage.PullFont("font"), "LevelHeight = " + LevelLoader.GetLenghtY.ToString(), new Vector2(10, 60), Color.Orange); // распечатка длины уровня по Y 
-                    
+
                     // все для игрока
                     spriteBatch.DrawString(storage.PullFont("font"), "CurrentRoom - " + player.room, new Vector2(10, 440), Color.Orange); // комната
                     spriteBatch.DrawString(storage.PullFont("font"), "MyPosX - " + player.NewPosX.ToString(), new Vector2(10, 330), Color.Orange); // распечатка клетки для следующего хода охранника
@@ -636,24 +717,26 @@ namespace GameLevels
                     spriteBatch.DrawString(storage.PullFont("font"), "LaserY - " + Convert.ToInt32(levelLoader.lasers[0].Rect.Y + LevelLoader.Size / 2), new Vector2(10, 480), Color.Orange);
 
 
-                    
-                    
+
+
                 }
                 else
                 {
                     spriteBatch.DrawString(storage.PullFont("font"), "D - debug", new Vector2(400, 20), Color.LimeGreen); // тревога
 
                     int xCoord = 40;
-                    foreach (string str in toDraw) {
+                    foreach (string str in toDraw)
+                    {
                         spriteBatch.DrawString(storage.PullFont("font"), str, new Vector2(300, xCoord), Color.Red);
                         xCoord += 20;
                     }
-                    
+
                 }
 
-                
+
             }
-            catch {
+            catch
+            {
                 // TODO: необходимо как-то обрабатывать исключения!
             }
 
@@ -678,9 +761,9 @@ namespace GameLevels
             }
 
             //рисуется кнопка "меню"
-            spriteBatch.Draw(menu, new Rectangle(screenWidth - menu.Width, 0, menu.Width, menu.Height), Color.White);
+            menuButton.Draw(spriteBatch);
             //рисуется инвентарь
-            spriteBatch.Draw(inventory, new Rectangle(screenWidth - inventory.Width, menu.Width, inventory.Width, inventory.Height), Color.White);
+            spriteBatch.Draw(inventory, new Rectangle(screenWidth - inventory.Width, inventory.Width, inventory.Width, inventory.Height), Color.White);
 
             spriteBatch.End();
 
@@ -708,8 +791,6 @@ namespace GameLevels
                 }
             }
             spriteBatch.End();
-
-            base.Draw(gameTime);
         }
 
 

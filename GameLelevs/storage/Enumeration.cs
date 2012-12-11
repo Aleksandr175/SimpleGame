@@ -102,4 +102,11 @@ namespace Enumerations
 
         Player = 100
     }
+
+    //состояние игры
+    enum GameState
+    {
+        Game,
+        Menu
+    }
 }

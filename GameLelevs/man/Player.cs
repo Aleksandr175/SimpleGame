@@ -468,7 +468,13 @@ namespace GameLevels
 
             return true;
         }
-
+        /// <summary>
+        /// Очищает рюкзак
+        /// </summary>
+        public void ClearBackpack()
+        {
+            backpack.Clear();
+        }
         /// <summary>
         /// Возвращает может ли игрок открыть дверь
         /// </summary>

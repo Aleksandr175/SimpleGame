@@ -64,6 +64,12 @@ Content\Textures\lvl\doors\wood_door_horiz_open.xnb
 Content\Textures\lvl\doors\wood_door_vertic.xnb
 Content\Textures\lvl\doors\wood_door_vertic_open.xnb
 Content\Textures\Objects\plant.xnb
+Content\Textures\interface\chooselevel.xnb
+Content\Textures\interface\cursor.xnb
+Content\Textures\interface\exitbutton.xnb
+Content\Textures\interface\newgamebutton.xnb
+Content\Textures\interface\resumebutton.xnb
+Content\Textures\interface\retrybutton.xnb
 Content\lvls\tasks\mission_description1.xnb
 Content\lvls\lvl1.txt
 Content\lvls\lvl2.txt
