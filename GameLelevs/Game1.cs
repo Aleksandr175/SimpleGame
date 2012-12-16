@@ -740,7 +740,7 @@ namespace GameLevels
                 // TODO: необходимо как-то обрабатывать исключения!
             }
 
-            spriteBatch.DrawString(storage.PullFont("font"), levelLoader.sysControls[0].GetGeneratedMathExample(), new Vector2(120, 120), Color.Red);
+            //spriteBatch.DrawString(storage.PullFont("font"), levelLoader.sysControls[0].GetGeneratedMathExample(), new Vector2(120, 120), Color.Red);
 
 
             // отрисовываем объекты

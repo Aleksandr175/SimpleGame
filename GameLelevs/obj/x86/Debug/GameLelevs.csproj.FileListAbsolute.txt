@@ -498,3 +498,35 @@ D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\in
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\newgamebutton.xnb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\resumebutton.xnb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\retrybutton.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_D.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_L.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_R.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_U.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_D.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_L.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_R.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_U.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz_inactive.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert_inactive.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\inventory.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\menu.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UL.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UR.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UL_active.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UR_active.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_horiz.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_horiz_open.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_vertic.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_vertic_open.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\plant.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\chooselevel.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\cursor.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\exitbutton.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\newgamebutton.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\resumebutton.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\retrybutton.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\tasks\mission_description1.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.dll
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.pdb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\guard_eye.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\guard_eye_right.xnb

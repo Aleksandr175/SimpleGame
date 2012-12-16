@@ -89,6 +89,10 @@ namespace GameLevels
         // текстура вывода охранника в состоянии бега по горизонтали
         private Texture2D runTextureGoriz;
 
+        // текстура угла обзора охранника - горизонтально
+        private Texture2D eyeTextureGoriz;
+        private Texture2D eyeTextureVertic;
+        
         // для анимации
         public FrameInfo frameInfo;
 
@@ -157,12 +161,14 @@ namespace GameLevels
         /// <param name="playerTexture">Текстура охранника</param>
         /// <param name="width">Ширина кадра</param>
         /// <param name="height">Высота кадра</param>
-        public Guards(Texture2D idlTexture, Texture2D runTextureVert, Texture2D runTextureGoriz, Rectangle position, Game1 game, Player player, Camera camera, LevelLoader levelLoader)
+        public Guards(Texture2D idlTexture, Texture2D runTextureVert, Texture2D runTextureGoriz, Texture2D eyeTextureVertic, Texture2D eyeTextureGoriz, Rectangle position, Game1 game, Player player, Camera camera, LevelLoader levelLoader)
         {
             Init();
             this.idlTexture = idlTexture;
             this.runTextureGoriz = runTextureGoriz;
             this.runTextureVert = runTextureVert;
+            this.eyeTextureGoriz = eyeTextureGoriz;
+            this.eyeTextureVertic = eyeTextureVertic;
 
             this.game = game;
             this.camera = camera;
@@ -203,6 +209,7 @@ namespace GameLevels
             this.idlTexture = idlTexture;
             this.runTextureGoriz = runTextureGoriz;
             this.runTextureVert = runTextureVert;
+            
 
             this.frameInfo = frameInfo;
 
@@ -260,7 +267,11 @@ namespace GameLevels
             spriteBatch.Begin();
 
             Rectangle sourceRect = new Rectangle(frameInfo.width * frameInfo.current, 0, frameInfo.width, frameInfo.height);
+            Rectangle sourceRectEye = new Rectangle(0, 0, eyeTextureGoriz.Width, eyeTextureGoriz.Height);
             Rectangle screenRect = camera.GetScreenRect(this.position);  // рисуем только то, что помещается на экране. При передвижении камеры - охраники правильно отображаются. Не едут за камерой.
+            Rectangle screenRectEye = camera.GetScreenRect(this.position);  // рисуем только то, что помещается на экране. При передвижении камеры - охраники правильно отображаются. Не едут за камерой.
+            screenRectEye.Width = 70;
+            screenRectEye.Height = 70;
 
             if (this.isRunning)
             {
@@ -268,6 +279,7 @@ namespace GameLevels
 
                 SpriteEffects currentEffect = new SpriteEffects();
                 Texture2D currentTexture;
+                Texture2D currentEyeTexture;
 
                 // TODO: оптимизировать код!
                 switch (this.direction)
@@ -275,22 +287,38 @@ namespace GameLevels
                     case PlayerMove.Left:
                         currentEffect = SpriteEffects.FlipHorizontally;
                         currentTexture = runTextureGoriz;
+                        currentEyeTexture = eyeTextureGoriz;
+                        screenRectEye.X -= LevelLoader.Size + 25;
+                        screenRectEye.Y -= LevelLoader.Size / 2 + 2;
+
                         break;
                     case PlayerMove.Right:
                         currentEffect = SpriteEffects.None;
                         currentTexture = runTextureGoriz;
+                        currentEyeTexture = eyeTextureGoriz;
+                        //screenRectEye.X -= LevelLoader.Size / 2;
+                        screenRectEye.X += LevelLoader.Size / 2;
+                        screenRectEye.Y -= LevelLoader.Size / 2 + 3;
                         break;
                     case PlayerMove.Up:
                         currentEffect = SpriteEffects.FlipVertically;
                         currentTexture = runTextureVert;
+                        currentEyeTexture = eyeTextureVertic;
+                        screenRectEye.Y -= screenRectEye.Height - 5;
+                        screenRectEye.X -= screenRectEye.Width / 2 - 13;
                         break;
                     default:
                         currentEffect = SpriteEffects.None;
                         currentTexture = runTextureVert;
+                        currentEyeTexture = eyeTextureVertic;
+                        screenRectEye.Y += LevelLoader.Size / 2;
+                        screenRectEye.X -= LevelLoader.Size / 2 + 2;
+                        
                         break;
                 }
 
                 spriteBatch.Draw(currentTexture, screenRect, sourceRect, Color.White, 0, Vector2.Zero, currentEffect, 0);
+                spriteBatch.Draw(currentEyeTexture, screenRectEye, sourceRectEye, Color.White, 0, Vector2.Zero, currentEffect, 0);
 
             }
             else

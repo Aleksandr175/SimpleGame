@@ -672,7 +672,7 @@ namespace GameLevels
 
                             // инициализируем нового охранника
                             Rectangle RectGuard = new Rectangle(x + LevelLoader.SizePeople / 4, y + LevelLoader.SizePeople / 4, LevelLoader.SizePeople, LevelLoader.SizePeople);
-                            Guards guard = new Guards(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), RectGuard, game, player, this.camera, this);
+                            Guards guard = new Guards(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), storage.Pull2DTexture("guard_eye"), storage.Pull2DTexture("guard_eye_right"), RectGuard, game, player, this.camera, this);
                             guards.Add(guard);
                             guard.Run(PlayerMove.Left);
                         }
