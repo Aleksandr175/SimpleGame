@@ -164,6 +164,7 @@ namespace GameLevels
             LoadMenu();
 
         }
+
         /// <summary>
         /// Добавляет кнопки в меню
         /// </summary>
@@ -454,21 +455,24 @@ namespace GameLevels
             // вкл, выкл. тревогу
             if (state.IsKeyDown(Keys.A))
             {
-                if (Guards.generalAlarm) // анализируем всеобщую тревогу
+                if (player.IsVisible())
                 {
-                    foreach (Guards guard in levelLoader.guards)
+                    if (Guards.generalAlarm) // анализируем всеобщую тревогу
                     {
-                        guard.Alarm = false;
+                        foreach (Guards guard in levelLoader.guards)
+                        {
+                            guard.Alarm = false;
+                        }
+                        Guards.generalAlarm = false;
                     }
-                    Guards.generalAlarm = false;
-                }
-                else
-                {
-                    foreach (Guards guard in levelLoader.guards)
+                    else
                     {
-                        guard.Alarm = true;
+                        foreach (Guards guard in levelLoader.guards)
+                        {
+                            guard.Alarm = true;
+                        }
+                        Guards.generalAlarm = true;
                     }
-                    Guards.generalAlarm = true;
                 }
             }
 
@@ -489,9 +493,11 @@ namespace GameLevels
 
                 if (Math.Sqrt(radiusX + radiusY) <= 30)
                 {
+                    
                     // взаимодействие с ПУК
                     if (state.IsKeyDown(Keys.F))
                     {
+                        
                         sysControl.IsVisibleExample = true;
                         foreach (Cameras camera in levelLoader.cameras)
                         {
@@ -740,7 +746,7 @@ namespace GameLevels
                 // TODO: необходимо как-то обрабатывать исключения!
             }
 
-            //spriteBatch.DrawString(storage.PullFont("font"), levelLoader.sysControls[0].GetGeneratedMathExample(), new Vector2(120, 120), Color.Red);
+            spriteBatch.DrawString(storage.PullFont("font"), levelLoader.sysControls[0].GetGeneratedMathExample(), new Vector2(120, 120), Color.Red);
 
 
             // отрисовываем объекты

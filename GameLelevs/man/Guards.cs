@@ -296,7 +296,6 @@ namespace GameLevels
                         currentEffect = SpriteEffects.None;
                         currentTexture = runTextureGoriz;
                         currentEyeTexture = eyeTextureGoriz;
-                        //screenRectEye.X -= LevelLoader.Size / 2;
                         screenRectEye.X += LevelLoader.Size / 2;
                         screenRectEye.Y -= LevelLoader.Size / 2 + 3;
                         break;
@@ -531,18 +530,81 @@ namespace GameLevels
         /// </summary>
         private void checkAlarm()
         {
-            wayToPlayer = this.Way(levelMap, levelWidth, levelHeight, player.NewPosX, player.NewPosY); // прокладываем путь к игроку
-            if (wayToPlayer != null)
+
+            int posX = position.Center.X;
+            int posY = position.Center.Y;
+            
+            int posRight = position.Right;
+            int posLeft = position.Left;
+            int posTop = position.Top;
+            int posBottom = position.Bottom;
+            
+            int posPlayerX = player.Position.Center.X;
+            int posPlayerY = player.Position.Center.Y;
+            
+            int posPlayerLeft = player.Position.Left;
+            int posPlayerRight = player.Position.Right;
+            int posPlayerTop = player.Position.Top;
+            int posPlayerBottom = player.Position.Bottom;
+
+            if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size / 1.5)
             {
-                try
+                this.alarm = true;
+            }
+            else
+            {
+
+                // если охранник идет влево
+                if (this.direction == PlayerMove.Left)
                 {
-                    if (wayToPlayer.Count <= 3)
+                    if (posLeft >= posPlayerX)
                     {
-                        this.alarm = true;
+                        if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size * 1.5)
+                        {
+                            this.alarm = true;
+                        }
                     }
                 }
-                catch { }
+
+                // если охранник идет вправо
+                if (this.direction == PlayerMove.Right) {
+                    if (posRight <= posPlayerX)
+                    {
+                        if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size * 1.5)
+                        {
+                            this.alarm = true;
+                        }
+                    }
+                }
+
+                // если охранник идет вниз
+                if (this.direction == PlayerMove.Down)
+                {
+                    if (posBottom <= posPlayerY)
+                    {
+                        if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size * 1.5)
+                        {
+                            this.alarm = true;
+                        }
+                    }
+                }
+
+                // если охранник идет вверх
+                if (this.direction == PlayerMove.Up)
+                {
+                    if (posTop >= posPlayerY)
+                    {
+                        if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size * 1.5)
+                        {
+                            this.alarm = true;
+                        }
+                    }
+                }
+
+
             }
+
+            
         }
 
 
