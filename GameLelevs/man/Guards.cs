@@ -275,7 +275,6 @@ namespace GameLevels
 
             if (this.isRunning)
             {
-                //spriteBatch.Draw(runTexture, screenRect, sourceRect, Color.White);
 
                 SpriteEffects currentEffect = new SpriteEffects();
                 Texture2D currentTexture;
@@ -312,12 +311,11 @@ namespace GameLevels
                         currentEyeTexture = eyeTextureVertic;
                         screenRectEye.Y += LevelLoader.Size / 2;
                         screenRectEye.X -= LevelLoader.Size / 2 + 2;
-                        
                         break;
                 }
 
-                spriteBatch.Draw(currentTexture, screenRect, sourceRect, Color.White, 0, Vector2.Zero, currentEffect, 0);
-                spriteBatch.Draw(currentEyeTexture, screenRectEye, sourceRectEye, Color.White, 0, Vector2.Zero, currentEffect, 0);
+                spriteBatch.Draw(currentTexture, screenRect, sourceRect, Color.White, 0, Vector2.Zero, currentEffect, 0); // сам охранник
+                spriteBatch.Draw(currentEyeTexture, screenRectEye, sourceRectEye, Color.White, 0, Vector2.Zero, currentEffect, 0); // его зрение
 
             }
             else

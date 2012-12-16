@@ -22,6 +22,14 @@ namespace GameLevels.levelObjects
             set { isVisibleExample = value; }
         }
 
+        private int rightAnswer = 0; // правильный ответ на сгенерированный пример
+
+        public int RightAnswer
+        {
+            get { return rightAnswer; }
+        }
+
+
         private string generatedMathExample = ""; // сгенерированный пример для взлома компа
 
         public string GetGeneratedMathExample()
@@ -79,6 +87,7 @@ namespace GameLevels.levelObjects
             if (tempAction == 1)
             {
                 example += Convert.ToString("+ ");
+                this.rightAnswer = tempVar1 + tempVar2;
             }
             else
             {
@@ -87,10 +96,10 @@ namespace GameLevels.levelObjects
                     tempVar2 = random.Next(1, 5);
                 }
                 example += Convert.ToString("- ");
+                this.rightAnswer = tempVar1 - tempVar2;
             }
 
             example += Convert.ToString(tempVar2 + " = ?");
-
             this.generatedMathExample =  example;
         }
 

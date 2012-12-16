@@ -40,7 +40,7 @@ namespace GameLevels
         private List<string> toDraw;
 
         bool debugMode = false; // режим отладки. При нем включается вывод информации о объектах. Горячая клавиша D.
-        
+        bool areYouCanGetAnswer = false; // можно ли ответить на пример
         
         int screenWidth = 600; // длина и высота экрана
         int screenHeight = 600;
@@ -497,12 +497,39 @@ namespace GameLevels
                     // взаимодействие с ПУК
                     if (state.IsKeyDown(Keys.F))
                     {
-                        
+
                         sysControl.IsVisibleExample = true;
-                        foreach (Cameras camera in levelLoader.cameras)
+                        areYouCanGetAnswer = true;
+                        
+                    }
+                    if (areYouCanGetAnswer)
+                    {
+                        // вводим число и делаем проверку правильности
+                        KeyboardState state2 = Keyboard.GetState();
+                        int answerNumber = -1;
+
+                        if (state2.IsKeyDown(Keys.D0)) { answerNumber = 0; }
+                        if (state2.IsKeyDown(Keys.D1)) { answerNumber = 1; }
+                        if (state2.IsKeyDown(Keys.D2)) { answerNumber = 2; }
+                        if (state2.IsKeyDown(Keys.D3)) { answerNumber = 3; }
+                        if (state2.IsKeyDown(Keys.D4)) { answerNumber = 4; }
+                        if (state2.IsKeyDown(Keys.D5)) { answerNumber = 5; }
+                        if (state2.IsKeyDown(Keys.D6)) { answerNumber = 6; }
+                        if (state2.IsKeyDown(Keys.D7)) { answerNumber = 7; }
+                        if (state2.IsKeyDown(Keys.D8)) { answerNumber = 8; }
+                        if (state2.IsKeyDown(Keys.D9)) { answerNumber = 9; }
+                        
+                        if (answerNumber == sysControl.RightAnswer) 
                         {
-                            camera.IsActive = false;
+                            // если правильно - отключаем камеры
+                            foreach (Cameras camera in levelLoader.cameras)
+                            {
+                                camera.IsActive = false;
+                            }
                         }
+                        
+            
+                        
                     }
                 }
                 else
@@ -737,6 +764,10 @@ namespace GameLevels
                         xCoord += 20;
                     }
 
+
+                    spriteBatch.DrawString(storage.PullFont("font"), levelLoader.sysControls[0].GetGeneratedMathExample(), new Vector2(120, 120), Color.Red); // печать примера на экране
+
+
                 }
 
 
@@ -746,8 +777,7 @@ namespace GameLevels
                 // TODO: необходимо как-то обрабатывать исключения!
             }
 
-            spriteBatch.DrawString(storage.PullFont("font"), levelLoader.sysControls[0].GetGeneratedMathExample(), new Vector2(120, 120), Color.Red);
-
+            
 
             // отрисовываем объекты
             foreach (Object obj in levelLoader.objs)
