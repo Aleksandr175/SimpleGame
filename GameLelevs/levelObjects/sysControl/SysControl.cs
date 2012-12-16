@@ -15,12 +15,18 @@ namespace GameLevels.levelObjects
         Random random;
         public int posX;
         public int posY;
+
+        public int targetCameraX; // координата целевой камеры
+        public int targetCameraY;
+
         private bool isVisibleExample = false; // показываем на экране пример?
 
         public bool IsVisibleExample
         {
             set { isVisibleExample = value; }
         }
+
+        public bool isSysControlHacked = false; // взломана ли камера через пункт управления
 
         private int rightAnswer = 0; // правильный ответ на сгенерированный пример
 

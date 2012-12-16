@@ -491,7 +491,7 @@ namespace GameLevels
                 double radiusX = Math.Pow((player.Position.Center.X - sysControl.Rect.Center.X), 2);
                 double radiusY = Math.Pow((player.Position.Center.Y - sysControl.Rect.Center.Y), 2);
 
-                if (Math.Sqrt(radiusX + radiusY) <= 30)
+                if (Math.Sqrt(radiusX + radiusY) <= 30 && sysControl.isSysControlHacked == false)
                 {
                     
                     // взаимодействие с ПУК
@@ -524,7 +524,11 @@ namespace GameLevels
                             // если правильно - отключаем камеры
                             foreach (Cameras camera in levelLoader.cameras)
                             {
-                                camera.IsActive = false;
+                                if (sysControl.targetCameraX == camera.posX && sysControl.targetCameraY == camera.posY)
+                                {
+                                    camera.IsActive = false;
+                                    sysControl.isSysControlHacked = true; // взломано
+                                }
                             }
                         }
                         

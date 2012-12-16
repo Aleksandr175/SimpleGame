@@ -949,7 +949,7 @@ namespace GameLevels
 
 
 
-                //считывание пути траекторий охранников
+                //считывание пути траекторий и связки
                 lines = File.ReadAllLines(lvl_name); //получили массив строк                
 
                 //считываем размеры массива с уровнем (sizeFile[0] значение - строки, sizeFile[1] - колонки)
@@ -963,6 +963,8 @@ namespace GameLevels
                     str = lines[i].Split(' ');
                     LevelObject obj = (LevelObject)Int32.Parse(str[0]);
 
+                    // считываем траектории охранников
+                    // тип связки (Охранник Номер Шаг СледУ СледХ)
                     if (obj == LevelObject.Guard)
                     {
                         step = Convert.ToInt32(str[2]);
@@ -987,6 +989,26 @@ namespace GameLevels
                         guards[numberGuard].MaxStepToPatrol++;
 
 
+                    }
+
+                    // считываем связки (пункт управления - камера)
+                    // связка (ПунктУправления КоордХПункта КоордУПунта КоордХКамеры КоордУКамеры)
+                    if (obj == LevelObject.SpDL || obj == LevelObject.SpLU || obj == LevelObject.SpRD || obj == LevelObject.SpUR)
+                    {
+                        int posX = Convert.ToInt32(str[1]);
+                        int posY = Convert.ToInt32(str[2]);
+                        int posXCam = Convert.ToInt32(str[3]);
+                        int posYCam = Convert.ToInt32(str[4]);
+                        
+                        foreach (SysControl sysControl in sysControls)
+                        {
+                            if (sysControl.posX == posX && sysControl.posY == posY)
+                            {
+                                sysControl.targetCameraX = posXCam;
+                                sysControl.targetCameraY = posYCam;
+                            }
+                        }
+                        
                     }
                 }
 
