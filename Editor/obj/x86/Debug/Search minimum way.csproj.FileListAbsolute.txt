@@ -34,12 +34,3 @@ D:\Docyment\prog\Editor\Visual\Editor\obj\x86\Debug\Search_minimum_way.Form1.res
 D:\Docyment\prog\Editor\Visual\Editor\obj\x86\Debug\Search_minimum_way.Properties.Resources.resources
 D:\Docyment\prog\Editor\Visual\Editor\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\Docyment\prog\Editor\Visual\Editor\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\admin\Documents\GitHub\SimpleGame\Editor\obj\x86\Debug\Search minimum way.exe
-C:\Users\admin\Documents\GitHub\SimpleGame\Editor\obj\x86\Debug\Search minimum way.pdb
-C:\Users\admin\Documents\GitHub\SimpleGame\Editor\bin\Debug\Search minimum way.exe
-C:\Users\admin\Documents\GitHub\SimpleGame\Editor\bin\Debug\Search minimum way.pdb
-C:\Users\admin\Documents\GitHub\SimpleGame\Editor\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\admin\Documents\GitHub\SimpleGame\Editor\obj\x86\Debug\Search_minimum_way.Form1.resources
-C:\Users\admin\Documents\GitHub\SimpleGame\Editor\obj\x86\Debug\Search_minimum_way.Properties.Resources.resources
-C:\Users\admin\Documents\GitHub\SimpleGame\Editor\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\admin\Documents\GitHub\SimpleGame\Editor\obj\x86\Debug\GenerateResource.write.1.tlog
