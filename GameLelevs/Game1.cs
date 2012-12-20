@@ -159,7 +159,7 @@ namespace GameLevels
             player.setShadow(shadow); // передадим игроку ссылку на на туман войны
 
             inventory = storage.Pull2DTexture("inventory");
-            menuButton = new Button(new Vector2(screenWidth - 40, 0), storage.Pull2DTexture("menu"));
+            menuButton = new Button(new Vector2(screenWidth - 40, 0), storage.Pull2DTexture("menu_active"), storage.Pull2DTexture("menu"));
             cursor = new Cursor(storage.Pull2DTexture("cursor"));
             LoadMenu();
 
@@ -170,9 +170,9 @@ namespace GameLevels
         /// </summary>
         public void LoadMenu()
         {
-            Button exitGame = new Button(storage.Pull2DTexture("exitbutton"));
-            Button newGame = new Button(storage.Pull2DTexture("newgamebutton"));
-            Button chooseGame = new Button(storage.Pull2DTexture("chooselevel"));
+            Button exitGame = new Button(storage.Pull2DTexture("exitbutton_active"), storage.Pull2DTexture("exitbutton"));
+            Button newGame = new Button(storage.Pull2DTexture("newgamebutton_active"), storage.Pull2DTexture("newgamebutton"));
+            Button chooseGame = new Button(storage.Pull2DTexture("chooselevel_active"), storage.Pull2DTexture("chooselevel"));
             exitGame.Click += new EventHandler(exitGame_Click);
             newGame.Click += new EventHandler(newGame_Click);
             menu.Items.Add(newGame);
@@ -182,8 +182,8 @@ namespace GameLevels
 
         void newGame_Click(object sender, EventArgs e)
         {
-            Button resumeGame = new Button(storage.Pull2DTexture("resumebutton"));
-            Button retryGame = new Button(storage.Pull2DTexture("retrybutton"));
+            Button resumeGame = new Button(storage.Pull2DTexture("resumebutton_active"), storage.Pull2DTexture("resumebutton"));
+            Button retryGame = new Button(storage.Pull2DTexture("retrybutton_active"), storage.Pull2DTexture("retrybutton"));
             resumeGame.Click += new EventHandler(resumeGame_Click);
             retryGame.Click += new EventHandler(retryGame_Click);
             menu.Items.RemoveAt(0);
