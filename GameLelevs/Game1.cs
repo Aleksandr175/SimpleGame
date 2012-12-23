@@ -572,7 +572,7 @@ namespace GameLevels
                             // анализируем рюкзак
                             foreach (BaseObject obj in player.backpack)
                             {
-                                // смотрим, подходят ли наши ключи к двери
+                                // смотрим, подходят ли наши ключи к двери  
                                 if (obj is Key || obj is Card) {
                                     if (obj.targetDoorX == door.posX && obj.targetDoorY == door.posY)
                                     {
