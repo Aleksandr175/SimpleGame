@@ -379,7 +379,7 @@ namespace GameLevels
                 indexI = 0;
                 indexJ = 0;
 
-                if (lvl >= 5)
+                if (lvl >= 6)
                 {
                     // выделим память для карты уровня
                     levelMapFloor = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
@@ -406,6 +406,7 @@ namespace GameLevels
                     indexI = 0;
                     indexJ = 0;
 
+                    
                     // выделим память для комнат уровня
                     levelMapRooms = new int[sizeFile[1] + 1, sizeFile[0] + 1];
 
@@ -493,7 +494,7 @@ namespace GameLevels
                 {
                     for (int i = 0; i < sizeFile[1]; i++)
                     {
-                        for (int j = sizeFile[0]; j <= 2 * sizeFile[0]; j++)
+                        for (int j = sizeFile[0]; j <= 2 * sizeFile[0] - 1; j++)
                         {
                             Rectangle Rect = new Rectangle(i * LevelLoader.Size - LevelLoader.Size / 2, (j - sizeFile[0]) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
                             //Rectangle Rect2 = new Rectangle((i + 1) * LevelLoader.Size - LevelLoader.Size / 2, (j - sizeFile[0]) * LevelLoader.Size - LevelLoader.Size / 2, LevelLoader.Size, LevelLoader.Size);
@@ -963,7 +964,7 @@ namespace GameLevels
                 lines = File.ReadAllLines(lvl_name); //получили массив строк                
 
                 //считываем размеры массива с уровнем (sizeFile[0] значение - строки, sizeFile[1] - колонки)
-                for (int i = sizeFile[0] + 1; i < lines.Length; i++)
+                for (int i = sizeFile[0]; i < lines.Length; i++)
                 {
                     int step = 0;
                     int numberGuard = 0;
