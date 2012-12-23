@@ -11,6 +11,13 @@ namespace GameLevels.levelObjects
     {
         public Rectangle Rect { get; set; }
 
+        // координаты положения объекта
+        public int posX;
+        public int posY;
+
+        public int targetDoorX; // координаты двери-цели
+        public int targetDoorY;
+
         protected Texture2D texture;
         private Game1 game;
         protected Camera camera;

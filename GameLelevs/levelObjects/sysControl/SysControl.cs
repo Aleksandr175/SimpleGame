@@ -13,9 +13,7 @@ namespace GameLevels.levelObjects
     {
         private bool isActive = true;
         Random random;
-        public int posX;
-        public int posY;
-
+        
         public int targetCameraX; // координата целевой камеры
         public int targetCameraY;
 

@@ -11,7 +11,7 @@ namespace Enumerations
     enum Complexity { Low, Medium, High };
 
     // ориентация дверей
-    enum DoorOrientation { Horiz, Vert };
+    enum DoorOrientation { Horiz, Vert, HorizWood, VertWood };
 
     enum LevelObject { 
         Empty = 0, 

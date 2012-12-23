@@ -603,28 +603,32 @@ namespace GameLevels
                         {
                             Door door = new Door(Rect, storage.Pull2DTexture("door_horiz"), game, this.camera, EColor.Blue, DoorOrientation.Horiz, true, i, j);
                             doors.Add(door);
-
+                            door.posY = j;
+                            door.posX = i;
                             levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.DoorVertic)
                         {
                             Door door = new Door(Rect, storage.Pull2DTexture("door_vertic"), game, this.camera, EColor.Blue, DoorOrientation.Vert, true, i, j);
                             doors.Add(door);
-                            
+                            door.posY = j;
+                            door.posX = i;
                             levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.DoorHorizOpen)
                         {
                             Door door = new Door(Rect, storage.Pull2DTexture("door_horiz_open"), game, this.camera, EColor.Blue, DoorOrientation.Horiz);
                             doors.Add(door);
-                            
+                            door.posY = j;
+                            door.posX = i;
                             levelMap[i, j] = LevelObject.Empty;
                         }
                         if (levelMap[i, j] == LevelObject.DoorVerticOpen)
                         {
                             Door door = new Door(Rect, storage.Pull2DTexture("door_vertic_open"), game, this.camera, EColor.Blue, DoorOrientation.Vert);
                             doors.Add(door);
-
+                            door.posY = j;
+                            door.posX = i;
                             levelMap[i, j] = LevelObject.Empty;
                         }
 
@@ -633,30 +637,34 @@ namespace GameLevels
                         //двери деревянные
                         if (levelMap[i, j] == LevelObject.DoorWoodHoriz)
                         {
-                            Door door = new Door(Rect, storage.Pull2DTexture("wood_door_horiz"), game, this.camera, EColor.Blue, DoorOrientation.Horiz, true, i, j);
+                            Door door = new Door(Rect, storage.Pull2DTexture("wood_door_horiz"), game, this.camera, EColor.Blue, DoorOrientation.HorizWood, true, i, j);
                             doors.Add(door);
-
+                            door.posY = j;
+                            door.posX = i;
                             levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.DoorWoodVertic)
                         {
-                            Door door = new Door(Rect, storage.Pull2DTexture("wood_door_vertic"), game, this.camera, EColor.Blue, DoorOrientation.Vert, true, i, j);
+                            Door door = new Door(Rect, storage.Pull2DTexture("wood_door_vertic"), game, this.camera, EColor.Blue, DoorOrientation.VertWood, true, i, j);
                             doors.Add(door);
-
+                            door.posY = j;
+                            door.posX = i;
                             levelMap[i, j] = LevelObject.Wall;
                         }
                         if (levelMap[i, j] == LevelObject.DoorWoodHorizOpen)
                         {
-                            Door door = new Door(Rect, storage.Pull2DTexture("wood_door_horiz_open"), game, this.camera, EColor.Blue, DoorOrientation.Horiz);
+                            Door door = new Door(Rect, storage.Pull2DTexture("wood_door_horiz_open"), game, this.camera, EColor.Blue, DoorOrientation.HorizWood);
                             doors.Add(door);
-
+                            door.posY = j;
+                            door.posX = i;
                             levelMap[i, j] = LevelObject.Empty;
                         }
                         if (levelMap[i, j] == LevelObject.DoorWoodVerticOpen)
                         {
-                            Door door = new Door(Rect, storage.Pull2DTexture("wood_door_vertic_open"), game, this.camera, EColor.Blue, DoorOrientation.Vert);
+                            Door door = new Door(Rect, storage.Pull2DTexture("wood_door_vertic_open"), game, this.camera, EColor.Blue, DoorOrientation.VertWood);
                             doors.Add(door);
-
+                            door.posY = j;
+                            door.posX = i;
                             levelMap[i, j] = LevelObject.Empty;
                         }
 
@@ -665,7 +673,7 @@ namespace GameLevels
 
 
                         if (levelMap[i, j] == LevelObject.Guard)
-                        { //буква "о"
+                        {
                             //пол
                             Block block = new Block(Rect, storage.Pull2DTexture("empty"), game, this.camera);
                             blocks.Add(block);
@@ -735,15 +743,17 @@ namespace GameLevels
                         if (levelMap[i, j] == LevelObject.Key)
                         {
                             Key key = new Key(Rect, storage.Pull2DTexture("key"), game, this.camera, EColor.Blue);
+                            key.posY = j;
+                            key.posX = i;
                             interactionSubjects.Add(key);
-
                             levelMap[i, j] = LevelObject.Empty;
                         }
                         if (levelMap[i, j] == LevelObject.Card)
                         {
                             Card card = new Card(Rect, storage.Pull2DTexture("card"), game, this.camera);
+                            card.posY = j;
+                            card.posX = i;
                             interactionSubjects.Add(card);
-
                             levelMap[i, j] = LevelObject.Empty;
                         }
 
@@ -1010,6 +1020,32 @@ namespace GameLevels
                         }
                         
                     }
+
+
+
+                    // считываем связки (ключ - дверь)
+                    // связка (КлючИлиКарта КоордХКлюча КоордУКлюча КоордХДвери КоордУДвери)
+                    if (obj == LevelObject.Key || obj == LevelObject.Card)
+                    {
+                        int posX = Convert.ToInt32(str[1]);
+                        int posY = Convert.ToInt32(str[2]);
+                        int posXDoor = Convert.ToInt32(str[3]);
+                        int posYDoor = Convert.ToInt32(str[4]);
+
+                        foreach (BaseObject interactionSubject in interactionSubjects)
+                        {
+                            if (interactionSubject.posX == posX && interactionSubject.posY == posY)
+                            {
+                                interactionSubject.targetDoorX = posXDoor;
+                                interactionSubject.targetDoorY = posYDoor;
+                            }
+                        }
+
+                    }
+
+
+
+
                 }
 
 
@@ -1017,16 +1053,6 @@ namespace GameLevels
 
                 
             }
-
-
-
-
-            // ЕСЛИ УРОВЕНЬ НЕ ИЗ РЕДАКТОРА, ТО ОБЫЧНАЯ ЗАГРУЗКА
-            else
-            {
-                
-            }
-            
 
         }
 

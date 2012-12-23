@@ -40,10 +40,12 @@ namespace GameLevels
         private PlayerInfo playerInfo;
 
         // рюкзак игрока
-        private List<BaseObject> backpack;
+        public List<BaseObject> backpack;
+        // ключи
+        public List<BaseObject> keys;
 
         // максимальный размер рюкзака
-        private const int maxSizeBackpack = 6;
+        private const int maxSizeBackpack = 8;
 
         // ссылка на экран
         private Game1 game;
@@ -105,6 +107,7 @@ namespace GameLevels
             this.camera = camera;
             
             this.backpack = new List<BaseObject>();
+            this.keys = new List<BaseObject>();
         }
 
         /// <summary>
@@ -305,9 +308,6 @@ namespace GameLevels
                 }
 
 
-                showInCloseRoom();
-
-
             }
 
             //обратный отсчет со времени включения невидимости
@@ -328,7 +328,7 @@ namespace GameLevels
         /// Открывает все объекты в соседней комнате.
         /// Игрок должен смотреть в сторону двери, что открыть объекты
         /// </summary>
-        public void showInCloseRoom()
+        /*public void showInCloseRoom()
         {
             KeyboardState state = Keyboard.GetState();
             // подглядываем в закрытую дверь
@@ -384,7 +384,7 @@ namespace GameLevels
                     default: break;
                 }
             }
-        }
+        }*/
 
 
         /// <summary>
@@ -541,5 +541,7 @@ namespace GameLevels
             }
             private set { }
         }
+
+
     }
 }

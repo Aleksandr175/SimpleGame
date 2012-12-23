@@ -297,7 +297,10 @@ namespace GameLevels
         }
 
 
-
+        /// <summary>
+        /// Пересечения с лазерами
+        /// </summary>
+        /// <param name="rect">прямоугольник игрока</param>
         void CollidesLasers(Rectangle rect)
         {
             int centerX = rect.Left + LevelLoader.SizePeople / 2;
@@ -329,7 +332,10 @@ namespace GameLevels
         }
 
 
-
+        /// <summary>
+        /// пересечение с камерами слежения
+        /// </summary>
+        /// <param name="rect">прямоугольник игрока</param>
         void CollidesCameras(Rectangle rect)
         {
             int centerX = rect.Left + LevelLoader.SizePeople / 2;
@@ -544,6 +550,7 @@ namespace GameLevels
                         currentLvl = 1;
                     }
                     levelLoader.CreateLevel(currentLvl);
+                    player.ClearBackpack();
                     toDraw.Clear();
                 }
             }
@@ -562,14 +569,37 @@ namespace GameLevels
 
                         if (door.IsClosed())
                         {
-
-                            Texture2D openDoor = door.GetOrientation() == DoorOrientation.Horiz ? storage.Pull2DTexture("door_horiz_open") : storage.Pull2DTexture("door_vertic_open");
-
-                            if (door.Open(openDoor))
+                            // анализируем рюкзак
+                            foreach (BaseObject obj in player.backpack)
                             {
-                                toDraw.Add("The door was open");
-                                levelLoader.levelMap[door.GetIndexI(), door.GetIndexJ()] = LevelObject.Empty;
+                                // смотрим, подходят ли наши ключи к двери
+                                if (obj is Key || obj is Card) {
+                                    if (obj.targetDoorX == door.posX && obj.targetDoorY == door.posY)
+                                    {
+                                        // открываем дверь, присваиваем нужную текстуру открытой двери
+                                        Texture2D openDoor = door.GetOrientation() == DoorOrientation.Horiz ? storage.Pull2DTexture("door_horiz_open") : storage.Pull2DTexture("door_vertic_open");
+                                        if (door.GetOrientation() == DoorOrientation.HorizWood) 
+                                        { 
+                                            openDoor = storage.Pull2DTexture("wood_door_horiz_open");
+                                        }
+                                        else {
+                                            if (door.GetOrientation() == DoorOrientation.VertWood)
+                                            { 
+                                                openDoor = storage.Pull2DTexture("wood_door_vertic_open");
+                                            }
+                                        }
+
+                                        if (door.Open(openDoor))
+                                        {
+                                            toDraw.Add("The door was open");
+                                            levelLoader.levelMap[door.GetIndexI(), door.GetIndexJ()] = LevelObject.Empty;
+                                        }
+                                    }
+                                }
                             }
+
+
+                            
                         }
 
                     }

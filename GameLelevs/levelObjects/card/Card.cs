@@ -19,6 +19,9 @@ namespace GameLevels.levelObjects
         /// </summary>
         private EColor color;
 
+        public int targetDoorX; // координаты двери-цели
+        public int targetDoorY;
+
         public Card(Rectangle rect, Texture2D texture, Game1 game, Camera camera)
             : base(rect, texture, game, camera) {
         }

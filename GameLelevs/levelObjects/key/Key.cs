@@ -15,6 +15,9 @@ namespace GameLevels.levelObjects
         /// </summary>
         private EColor color;
 
+        public int targetDoorX; // координаты двери-цели
+        public int targetDoorY;
+
         private bool isVisible = true;
 
         /// <summary>
