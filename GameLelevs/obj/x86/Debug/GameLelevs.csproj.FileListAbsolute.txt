@@ -538,3 +538,9 @@ D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\in
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\newgamebutton_active.xnb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\resumebutton_active.xnb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\retrybutton_active.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\chooselevel_active.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\exitbutton_active.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\menu_active.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\newgamebutton_active.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\resumebutton_active.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\retrybutton_active.xnb

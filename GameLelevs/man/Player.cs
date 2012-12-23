@@ -50,8 +50,6 @@ namespace GameLevels
         // ссылка на камеру
         private Camera camera;
 
-        private Shadow shadow;
-
         private LevelLoader levelLoader;
 
         // старое положение игрока
@@ -117,16 +115,6 @@ namespace GameLevels
         {
             this.levelLoader = levelLoader;
         }
-
-        /// <summary>
-        /// Передаем ссылку на туман войны
-        /// </summary>
-        /// <param name="shadow"></param>
-        public void setShadow(Shadow shadow)
-        {
-            this.shadow = shadow;
-        }
-        
 
         /// <summary>
         /// Перегруженный конструктор класса
@@ -298,7 +286,6 @@ namespace GameLevels
                         changedPos = true;
                         if (room != LevelLoader.levelMapRooms[newPosX, newPosY]) {
                             room = LevelLoader.levelMapRooms[newPosX, newPosY];
-                            shadow.ShowInRoom(room); // показать объекты в комнате
                         }
                     }
 
@@ -361,7 +348,6 @@ namespace GameLevels
 
                         {
                             room = LevelLoader.levelMapRooms[nearX, nearY - 1];
-                            shadow.ShowInRoom(room);                        
                         }
                         break;
 
@@ -372,7 +358,6 @@ namespace GameLevels
                             || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVerticOpen || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVertic)
                         {
                             room = LevelLoader.levelMapRooms[nearX - 1, nearY];
-                            shadow.ShowInRoom(room);                        
                         }
                         break;
 
@@ -383,7 +368,6 @@ namespace GameLevels
                             || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVerticOpen || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVertic)
                         {
                             room = LevelLoader.levelMapRooms[nearX + 1, nearY];
-                            shadow.ShowInRoom(room);                        
                         }
                         break;
 
@@ -393,8 +377,7 @@ namespace GameLevels
                         if (levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorHorizOpen || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorHoriz
                             || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVerticOpen || levelLoader.levelDoors[nearX, nearY] == LevelObject.DoorVertic)
                         {
-                            room = LevelLoader.levelMapRooms[nearX, nearY + 1];
-                            shadow.ShowInRoom(room);                        
+                            room = LevelLoader.levelMapRooms[nearX, nearY + 1];                    
                         }
                         break;
 

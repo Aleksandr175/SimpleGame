@@ -27,8 +27,7 @@ namespace GameLevels
         Player player;
         Camera camera;
         LevelLoader levelLoader;
-        Shadow shadow;
-
+        
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -152,12 +151,6 @@ namespace GameLevels
             else
                 levelLoader.CreateLevel(maxLvl);
 
-            shadow = new Shadow(levelLoader.guards, levelLoader.objs, levelLoader.lasers, levelLoader.cameras, levelLoader.sysControls);
-            Shadow.LevelLenghtX = LevelLoader.GetLenghtX / LevelLoader.Size;
-            Shadow.LevelLenghtY = LevelLoader.GetLenghtY / LevelLoader.Size;
-            shadow.ShowInRoom(LevelLoader.levelMapRooms[player.Position.X / LevelLoader.Size, player.Position.Y / LevelLoader.Size]);
-            player.setShadow(shadow); // передадим игроку ссылку на на туман войны
-
             inventory = storage.Pull2DTexture("inventory");
             menuButton = new Button(new Vector2(screenWidth - 40, 0), storage.Pull2DTexture("menu_active"), storage.Pull2DTexture("menu"));
             cursor = new Cursor(storage.Pull2DTexture("cursor"));
@@ -205,11 +198,6 @@ namespace GameLevels
         void retryGame_Click(object sender, EventArgs e)
         {
             levelLoader.CreateLevel(currentLvl);
-            shadow = new Shadow(levelLoader.guards, levelLoader.objs, levelLoader.lasers, levelLoader.cameras, levelLoader.sysControls);
-            Shadow.LevelLenghtX = LevelLoader.GetLenghtX / LevelLoader.Size;
-            Shadow.LevelLenghtY = LevelLoader.GetLenghtY / LevelLoader.Size;
-            shadow.ShowInRoom(LevelLoader.levelMapRooms[player.Position.X / LevelLoader.Size, player.Position.Y / LevelLoader.Size]);
-            player.setShadow(shadow);
             player.ClearBackpack();
             gameState = GameState.Game;
         }
@@ -545,13 +533,6 @@ namespace GameLevels
                 //camera.changeActiveCamera();
             }
 
-            // вкл, выкл. туман войны
-            if (state.IsKeyDown(Keys.S))
-            {
-                shadow.isShadow = !shadow.isShadow;
-                shadow.HideOrShowAll(); // отображает или скрывание сущности на экране
-            }
-
             //смена уровня по нажатию на пробел
             if (state.IsKeyDown(Keys.Space) && oldState.IsKeyUp(Keys.Space))
             {
@@ -563,11 +544,6 @@ namespace GameLevels
                         currentLvl = 1;
                     }
                     levelLoader.CreateLevel(currentLvl);
-                    shadow = new Shadow(levelLoader.guards, levelLoader.objs, levelLoader.lasers, levelLoader.cameras, levelLoader.sysControls);
-                    Shadow.LevelLenghtX = LevelLoader.GetLenghtX / LevelLoader.Size;
-                    Shadow.LevelLenghtY = LevelLoader.GetLenghtY / LevelLoader.Size;
-                    shadow.ShowInRoom(LevelLoader.levelMapRooms[player.Position.X / LevelLoader.Size, player.Position.Y / LevelLoader.Size]);
-                    player.setShadow(shadow); // передадим игроку ссылку на на туман войны
                     toDraw.Clear();
                 }
             }
@@ -738,7 +714,6 @@ namespace GameLevels
                     spriteBatch.DrawString(storage.PullFont("font"), "CurrentRoom - " + player.room, new Vector2(10, 440), Color.Orange); // комната
                     spriteBatch.DrawString(storage.PullFont("font"), "MyPosX - " + player.NewPosX.ToString(), new Vector2(10, 330), Color.Orange); // распечатка клетки для следующего хода охранника
                     spriteBatch.DrawString(storage.PullFont("font"), "MyPosY - " + player.NewPosY.ToString(), new Vector2(10, 350), Color.Orange); // распечатка клетки для следующего хода охранника
-                    spriteBatch.DrawString(storage.PullFont("font"), "ShadowOfWar - " + shadow.isShadow, new Vector2(10, 400), Color.Orange); // тревога
                     spriteBatch.DrawString(storage.PullFont("font"), "CamerasIsActive - " + levelLoader.cameras[0].IsActive, new Vector2(10, 420), Color.Orange); // тревога
 
                     spriteBatch.DrawString(storage.PullFont("font"), "SomeValue - " + this.someValue, new Vector2(10, 500), Color.Yellow);

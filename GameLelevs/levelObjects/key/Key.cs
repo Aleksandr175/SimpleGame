@@ -15,7 +15,7 @@ namespace GameLevels.levelObjects
         /// </summary>
         private EColor color;
 
-        private bool isVisible = false;
+        private bool isVisible = true;
 
         /// <summary>
         /// Конструктор класса
