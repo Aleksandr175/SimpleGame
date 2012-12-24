@@ -692,13 +692,15 @@ namespace GameLevels
             if (gameState == GameState.Game)
                 DrawGame();
             else
+            {
                 menu.Draw(spriteBatch);
-            spriteBatch.Begin();
-            if (menu.Hover() || menuButton.Hover())
-                cursor.DrawPointer(spriteBatch);
-            else
-                cursor.Draw(spriteBatch);
-            spriteBatch.End();
+                spriteBatch.Begin();
+                if (menu.Hover())
+                    cursor.DrawPointer(spriteBatch);
+                else
+                    cursor.Draw(spriteBatch);
+                spriteBatch.End();
+            }
             base.Draw(gameTime);
         }
 
@@ -812,7 +814,11 @@ namespace GameLevels
             menuButton.Draw(spriteBatch);
             //рисуется инвентарь
             spriteBatch.Draw(inventory, new Rectangle(screenWidth - inventory.Width, inventory.Width, inventory.Width, inventory.Height), Color.White);
-
+            //рисуется курсор
+            if (menuButton.Hover())
+                cursor.DrawPointer(spriteBatch);
+            else
+                cursor.Draw(spriteBatch);
             spriteBatch.End();
 
 
