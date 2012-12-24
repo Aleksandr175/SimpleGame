@@ -10,12 +10,14 @@ namespace GameLevels
     class Cursor
     {
         private Vector2 pos;
-        private Texture2D texture;
+        private Texture2D texMouse;
+        private Texture2D texPoint;
         private MouseState mouseState;
-        public Cursor(Texture2D tex)
+        public Cursor(Texture2D tex_mouse, Texture2D tex_point)
         {
             this.pos = Vector2.Zero;
-            this.texture = tex;
+            this.texMouse = tex_mouse;
+            this.texPoint = tex_point;
         }
         public void Update()
         {
@@ -25,7 +27,13 @@ namespace GameLevels
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.pos, Color.White);
+
+            spriteBatch.Draw(this.texMouse, this.pos, Color.White);
+        }
+
+        public void DrawPointer(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(this.texPoint, this.pos, Color.White);
         }
     }
 }

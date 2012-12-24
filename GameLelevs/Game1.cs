@@ -153,7 +153,7 @@ namespace GameLevels
 
             inventory = storage.Pull2DTexture("inventory");
             menuButton = new Button(new Vector2(screenWidth - 40, 0), storage.Pull2DTexture("menu_active"), storage.Pull2DTexture("menu"));
-            cursor = new Cursor(storage.Pull2DTexture("cursor"));
+            cursor = new Cursor(storage.Pull2DTexture("cursor"), storage.Pull2DTexture("pointer"));
             LoadMenu();
 
         }
@@ -694,7 +694,10 @@ namespace GameLevels
             else
                 menu.Draw(spriteBatch);
             spriteBatch.Begin();
-            cursor.Draw(spriteBatch);
+            if (menu.Hover() || menuButton.Hover())
+                cursor.DrawPointer(spriteBatch);
+            else
+                cursor.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

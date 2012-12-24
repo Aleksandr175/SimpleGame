@@ -40,5 +40,12 @@ namespace GameLevels
             spriteBatch.End();
         }
 
+        public bool Hover()
+        {
+            for (int i = 0; i < Items.Count; i++)
+                if (Items[i].Hover())
+                    return true;
+            return false;
+        }
     }
 }

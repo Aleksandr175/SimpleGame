@@ -78,6 +78,7 @@ Content\Textures\interface\menu_active.xnb
 Content\Textures\interface\newgamebutton_active.xnb
 Content\Textures\interface\resumebutton_active.xnb
 Content\Textures\interface\retrybutton_active.xnb
+Content\Textures\interface\pointer.xnb
 Content\lvls\tasks\mission_description1.xnb
 Content\lvls\lvl1.txt
 Content\lvls\lvl2.txt

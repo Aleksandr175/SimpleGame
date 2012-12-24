@@ -119,7 +119,7 @@
     <Compile Include="coreMission\ICoreMission.cs" />
     <Compile Include="Interface\Button.cs" />
     <Compile Include="Interface\Menu.cs" />
-    <Compile Include="Interface\Mouse.cs" />
+    <Compile Include="Interface\Cursor.cs" />
     <Compile Include="levelObjects\baseObject\BaseObject.cs" />
     <Compile Include="levelObjects\block\Block.cs" />
     <Compile Include="levelObjects\Camera.cs" />
