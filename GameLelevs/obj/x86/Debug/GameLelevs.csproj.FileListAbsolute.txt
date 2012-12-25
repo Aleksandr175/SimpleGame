@@ -280,63 +280,6 @@ C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl6.txt
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\floor.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl7.txt
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\myFont1.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run_goriz.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\floor.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\empty.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\brilliant.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\card.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\key.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_horiz.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_vert.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_D.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_L.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_R.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_U.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\money.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture1.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture2.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture3.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\rubin.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spDL.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spLU.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spRD.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spUR.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableD.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableL.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableR.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableU.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_4sides.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_dlu.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_down_right.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_goriz.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_down.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_up.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_lur.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_rdl.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_up_right.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_urd.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_vert.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz_open.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic_open.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl1.txt
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl2.txt
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl3.txt
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl4.txt
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl5.txt
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl6.txt
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl7.txt
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\GameLelevs.exe
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\GameLelevs.pdb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.exe
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.pdb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\floor.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\brilliant.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_D.xnb
@@ -417,7 +360,6 @@ C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture3.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\rubin.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl8.txt
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl8.txt
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl8.txt
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.dll
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.pdb
@@ -428,19 +370,6 @@ C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Text
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz_inactive.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert_inactive.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\tasks\mission_description1.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_D.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_L.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_R.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_U.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_D.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_L.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_R.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_U.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz_inactive.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert_inactive.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\tasks\mission_description1.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.dll
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.pdb
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_D.xnb
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_L.xnb
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_R.xnb
@@ -463,12 +392,6 @@ C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Text
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UL.xnb
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UR.xnb
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UL_active.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\inventory.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\menu.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UL.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UR.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UL_active.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UR_active.xnb
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_horiz.xnb
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_horiz_open.xnb
@@ -486,18 +409,6 @@ D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_h
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_vertic.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_vertic_open.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\plant.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UR_active.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_horiz.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_horiz_open.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_vertic.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_vertic_open.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\plant.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\chooselevel.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\cursor.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\exitbutton.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\newgamebutton.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\resumebutton.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\retrybutton.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_D.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_L.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_R.xnb
@@ -530,18 +441,103 @@ C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.pdb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\guard_eye.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\guard_eye_right.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\guard_eye.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\guard_eye_right.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\chooselevel_active.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\exitbutton_active.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\menu_active.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\newgamebutton_active.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\resumebutton_active.xnb
-D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\retrybutton_active.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\chooselevel_active.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\exitbutton_active.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\menu_active.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\newgamebutton_active.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\resumebutton_active.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\retrybutton_active.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\myFont1.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\menufont.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\player_run_goriz.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\floor.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\empty.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\brilliant.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\card.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\key.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_horiz.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser1_vert.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_D.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_L.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_R.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser3_U.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\money.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture1.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture2.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\picture3.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\rubin.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spDL.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spLU.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spRD.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\spUR.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableD.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableL.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableR.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\tableU.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_4sides.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_dlu.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_down_right.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_goriz.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_down.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_left_up.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_lur.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_rdl.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_up_right.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_urd.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\wall_vert.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_horiz_open.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\door_vertic_open.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_D.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_L.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_R.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\chairs_U.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_D.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_L.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_R.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\sofa_U.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_horiz_inactive.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\laser2_vert_inactive.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\inventory.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\menu.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UL.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UR.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UL_active.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\camera_UR_active.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_horiz.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_horiz_open.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_vertic.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\lvl\doors\wood_door_vertic_open.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\plant.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\cursor.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\guard_eye.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\players\guard_eye_right.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\menu_active.xnb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\pointer.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\cloak.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\button.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\close.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\open.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\tasks\mission_description1.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl1.txt
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl2.txt
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl3.txt
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl4.txt
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl5.txt
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl6.txt
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl7.txt
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\lvl8.txt
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvl_info.txt
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\GameLelevs.exe
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\GameLelevs.pdb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.dll
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\XMLContent.pdb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.exe
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\obj\x86\Debug\GameLelevs.pdb

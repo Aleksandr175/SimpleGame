@@ -107,6 +107,7 @@ namespace Enumerations
     enum GameState
     {
         Game,
-        Menu
+        Menu,
+        LvlMenu
     }
 }

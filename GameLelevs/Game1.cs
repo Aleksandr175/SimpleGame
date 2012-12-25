@@ -63,10 +63,17 @@ namespace GameLevels
 
         //текстура инвентаря
         private Texture2D inventory;
+        //текстура для кнопки
+        private Texture2D buttonTexture;
+        //шрифт в меню
+        private SpriteFont menuFont;
         //кнопка меню в игре
         Button menuButton;
         Cursor cursor;
+        //главное меню
         Menu menu;
+        //меню выбора уровня
+        Menu menuLvl;
         GameState gameState = GameState.Menu;
 
         public Game1()
@@ -99,6 +106,7 @@ namespace GameLevels
         {
             // TODO: Add your initialization logic here
             menu = new Menu(screenWidth);
+            menuLvl = new Menu(screenWidth);
             base.Initialize();
         }
 
@@ -121,7 +129,8 @@ namespace GameLevels
             storage.LoadTexture2DFolder("Content/Textures");
             storage.LoadTexture2DFolder("Content/players");
             storage.PushFont("font", Content.Load<SpriteFont>("myFont1"));
-            
+            storage.PushFont("menufont", Content.Load<SpriteFont>("menufont"));
+
             // выбираем все возможные номера уровней
             storage.GetLevelNumbers();
 
@@ -151,32 +160,66 @@ namespace GameLevels
             else
                 levelLoader.CreateLevel(maxLvl);
 
+            menuFont = storage.PullFont("menufont");
             inventory = storage.Pull2DTexture("inventory");
-            menuButton = new Button(new Vector2(screenWidth - 40, 0), storage.Pull2DTexture("menu_active"), storage.Pull2DTexture("menu"));
+            menuButton = new Button(new Vector2(screenWidth - 40, 0), storage.Pull2DTexture("menu_active"), storage.PullFont("menufont"), "меню");
+            menuButton.Click += new EventHandler(menuButton_Click);
             cursor = new Cursor(storage.Pull2DTexture("cursor"), storage.Pull2DTexture("pointer"));
+
+            buttonTexture = storage.Pull2DTexture("button");
             LoadMenu();
+            LoadLvlMenu();
 
         }
 
         /// <summary>
-        /// Добавляет кнопки в меню
+        /// Загрузка главного меню
         /// </summary>
         public void LoadMenu()
         {
-            Button exitGame = new Button(storage.Pull2DTexture("exitbutton_active"), storage.Pull2DTexture("exitbutton"));
-            Button newGame = new Button(storage.Pull2DTexture("newgamebutton_active"), storage.Pull2DTexture("newgamebutton"));
-            Button chooseGame = new Button(storage.Pull2DTexture("chooselevel_active"), storage.Pull2DTexture("chooselevel"));
+            menu.font = menuFont;
+            menu.LoadCursor(cursor);
+            Button exitGame = new Button(buttonTexture, menuFont, "Выход");
+            Button newGame = new Button(buttonTexture, menuFont, "Новая игра");
+            Button chooseGame = new Button(buttonTexture, menuFont, "Выбрать уровень");
             exitGame.Click += new EventHandler(exitGame_Click);
             newGame.Click += new EventHandler(newGame_Click);
+            chooseGame.Click += new EventHandler(chooseGame_Click);
             menu.Items.Add(newGame);
             menu.Items.Add(chooseGame);
             menu.Items.Add(exitGame);
         }
-
+        /// <summary>
+        /// Загрузка меню выбора уровня
+        /// </summary>
+        public void LoadLvlMenu()
+        {
+            menuLvl.LoadTextures(storage.Pull2DTexture("open"), storage.Pull2DTexture("close"), menuFont);
+            menuLvl.LoadCursor(cursor);
+            for (int i = 0; i < 10; i++)
+            {
+                Button button = new Button(buttonTexture, menuFont, "Уровень " + (i + 1));
+                int num = i;
+                button.Click += delegate(object sender, EventArgs e) { button_Click(sender, e, num); };
+                menuLvl.Items.Add(button);
+            }
+            Button next = new Button(buttonTexture, menuFont, "вперед");
+            Button previous = new Button(buttonTexture, menuFont, "назад");
+            Button back = new Button(buttonTexture, menuFont, "в меню");
+            back.Click += new EventHandler(back_Click);
+            previous.Click += new EventHandler(previous_Click);
+            next.Click += new EventHandler(next_Click);
+            menuLvl.next = next;
+            menuLvl.previous = previous;
+            menuLvl.back = back;
+        }
+        /// <summary>
+        /// Обработка нажатия на "новая игра"
+        /// </summary>
         void newGame_Click(object sender, EventArgs e)
         {
-            Button resumeGame = new Button(storage.Pull2DTexture("resumebutton_active"), storage.Pull2DTexture("resumebutton"));
-            Button retryGame = new Button(storage.Pull2DTexture("retrybutton_active"), storage.Pull2DTexture("retrybutton"));
+            Button resumeGame = new Button(buttonTexture, storage.PullFont("menufont"), "Продолжить");
+            Button retryGame = new Button(buttonTexture, storage.PullFont("menufont"), "Начать заново");
             resumeGame.Click += new EventHandler(resumeGame_Click);
             retryGame.Click += new EventHandler(retryGame_Click);
             menu.Items.RemoveAt(0);
@@ -184,22 +227,76 @@ namespace GameLevels
             menu.Items.Insert(1, retryGame);
             gameState = GameState.Game;
         }
-
+        /// <summary>
+        /// Обработка нажатия на "выход"
+        /// </summary>
         void exitGame_Click(object sender, EventArgs e)
         {
             this.Exit();
         }
-
+        /// <summary>
+        /// Обработка нажатия на "продолжить"
+        /// </summary>
         void resumeGame_Click(object sender, EventArgs e)
         {
             gameState = GameState.Game;
         }
-
+        /// <summary>
+        /// Обработка нажатия на "начать заново"
+        /// </summary>
         void retryGame_Click(object sender, EventArgs e)
         {
             levelLoader.CreateLevel(currentLvl);
             player.ClearBackpack();
             gameState = GameState.Game;
+        }
+        /// <summary>
+        /// Обработка нажатия на "выбрать уровень"
+        /// </summary>
+        void chooseGame_Click(object sender, EventArgs e)
+        {
+            gameState = GameState.LvlMenu;
+        }
+        /// <summary>
+        /// Обработка нажатия на "меню"
+        /// </summary>
+        void menuButton_Click(object sender, EventArgs e)
+        {
+            gameState = GameState.Menu;
+        }
+        /// <summary>
+        /// Обработка нажатия на "вперед"
+        /// </summary>
+        void next_Click(object sender, EventArgs e)
+        {
+            menuLvl.page++;
+        }
+        /// <summary>
+        /// Обработка нажатия на "назад"
+        /// </summary>
+        void previous_Click(object sender, EventArgs e)
+        {
+            if (menuLvl.page > 0)
+                menuLvl.page--;
+        }
+        /// <summary>
+        /// Обработка нажатия на "в меню"
+        /// </summary>
+        void back_Click(object sender, EventArgs e)
+        {
+            gameState = GameState.Menu;
+        }
+        /// <summary>
+        /// Обработка нажатия на "уровень"
+        /// </summary>
+        void button_Click(object sender, EventArgs e, int num)
+        {
+            if (menuLvl.IsLvlFinished(num-1))
+            {
+                currentLvl = num+1;
+                levelLoader.CreateLevel(currentLvl);
+                gameState = GameState.Game;
+            }
         }
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -413,24 +510,26 @@ namespace GameLevels
         {
             if (gameState == GameState.Game)
                 UpdateGame(gameTime);
-            else
+            else if (gameState == GameState.Menu)
                 menu.Update();
-            cursor.Update();
+            else
+                menuLvl.Update();
             base.Update(gameTime);
         }
 
         private void UpdateGame(GameTime gameTime)
         {
+            cursor.Update();
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
             // TODO: Add your update logic here
             KeyboardState state = Keyboard.GetState();
-            MouseState mouseState = Mouse.GetState();
 
-            if (menuButton.ButtonClick())
-                gameState = GameState.Menu;
+            //нажатие на меню
+            if (menuButton.ButtonClick(cursor.State, cursor.OldState))
+                menuButton.OnClick();
 
             //изменить видимость игрока по кнопке V
             if (state.IsKeyDown(Keys.V) && oldState.IsKeyUp(Keys.V))
@@ -542,6 +641,7 @@ namespace GameLevels
             //смена уровня по нажатию на пробел
             if (state.IsKeyDown(Keys.Space) && oldState.IsKeyUp(Keys.Space))
             {
+                SaveLvlInfo();
                 if (oldState != state)
                 {
                     currentLvl++;
@@ -691,16 +791,10 @@ namespace GameLevels
             GraphicsDevice.Clear(Color.CornflowerBlue);
             if (gameState == GameState.Game)
                 DrawGame();
-            else
-            {
+            else if (gameState == GameState.Menu)
                 menu.Draw(spriteBatch);
-                spriteBatch.Begin();
-                if (menu.Hover())
-                    cursor.DrawPointer(spriteBatch);
-                else
-                    cursor.Draw(spriteBatch);
-                spriteBatch.End();
-            }
+            else
+                menuLvl.Draw(spriteBatch);
             base.Draw(gameTime);
         }
 
@@ -815,7 +909,7 @@ namespace GameLevels
             //рисуется инвентарь
             spriteBatch.Draw(inventory, new Rectangle(screenWidth - inventory.Width, inventory.Width, inventory.Width, inventory.Height), Color.White);
             //рисуется курсор
-            if (menuButton.Hover())
+            if (menuButton.Hover(cursor.State))
                 cursor.DrawPointer(spriteBatch);
             else
                 cursor.Draw(spriteBatch);
@@ -847,7 +941,15 @@ namespace GameLevels
             spriteBatch.End();
         }
 
-
+        /// <summary>
+        /// Сохраняет информацию о пройденных уровнях
+        /// </summary>
+        public void SaveLvlInfo()
+        {
+            string[] info = File.ReadAllLines("content/lvl_info.txt");
+            info[currentLvl - 1] = currentLvl + " " + "1";
+            File.WriteAllLines("content/lvl_info.txt", info);
+        }
 
 
 

@@ -11,26 +11,31 @@ namespace GameLevels
     {
         public Vector2 position;
         public Texture2D tex;
-        public Texture2D texLight, texDark;
-        MouseState mouseState;
         public event EventHandler Click;
-
-        public Button(Texture2D texLight, Texture2D texDark)
+        Color color;
+        SpriteFont font;
+        string name;
+        public Button() { }
+        public Button(Texture2D tex, SpriteFont font, string name)
         {
-            this.texLight = texLight;
-            this.texDark = texDark;
-            this.tex = texDark;
+            this.tex = tex;
+            this.color = Color.White;
+            this.font = font;
+            this.name = name;
         }
-        public Button(Vector2 pos, Texture2D texLight, Texture2D texDark)
+        public Button(Vector2 pos, Texture2D tex, SpriteFont font, string name)
         {
             this.position = pos;
-            this.texLight = texLight;
-            this.texDark = texDark;
-            this.tex = texDark;
+            this.tex = tex;
+            this.color = Color.White;
+            this.font = font;
+            this.name = name;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, position, Color.White);
+            spriteBatch.Draw(tex, position, color);
+            Vector2 size = font.MeasureString(name);
+            spriteBatch.DrawString(font, name, position, Color.White, 0, new Vector2(-130 + size.X / 2, -30 + size.Y / 2), 1, SpriteEffects.None, 0);
         }
 
         public void OnClick()
@@ -38,27 +43,34 @@ namespace GameLevels
             if (Click != null)
                 Click(this, null);
         }
-
-        public bool Hover()
+        /// <summary>
+        /// Проверка на нахождение мыши на кнопке
+        /// </summary>
+        /// <param name="mouseState">состояние мыши</param>
+        public bool Hover(MouseState mouseState)
         {
-            mouseState = Mouse.GetState();
+            MouseState mouse = Mouse.GetState();
             if ((mouseState.X > this.position.X) && (mouseState.X < this.position.X + this.tex.Width)
                     && (mouseState.Y > this.position.Y) && (mouseState.Y < this.position.Y + this.tex.Height))
             {
-                tex = texLight;
+                color = Color.White;
                 return true;
             }
             else
             {
-                tex = texDark;
+                color = new Color(255, 255, 255, 190);
                 return false;
             }
         }
-
-        public bool ButtonClick()
+        /// <summary>
+        /// Проверка на нажатие левой кнопкой мыши на кнопку
+        /// </summary>
+        /// <param name="mouseState">состояние мыши</param>
+        /// <param name="oldState">предыдущее состояние мыши</param>
+        public bool ButtonClick(MouseState mouseState, MouseState oldState)
         {
+            if (Hover(mouseState) && (mouseState.LeftButton == ButtonState.Pressed) && oldState.LeftButton == ButtonState.Released)
 
-            if (Hover() && (mouseState.LeftButton == ButtonState.Pressed))
                 return true;
             else
                 return false;

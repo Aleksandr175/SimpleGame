@@ -11,6 +11,15 @@
       <Time>2012-12-24T11:29:58.2809661+04:00</Time>
     </Item>
     <Item>
+      <Source>menufont.spritefont</Source>
+      <Name>menufont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\menufont.xnb</Output>
+      <Time>2012-12-24T23:06:22.0965979+04:00</Time>
+    </Item>
+    <Item>
       <Source>players\player.png</Source>
       <Name>players\player</Name>
       <Importer>TextureImporter</Importer>
@@ -596,15 +605,6 @@
       <Time>2012-12-24T11:29:58.2679654+04:00</Time>
     </Item>
     <Item>
-      <Source>Textures\interface\chooselevel.png</Source>
-      <Name>Textures\interface\chooselevel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\chooselevel.xnb</Output>
-      <Time>2012-12-24T11:29:58.2709656+04:00</Time>
-    </Item>
-    <Item>
       <Source>Textures\interface\cursor.png</Source>
       <Name>Textures\interface\cursor</Name>
       <Importer>TextureImporter</Importer>
@@ -612,42 +612,6 @@
       <Options>None</Options>
       <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\cursor.xnb</Output>
       <Time>2012-12-24T09:07:15.3934854+04:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\interface\exitbutton.png</Source>
-      <Name>Textures\interface\exitbutton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\exitbutton.xnb</Output>
-      <Time>2012-12-24T11:29:58.2709656+04:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\interface\newgamebutton.png</Source>
-      <Name>Textures\interface\newgamebutton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\newgamebutton.xnb</Output>
-      <Time>2012-12-24T11:29:58.2719656+04:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\interface\resumebutton.png</Source>
-      <Name>Textures\interface\resumebutton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\resumebutton.xnb</Output>
-      <Time>2012-12-24T11:29:58.2729657+04:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\interface\retrybutton.png</Source>
-      <Name>Textures\interface\retrybutton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\retrybutton.xnb</Output>
-      <Time>2012-12-24T11:29:58.2729657+04:00</Time>
     </Item>
     <Item>
       <Source>players\guard_eye.png</Source>
@@ -668,24 +632,6 @@
       <Time>2012-12-24T11:29:58.2849664+04:00</Time>
     </Item>
     <Item>
-      <Source>Textures\interface\chooselevel_active.png</Source>
-      <Name>Textures\interface\chooselevel_active</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\chooselevel_active.xnb</Output>
-      <Time>2012-12-24T11:29:58.2709656+04:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\interface\exitbutton_active.png</Source>
-      <Name>Textures\interface\exitbutton_active</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\exitbutton_active.xnb</Output>
-      <Time>2012-12-24T11:29:58.2709656+04:00</Time>
-    </Item>
-    <Item>
       <Source>Textures\interface\menu_active.png</Source>
       <Name>Textures\interface\menu_active</Name>
       <Importer>TextureImporter</Importer>
@@ -695,33 +641,6 @@
       <Time>2012-12-24T11:29:58.2719656+04:00</Time>
     </Item>
     <Item>
-      <Source>Textures\interface\newgamebutton_active.png</Source>
-      <Name>Textures\interface\newgamebutton_active</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\newgamebutton_active.xnb</Output>
-      <Time>2012-12-24T11:29:58.2729657+04:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\interface\resumebutton_active.png</Source>
-      <Name>Textures\interface\resumebutton_active</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\resumebutton_active.xnb</Output>
-      <Time>2012-12-24T11:29:58.2729657+04:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\interface\retrybutton_active.png</Source>
-      <Name>Textures\interface\retrybutton_active</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\retrybutton_active.xnb</Output>
-      <Time>2012-12-24T11:29:58.2729657+04:00</Time>
-    </Item>
-    <Item>
       <Source>Textures\interface\pointer.png</Source>
       <Name>Textures\interface\pointer</Name>
       <Importer>TextureImporter</Importer>
@@ -729,6 +648,42 @@
       <Options>None</Options>
       <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\pointer.xnb</Output>
       <Time>2012-12-24T09:07:31.4874059+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects\cloak.png</Source>
+      <Name>Textures\Objects\cloak</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\Objects\cloak.xnb</Output>
+      <Time>2012-12-25T11:47:54.5063882+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\interface\button.png</Source>
+      <Name>Textures\interface\button</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\button.xnb</Output>
+      <Time>2012-12-24T23:07:33.4336781+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\interface\close.png</Source>
+      <Name>Textures\interface\close</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\close.xnb</Output>
+      <Time>2012-12-25T17:36:28.4035947+04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\interface\open.png</Source>
+      <Name>Textures\interface\open</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\open.xnb</Output>
+      <Time>2012-12-25T17:36:36.2170416+04:00</Time>
     </Item>
     <Item>
       <Source>lvls\tasks\mission_description1.xml</Source>
@@ -753,7 +708,7 @@
     <Assemblies>
       <Assembly>
         <Key>D:\user\Documents\GitHub\SimpleGame\XMLContent\bin\x86\Debug\XMLContent.dll</Key>
-        <Value>2012-12-24T11:33:04.303606+04:00</Value>
+        <Value>2012-12-25T23:32:25.4236122+04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>

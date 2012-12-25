@@ -1,4 +1,5 @@
 Content\myFont1.xnb
+Content\menufont.xnb
 Content\players\player.xnb
 Content\players\player_run.xnb
 Content\players\player_run_goriz.xnb
@@ -64,21 +65,15 @@ Content\Textures\lvl\doors\wood_door_horiz_open.xnb
 Content\Textures\lvl\doors\wood_door_vertic.xnb
 Content\Textures\lvl\doors\wood_door_vertic_open.xnb
 Content\Textures\Objects\plant.xnb
-Content\Textures\interface\chooselevel.xnb
 Content\Textures\interface\cursor.xnb
-Content\Textures\interface\exitbutton.xnb
-Content\Textures\interface\newgamebutton.xnb
-Content\Textures\interface\resumebutton.xnb
-Content\Textures\interface\retrybutton.xnb
 Content\players\guard_eye.xnb
 Content\players\guard_eye_right.xnb
-Content\Textures\interface\chooselevel_active.xnb
-Content\Textures\interface\exitbutton_active.xnb
 Content\Textures\interface\menu_active.xnb
-Content\Textures\interface\newgamebutton_active.xnb
-Content\Textures\interface\resumebutton_active.xnb
-Content\Textures\interface\retrybutton_active.xnb
 Content\Textures\interface\pointer.xnb
+Content\Textures\Objects\cloak.xnb
+Content\Textures\interface\button.xnb
+Content\Textures\interface\close.xnb
+Content\Textures\interface\open.xnb
 Content\lvls\tasks\mission_description1.xnb
 Content\lvls\lvl1.txt
 Content\lvls\lvl2.txt
@@ -88,3 +83,4 @@ Content\lvls\lvl5.txt
 Content\lvls\lvl6.txt
 Content\lvls\lvl7.txt
 Content\lvls\lvl8.txt
+Content\lvl_info.txt
