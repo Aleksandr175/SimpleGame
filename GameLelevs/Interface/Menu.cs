@@ -50,13 +50,13 @@ namespace GameLevels
         public void Draw(SpriteBatch spriteBatch)
         {
             //выводится не больше 6 пунктов
-            if (Items.Count < 6)
+            if (Items.Count < 8)
                 numberOfButtons = Items.Count;
             else
-                numberOfButtons = 6;
+                numberOfButtons = 8;
             spriteBatch.Begin();
 
-            if (Items.Count < 6)
+            if (Items.Count < 8)
                 //рисовать главное меню
                 DrawMainMenu(spriteBatch);
             else
@@ -93,7 +93,7 @@ namespace GameLevels
             for (int i = page * (numberOfButtons); (i < (page + 1) * numberOfButtons) && (i < Items.Count); i++)
             {
                 Button item = Items[i];
-                if (i == 3 + page * numberOfButtons)
+                if (i == 4 + page * numberOfButtons)
                 {
                     y = 100;
                     posX = (screenWidth / 2) + (screenWidth / 4) - item.tex.Width / 2;
@@ -108,11 +108,11 @@ namespace GameLevels
                 y += item.tex.Height + 10;
 
             }
-            previous.position = new Vector2((screenWidth / 4) - Items[0].tex.Width / 2, 360);
+            previous.position = new Vector2((screenWidth / 4) - Items[0].tex.Width / 2, 400);
             previous.Draw(spriteBatch);
-            next.position = new Vector2((screenWidth / 2) + (screenWidth / 4) - Items[0].tex.Width / 2, 360);
+            next.position = new Vector2((screenWidth / 2) + (screenWidth / 4) - Items[0].tex.Width / 2, 400);
             next.Draw(spriteBatch);
-            back.position = new Vector2((screenWidth / 2) - Items[0].tex.Width / 2, 430);
+            back.position = new Vector2((screenWidth / 2) - Items[0].tex.Width / 2, 480);
             back.Draw(spriteBatch);
             spriteBatch.DrawString(font, "Выберите уровень:", new Vector2((screenWidth / 2 - font.MeasureString("Выберите уровень:").X / 2), 20), Color.White);
 
