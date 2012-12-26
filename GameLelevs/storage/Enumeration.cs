@@ -108,6 +108,7 @@ namespace Enumerations
     {
         Game,
         Menu,
-        LvlMenu
+        LvlMenu,
+        Advice
     }
 }

@@ -117,6 +117,7 @@
     <Compile Include="coreMission\CoreMission.cs" />
     <Compile Include="coreMission\Target.cs" />
     <Compile Include="coreMission\ICoreMission.cs" />
+    <Compile Include="Interface\Advice.cs" />
     <Compile Include="Interface\Button.cs" />
     <Compile Include="Interface\Menu.cs" />
     <Compile Include="Interface\Cursor.cs" />

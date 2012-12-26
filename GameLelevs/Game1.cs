@@ -40,9 +40,10 @@ namespace GameLevels
 
         bool debugMode = false; // режим отладки. При нем включается вывод информации о объектах. Горячая клавиша D.
         bool areYouCanGetAnswer = false; // можно ли ответить на пример
-        
-        int screenWidth = 600; // длина и высота экрана
-        int screenHeight = 600;
+        bool isShowAdvice = false; //  показывается ли сейчас подсказка перед уровнем?
+
+        public static int screenWidth = 600; // длина и высота экрана
+        public static int screenHeight = 600;
 
         public int GetScreenWidth
         {
@@ -53,6 +54,8 @@ namespace GameLevels
             get { return screenHeight; }
         }
 
+        private float timerAdvice = 0; // таймер подсказки
+        private float durationAdvice = 3000; // длительность
 
         double someValue;
 
@@ -76,6 +79,11 @@ namespace GameLevels
         Menu menuLvl;
         GameState gameState = GameState.Menu;
 
+
+        // подсказка перед уровнем
+        Advice advice;
+
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -89,7 +97,6 @@ namespace GameLevels
             this.camera = new Camera();
             storage = new Storage();
             toDraw = new List<string>();
-
             
             // включили ограничение fps счетчика
             IsFixedTimeStep = true;
@@ -128,6 +135,7 @@ namespace GameLevels
             // !!! пока, обязательно указывать CONTENT/
             storage.LoadTexture2DFolder("Content/Textures");
             storage.LoadTexture2DFolder("Content/players");
+            storage.LoadTexture2DFolder("Content/advices");
             storage.PushFont("font", Content.Load<SpriteFont>("myFont1"));
             storage.PushFont("menufont", Content.Load<SpriteFont>("menufont"));
 
@@ -144,7 +152,6 @@ namespace GameLevels
             Rectangle plaerPosition = new Rectangle(120, 120, LevelLoader.SizePeople, LevelLoader.SizePeople);
             player = new Player(storage.Pull2DTexture("player"), storage.Pull2DTexture("player_run"), storage.Pull2DTexture("player_run_goriz"), plaerPosition, this, camera);
 
-
             this.levelLoader = new LevelLoader(this, player, storage, camera);
             
             player.setLinkLevelLoader(levelLoader); // передадим игроку ссылку на загрузчик уровней
@@ -152,14 +159,14 @@ namespace GameLevels
             maxLvl = storage.GetMaxLevelNumber();
 
             // стоит проверять существование уровня
-            if (storage.IsExist(1))
+            /*if (storage.IsExist(1))
             {
                 levelLoader.CreateLevel(1);
                 currentLvl = 1;
             }
             else
-                levelLoader.CreateLevel(maxLvl);
-
+                levelLoader.CreateLevel(maxLvl);*/
+            
             menuFont = storage.PullFont("menufont");
             inventory = storage.Pull2DTexture("inventory");
             menuButton = new Button(new Vector2(screenWidth - 40, 0), storage.Pull2DTexture("menu_active"), storage.PullFont("menufont"), "меню");
@@ -225,7 +232,9 @@ namespace GameLevels
             menu.Items.RemoveAt(0);
             menu.Items.Insert(0, resumeGame);
             menu.Items.Insert(1, retryGame);
-            gameState = GameState.Game;
+            gameState = GameState.Advice;
+            currentLvl = 1;
+            PrintAdvice(currentLvl);
         }
         /// <summary>
         /// Обработка нажатия на "выход"
@@ -512,9 +521,28 @@ namespace GameLevels
                 UpdateGame(gameTime);
             else if (gameState == GameState.Menu)
                 menu.Update();
+            else if (gameState == GameState.Advice)
+                UpdateGameAdvice(gameTime);
             else
                 menuLvl.Update();
+            
             base.Update(gameTime);
+        }
+
+
+        /// <summary>
+        /// Функция отрисовки подсказки перед уровнем. После истечения времени - загружается новый уровень и начинается стандартный цикл
+        /// </summary>
+        /// <param name="gameTime">Время</param>
+        private void UpdateGameAdvice(GameTime gameTime)
+        {
+            timerAdvice += gameTime.ElapsedGameTime.Milliseconds;
+            if (timerAdvice > durationAdvice)
+            {
+                timerAdvice = 0;
+                gameState = GameState.Game;
+                levelLoader.CreateLevel(currentLvl);  // загружаем лвл
+            }
         }
 
         private void UpdateGame(GameTime gameTime)
@@ -649,12 +677,16 @@ namespace GameLevels
                     {
                         currentLvl = 1;
                     }
-                    levelLoader.CreateLevel(currentLvl);
+
+                    PrintAdvice(currentLvl);
+                    //levelLoader.CreateLevel(currentLvl);
                     player.ClearBackpack();
                     toDraw.Clear();
                 }
             }
             oldState = state;
+
+            
 
             // открываем дверь
             if (state.IsKeyDown(Keys.E))
@@ -793,9 +825,20 @@ namespace GameLevels
                 DrawGame();
             else if (gameState == GameState.Menu)
                 menu.Draw(spriteBatch);
+            else if (gameState == GameState.Advice)
+                DrawAdvice();
             else
                 menuLvl.Draw(spriteBatch);
+
+            
             base.Draw(gameTime);
+        }
+
+        private void DrawAdvice()
+        {
+            spriteBatch.Begin();
+            advice.Draw(spriteBatch);
+            spriteBatch.End();
         }
 
         private void DrawGame()
@@ -816,8 +859,6 @@ namespace GameLevels
                     laser.Draw(spriteBatch);
                 }
             }
-
-
 
             foreach (BaseObject bo in levelLoader.interactionSubjects)
                 bo.Draw(spriteBatch);
@@ -952,7 +993,13 @@ namespace GameLevels
         }
 
 
-
+        public void PrintAdvice(int currentLvl)
+        {
+            gameState = GameState.Advice;
+            //Texture2D imgAdvice = storage.Pull2DTexture("advice" + currentLvl);
+            Texture2D imgAdvice = storage.Pull2DTexture("advice1");
+            advice = new Advice(imgAdvice);
+        }
         
 
         
