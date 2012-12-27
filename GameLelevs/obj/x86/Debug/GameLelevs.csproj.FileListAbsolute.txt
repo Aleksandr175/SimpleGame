@@ -539,3 +539,5 @@ C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\open.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvl_info.txt
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice1.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice2.xnb
+C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice3.xnb
