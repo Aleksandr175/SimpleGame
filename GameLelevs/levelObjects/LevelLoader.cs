@@ -379,7 +379,7 @@ namespace GameLevels
                 indexI = 0;
                 indexJ = 0;
 
-                if (lvl >= 6)
+                if (lvl >= 16)
                 {
                     // выделим память для карты уровня
                     levelMapFloor = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
@@ -428,7 +428,7 @@ namespace GameLevels
 
 
 
-                if (lvl < 5)
+                if (lvl <= 8)
                 {
                     // выделим память для карты уровня
                     levelMapFloor = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
@@ -444,7 +444,7 @@ namespace GameLevels
 
                             levelMapFloor[indexI, indexJ] = LevelObject.Empty;
                             // пол в игре
-                            if (!s.Equals("-1", StringComparison.OrdinalIgnoreCase))
+                            if (s.Equals("1", StringComparison.OrdinalIgnoreCase))
                             {
                                 levelMapFloor[indexI, indexJ] = LevelObject.Floor; // пол
                                 levelMapRooms[indexI, indexJ] = Convert.ToInt32(s); // номер комнаты

@@ -995,9 +995,10 @@ namespace GameLevels
 
         public void PrintAdvice(int currentLvl)
         {
+
             gameState = GameState.Advice;
             Texture2D imgAdvice = storage.Pull2DTexture("advice" + currentLvl);
-            //Texture2D imgAdvice = storage.Pull2DTexture("advice");
+            //Texture2D imgAdvice = storage.Pull2DTexture("advice1");
             advice = new Advice(imgAdvice);
         }
         
