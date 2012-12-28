@@ -17,7 +17,7 @@ namespace GameLevels
     {
         public Rectangle Rect { get; set; }
 
-        Rectangle position;
+        public Rectangle position;
         Camera camera;
         LevelLoader levelLoader;
 
@@ -176,7 +176,7 @@ namespace GameLevels
             this.levelLoader = levelLoader;
 
             this.step = 1;
-            
+
             //присваиваем положение охранника
             x = position.X / LevelLoader.Size;
             y = position.Y / LevelLoader.Size;

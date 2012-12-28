@@ -27,6 +27,8 @@ namespace GameLevels
         Player player;
         Camera camera;
         LevelLoader levelLoader;
+
+        bool failed = false;
         
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -42,8 +44,8 @@ namespace GameLevels
         bool areYouCanGetAnswer = false; // можно ли ответить на пример
         bool isShowAdvice = false; //  показывается ли сейчас подсказка перед уровнем?
 
-        public static int screenWidth = 600; // длина и высота экрана
-        public static int screenHeight = 600;
+        public static int screenWidth = 500; // длина и высота экрана
+        public static int screenHeight = 500;
 
         public int GetScreenWidth
         {
@@ -55,7 +57,7 @@ namespace GameLevels
         }
 
         private float timerAdvice = 0; // таймер подсказки
-        private float durationAdvice = 3000; // длительность
+        private float durationAdvice = 2500; // длительность
 
         double someValue;
 
@@ -234,6 +236,8 @@ namespace GameLevels
             menu.Items.Insert(1, retryGame);
             gameState = GameState.Advice;
             currentLvl = 1;
+            failed = false;
+            player.backpack.Clear();
             PrintAdvice(currentLvl);
         }
         /// <summary>
@@ -248,13 +252,18 @@ namespace GameLevels
         /// </summary>
         void resumeGame_Click(object sender, EventArgs e)
         {
-            gameState = GameState.Game;
+            if (!failed)
+            {
+                gameState = GameState.Game;
+            }
         }
         /// <summary>
         /// Обработка нажатия на "начать заново"
         /// </summary>
         void retryGame_Click(object sender, EventArgs e)
         {
+            player.backpack.Clear();
+            failed = false;
             levelLoader.CreateLevel(currentLvl);
             player.ClearBackpack();
             gameState = GameState.Game;
@@ -302,6 +311,7 @@ namespace GameLevels
         {
             if (menuLvl.IsLvlFinished(num-1))
             {
+                failed = false;
                 currentLvl = num+1;
                 levelLoader.CreateLevel(currentLvl);
                 gameState = GameState.Game;
@@ -523,6 +533,8 @@ namespace GameLevels
                 menu.Update();
             else if (gameState == GameState.Advice)
                 UpdateGameAdvice(gameTime);
+            else if (gameState == GameState.Fail)
+                UpdateGameFail(gameTime);
             else
                 menuLvl.Update();
             
@@ -542,6 +554,20 @@ namespace GameLevels
                 timerAdvice = 0;
                 gameState = GameState.Game;
                 levelLoader.CreateLevel(currentLvl);  // загружаем лвл
+            }
+        }
+
+        /// <summary>
+        /// Функция отрисовки подсказки. После истечения времени - открывается меню
+        /// </summary>
+        /// <param name="gameTime">Время</param>
+        private void UpdateGameFail(GameTime gameTime)
+        {
+            timerAdvice += gameTime.ElapsedGameTime.Milliseconds;
+            if (timerAdvice > durationAdvice)
+            {
+                timerAdvice = 0;
+                gameState = GameState.Menu;
             }
         }
 
@@ -769,6 +795,11 @@ namespace GameLevels
             foreach (Guards guard in levelLoader.guards)
             {
                 guard.Update(gameTime);
+
+                if (Math.Sqrt(Math.Pow(guard.position.Center.X - player.Position.Center.X, 2) + Math.Pow(guard.position.Center.Y - player.Position.Center.Y, 2)) <= 20)
+                {
+                    PrintFail();
+                }
             }
             // обновляем лазеры
             foreach (Laser laser in levelLoader.lasers)
@@ -826,6 +857,8 @@ namespace GameLevels
             else if (gameState == GameState.Menu)
                 menu.Draw(spriteBatch);
             else if (gameState == GameState.Advice)
+                DrawAdvice();
+            else if (gameState == GameState.Fail)
                 DrawAdvice();
             else
                 menuLvl.Draw(spriteBatch);
@@ -992,16 +1025,28 @@ namespace GameLevels
             File.WriteAllLines("content/lvl_info.txt", info);
         }
 
-
+        /// <summary>
+        /// Ф-ция отрисовывает подсказку перед уровнем
+        /// </summary>
+        /// <param name="currentLvl">Номер уровня</param>
         public void PrintAdvice(int currentLvl)
         {
-
             gameState = GameState.Advice;
             Texture2D imgAdvice = storage.Pull2DTexture("advice" + currentLvl);
             //Texture2D imgAdvice = storage.Pull2DTexture("advice1");
             advice = new Advice(imgAdvice);
         }
-        
+
+        /// <summary>
+        /// рисуем "вы проиграли"
+        /// </summary>
+        public void PrintFail()
+        {
+            failed = true;
+            gameState = GameState.Fail;
+            Texture2D imgAdvice = storage.Pull2DTexture("failed");
+            advice = new Advice(imgAdvice);
+        }
 
         
 

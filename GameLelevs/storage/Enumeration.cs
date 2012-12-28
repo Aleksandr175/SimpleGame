@@ -109,6 +109,7 @@ namespace Enumerations
         Game,
         Menu,
         LvlMenu,
-        Advice
+        Advice,
+        Fail
     }
 }
