@@ -264,9 +264,14 @@ namespace GameLevels
         void retryGame_Click(object sender, EventArgs e)
         {
             player.backpack.Clear();
+            if (failed)
+            {
+                Button resumeGame = new Button(buttonTexture, storage.PullFont("menufont"), "Продолжить");
+                menu.Items.Insert(0, resumeGame);
+                resumeGame.Click += new EventHandler(resumeGame_Click);
+            }
             failed = false;
             levelLoader.CreateLevel(currentLvl);
-            player.ClearBackpack();
             gameState = GameState.Game;
         }
         /// <summary>
@@ -312,6 +317,13 @@ namespace GameLevels
         {
             if (menuLvl.IsLvlFinished(num-1))
             {
+                player.backpack.Clear();
+                if (failed)
+                {
+                    Button resumeGame = new Button(buttonTexture, storage.PullFont("menufont"), "Продолжить");
+                    menu.Items.Insert(0, resumeGame);
+                    resumeGame.Click += new EventHandler(resumeGame_Click);
+                }
                 failed = false;
                 currentLvl = num+1;
                 levelLoader.CreateLevel(currentLvl);
@@ -568,6 +580,7 @@ namespace GameLevels
             if (timerAdvice > durationAdvice)
             {
                 timerAdvice = 0;
+                menu.Items.RemoveAt(0);
                 gameState = GameState.Menu;
             }
         }
