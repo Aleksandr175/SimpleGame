@@ -556,3 +556,7 @@ C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advi
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice3.xnb
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvl_info.txt
 C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\failed.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice1.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice2.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice3.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\failed.xnb

@@ -170,8 +170,9 @@ namespace GameLevels
                 levelLoader.CreateLevel(maxLvl);*/
             
             menuFont = storage.PullFont("menufont");
+            
             inventory = storage.Pull2DTexture("inventory");
-            menuButton = new Button(new Vector2(screenWidth - 40, 0), storage.Pull2DTexture("menu_active"), storage.PullFont("menufont"), "меню");
+            menuButton = new Button(new Vector2(screenWidth - 40, 0), storage.Pull2DTexture("menu_active"), storage.PullFont("menufont"),new Vector2(0.6f,0.8f), "меню");
             menuButton.Click += new EventHandler(menuButton_Click);
             cursor = new Cursor(storage.Pull2DTexture("cursor"), storage.Pull2DTexture("pointer"));
 

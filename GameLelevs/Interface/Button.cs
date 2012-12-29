@@ -14,6 +14,7 @@ namespace GameLevels
         public event EventHandler Click;
         Color color;
         SpriteFont font;
+        Vector2 scale;
         string name;
         public Button() { }
         public Button(Texture2D tex, SpriteFont font, string name)
@@ -22,6 +23,7 @@ namespace GameLevels
             this.color = Color.White;
             this.font = font;
             this.name = name;
+            this.scale = new Vector2(1, 1);
         }
         public Button(Vector2 pos, Texture2D tex, SpriteFont font, string name)
         {
@@ -30,12 +32,22 @@ namespace GameLevels
             this.color = Color.White;
             this.font = font;
             this.name = name;
+            this.scale = new Vector2(1, 1);
+        }
+        public Button(Vector2 pos, Texture2D tex, SpriteFont font, Vector2 scale, string name)
+        {
+            this.position = pos;
+            this.tex = tex;
+            this.color = Color.White;
+            this.font = font;
+            this.name = name;
+            this.scale = scale;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(tex, position, color);
-            Vector2 size = font.MeasureString(name);
-            spriteBatch.DrawString(font, name, position, Color.White, 0, new Vector2(-130 + size.X / 2, -30 + size.Y / 2), 1, SpriteEffects.None, 0);
+            Vector2 size = font.MeasureString(name)*scale;
+            spriteBatch.DrawString(font, name, position, Color.White, 0, new Vector2((-tex.Width / 2 + size.X / 2)/scale.X, (-tex.Height / 2 + size.Y / 2)/scale.Y), scale, SpriteEffects.None, 0);
         }
 
         public void OnClick()

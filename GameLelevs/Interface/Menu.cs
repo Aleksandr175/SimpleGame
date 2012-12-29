@@ -88,14 +88,14 @@ namespace GameLevels
         {
 
             float posX;
-            int y = 100;
+            int y = 70;
             posX = screenWidth / 4 - Items[0].tex.Width / 2;
             for (int i = page * (numberOfButtons); (i < (page + 1) * numberOfButtons) && (i < Items.Count); i++)
             {
                 Button item = Items[i];
                 if (i == 4 + page * numberOfButtons)
                 {
-                    y = 100;
+                    y = 70;
                     posX = (screenWidth / 2) + (screenWidth / 4) - item.tex.Width / 2;
                 }
  
@@ -108,11 +108,11 @@ namespace GameLevels
                 y += item.tex.Height + 10;
 
             }
-            previous.position = new Vector2((screenWidth / 4) - Items[0].tex.Width / 2, 400);
+            previous.position = new Vector2((screenWidth / 4) - Items[0].tex.Width / 2, 330);
             previous.Draw(spriteBatch);
-            next.position = new Vector2((screenWidth / 2) + (screenWidth / 4) - Items[0].tex.Width / 2, 400);
+            next.position = new Vector2((screenWidth / 2) + (screenWidth / 4) - Items[0].tex.Width / 2, 330);
             next.Draw(spriteBatch);
-            back.position = new Vector2((screenWidth / 2) - Items[0].tex.Width / 2, 480);
+            back.position = new Vector2((screenWidth / 2) - Items[0].tex.Width / 2, 400);
             back.Draw(spriteBatch);
             spriteBatch.DrawString(font, "Выберите уровень:", new Vector2((screenWidth / 2 - font.MeasureString("Выберите уровень:").X / 2), 20), Color.White);
 
