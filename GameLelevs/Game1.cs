@@ -189,6 +189,7 @@ namespace GameLevels
         {
             menu.font = menuFont;
             menu.LoadCursor(cursor);
+            menu.logo = storage.Pull2DTexture("logo");
             Button exitGame = new Button(buttonTexture, menuFont, "Выход");
             Button newGame = new Button(buttonTexture, menuFont, "Новая игра");
             Button chooseGame = new Button(buttonTexture, menuFont, "Выбрать уровень");

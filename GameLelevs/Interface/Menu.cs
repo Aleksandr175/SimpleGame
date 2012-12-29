@@ -18,6 +18,7 @@ namespace GameLevels
         public int page;
         int numberOfButtons;
         Texture2D open, close;
+        public Texture2D logo;
         public Button next, previous, back;
         public SpriteFont font;
         Cursor cursor;
@@ -72,7 +73,7 @@ namespace GameLevels
         public void DrawMainMenu(SpriteBatch spriteBatch)
         {
             float posX;
-            int y = 100;
+            int y = 210;
             posX = screenWidth / 2 - Items[0].tex.Width / 2;
             foreach (Button item in Items)
             {
@@ -80,7 +81,7 @@ namespace GameLevels
                 item.Draw(spriteBatch);
                 y += item.tex.Height + 10;
             }
-            spriteBatch.DrawString(font, "Меню", new Vector2((screenWidth / 2 - font.MeasureString("Меню").X / 2), 20), Color.White);
+            spriteBatch.Draw(logo, new Rectangle(screenWidth / 2 - (logo.Width - 10) / 2, 20, logo.Width - 10, logo.Height - 10), Color.White);
 
         }
 

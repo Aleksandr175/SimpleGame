@@ -560,3 +560,4 @@ D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\adv
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice2.xnb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice3.xnb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\failed.xnb
+D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\logo.xnb

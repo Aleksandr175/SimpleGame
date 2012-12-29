@@ -730,6 +730,15 @@
       <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\tasks\mission_description1.xnb</Output>
       <Time>2012-12-29T08:52:40.7652553+04:00</Time>
     </Item>
+    <Item>
+      <Source>Textures\interface\logo.png</Source>
+      <Name>Textures\interface\logo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\Textures\interface\logo.xnb</Output>
+      <Time>2012-12-29T10:49:06.3178061+04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
