@@ -999,7 +999,6 @@ namespace GameLevels
 
                 }
 
-
                 Guards.SetLevelMap(levelMap, lenghtX / LevelLoader.Size, lenghtY / LevelLoader.Size);
 
                 

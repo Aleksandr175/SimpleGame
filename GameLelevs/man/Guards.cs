@@ -545,7 +545,7 @@ namespace GameLevels
             int posPlayerTop = player.Position.Top;
             int posPlayerBottom = player.Position.Bottom;
 
-            if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size / 1.5)
+            if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size / 1.5 && player.IsVisible())
             {
                 this.alarm = true;
             }

@@ -43,6 +43,7 @@ namespace GameLevels
         bool debugMode = false; // режим отладки. При нем включается вывод информации о объектах. Горячая клавиша D.
         bool areYouCanGetAnswer = false; // можно ли ответить на пример
         bool isShowAdvice = false; //  показывается ли сейчас подсказка перед уровнем?
+        bool kkk = false; // флаг для проверки, ушли ли мы далеко от всех ПУК-ов ?
 
         public static int screenWidth = 500; // длина и высота экрана
         public static int screenHeight = 500;
@@ -237,7 +238,7 @@ namespace GameLevels
             menu.Items.Insert(0, resumeGame);
             menu.Items.Insert(1, retryGame);
             gameState = GameState.Advice;
-            currentLvl = 5;
+            currentLvl = 1;
             failed = false;
             player.backpack.Clear();
             PrintAdvice(currentLvl);
@@ -402,19 +403,6 @@ namespace GameLevels
             int miny = (rect.Top + LevelLoader.SizePeople / 2 - 1) / LevelLoader.Size;
             int maxx = (rect.Right - LevelLoader.SizePeople / 2 + 1) / LevelLoader.Size;
             int maxy = (rect.Bottom - LevelLoader.SizePeople / 2 + 1) / LevelLoader.Size;
-
-            /*int currentI = (rect.Left + LevelLoader.SizePeople / 2)  / LevelLoader.Size;
-            int currentJ = (rect.Top + LevelLoader.SizePeople / 2)  / LevelLoader.Size;
-
-
-            if (levelLoader.levelMap[currentI, currentJ] >= 20 && levelLoader.levelMap[currentI, currentJ] <= 23)
-            {
-                minx = (rect.Left) / LevelLoader.Size; // size - размер клетки
-                miny = (rect.Top) / LevelLoader.Size;
-                maxx = (rect.Right) / LevelLoader.Size;
-                maxy = (rect.Bottom) / LevelLoader.Size;
-            }*/
-
 
             for (int i = minx; i <= maxx; i++)
             {
@@ -659,10 +647,12 @@ namespace GameLevels
                     // взаимодействие с ПУК
                     if (state.IsKeyDown(Keys.F))
                     {
-
-                        sysControl.IsVisibleExample = true;
-                        areYouCanGetAnswer = true;
-                        
+                        if (!areYouCanGetAnswer) 
+                        {
+                            sysControl.generateMathEmample();
+                            sysControl.IsVisibleExample = true;
+                            areYouCanGetAnswer = true;
+                        }
                     }
                     if (areYouCanGetAnswer)
                     {
@@ -683,6 +673,7 @@ namespace GameLevels
                         
                         if (answerNumber == sysControl.RightAnswer) 
                         {
+                            areYouCanGetAnswer = false;
                             // если правильно - отключаем камеры
                             foreach (Cameras camera in levelLoader.cameras)
                             {
@@ -813,7 +804,10 @@ namespace GameLevels
 
                 if (Math.Sqrt(Math.Pow(guard.position.Center.X - player.Position.Center.X, 2) + Math.Pow(guard.position.Center.Y - player.Position.Center.Y, 2)) <= 20)
                 {
-                    PrintFail();
+                    if (player.IsVisible())
+                    {
+                        PrintFail();
+                    }
                 }
             }
             // обновляем лазеры
@@ -949,9 +943,13 @@ namespace GameLevels
                         xCoord += 20;
                     }
 
-
-                    //spriteBatch.DrawString(storage.PullFont("font"), levelLoader.sysControls[0].GetGeneratedMathExample(), new Vector2(120, 120), Color.Red); // печать примера на экране
-
+                    foreach (SysControl sysControl in levelLoader.sysControls)
+                    {
+                        if (sysControl.GetGeneratedMathExample() != "")
+                        {
+                            spriteBatch.DrawString(storage.PullFont("font"), sysControl.GetGeneratedMathExample(), new Vector2(200, 240), Color.Red); // печать примера на экране
+                        }
+                    }
 
                 }
 

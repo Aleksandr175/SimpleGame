@@ -51,7 +51,7 @@ namespace GameLevels.levelObjects
             get { return isActive; }
         }
 
-
+        
         /// <summary>
         /// Конструктор системы управления камерами
         /// </summary>
@@ -64,6 +64,7 @@ namespace GameLevels.levelObjects
         public SysControl(Rectangle Rect, Texture2D texture, Game1 game, Camera camera)
             : base(Rect, texture, game, camera)
         {
+
         }
 
         /// <summary>
@@ -136,6 +137,7 @@ namespace GameLevels.levelObjects
         {
 
         }
+
 
     }
 }
