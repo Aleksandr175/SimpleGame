@@ -12,6 +12,9 @@ namespace GameLevels.levelObjects
         // достоинство монеты
         private int cost;
 
+        // количество монет
+        private int count = 1;
+
         public Money(Rectangle rect, Texture2D texture, Game1 game, Camera camera, int cost)
             : base(rect, texture, game, camera) {
 
@@ -26,6 +29,11 @@ namespace GameLevels.levelObjects
             get {
                 return this.cost;
             }
+        }
+
+        public int Count {
+            get { return count; }
+            set { this.count = value; }
         }
     }
 }

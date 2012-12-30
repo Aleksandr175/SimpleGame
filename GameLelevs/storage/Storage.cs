@@ -11,7 +11,7 @@ public delegate T ContentLoad<T>(string path);
 
 namespace GameLevels.levelObjects
 {
-    class Storage
+    public class Storage
     {
         // фактически это указатель на функцию Content.Load<Texture2D> для загрузки текстур
         public ContentLoad<Texture2D> TexturesLoader;

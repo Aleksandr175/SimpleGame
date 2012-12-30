@@ -34,7 +34,7 @@ namespace GameLevels
         SpriteBatch spriteBatch;
 
         // хранилище данных
-        Storage storage;
+        public static Storage storage;
 
         XMLCoreMissionLoader xmlCoreMissionLoader;
 
@@ -742,6 +742,8 @@ namespace GameLevels
 
                         if (door.IsClosed())
                         {
+                            BaseObject objectToRemove = null;
+
                             // анализируем рюкзак
                             foreach (BaseObject obj in player.backpack)
                             {
@@ -749,6 +751,7 @@ namespace GameLevels
                                 if (obj is Key || obj is Card) {
                                     if (obj.targetDoorX == door.posX && obj.targetDoorY == door.posY)
                                     {
+                                        objectToRemove = obj;
                                         // открываем дверь, присваиваем нужную текстуру открытой двери
                                         Texture2D openDoor = door.GetOrientation() == DoorOrientation.Horiz ? storage.Pull2DTexture("door_horiz_open") : storage.Pull2DTexture("door_vertic_open");
                                         if (door.GetOrientation() == DoorOrientation.HorizWood) 
@@ -763,16 +766,13 @@ namespace GameLevels
                                         }
 
                                         if (door.Open(openDoor))
-                                        {
-                                            toDraw.Add("The door was open");
                                             levelLoader.levelMap[door.GetIndexI(), door.GetIndexJ()] = LevelObject.Empty;
-                                        }
                                     }
                                 }
                             }
 
-
-                            
+                            if (objectToRemove != null)
+                                player.backpack.Remove(objectToRemove);
                         }
 
                     }
@@ -836,27 +836,15 @@ namespace GameLevels
                 if (levelLoader.interactionSubjects[i].Rect.Intersects(player.Position))
                 {
                     // если удалось добавить объект в рюкзак
-                    if (player.AddItem(levelLoader.interactionSubjects[i]))
-                    {
+                    if (!player.AddItem(levelLoader.interactionSubjects[i]))
+                        return;
 
-                        levelLoader.blocks.Add(new Block(levelLoader.interactionSubjects[i].Rect, storage.Pull2DTexture("empty"), this, this.camera));
+                    levelLoader.blocks.Add(new Block(levelLoader.interactionSubjects[i].Rect, storage.Pull2DTexture("empty"), this, this.camera));
 
-                        // если объект это карта
-                        if (levelLoader.interactionSubjects[i] is Card)
-                            toDraw.Add("Add a map to a list of items!");
-
-                        if (levelLoader.interactionSubjects[i] is Key)
-                            toDraw.Add("Add a key to a list of items!");
-
-                        if (levelLoader.interactionSubjects[i] is Money)
-                            toDraw.Add("Add coin worth " + ((Money)levelLoader.interactionSubjects[i]).Cost);
-
-                        levelLoader.interactionSubjects.RemoveAt(i);
-                    }
-                    else
-                        toDraw.Add("Too much items in backpack");
+                    levelLoader.interactionSubjects.RemoveAt(i);
                 }
-                else i++;
+                else 
+                    i++;
             }
         }
 

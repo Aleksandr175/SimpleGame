@@ -447,7 +447,18 @@ namespace GameLevels
             if (this.backpack.Count >= maxSizeBackpack)
                 return false;
 
-            backpack.Add(obj);
+            bool isNeedAdd = true;
+
+            foreach (BaseObject ob in backpack) {
+                if (ob is Money && obj is Money) {
+                    ((Money)ob).Count++;
+                    isNeedAdd = false;
+                    break;
+                }
+            }
+
+            if(isNeedAdd)
+                backpack.Add(obj);
 
             return true;
         }
@@ -517,29 +528,14 @@ namespace GameLevels
             foreach (BaseObject objects in backpack)
             {
                 spriteBatch.Draw(objects.Texture, itemPosition, Color.White);
+
+                if (objects is Money)
+                    spriteBatch.DrawString(Game1.storage.PullFont("font"), ((Money)objects).Count.ToString(), new Vector2(itemPosition.X + 30, itemPosition.Y + 20), Color.Red);
+                
                 itemPosition.Offset(0, 40);
             }
 
             spriteBatch.End();
-        }
-
-        /// <summary>
-        /// Свойство для отображения количества монет в рюкзаке
-        /// </summary>
-        public int Coins
-        {
-            get
-            {
-                int count = 0;
-                foreach (BaseObject bo in backpack)
-                {
-                    if (bo is Money)
-                        count++;
-                }
-
-                return count;
-            }
-            private set { }
         }
 
 
