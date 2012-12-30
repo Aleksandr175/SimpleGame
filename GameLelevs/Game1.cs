@@ -237,7 +237,7 @@ namespace GameLevels
             menu.Items.Insert(0, resumeGame);
             menu.Items.Insert(1, retryGame);
             gameState = GameState.Advice;
-            currentLvl = 1;
+            currentLvl = 5;
             failed = false;
             player.backpack.Clear();
             PrintAdvice(currentLvl);
