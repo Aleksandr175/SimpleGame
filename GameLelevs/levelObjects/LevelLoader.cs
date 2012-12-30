@@ -379,82 +379,32 @@ namespace GameLevels
                 indexI = 0;
                 indexJ = 0;
 
-                if (lvl >= 16)
+                
+                // выделим память для карты уровня
+                levelMapFloor = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
+                // выделим память для комнат уровня
+                levelMapRooms = new int[sizeFile[1] + 1, sizeFile[0] + 1];
+
+                //считывание пола с комнатами в игре
+                for (int i = sizeFile[0] + 1; i <= 2 * sizeFile[0]; i++)
                 {
-                    // выделим память для карты уровня
-                    levelMapFloor = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
-
-                    //считывание пола в игре
-                    for (int i = sizeFile[0] + 1; i <= 2 * sizeFile[0]; i++)
+                    str = lines[i].Split(' ');
+                    foreach (string s in str)
                     {
-                        str = lines[i].Split(' ');
-                        foreach (string s in str)
+
+                        levelMapFloor[indexI, indexJ] = LevelObject.Empty;
+                        // пол в игре
+                        if (s.Equals("1", StringComparison.OrdinalIgnoreCase))
                         {
-
-                            levelMapFloor[indexI, indexJ] = LevelObject.Empty;
-                            // пол в игре
-                            if (s.Equals("90", StringComparison.OrdinalIgnoreCase))
-                            {
-                                levelMapFloor[indexI, indexJ] = LevelObject.Floor;
-                            }
-                            indexI++;
+                            levelMapFloor[indexI, indexJ] = LevelObject.Floor; // пол
+                            levelMapRooms[indexI, indexJ] = Convert.ToInt32(s); // номер комнаты
                         }
-                        indexI = 0;
-                        indexJ++;
+                        indexI++;
                     }
-
                     indexI = 0;
-                    indexJ = 0;
-
-                    
-                    // выделим память для комнат уровня
-                    levelMapRooms = new int[sizeFile[1] + 1, sizeFile[0] + 1];
-
-                    //считывание комнат в игре из файла
-                    for (int i = sizeFile[0] * 2 + 1; i <= 3 * sizeFile[0]; i++)
-                    {
-                        str = lines[i].Split(' ');
-                        foreach (string s in str)
-                        {
-                            //заносим конаты в массив
-                            levelMapRooms[indexI, indexJ] = Convert.ToInt32(s);
-                            indexI++;
-                        }
-                        indexI = 0;
-                        indexJ++;
-                    }
+                    indexJ++;
                 }
-
-
-
-
-                if (lvl <= 8)
-                {
-                    // выделим память для карты уровня
-                    levelMapFloor = new LevelObject[sizeFile[1] + 1, sizeFile[0] + 1];
-                    // выделим память для комнат уровня
-                    levelMapRooms = new int[sizeFile[1] + 1, sizeFile[0] + 1];
-
-                    //считывание пола с комнатами в игре
-                    for (int i = sizeFile[0] + 1; i <= 2 * sizeFile[0]; i++)
-                    {
-                        str = lines[i].Split(' ');
-                        foreach (string s in str)
-                        {
-
-                            levelMapFloor[indexI, indexJ] = LevelObject.Empty;
-                            // пол в игре
-                            if (s.Equals("1", StringComparison.OrdinalIgnoreCase))
-                            {
-                                levelMapFloor[indexI, indexJ] = LevelObject.Floor; // пол
-                                levelMapRooms[indexI, indexJ] = Convert.ToInt32(s); // номер комнаты
-                            }
-                            indexI++;
-                        }
-                        indexI = 0;
-                        indexJ++;
-                    }
-                }
+                
 
 
 

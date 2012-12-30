@@ -950,7 +950,7 @@ namespace GameLevels
                     }
 
 
-                    spriteBatch.DrawString(storage.PullFont("font"), levelLoader.sysControls[0].GetGeneratedMathExample(), new Vector2(120, 120), Color.Red); // печать примера на экране
+                    //spriteBatch.DrawString(storage.PullFont("font"), levelLoader.sysControls[0].GetGeneratedMathExample(), new Vector2(120, 120), Color.Red); // печать примера на экране
 
 
                 }
