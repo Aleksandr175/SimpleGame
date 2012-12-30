@@ -80,6 +80,8 @@ Content\advices\advice3.xnb
 Content\advices\failed.xnb
 Content\Textures\interface\logo.xnb
 Content\lvls\tasks\mission_description1.xnb
+Content\advices\advice4.xnb
+Content\advices\advice5.xnb
 Content\lvls\lvl1.txt
 Content\lvls\lvl2.txt
 Content\lvls\lvl3.txt
