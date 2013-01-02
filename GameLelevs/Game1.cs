@@ -588,6 +588,24 @@ namespace GameLevels
             if (menuButton.ButtonClick(cursor.State, cursor.OldState))
                 menuButton.OnClick();
 
+            if (levelLoader.NumberOfJewelry == player.NumberOfJewelry)
+            {
+                SaveLvlInfo();
+                if (oldState != state)
+                {
+                    currentLvl++;
+                    if (currentLvl > maxLvl)
+                    {
+                        currentLvl = 1;
+                    }
+
+                    PrintAdvice(currentLvl);
+                    //levelLoader.CreateLevel(currentLvl);
+                    player.ClearBackpack();
+                    toDraw.Clear();
+                }
+            }
+
             //изменить видимость игрока по кнопке V
             if (state.IsKeyDown(Keys.LeftAlt) && oldState.IsKeyUp(Keys.LeftAlt) || state.IsKeyDown(Keys.RightAlt) && oldState.IsKeyUp(Keys.RightAlt))
             {

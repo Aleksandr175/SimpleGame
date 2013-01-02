@@ -13,6 +13,7 @@ using Enumerations;
 using GameLevels.levelObjects;
 using Microsoft.Xna.Framework.Input;
 using GameLevels.levelObjects.door;
+using GameLevels.levelObjects.money;
 
 namespace GameLevels
 {
@@ -83,6 +84,9 @@ namespace GameLevels
         // позиция игрока изменилась ? Заново направляем охранников на игрока
         public bool changedPos = false;
 
+        // количество предметов, собранных для перехода на новый уровень
+        public int NumberOfJewelry { get; set; }
+        
         /// <summary>
         /// Конструктор класса
         /// </summary>
@@ -108,6 +112,8 @@ namespace GameLevels
             
             this.backpack = new List<BaseObject>();
             this.keys = new List<BaseObject>();
+
+            NumberOfJewelry = 0;
         }
 
         /// <summary>
@@ -446,6 +452,9 @@ namespace GameLevels
         public bool AddItem(BaseObject obj) {
             if (this.backpack.Count >= maxSizeBackpack)
                 return false;
+
+            if (obj is Rubin || obj is Brilliant || obj is Picture)
+                NumberOfJewelry++;
 
             bool isNeedAdd = true;
 
