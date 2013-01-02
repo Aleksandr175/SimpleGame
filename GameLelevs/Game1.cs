@@ -238,7 +238,7 @@ namespace GameLevels
             menu.Items.Insert(0, resumeGame);
             menu.Items.Insert(1, retryGame);
             gameState = GameState.Advice;
-            currentLvl = 6;
+            currentLvl = 8;
             failed = false;
             player.backpack.Clear();
             PrintAdvice(currentLvl);
@@ -896,6 +896,63 @@ namespace GameLevels
             foreach (BaseObject bo in levelLoader.doors)
                 bo.Draw(spriteBatch);
 
+
+
+            // отрисовываем объекты
+            foreach (Object obj in levelLoader.objs)
+            {
+                if (obj.isVisible)
+                {
+                    obj.Draw(spriteBatch);
+                }
+            }
+            // отрисовываем объекты
+            foreach (SysControl sysControl in levelLoader.sysControls)
+            {
+                if (sysControl.isVisible)
+                {
+                    sysControl.Draw(spriteBatch);
+                }
+            }
+
+            //рисуется кнопка "меню"
+            menuButton.Draw(spriteBatch);
+            //рисуется инвентарь
+            spriteBatch.Draw(inventory, new Rectangle(screenWidth - inventory.Width, inventory.Width, inventory.Width, inventory.Height), Color.White);
+            //рисуется курсор
+            if (menuButton.Hover(cursor.State))
+                cursor.DrawPointer(spriteBatch);
+            else
+                cursor.Draw(spriteBatch);
+            spriteBatch.End();
+
+
+            // отрисовываем охранников
+            foreach (Guards guard in levelLoader.guards)
+            {
+                if (guard.isVisible)
+                {
+                    guard.Draw(spriteBatch);
+                }
+            }
+
+
+            // отрисовываем положение игрока
+            player.Draw(spriteBatch);
+
+            spriteBatch.Begin();
+            // отрисовываем камеры
+            foreach (Cameras camera in levelLoader.cameras)
+            {
+                if (camera.isVisible)
+                {
+                    camera.Draw(spriteBatch);
+                }
+            }
+            spriteBatch.End();
+
+
+            spriteBatch.Begin();
             try
             {
                 if (debugMode)
@@ -959,61 +1016,11 @@ namespace GameLevels
             {
                 // TODO: необходимо как-то обрабатывать исключения!
             }
+            spriteBatch.End();
 
             
 
-            // отрисовываем объекты
-            foreach (Object obj in levelLoader.objs)
-            {
-                if (obj.isVisible)
-                {
-                    obj.Draw(spriteBatch);
-                }
-            }
-            // отрисовываем объекты
-            foreach (SysControl sysControl in levelLoader.sysControls)
-            {
-                if (sysControl.isVisible)
-                {
-                    sysControl.Draw(spriteBatch);
-                }
-            }
-
-            //рисуется кнопка "меню"
-            menuButton.Draw(spriteBatch);
-            //рисуется инвентарь
-            spriteBatch.Draw(inventory, new Rectangle(screenWidth - inventory.Width, inventory.Width, inventory.Width, inventory.Height), Color.White);
-            //рисуется курсор
-            if (menuButton.Hover(cursor.State))
-                cursor.DrawPointer(spriteBatch);
-            else
-                cursor.Draw(spriteBatch);
-            spriteBatch.End();
-
-
-            // отрисовываем охранников
-            foreach (Guards guard in levelLoader.guards)
-            {
-                if (guard.isVisible)
-                {
-                    guard.Draw(spriteBatch);
-                }
-            }
-
-
-            // отрисовываем положение игрока
-            player.Draw(spriteBatch);
-
-            spriteBatch.Begin();
-            // отрисовываем камеры
-            foreach (Cameras camera in levelLoader.cameras)
-            {
-                if (camera.isVisible)
-                {
-                    camera.Draw(spriteBatch);
-                }
-            }
-            spriteBatch.End();
+            
         }
 
         /// <summary>
@@ -1033,6 +1040,7 @@ namespace GameLevels
         public void PrintAdvice(int currentLvl)
         {
             gameState = GameState.Advice;
+            if (currentLvl > 7) { currentLvl = 7; }
             Texture2D imgAdvice = storage.Pull2DTexture("advice" + currentLvl);
             //Texture2D imgAdvice = storage.Pull2DTexture("advice1");
             advice = new Advice(imgAdvice);

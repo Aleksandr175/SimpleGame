@@ -18,6 +18,23 @@ namespace GameLevels
         int targetX;
         int targetY;
 
+        public int TargetX
+        {
+            set { targetX = value; }
+        }
+        public int TargetY
+        {
+            set { targetY = value; }
+        }
+
+        int maxStepToPatrol = 0;
+
+        public int MaxStepToPatrol
+        {
+            get { return maxStepToPatrol; }
+            set { maxStepToPatrol = value; }
+        }
+
         int oldPosLaserX; // старая позиция лазера. Для сравнения - "перешел ли лазер на новую клетку?"
         int oldPosLaserY;
 
@@ -29,7 +46,7 @@ namespace GameLevels
 
 
         Texture2D textureInactive; // текстура выключенного лазера
-        List<List<int>> wayToPatrol = new List<List<int>>(); // траектория для патрулирования
+        public List<List<int>> wayToPatrol = new List<List<int>>(); // траектория для патрулирования
         
 
         private static float intervalActivity = 2.0f; // интервал работы лазера. Каждые 2 сек. лазер включается и выключается.
@@ -65,19 +82,18 @@ namespace GameLevels
 
             //массив для патрулирования
             // временный. Потом будет считываться из файла
-            wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
+            /*wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
             wayToPatrol[0].Add(8); // первым указывается координата X
             wayToPatrol[0].Add(5); // второе - координата Y
             wayToPatrol.Add(new List<int>());// добавляем новую строку под координату
             wayToPatrol[1].Add(11);
             wayToPatrol[1].Add(8);
-
+            */
 
             //проверяем на тип лазера. Будет ли он двигаться или нет.
             if (this.typeLaser == LevelObject.LaserHorizMoving || this.typeLaser == LevelObject.LaserVerticMoving)
             {
                 this.currentStepPatrol = 0;
-                this.Patrol(); // сразу задаем первую точку, куда двигаться лазеру
             }
 
 
@@ -199,7 +215,7 @@ namespace GameLevels
         /// Функция патрулирования лазера по уровню.
         /// Задает следующую точку для движения лазера
         /// </summary>
-        private void Patrol()
+        public void Patrol()
         {
             if (currentStepPatrol != -1)
             {

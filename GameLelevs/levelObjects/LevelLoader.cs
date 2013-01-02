@@ -952,6 +952,35 @@ namespace GameLevels
 
                     }
 
+
+                    // считываем траектории лазеров
+                    // тип связки (Лазер Номер Шаг СледУ СледХ)
+                    if (obj == LevelObject.LaserVerticMoving)
+                    {
+                        step = Convert.ToInt32(str[2]);
+                        numberGuard = Convert.ToInt32(str[1]);
+                        nextX = Convert.ToInt32(str[4]);
+                        nextY = Convert.ToInt32(str[3]);
+
+                        // добавляем новую строку под координату
+                        lasers[numberGuard].wayToPatrol.Add(new List<int>());
+
+                        //задание начальной точки следования для охранника
+                        if (step == 0)
+                        {
+                            lasers[numberGuard].TargetX = nextX;
+                            lasers[numberGuard].TargetY = nextY;
+                        }
+
+                        // задание точки патрилрования
+                        lasers[numberGuard].wayToPatrol[step].Add(nextX);
+                        lasers[numberGuard].wayToPatrol[step].Add(nextY);
+                        //максимальное кол-во шагов.
+                        lasers[numberGuard].MaxStepToPatrol++;
+                        
+                        lasers[numberGuard].Patrol(); // сразу задаем первую точку, куда двигаться лазеру
+                    }
+
                     // считываем связки (пункт управления - камера)
                     // связка (ПунктУправления КоордХПункта КоордУПунта КоордХКамеры КоордУКамеры)
                     if (obj == LevelObject.SpDL || obj == LevelObject.SpLU || obj == LevelObject.SpRD || obj == LevelObject.SpUR)
