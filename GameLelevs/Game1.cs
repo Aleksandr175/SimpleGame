@@ -589,7 +589,7 @@ namespace GameLevels
                 menuButton.OnClick();
 
             //изменить видимость игрока по кнопке V
-            if (state.IsKeyDown(Keys.V) && oldState.IsKeyUp(Keys.V))
+            if (state.IsKeyDown(Keys.LeftAlt) && oldState.IsKeyUp(Keys.LeftAlt) || state.IsKeyDown(Keys.RightAlt) && oldState.IsKeyUp(Keys.RightAlt))
             {
                 if (!player.IsVisible())
                     player.SetVisible();
@@ -603,7 +603,7 @@ namespace GameLevels
             }
 
             // вкл, выкл. тревогу
-            if (state.IsKeyDown(Keys.A))
+            /*if (state.IsKeyDown(Keys.A))
             {
                 if (player.IsVisible())
                 {
@@ -634,7 +634,7 @@ namespace GameLevels
                     camera.changeActiveCamera();
                 }
             }
-
+            */
 
             foreach (SysControl sysControl in levelLoader.sysControls)
             {
@@ -645,7 +645,7 @@ namespace GameLevels
                 {
                     
                     // взаимодействие с ПУК
-                    if (state.IsKeyDown(Keys.F))
+                    if (state.IsKeyDown(Keys.E))
                     {
                         if (!areYouCanGetAnswer) 
                         {
