@@ -556,6 +556,8 @@ namespace GameLevels
                 timerAdvice = 0;
                 gameState = GameState.Game;
                 levelLoader.CreateLevel(currentLvl);  // загружаем лвл
+                Cloak obj = new Cloak(new Rectangle(0, 0, 0, 0), storage.Pull2DTexture("cloak"), null, this.camera);
+                player.AddItem(obj);
             }
         }
 

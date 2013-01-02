@@ -14,5 +14,13 @@ namespace GameLevels.levelObjects.money
             : base(rect, texture, game, camera)
         {
         }
+        // количество монет
+        private int count = 1;
+
+        public int Count
+        {
+            get { return count; }
+            set { this.count = value; }
+        }
     }
 }

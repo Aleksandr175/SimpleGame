@@ -459,7 +459,7 @@ namespace GameLevels
             bool isNeedAdd = true;
 
             foreach (BaseObject ob in backpack) {
-                if (ob is Money && obj is Money) {
+                if ((ob is Money || ob is Rubin || ob is Picture || ob is Brilliant) && obj is Money) {
                     ((Money)ob).Count++;
                     isNeedAdd = false;
                     break;
@@ -512,6 +512,17 @@ namespace GameLevels
             {
                 playerInfo.isVisible = false;
                 timer = cooldown;
+
+                BaseObject obj = null;
+                foreach (BaseObject ob in backpack) {
+                    if (ob is Cloak)
+                    {
+                        obj = ob;
+                        break;
+                    }
+                }
+
+                backpack.Remove(obj);
             }
         }
 
