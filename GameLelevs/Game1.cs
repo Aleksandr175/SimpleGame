@@ -58,7 +58,7 @@ namespace GameLevels
         }
 
         private float timerAdvice = 0; // таймер подсказки
-        private float durationAdvice = 2500; // длительность
+        private float durationAdvice = 1000; // длительность
 
         double someValue;
 

@@ -50,6 +50,11 @@ namespace GameLevels
                 timer = intervalActivity;
                 intervalActivity += 0.3f;
 
+                if (intervalActivity >= 3.2f)
+                {
+                    intervalActivity = 2.0f;
+                }
+
             this.Rect = rect;
             this.textureInactive = textureInactive;
             this.typeLaser = typeLaser;
