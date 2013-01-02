@@ -588,3 +588,7 @@ C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice5.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice6.xnb
 C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice7.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice4.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice5.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice6.xnb
+D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice7.xnb

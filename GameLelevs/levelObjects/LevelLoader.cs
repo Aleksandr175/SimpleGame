@@ -7,6 +7,7 @@ using System.IO;
 using Enumerations;
 using GameLevels.levelObjects;
 using GameLevels.levelObjects.door;
+using GameLevels.levelObjects.money;
 
 namespace GameLevels
 {
@@ -40,8 +41,9 @@ namespace GameLevels
         public LevelObject[,] levelMapFloor; // карта пола
         public LevelObject[,] levelDoors; // карта дверей
         public static int[,] levelMapRooms; // карта комнат
-        
 
+        // количество прежметов, необходимых для перехода на новый уровень
+        public int NumberOfJewelry { get; set; }
         
         public LevelLoader(Game1 game, Player player, Storage storage, Camera camera)
         {
@@ -50,6 +52,8 @@ namespace GameLevels
             this.camera = camera;
             this.storage = storage;
             storage = new Storage();
+
+            NumberOfJewelry = 0;
         }
 
 
@@ -719,42 +723,47 @@ namespace GameLevels
 
                         if (levelMap[i, j] == LevelObject.Rubin)
                         {
-                            Money rubin = new Money(Rect, storage.Pull2DTexture("rubin"), game, this.camera, 20);
+                            Rubin rubin = new Rubin(Rect, storage.Pull2DTexture("rubin"), game, this.camera, 20);
                             interactionSubjects.Add(rubin);
 
                             levelMap[i, j] = LevelObject.Empty;
+                            NumberOfJewelry++;
                         }
 
                         if (levelMap[i, j] == LevelObject.Brilliant)
                         {
-                            Money brilliant = new Money(Rect, storage.Pull2DTexture("brilliant"), game, this.camera, 50);
+                            Brilliant brilliant = new Brilliant(Rect, storage.Pull2DTexture("brilliant"), game, this.camera, 50);
                             interactionSubjects.Add(brilliant);
                             
                             levelMap[i, j] = LevelObject.Empty;
+                            NumberOfJewelry++;
                         }
 
                         if (levelMap[i, j] == LevelObject.Picture1)
                         {
-                            Money picture1 = new Money(Rect, storage.Pull2DTexture("picture1"), game, this.camera, 30);
+                            Picture picture1 = new Picture(Rect, storage.Pull2DTexture("picture1"), game, this.camera, 30);
                             interactionSubjects.Add(picture1);
                             
                             levelMap[i, j] = LevelObject.Empty;
+                            NumberOfJewelry++;
                         }
 
                         if (levelMap[i, j] == LevelObject.Picture2)
                         {
-                            Money picture2 = new Money(Rect, storage.Pull2DTexture("picture2"), game, this.camera, 30);
+                            Picture picture2 = new Picture(Rect, storage.Pull2DTexture("picture2"), game, this.camera, 30);
                             interactionSubjects.Add(picture2);
                             
                             levelMap[i, j] = LevelObject.Empty;
+                            NumberOfJewelry++;
                         }
 
                         if (levelMap[i, j] == LevelObject.Picture3)
                         {
-                            Money picture3 = new Money(Rect, storage.Pull2DTexture("picture3"), game, this.camera, 30);
+                            Picture picture3 = new Picture(Rect, storage.Pull2DTexture("picture3"), game, this.camera, 30);
                             interactionSubjects.Add(picture3);
                             
                             levelMap[i, j] = LevelObject.Empty;
+                            NumberOfJewelry++;
                         }
 
                         // стол системы управления камерами
