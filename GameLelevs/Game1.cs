@@ -670,8 +670,10 @@ namespace GameLevels
             if (state.IsKeyDown(Keys.LeftAlt) && oldState.IsKeyUp(Keys.LeftAlt) || state.IsKeyDown(Keys.RightAlt) && oldState.IsKeyUp(Keys.RightAlt))
             {
                 if (!player.IsVisible())
-                    player.SetVisible();
-                else
+                {
+                    //player.SetVisible();
+                }
+                else if(player.backpack.OfType<Cloak>().Any())
                 {
                     // невидимы
                     player.SetInvisible();

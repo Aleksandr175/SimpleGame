@@ -68,7 +68,7 @@ namespace GameLevels
         //отсчет с момента использования невидимости
         private float timer = 0;
         //через сколько секунд можно опять использовать невидимость
-        private float cooldown = 30.0f;
+        private float cooldown = 5.0f;
         //максимальная длительность невидимости
         private float timeInvisible = 5.0f;
 
