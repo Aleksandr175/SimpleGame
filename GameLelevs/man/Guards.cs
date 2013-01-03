@@ -557,7 +557,7 @@ namespace GameLevels
                 {
                     if (posLeft >= posPlayerX)
                     {
-                        if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size * 1.5)
+                        if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size * 1.5 && player.IsVisible())
                         {
                             this.alarm = true;
                         }
@@ -568,7 +568,7 @@ namespace GameLevels
                 if (this.direction == PlayerMove.Right) {
                     if (posRight <= posPlayerX)
                     {
-                        if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size * 1.5)
+                        if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size * 1.5 && player.IsVisible())
                         {
                             this.alarm = true;
                         }
@@ -580,7 +580,7 @@ namespace GameLevels
                 {
                     if (posBottom <= posPlayerY)
                     {
-                        if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size * 1.5)
+                        if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size * 1.5 && player.IsVisible())
                         {
                             this.alarm = true;
                         }
@@ -592,7 +592,7 @@ namespace GameLevels
                 {
                     if (posTop >= posPlayerY)
                     {
-                        if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size * 1.5)
+                        if (Math.Sqrt(Math.Pow((posX - posPlayerX), 2) + Math.Pow((posY - posPlayerY), 2)) <= LevelLoader.Size * 1.5 && player.IsVisible())
                         {
                             this.alarm = true;
                         }

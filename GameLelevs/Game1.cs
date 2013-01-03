@@ -238,7 +238,7 @@ namespace GameLevels
             menu.Items.Insert(0, resumeGame);
             menu.Items.Insert(1, retryGame);
             gameState = GameState.Advice;
-            currentLvl = 3;
+            currentLvl = 5;
             failed = false;
             player.backpack.Clear();
             PrintAdvice(currentLvl);
@@ -421,32 +421,38 @@ namespace GameLevels
         /// <param name="rect">прямоугольник игрока</param>
         void CollidesLasers(Rectangle rect)
         {
-            int centerX = rect.Left + LevelLoader.SizePeople / 2;
-            int centerY = rect.Top + LevelLoader.SizePeople / 2;
-
-            foreach (Laser laser in levelLoader.lasers)
+            if (player.IsVisible()) // если игрок не в плаще, то проверяем столкновения
             {
-                if (laser.IsActive)
+                int centerX = rect.Left + LevelLoader.SizePeople / 2;
+                int centerY = rect.Top + LevelLoader.SizePeople / 2;
+            
+            
+                foreach (Laser laser in levelLoader.lasers)
                 {
-                    if (laser.typeLaser == LevelObject.LaserVertic || laser.typeLaser == LevelObject.LaserVerticMoving)
+                
+                    if (laser.IsActive)
                     {
-                        if (Math.Abs(laser.Rect.X + 20 - centerX) < 10 && Math.Abs(laser.Rect.Y + 30 - centerY) < 30)
+                        if (laser.typeLaser == LevelObject.LaserVertic || laser.typeLaser == LevelObject.LaserVerticMoving)
                         {
-                            Guards.generalAlarm = true;
-                            changeAlarmGuards();
+                            if (Math.Abs(laser.Rect.X + 20 - centerX) < 10 && Math.Abs(laser.Rect.Y + 30 - centerY) < 30)
+                            {
+                                Guards.generalAlarm = true;
+                                changeAlarmGuards();
+                            }
+                        }
+                        if (laser.typeLaser == LevelObject.LaserHoriz || laser.typeLaser == LevelObject.LaserHorizMoving)
+                        {
+                            if (Math.Abs(laser.Rect.X + 30 - centerX) < 30 && Math.Abs(laser.Rect.Y + 20 - centerY) < 10)
+                            {
+                                Guards.generalAlarm = true;
+                                changeAlarmGuards();
+                            }
                         }
                     }
-                    if (laser.typeLaser == LevelObject.LaserHoriz || laser.typeLaser == LevelObject.LaserHorizMoving)
-                    {
-                        if (Math.Abs(laser.Rect.X + 30 - centerX) < 30 && Math.Abs(laser.Rect.Y + 20 - centerY) < 10)
-                        {
-                            Guards.generalAlarm = true;
-                            changeAlarmGuards();
-                        }
-                    }
-                }
+                
+                } // end foreach
             }
-
+            
         }
 
 
@@ -456,47 +462,49 @@ namespace GameLevels
         /// <param name="rect">прямоугольник игрока</param>
         void CollidesCameras(Rectangle rect)
         {
-            int centerX = rect.Left + LevelLoader.SizePeople / 2;
-            int centerY = rect.Top + LevelLoader.SizePeople / 2;
-
-            foreach (Cameras camera in levelLoader.cameras)
+            if (player.IsVisible()) // если игрок не в плаще, то проверяем столкновения
             {
-                if (camera.IsActive)
+                int centerX = rect.Left + LevelLoader.SizePeople / 2;
+                int centerY = rect.Top + LevelLoader.SizePeople / 2;
+
+                foreach (Cameras camera in levelLoader.cameras)
                 {
-                    if (camera.typeCamera == LevelObject.CameraUL)
+                    if (camera.IsActive)
                     {
-                        if (centerX >= camera.Rect.X && centerY >= camera.Rect.Y)
+                        if (camera.typeCamera == LevelObject.CameraUL)
                         {
-                            double radiusX = Math.Pow(Math.Abs(camera.Rect.X - centerX), 2);
-                            double radiusY = Math.Pow(Math.Abs(camera.Rect.Y - centerY), 2);
-
-                            if (Math.Sqrt(radiusX + radiusY) <= 100)
+                            if (centerX >= camera.Rect.X && centerY >= camera.Rect.Y)
                             {
-                                
-                                Guards.generalAlarm = true;
-                                changeAlarmGuards();
-                                this.someValue++;
+                                double radiusX = Math.Pow(Math.Abs(camera.Rect.X - centerX), 2);
+                                double radiusY = Math.Pow(Math.Abs(camera.Rect.Y - centerY), 2);
+
+                                if (Math.Sqrt(radiusX + radiusY) <= 100)
+                                {
+
+                                    Guards.generalAlarm = true;
+                                    changeAlarmGuards();
+                                    this.someValue++;
+                                }
+                            }
+                        }
+                        if (camera.typeCamera == LevelObject.CameraUR)
+                        {
+                            if (centerX <= camera.Rect.X + 90 && centerY >= camera.Rect.Y)
+                            {
+                                double radiusX = Math.Pow(Math.Abs(camera.Rect.X + 90 - centerX), 2);
+                                double radiusY = Math.Pow(Math.Abs(camera.Rect.Y - centerY), 2);
+
+                                if (Math.Sqrt(radiusX + radiusY) <= 100)
+                                {
+                                    Guards.generalAlarm = true;
+                                    changeAlarmGuards();
+                                    this.someValue++;
+                                }
                             }
                         }
                     }
-                    if (camera.typeCamera == LevelObject.CameraUR)
-                    {
-                        if (centerX <= camera.Rect.X + 90 && centerY >= camera.Rect.Y)
-                        {
-                            double radiusX = Math.Pow(Math.Abs(camera.Rect.X + 90 - centerX), 2);
-                            double radiusY = Math.Pow(Math.Abs(camera.Rect.Y - centerY), 2);
-
-                            if (Math.Sqrt(radiusX + radiusY) <= 100)
-                            {
-                                Guards.generalAlarm = true;
-                                changeAlarmGuards();
-                                this.someValue++;
-                            }
-                        }
-                    }
-                }
+                } // end foreach
             }
-
         }
         
 
