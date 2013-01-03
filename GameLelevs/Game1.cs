@@ -238,7 +238,7 @@ namespace GameLevels
             menu.Items.Insert(0, resumeGame);
             menu.Items.Insert(1, retryGame);
             gameState = GameState.Advice;
-            currentLvl = 8;
+            currentLvl = 3;
             failed = false;
             player.backpack.Clear();
             PrintAdvice(currentLvl);
@@ -608,13 +608,23 @@ namespace GameLevels
                 }
             }
 
-            //изменить видимость игрока по кнопке V
+            //изменить видимость игрока по кнопке Alt
             if (state.IsKeyDown(Keys.LeftAlt) && oldState.IsKeyUp(Keys.LeftAlt) || state.IsKeyDown(Keys.RightAlt) && oldState.IsKeyUp(Keys.RightAlt))
             {
                 if (!player.IsVisible())
                     player.SetVisible();
                 else
+                {
+                    // невидимы
                     player.SetInvisible();
+                    // убираем тревогу, когда одели плащ.
+                    foreach (Guards guard in levelLoader.guards)
+                    {
+                        guard.Alarm = false;
+                        Guards.generalAlarm = false;
+                    }
+                }
+
             }
 
             if (state.IsKeyDown(Keys.D))
@@ -904,10 +914,7 @@ namespace GameLevels
             }
             foreach (Laser laser in levelLoader.lasers)
             {
-                if (laser.isVisible)
-                {
-                    laser.Draw(spriteBatch);
-                }
+                laser.Draw(spriteBatch);
             }
 
             foreach (BaseObject bo in levelLoader.interactionSubjects)
@@ -921,18 +928,12 @@ namespace GameLevels
             // отрисовываем объекты
             foreach (Object obj in levelLoader.objs)
             {
-                if (obj.isVisible)
-                {
-                    obj.Draw(spriteBatch);
-                }
+                obj.Draw(spriteBatch);
             }
             // отрисовываем объекты
             foreach (SysControl sysControl in levelLoader.sysControls)
             {
-                if (sysControl.isVisible)
-                {
-                    sysControl.Draw(spriteBatch);
-                }
+                sysControl.Draw(spriteBatch);
             }
 
             //рисуется кнопка "меню"
@@ -950,10 +951,7 @@ namespace GameLevels
             // отрисовываем охранников
             foreach (Guards guard in levelLoader.guards)
             {
-                if (guard.isVisible)
-                {
-                    guard.Draw(spriteBatch);
-                }
+                guard.Draw(spriteBatch);
             }
 
 
@@ -964,10 +962,7 @@ namespace GameLevels
             // отрисовываем камеры
             foreach (Cameras camera in levelLoader.cameras)
             {
-                if (camera.isVisible)
-                {
-                    camera.Draw(spriteBatch);
-                }
+                camera.Draw(spriteBatch);
             }
             spriteBatch.End();
 
@@ -1011,14 +1006,14 @@ namespace GameLevels
                 }
                 else
                 {
-                    spriteBatch.DrawString(storage.PullFont("font"), "D - debug", new Vector2(400, 20), Color.LimeGreen); // тревога
+                    //spriteBatch.DrawString(storage.PullFont("font"), "D - debug", new Vector2(400, 20), Color.LimeGreen); // тревога
 
-                    int xCoord = 40;
+                    /*int xCoord = 40;
                     foreach (string str in toDraw)
                     {
                         spriteBatch.DrawString(storage.PullFont("font"), str, new Vector2(300, xCoord), Color.Red);
                         xCoord += 20;
-                    }
+                    }*/
 
                     foreach (SysControl sysControl in levelLoader.sysControls)
                     {
