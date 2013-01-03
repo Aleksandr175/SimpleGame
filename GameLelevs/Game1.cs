@@ -999,10 +999,7 @@ namespace GameLevels
             //рисуется инвентарь
             spriteBatch.Draw(inventory, new Rectangle(screenWidth - inventory.Width, inventory.Width, inventory.Width, inventory.Height), Color.White);
             //рисуется курсор
-            if (menuButton.Hover(cursor.State))
-                cursor.DrawPointer(spriteBatch);
-            else
-                cursor.Draw(spriteBatch);
+
             spriteBatch.End();
 
 
@@ -1089,6 +1086,10 @@ namespace GameLevels
             {
                 // TODO: необходимо как-то обрабатывать исключения!
             }
+            if (menuButton.Hover(cursor.State))
+                cursor.DrawPointer(spriteBatch);
+            else
+                cursor.Draw(spriteBatch);
             spriteBatch.End();
 
             
