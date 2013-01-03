@@ -775,6 +775,15 @@
       <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\lvls\tasks\mission_description1.xnb</Output>
       <Time>2013-01-03T14:59:02.609375+03:00</Time>
     </Item>
+    <Item>
+      <Source>advices\advice_final.png</Source>
+      <Name>advices\advice_final</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Aleksandr\Мои документы\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice_final.xnb</Output>
+      <Time>2013-01-03T16:03:59.609375+03:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
