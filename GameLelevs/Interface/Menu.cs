@@ -19,7 +19,7 @@ namespace GameLevels
         int numberOfButtons;
         Texture2D open, close;
         public Texture2D logo;
-        public Button next, previous, back;
+        public Button /*next, previous,*/ back;
         public SpriteFont font;
         Cursor cursor;
         public Menu(int screenWidth)
@@ -36,12 +36,12 @@ namespace GameLevels
             for (int i = page * numberOfButtons; (i < (page + 1) * numberOfButtons) && (i < Items.Count); i++)
                 if (Items[i].ButtonClick(cursor.State, cursor.OldState))
                     Items[i].OnClick();
-            if (next != null)
-                if (next.ButtonClick(cursor.State, cursor.OldState))
-                    next.OnClick();
-            if (previous != null)
-                if (previous.ButtonClick(cursor.State, cursor.OldState))
-                    previous.OnClick();
+            //if (next != null)
+            //    if (next.ButtonClick(cursor.State, cursor.OldState))
+            //        next.OnClick();
+            //if (previous != null)
+            //    if (previous.ButtonClick(cursor.State, cursor.OldState))
+            //        previous.OnClick();
             if (back != null)
                 if (back.ButtonClick(cursor.State, cursor.OldState))
                     back.OnClick();
@@ -50,7 +50,7 @@ namespace GameLevels
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //выводится не больше 6 пунктов
+            //выводится не больше 8 пунктов
             if (Items.Count < 8)
                 numberOfButtons = Items.Count;
             else
@@ -109,10 +109,10 @@ namespace GameLevels
                 y += item.tex.Height + 10;
 
             }
-            previous.position = new Vector2((screenWidth / 4) - Items[0].tex.Width / 2, 330);
-            previous.Draw(spriteBatch);
-            next.position = new Vector2((screenWidth / 2) + (screenWidth / 4) - Items[0].tex.Width / 2, 330);
-            next.Draw(spriteBatch);
+            //previous.position = new Vector2((screenWidth / 4) - Items[0].tex.Width / 2, 330);
+            //previous.Draw(spriteBatch);
+            //next.position = new Vector2((screenWidth / 2) + (screenWidth / 4) - Items[0].tex.Width / 2, 330);
+            //next.Draw(spriteBatch);
             back.position = new Vector2((screenWidth / 2) - Items[0].tex.Width / 2, 400);
             back.Draw(spriteBatch);
             spriteBatch.DrawString(font, "Выберите уровень:", new Vector2((screenWidth / 2 - font.MeasureString("Выберите уровень:").X / 2), 20), Color.White);
@@ -124,16 +124,16 @@ namespace GameLevels
             for (int i = page * numberOfButtons; (i < (page + 1) * numberOfButtons) && (i < Items.Count); i++)
                 if (Items[i].Hover(cursor.State))
                     return true;
-            if (next != null)
-            {
-                if (next.Hover(cursor.State))
-                    return true;
-            }
-            if (previous != null)
-            {
-                if (previous.Hover(cursor.State))
-                    return true;
-            }
+            //if (next != null)
+            //{
+            //    if (next.Hover(cursor.State))
+            //        return true;
+            //}
+            //if (previous != null)
+            //{
+            //    if (previous.Hover(cursor.State))
+            //        return true;
+            //}
             if (back != null)
             {
                 if (back.Hover(cursor.State))

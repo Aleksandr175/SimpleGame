@@ -208,21 +208,21 @@ namespace GameLevels
         {
             menuLvl.LoadTextures(storage.Pull2DTexture("open"), storage.Pull2DTexture("close"), menuFont);
             menuLvl.LoadCursor(cursor);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 8; i++)
             {
                 Button button = new Button(buttonTexture, menuFont, "Уровень " + (i + 1));
                 int num = i;
                 button.Click += delegate(object sender, EventArgs e) { button_Click(sender, e, num); };
                 menuLvl.Items.Add(button);
             }
-            Button next = new Button(buttonTexture, menuFont, "вперед");
-            Button previous = new Button(buttonTexture, menuFont, "назад");
+            //Button next = new Button(buttonTexture, menuFont, "вперед");
+            //Button previous = new Button(buttonTexture, menuFont, "назад");
             Button back = new Button(buttonTexture, menuFont, "в меню");
             back.Click += new EventHandler(back_Click);
-            previous.Click += new EventHandler(previous_Click);
-            next.Click += new EventHandler(next_Click);
-            menuLvl.next = next;
-            menuLvl.previous = previous;
+            //previous.Click += new EventHandler(previous_Click);
+            //next.Click += new EventHandler(next_Click);
+            //menuLvl.next = next;
+            //menuLvl.previous = previous;
             menuLvl.back = back;
         }
         /// <summary>
@@ -293,18 +293,18 @@ namespace GameLevels
         /// <summary>
         /// Обработка нажатия на "вперед"
         /// </summary>
-        void next_Click(object sender, EventArgs e)
-        {
-            menuLvl.page++;
-        }
+        //void next_Click(object sender, EventArgs e)
+        //{
+        //    menuLvl.page++;
+        //}
         /// <summary>
         /// Обработка нажатия на "назад"
         /// </summary>
-        void previous_Click(object sender, EventArgs e)
-        {
-            if (menuLvl.page > 0)
-                menuLvl.page--;
-        }
+        //void previous_Click(object sender, EventArgs e)
+        //{
+        //    if (menuLvl.page > 0)
+        //        menuLvl.page--;
+        //}
         /// <summary>
         /// Обработка нажатия на "в меню"
         /// </summary>
