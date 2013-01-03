@@ -58,7 +58,7 @@ namespace GameLevels
         }
 
         private float timerAdvice = 0; // таймер подсказки
-        private float durationAdvice = 1000; // длительность
+        private float durationAdvice = 300; // длительность
 
         double someValue;
 
@@ -238,7 +238,7 @@ namespace GameLevels
             menu.Items.Insert(0, resumeGame);
             menu.Items.Insert(1, retryGame);
             gameState = GameState.Advice;
-            currentLvl = 5;
+            currentLvl = 8;
             failed = false;
             player.backpack.Clear();
             PrintAdvice(currentLvl);
@@ -545,6 +545,8 @@ namespace GameLevels
                 UpdateGameAdvice(gameTime);
             else if (gameState == GameState.Fail)
                 UpdateGameFail(gameTime);
+            else if (gameState == GameState.Success)
+                UpdateGameSuccess(gameTime);
             else
                 menuLvl.Update();
             
@@ -559,14 +561,33 @@ namespace GameLevels
         private void UpdateGameAdvice(GameTime gameTime)
         {
             timerAdvice += gameTime.ElapsedGameTime.Milliseconds;
-            if (timerAdvice > durationAdvice)
+            /*if (timerAdvice > durationAdvice)
             {
                 timerAdvice = 0;
                 gameState = GameState.Game;
                 levelLoader.CreateLevel(currentLvl);  // загружаем лвл
                 Cloak obj = new Cloak(new Rectangle(0, 0, 0, 0), storage.Pull2DTexture("cloak"), null, this.camera);
                 player.AddItem(obj);
+            }*/
+
+            if (timerAdvice > durationAdvice)
+            {
+                // TODO: Add your update logic here
+                KeyboardState state = Keyboard.GetState();
+                Keys[] states;
+                states = state.GetPressedKeys();
+                // если нажата любая кнопка - то удаляем подсказку
+                if (states.Length > 0)
+                {
+                    timerAdvice = 0;
+                    gameState = GameState.Game;
+                    levelLoader.CreateLevel(currentLvl);  // загружаем лвл
+                    Cloak obj = new Cloak(new Rectangle(0, 0, 0, 0), storage.Pull2DTexture("cloak"), null, this.camera);
+                    player.AddItem(obj);
+                }
             }
+
+
         }
 
         /// <summary>
@@ -578,9 +599,42 @@ namespace GameLevels
             timerAdvice += gameTime.ElapsedGameTime.Milliseconds;
             if (timerAdvice > durationAdvice)
             {
-                timerAdvice = 0;
-                menu.Items.RemoveAt(0);
-                gameState = GameState.Menu;
+                // TODO: Add your update logic here
+                KeyboardState state = Keyboard.GetState();
+                Keys[] states;
+                states = state.GetPressedKeys();
+                // если нажата любая кнопка - то удаляем подсказку
+                if (states.Length > 0)
+                {
+                    timerAdvice = 0;
+                    menu.Items.RemoveAt(0);
+                    gameState = GameState.Menu;
+                }
+            }
+            
+        }
+
+
+        /// <summary>
+        /// Функция отрисовки подсказки. После истечения времени - открывается меню
+        /// </summary>
+        /// <param name="gameTime">Время</param>
+        private void UpdateGameSuccess(GameTime gameTime)
+        {
+            timerAdvice += gameTime.ElapsedGameTime.Milliseconds;
+            if (timerAdvice > durationAdvice)
+            {
+                // TODO: Add your update logic here
+                KeyboardState state = Keyboard.GetState();
+                Keys[] states;
+                states = state.GetPressedKeys();
+                // если нажата любая кнопка - то удаляем подсказку
+                if (states.Length > 0)
+                {
+                    timerAdvice = 0;
+                    menu.Items.RemoveAt(0);
+                    gameState = GameState.Menu;
+                }
             }
         }
 
@@ -604,10 +658,6 @@ namespace GameLevels
                 if (oldState != state)
                 {
                     currentLvl++;
-                    if (currentLvl > maxLvl)
-                    {
-                        currentLvl = 1;
-                    }
 
                     PrintAdvice(currentLvl);
                     //levelLoader.CreateLevel(currentLvl);
@@ -743,10 +793,6 @@ namespace GameLevels
                 if (oldState != state)
                 {
                     currentLvl++;
-                    if (currentLvl > maxLvl)
-                    {
-                        currentLvl = 1;
-                    }
 
                     PrintAdvice(currentLvl);
                     //levelLoader.CreateLevel(currentLvl);
@@ -894,6 +940,8 @@ namespace GameLevels
             else if (gameState == GameState.Advice)
                 DrawAdvice();
             else if (gameState == GameState.Fail)
+                DrawAdvice();
+            else if (gameState == GameState.Success)
                 DrawAdvice();
             else
                 menuLvl.Draw(spriteBatch);
@@ -1063,6 +1111,11 @@ namespace GameLevels
         public void PrintAdvice(int currentLvl)
         {
             gameState = GameState.Advice;
+            if (currentLvl > maxLvl) 
+            { 
+                PrintSuccess(); 
+                return; 
+            }
             if (currentLvl > 7) { currentLvl = 7; }
             Texture2D imgAdvice = storage.Pull2DTexture("advice" + currentLvl);
             //Texture2D imgAdvice = storage.Pull2DTexture("advice1");
@@ -1077,6 +1130,16 @@ namespace GameLevels
             failed = true;
             gameState = GameState.Fail;
             Texture2D imgAdvice = storage.Pull2DTexture("failed");
+            advice = new Advice(imgAdvice);
+        }
+
+        /// <summary>
+        /// рисуем "игра пройдена"
+        /// </summary>
+        public void PrintSuccess()
+        {
+            gameState = GameState.Success;
+            Texture2D imgAdvice = storage.Pull2DTexture("advice_final");
             advice = new Advice(imgAdvice);
         }
 

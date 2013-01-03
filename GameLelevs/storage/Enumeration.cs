@@ -110,6 +110,7 @@ namespace Enumerations
         Menu,
         LvlMenu,
         Advice,
-        Fail
+        Fail,
+        Success
     }
 }
