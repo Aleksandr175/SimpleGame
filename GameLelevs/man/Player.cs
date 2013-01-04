@@ -459,8 +459,18 @@ namespace GameLevels
             bool isNeedAdd = true;
 
             foreach (BaseObject ob in backpack) {
-                if ((ob is Money || ob is Rubin || ob is Picture || ob is Brilliant) && obj is Money) {
-                    ((Money)ob).Count++;
+                if ((ob is Money && obj is Money) || (ob is Rubin && obj is Rubin) || (ob is Picture && obj is Picture) || (ob is Brilliant && obj is Brilliant))
+                {
+                    
+                    if(obj is Money)
+                        ((Money)ob).Count++;
+                    if (obj is Rubin)
+                        ((Rubin)ob).Count++;
+                    if (obj is Picture)
+                        ((Picture)ob).Count++;
+                    if (obj is Brilliant)
+                        ((Brilliant)ob).Count++;
+
                     isNeedAdd = false;
                     break;
                 }
