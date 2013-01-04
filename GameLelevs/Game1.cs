@@ -58,7 +58,7 @@ namespace GameLevels
         }
 
         private float timerAdvice = 0; // таймер подсказки
-        private float durationAdvice = 300; // длительность
+        private float durationAdvice = 500; // длительность
 
         double someValue;
 
@@ -238,7 +238,7 @@ namespace GameLevels
             menu.Items.Insert(0, resumeGame);
             menu.Items.Insert(1, retryGame);
             gameState = GameState.Advice;
-            currentLvl = 8;
+            currentLvl = 1;
             failed = false;
             player.backpack.Clear();
             PrintAdvice(currentLvl);
@@ -273,8 +273,8 @@ namespace GameLevels
                 resumeGame.Click += new EventHandler(resumeGame_Click);
             }
             failed = false;
-            levelLoader.CreateLevel(currentLvl);
-            gameState = GameState.Game;
+            player.backpack.Clear();
+            PrintAdvice(currentLvl); 
         }
         /// <summary>
         /// Обработка нажатия на "выбрать уровень"
@@ -328,8 +328,10 @@ namespace GameLevels
                 }
                 failed = false;
                 currentLvl = num+1;
-                levelLoader.CreateLevel(currentLvl);
-                gameState = GameState.Game;
+                player.backpack.Clear();
+                PrintAdvice(currentLvl); 
+                //levelLoader.CreateLevel(currentLvl);
+                //gameState = GameState.Game;
             }
         }
         /// <summary>
@@ -687,10 +689,10 @@ namespace GameLevels
 
             }
 
-            if (state.IsKeyDown(Keys.D))
+            /*if (state.IsKeyDown(Keys.D))
             {
                 debugMode = !debugMode;
-            }
+            }*/
 
             // вкл, выкл. тревогу
             /*if (state.IsKeyDown(Keys.A))
@@ -735,7 +737,7 @@ namespace GameLevels
                 {
                     
                     // взаимодействие с ПУК
-                    if (state.IsKeyDown(Keys.E))
+                    if (state.IsKeyDown(Keys.Space))
                     {
                         if (!areYouCanGetAnswer) 
                         {
@@ -789,7 +791,7 @@ namespace GameLevels
             }
 
             //смена уровня по нажатию на пробел
-            if (state.IsKeyDown(Keys.Space) && oldState.IsKeyUp(Keys.Space))
+            /*if (state.IsKeyDown(Keys.Space) && oldState.IsKeyUp(Keys.Space))
             {
                 SaveLvlInfo();
                 if (oldState != state)
@@ -803,11 +805,11 @@ namespace GameLevels
                 }
             }
             oldState = state;
-
+            */
             
 
             // открываем дверь
-            if (state.IsKeyDown(Keys.E))
+            if (state.IsKeyDown(Keys.Space))
             {
                 int j = 0;
                 while (j < levelLoader.doors.Count)

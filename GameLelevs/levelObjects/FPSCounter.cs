@@ -25,7 +25,7 @@ namespace GameLevels
                 FPS = frames;
                 seconds = 0;
                 frames = 0;
-                Game.Window.Title = "fps: " + FPS.ToString();  // вывод в заголовке кол-ва кадров в секунду
+                Game.Window.Title = "Коллекционер,  Fps: " + FPS.ToString();  // вывод в заголовке кол-ва кадров в секунду
             }
             base.Update(gameTime);
         }
