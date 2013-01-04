@@ -476,6 +476,8 @@ namespace GameLevels
         /// </summary>
         public void ClearBackpack()
         {
+            NumberOfJewelry = 0;
+
             backpack.Clear();
         }
         /// <summary>

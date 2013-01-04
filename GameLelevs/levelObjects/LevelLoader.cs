@@ -103,6 +103,7 @@ namespace GameLevels
             interactionSubjects = new List<BaseObject>();
             doors = new List<BaseObject>();
             sysControls = new List<SysControl>();
+            NumberOfJewelry = 0;
 
             string lvl_name = "content/lvls/lvl" + Convert.ToString(lvl) + ".txt";
             string[] lines = File.ReadAllLines(lvl_name); //получили массив строк
