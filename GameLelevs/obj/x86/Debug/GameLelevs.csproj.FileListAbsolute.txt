@@ -599,3 +599,4 @@ D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\adv
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice7.xnb
 D:\user\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice_final.xnb
 D:\C#\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice_final.xnb
+C:\Users\admin\Documents\GitHub\SimpleGame\GameLelevs\bin\x86\Debug\Content\advices\advice_final.xnb
